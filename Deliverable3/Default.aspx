@@ -1,8 +1,33 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="Team11._Default" %>
+
 <%-- Header Content e.g. style link --%>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-    <link rel="Stylesheet" type="text/css" href="Styles/Default.css">
+    <link rel="Stylesheet" type="text/css" href="Styles/Default.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            ajaxJson()
+        });
+        function ajaxJson() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "Default.aspx/GetUser",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var result = data.d;
+                    console.log(result);
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            })
+        }
+        </script>
 </asp:Content>
 <%-- Page Title Content --%>
 <asp:Content ID="TitlesContent" runat="server" ContentPlaceHolderID="TitleContent">

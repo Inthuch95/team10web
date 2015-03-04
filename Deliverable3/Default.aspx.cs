@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Web.Script.Services;
+using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Web.Configuration;
-using System.Collections;
 
 namespace Team11
 {
@@ -55,6 +57,50 @@ namespace Team11
                 
             }
             
+        }
+        public class user
+        {
+            public string deptCode;
+            public string deptName;
+        }
+
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        [WebMethod]
+        
+        public static List<user> GetUser()
+        {
+            List<user> users = new List<user> { };
+            string query = "SELECT  [deptCode] ,[deptName] FROM [User]";
+            SqlCommand cmd = new SqlCommand(query);
+            DataSet ds = GetData(cmd);
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                user pro = new user();
+                pro.deptCode = item["deptCode"].ToString();
+                pro.deptName = item["deptName"].ToString();
+                users.Add(pro);
+            }
+
+            return users;
+        }
+        private static DataSet GetData(SqlCommand cmd)
+        {
+            string connString = WebConfigurationManager.ConnectionStrings["parkConnectionString"].ToString();
+            string str = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(str))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+                {
+                    cmd.Connection = con;
+                    sda.SelectCommand = cmd;
+                    using (DataSet ds = new DataSet())
+                    {
+                        sda.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
         }
     }
 }
