@@ -42,8 +42,8 @@ namespace Team11
                 conn.Close();
                 if (password == TextBoxPassword.Text)
                 {
+                    Session["Username"] = DropDownListDept.Text;
                     Response.Redirect("CreateRequest.aspx");
-                    
                     
                 }
                 else

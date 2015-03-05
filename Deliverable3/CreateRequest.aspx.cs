@@ -16,11 +16,18 @@ namespace Team11
     {
 
         int userID = 1;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
+                
                 SqlConnection connect = new SqlConnection(WebConfigurationManager.ConnectionStrings["ParkConnectionString"].ToString());
                 connect.Open();
 
