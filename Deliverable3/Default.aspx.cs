@@ -26,7 +26,7 @@ namespace Team11
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString());
             conn.Open();
             /* SQL Statement */
-            string checkuser = "select count(*) from [User] where deptCode='" + DropDownListDept.Text + "'";
+            string checkuser = "select count(*) from [DEPT] where dept_name='" + DropDownListDept.Text + "'";
             SqlCommand com = new SqlCommand(checkuser, conn);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             Console.Write(temp);
@@ -35,7 +35,7 @@ namespace Team11
             {
                 
                 conn.Open();
-                string checkpassword = "Select password from [User] where deptCode='" + DropDownListDept.Text + "'";
+                string checkpassword = "Select password from [DEPT] where dept_name='" + DropDownListDept.Text + "'";
                 SqlCommand passcom = new SqlCommand(checkpassword, conn);
                 /* Gets rid of the space if there is one e.g. by habit putting a space at the end*/
                 string password = passcom.ExecuteScalar().ToString().Replace(" ", "");
@@ -70,15 +70,15 @@ namespace Team11
         public static List<user> GetUser()
         {
             List<user> users = new List<user> { };
-            string query = "SELECT  [deptCode] ,[deptName] FROM [User]";
+            string query = "SELECT  [dept_code] ,[dept_name] FROM [DEPT]";
             SqlCommand cmd = new SqlCommand(query);
             DataSet ds = GetData(cmd);
             DataTable dt = ds.Tables[0];
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 user pro = new user();
-                pro.deptCode = item["deptCode"].ToString();
-                pro.deptName = item["deptName"].ToString();
+                pro.deptCode = item["dept_code"].ToString();
+                pro.deptName = item["dept_name"].ToString();
                 users.Add(pro);
             }
 

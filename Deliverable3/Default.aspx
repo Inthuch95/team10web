@@ -37,7 +37,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:myConnectionString %>" 
-        SelectCommand="SELECT [deptCode] FROM [User] ORDER BY [deptCode]"></asp:SqlDataSource>
+        SelectCommand="SELECT [dept_name] FROM [DEPT] ORDER BY [dept_name]"></asp:SqlDataSource>
     
     <div class="canister">
         <div class="canistertitle blue">
@@ -50,8 +50,8 @@
                 </div>
                 <div class="col-md-12">
                     <asp:DropDownList ID="DropDownListDept" runat="server" 
-                        DataSourceID="SqlDataSource1" DataTextField="deptCode" 
-                        DataValueField="deptCode" class="form-control text-center select">
+                        DataSourceID="SqlDataSource1" DataTextField="dept_name" 
+                        DataValueField="dept_name" class="form-control text-center select">
                     </asp:DropDownList>
                 </div>
                 <div class="text-center col-md-12">
