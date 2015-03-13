@@ -1,2 +1,3 @@
-UPDATE [DEPT] 
-SET [password] = 'vk663xv';
+UPDATE [ROOMS] 
+SET [pa_system] = 0
+WHERE [capacity] = 55;
