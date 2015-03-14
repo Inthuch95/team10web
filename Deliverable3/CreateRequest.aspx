@@ -2,10 +2,11 @@
 
 <%-- Create Request Header Content --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    
     <script type="text/javascript" language="javascript">
-        $(document).ready(function () {
-
+       $(document).ready(function () {
+            getDeptCode();
+            getModuleAjax();
+           /* 
             //Room Type
             if ($("#MainContent_RadioButtonListRoomType_0").is(":checked")) {
                 $("#MainContent_RadioButtonListRoomType_0").parent().addClass("btn btn-danger");
@@ -262,11 +263,50 @@
             //Semester
             if ($("#MainContent_RadioButtonListSemester_1").is(":checked")) {
                 $("#MainContent_RadioButtonListSemester_1").parent().addClass("btn btn-danger");
-            };
+            };*/
 
 
         });
-                
+        function getModuleAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "CreateRequest.aspx/getModule",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var result = data.d;
+                    for (var i = 0; i < result.length; i++) {
+                        $("#module").append("<option>" + result[i].module_code + " : " + result[i].module_title + "</option>");
+                    }
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        function getDeptCode() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "CreateRequest.aspx/getDept",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var result = data.d;
+                    for (var i = 0; i < result.length; i++) {
+                        $("#dept").val(result[0]);
+                    }
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
     </script>
     <!-- Create Request CSS -->
     <link rel="Stylesheet" type="text/css" href="Styles/CreateRequest.css" />
@@ -281,22 +321,7 @@
 <%-- MAIN BODY CONTENT --%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-
-    
-
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:myConnectionString %>" 
-        SelectCommand="SELECT [parkName] FROM [Park]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-     ConnectionString="<%$ ConnectionStrings:myConnectionString %>" 
-        SelectCommand="SELECT * FROM [BookedRoom]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:myConnectionString %>" 
-        SelectCommand="SELECT * FROM [BookedRoom]"></asp:SqlDataSource>
-
-                
-        <!-- Module Details -->
+            <!-- Module Details -->
             <div class="canister =">
             
                 <div class="canistertitle">
@@ -318,13 +343,15 @@
 
                 <div class="row modulerow">
                     <div class="text-center col-md-4 col-sm-4">
-                        <label class="form-control">Computer Science</label>
+                        <input type="text" class="form-control" id="dept" name="dept" value="" />
                     </div>
                     <div class="text-center col-md-4 col-sm-4">
-                        <asp:DropDownList class="form-control" ID="DropDownList1" runat="server"></asp:DropDownList>
+                        <select id="module" name="module" class="form-control">
+                            
+                        </select>
                     </div>
                     <div class="text-center col-md-4 col-sm-4">
-                        <asp:TextBox class="form-control" ID="TextBoxCapacity" runat="server" AutoPostBack="True" ontextchanged="TextBoxCapacity_TextChanged" ></asp:TextBox>
+                        <%--<asp:TextBox class="form-control" ID="TextBoxCapacity" runat="server" AutoPostBack="True" ontextchanged="TextBoxCapacity_TextChanged" ></asp:TextBox>--%>
                     </div>
                 </div><!-- ./row -->
             
@@ -358,24 +385,24 @@
                     <div class="row">
 
                         <div class="text-center col-md-4 col-sm-4">
-                            <asp:RadioButtonList ID="RadioButtonListRoomType" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListRoomType_SelectedIndexChanged" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList ID="RadioButtonListRoomType" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListRoomType_SelectedIndexChanged" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary moveright">Lecture</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarg">Seminar</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
 
                         <div class="text-center col-md-4 col-sm-4">
-                            <asp:RadioButtonList ID="RadioButtonListArrangement" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListArrangement_SelectedIndexChanged" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList ID="RadioButtonListArrangement" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListArrangement_SelectedIndexChanged" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary moverightarrange">Tiered</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarg">Flat</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
 
                         <div class="text-center col-md-4 col-sm-4">
-                            <asp:RadioButtonList ID="RadioButtonListWheelchair" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListWheelchair_SelectedIndexChanged" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList ID="RadioButtonListWheelchair" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListWheelchair_SelectedIndexChanged" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary moverightarrange">Yes</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarg">No</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
                     </div><!-- ./row -->
 
@@ -397,20 +424,20 @@
 
                     <div class="row">
                         <div class="text-center col-md-4 col-sm-4">
-                            <asp:CheckBox class="btn btn-primary" ID="CheckBoxWB" runat="server" Text="White Board" Checked="True" autopostback="true"/>
-                            <asp:CheckBox class="btn btn-primary leftmarg" ID="CheckBoxCB" runat="server" Text="Chalk Board" autopostback="true" />
+                           <%--<asp:CheckBox class="btn btn-primary" ID="CheckBoxWB" runat="server" Text="White Board" Checked="True" autopostback="true"/>
+                            <asp:CheckBox class="btn btn-primary leftmarg" ID="CheckBoxCB" runat="server" Text="Chalk Board" autopostback="true" />--%>
                         </div>
                         <div class="text-center col-md-4 col-sm-4">
-                            <asp:RadioButtonList ID="RadioButtonListProjector" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListProjector_SelectedIndexChanged" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList ID="RadioButtonListProjector" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListProjector_SelectedIndexChanged" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary">Data Projector</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarg">Double Projector</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
                         <div class="text-center col-md-4 col-sm-4">
-                            <asp:RadioButtonList ID="RadioButtonListVisualiser" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListVisualiser_SelectedIndexChanged" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList ID="RadioButtonListVisualiser" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListVisualiser_SelectedIndexChanged" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary moverightarrange" Selected="True">Yes</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarg">No</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
                     </div><!-- ./row -->
 
@@ -429,13 +456,13 @@
 
                     <div class="row">
                         <div class="text-center col-md-4 col-sm-4">
-                            <asp:RadioButtonList ID="RadioButtonListComputer" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListComputer_SelectedIndexChanged" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList ID="RadioButtonListComputer" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListComputer_SelectedIndexChanged" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary moverightarrange" Selected="True">Yes</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarg">No</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
                         <div class="text-center col-md-8 col-sm-8">
-                            <asp:TextBox class="form-control" ID="TextBox2" runat="server"></asp:TextBox>
+                            <%--<asp:TextBox class="form-control" ID="TextBox2" runat="server"></asp:TextBox>--%>
                         </div>
                     </div><!-- ./row -->
                 </div><!-- ./canister container -->
@@ -470,35 +497,34 @@
                     
                     <div class="row">
                         <div class="text-center col-md-3 col-sm-3">
-                            <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonList1_SelectedIndexChanged" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonList1_SelectedIndexChanged" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary">Central</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarglittle">East</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarglittle">West</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
 
                         <div class="text-center col-md-3 col-sm-3">
-                            <asp:DropDownList class="form-control" ID="DropDownListBuildings" runat="server" AutoPostBack="true" onselectedindexchanged="DropDownListBuildings_SelectedIndexChanged"></asp:DropDownList>
+                             <%--<asp:DropDownList class="form-control" ID="DropDownListBuildings" runat="server" AutoPostBack="true" onselectedindexchanged="DropDownListBuildings_SelectedIndexChanged"></asp:DropDownList>--%>
                         </div>
                         <div class="text-center col-md-3 col-sm-3">
                             <!-- DROP DOWN FOR ROOM BOOKING -->                    
                            
-                            <asp:DropDownList class="form-control" ID="DropDownListRooms" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListRooms_SelectedIndexChanged"></asp:DropDownList>
+                            <%--<asp:DropDownList class="form-control" ID="DropDownListRooms" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListRooms_SelectedIndexChanged"></asp:DropDownList>--%>
                         </div>
                         <div class="text-center col-md-3 col-sm-3">
                             <!-- DROPDOWN FOR ALTERNATE ROOM BOOKING -->
-                            <asp:DropDownList class="form-control" ID="DropDownListRoomsAlt" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListRoomsAlt_SelectedIndexChanged"></asp:DropDownList>
+                            <%--<asp:DropDownList class="form-control" ID="DropDownListRoomsAlt" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListRoomsAlt_SelectedIndexChanged"></asp:DropDownList>--%>
                         </div>
                     </div><!-- ./row -->
                     
                     <div class="clearfix"></div>
 
-                     <!--<asp:UpdatePanel ID="UpdatePanel100" runat="server">
-                                                    <ContentTemplate> -->
+                     
                     <div class="row">
                         <div class="text-right col-md-3 col-sm-3 col-md-offset-6 col-sm-offset-6">
-                            <!-- Book Room 1 label -->
-                            <asp:Label ID="LabelRoom1" runat="server" Text="None"></asp:Label>
+                           <!-- Book Room 1 label -->
+                           <%-- <asp:Label ID="LabelRoom1" runat="server" Text="None"></asp:Label>
                             <!-- Book Room 1 Delete Button-->
                             <asp:Button class="btn btn-success moveleft" ID="ButtonDeleteRoom1" runat="server" Text="Delete" onclick="ButtonDeleteRoom1_Click" />
                                    </br>                     
@@ -510,32 +536,15 @@
                                 Text="Delete" />
                             <br />
                             <!-- Book Room 3 label -->
-                            <asp:Label ID="LabelRoom3" runat="server" Text="None"></asp:Label>
+                           <asp:Label ID="LabelRoom3" runat="server" Text="None"></asp:Label>
                             <!-- Book Room 3 Delete Button-->
                             <asp:Button style="margin-right:24px;" ID="ButtonDeleteRoom3" runat="server" 
                                 class="btn btn-success moveleft" onclick="ButtonDeleteRoom3_Click" 
-                                Text="Delete" />
+                                Text="Delete" />--%>
                             
                         </div>
                         <div class="text-right col-md-3 col-sm-3">
-                            <!-- Alt Room 1 label -->
-                            <asp:Label ID="LabelRoomAlt1" runat="server" Text="None"></asp:Label>
-                            <!-- Alt Room 1 Delete button -->
-                            <asp:Button class="btn btn-success moveleft" ID="ButtonDeleteRoomAlt1" runat="server" Text="Delete" onclick="ButtonDeleteRoomAlt1_Click" />
-                            </br>
-                            <!-- Alt Room 2 label -->
-                            <asp:Label ID="LabelRoomAlt2" runat="server" Text="None"></asp:Label>
-                            <!-- Alt Room 2 Delete Button -->
-                            <asp:Button ID="ButtonDeleteRoomAlt2" runat="server" 
-                                class="btn btn-success moveleft" onclick="ButtonDeleteRoomAlt2_Click" 
-                                Text="Delete" />
-                            </br>
-                            <!-- Alt Room 3 label -->
-                            <asp:Label ID="LabelRoomAlt3" runat="server" Text="None"></asp:Label>
-                            <!-- Alt Room 3 Delete Button -->
-                            <asp:Button style="margin-right:24px;" ID="ButtonDeleteRoomAlt3" runat="server" 
-                                class="btn btn-success moveleft" onclick="ButtonDeleteRoomAlt3_Click" 
-                                Text="Delete" />
+                            
                             
                         </div>
                     </div><!-- ./row -->
@@ -552,10 +561,10 @@
                     <div class="row">
                         <div class="text-center col-md-12 col-sm-12">
                             <div class="text-center col-md-12 col-sm-12">
-                            <asp:RadioButtonList CssClass="center" ID="RadioButtonListSemester" runat="server" RepeatDirection="Horizontal">
+                            <%--<asp:RadioButtonList CssClass="center" ID="RadioButtonListSemester" runat="server" RepeatDirection="Horizontal">
                                 <asp:ListItem class="btn btn-primary " Enabled="False">Semester 1</asp:ListItem>
                                 <asp:ListItem class="btn btn-primary leftmarg" Selected="True">Semester 2</asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
                         </div>
                         </div>
                     </div><!-- ./row -->
@@ -578,9 +587,9 @@
              
                     <div class="row">
                         <div class="text-center col-md-12 col-sm-12">
-                            <!--<asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                                <ContentTemplate> -->
-                                    <asp:CheckBox class="btn btn-primary" ID="Week1" text="1" runat="server" AutoPostBack="true" />
+                            <%--<asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                <ContentTemplate> 
+                                   <!-- <asp:CheckBox class="btn btn-primary" ID="Week1" text="1" runat="server" AutoPostBack="true" />
                                     <asp:CheckBox class="btn btn-primary" ID="Week2" text="2" runat="server" AutoPostBack="true" />
                                     <asp:CheckBox class="btn btn-primary" ID="Week3" text="3" runat="server" AutoPostBack="true" />
                                     <asp:CheckBox class="btn btn-primary" ID="Week4" text="4" runat="server" AutoPostBack="true" />
@@ -594,21 +603,21 @@
                                     <asp:CheckBox class="btn btn-primary" ID="Week12" text="12" runat="server" AutoPostBack="true" />
                                     <asp:CheckBox class="btn btn-primary" ID="Week13" text="13" runat="server" AutoPostBack="true" />
                                     <asp:CheckBox class="btn btn-primary" ID="Week14" text="14" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week15" text="15" runat="server" AutoPostBack="true" />
+                                    <asp:CheckBox class="btn btn-primary" ID="Week15" text="15" runat="server" AutoPostBack="true" />-->
                                     
-                               <!-- </ContentTemplate>
-                            </asp:UpdatePanel> -->
+                                </ContentTemplate>
+                            </asp:UpdatePanel>--%>
                         </div><!-- ./col -->
                     </div><!-- ./row -->
                     <div class="clearfix"></div>
 
                     <div class="row">
                         <div class="text-center col-md-12 col-sm-12">
-                            <asp:Button class="btn btn-success topmarg" ID="All" runat="server" onclick="All_Click" Text="All" />
+                           <%--<asp:Button class="btn btn-success topmarg" ID="All" runat="server" onclick="All_Click" Text="All" />
                             <asp:Button class="btn btn-success topmarg" ID="Twelve" runat="server" onclick="Twelve_Click" Text="1-12" />
                             <asp:Button class="btn btn-success topmarg" ID="Odd" runat="server" onclick="Odd_Click" Text="Odd" />
                             <asp:Button class="btn btn-success topmarg" ID="Even" runat="server" onclick="Even_Click" Text="Even" />
-                            <asp:Button class="btn btn-warning topmarg" ID="Clear" runat="server" onclick="Clear_Click" Text="Clear All" />
+                            <asp:Button class="btn btn-warning topmarg" ID="Clear" runat="server" onclick="Clear_Click" Text="Clear All" />--%>
                         </div>
                     </div><!-- ./row -->
 
@@ -625,7 +634,7 @@
                     <div class="row">
                         <div class="text-center col-md-12 col-sm-12">
                             <!-- Periods and Times Table -->
-                            <table class="center">
+                            <%--<table class="center">
                                 <tr>
                                     <td class="style2">
                                         <asp:Button class="btn btn-warning" ID="ButtonClearPeriods" runat="server" onclick="ButtonClearPeriods_Click" Text="Clear Periods" />
@@ -836,7 +845,7 @@
                                         <asp:Label ID="errorMessage" runat="server" Text="" />
                                     </td>
                                 </tr>
-                            </table>
+                            </table>--%>
                         </div><!-- ./col -->
                     </div><!-- ./row -->
 

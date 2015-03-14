@@ -1,1 +1,1 @@
-sp_RENAME 'User.deptName1' , 'deptName', 'COLUMN'
+sp_RENAME 'ROOMS.tired' , 'tiered', 'COLUMN'

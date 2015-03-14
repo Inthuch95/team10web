@@ -40,9 +40,17 @@ namespace Team11
                 /* Gets rid of the space if there is one e.g. by habit putting a space at the end*/
                 string password = passcom.ExecuteScalar().ToString().Replace(" ", "");
                 conn.Close();
+                
                 if (password == TextBoxPassword.Text)
                 {
-                    Session["Username"] = DropDownListDept.Text;
+                    conn.Open();
+                    string Check_dept_code = "Select dept_code from [DEPT] where dept_name='" + DropDownListDept.Text + "'";
+                    SqlCommand getCode = new SqlCommand(Check_dept_code, conn);
+                    /* Gets rid of the space if there is one e.g. by habit putting a space at the end*/
+                    string dept_code = getCode.ExecuteScalar().ToString().Replace(" ", "");
+                    conn.Close();
+                    Session["dept_name"] = DropDownListDept.Text;
+                    Session["dept_code"] = dept_code;
                     Response.Redirect("CreateRequest.aspx");
                     
                 }
