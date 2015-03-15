@@ -2,271 +2,141 @@
 
 <%-- Create Request Header Content --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <!-- Create Request CSS -->
+    <link rel="Stylesheet" type="text/css" href="Styles/CreateRequest.css" />
     <script type="text/javascript" language="javascript">
        $(document).ready(function () {
+           //implement jquery ui selectable to facility options 
+            //start selectable
+           $("#selectable-session").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-session li").index(this);
+                       switch(index) {
+                           case 0:
+                               $("#session").val("Lecture");
+                               break;
+                           case 1:
+                               $("#session").val("Practical");
+                               break;
+                           case 2:
+                               $("#session").val("Seminar");
+                               break;
+                           case 3:
+                               $("#session").val("Tutorial");
+                               break;
+                       } 
+                   });
+               }
+           });
+           $("#selectable-arrangement").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-arrangement li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#arrangement").val("Tired");
+                               break;
+                           case 1:
+                               $("#arrangement").val("Flat");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-wheelchair").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-wheelchair li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#wheelchair").val(1);
+                               break;
+                           case 1:
+                               $("#wheelchair").val(0);
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-whiteboard").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-whiteboard li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#whiteboard").val("1");
+                               break;
+                           case 1:
+                               $("#whiteboard").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-projector").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-projector li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#projector").val("1");
+                               break;
+                           case 1:
+                               $("#projector").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-visualiser").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-visualiser li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#visualiser").val("1");
+                               break;
+                           case 1:
+                               $("#visualiser").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-computer").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-computer li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#computer").val("1");
+                               break;
+                           case 1:
+                               $("#computer").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
+            //end selectable
             getDeptCode();
             getModuleAjax();
-           /* 
-            //Room Type
-            if ($("#MainContent_RadioButtonListRoomType_0").is(":checked")) {
-                $("#MainContent_RadioButtonListRoomType_0").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_RadioButtonListRoomType_1").is(":checked")) {
-                $("#MainContent_RadioButtonListRoomType_1").parent().addClass("btn btn-danger");
-            };
-
-            //Arrangement
-            if ($('#MainContent_RadioButtonListArrangement_0').is(":checked")) {
-                $('#MainContent_RadioButtonListArrangement_0').parent().addClass("btn btn-danger");
-            };
-            if ($('#MainContent_RadioButtonListArrangement_1').is(":checked")) {
-                $('#MainContent_RadioButtonListArrangement_1').parent().addClass("btn btn-danger");
-            };
-
-            //Wheelchair Access
-            if ($('#MainContent_RadioButtonListWheelchair_0').is(":checked")) {
-                $('#MainContent_RadioButtonListWheelchair_0').parent().addClass("btn btn-danger");
-            };
-            if ($('#MainContent_RadioButtonListWheelchair_1').is(":checked")) {
-                $('#MainContent_RadioButtonListWheelchair_1').parent().addClass("btn btn-danger");
-            };
-
-            //Board Type
-            if ($("#MainContent_CheckBoxWB").is(":checked")) {
-                $("#MainContent_CheckBoxWB").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxCB").is(":checked")) {
-                $("#MainContent_CheckBoxCB").parent().addClass("btn btn-danger");
-            };
-
-            //Data Projectors
-            if ($('#MainContent_RadioButtonListProjector_0').is(":checked")) {
-                $('#MainContent_RadioButtonListProjector_0').parent().addClass("btn btn-danger");
-            };
-            if ($('#MainContent_RadioButtonListProjector_1').is(":checked")) {
-                $('#MainContent_RadioButtonListProjector_1').parent().addClass("btn btn-danger");
-            };
-            //Visualiser
-            if ($('#MainContent_RadioButtonListVisualiser_0').is(":checked")) {
-                $('#MainContent_RadioButtonListVisualiser_0').parent().addClass("btn btn-danger");
-            };
-            if ($('#MainContent_RadioButtonListVisualiser_1').is(":checked")) {
-                $('#MainContent_RadioButtonListVisualiser_1').parent().addClass("btn btn-danger");
-            };
-            //Fixed Computer
-            if ($('#MainContent_RadioButtonListComputer_0').is(":checked")) {
-                $('#MainContent_RadioButtonListComputer_0').parent().addClass("btn btn-danger");
-            };
-            if ($('#MainContent_RadioButtonListComputer_1').is(":checked")) {
-                $('#MainContent_RadioButtonListComputer_1').parent().addClass("btn btn-danger");
-            };
-
-            //Weeks
-            if ($("#MainContent_Week1").is(":checked")) {
-                $("#MainContent_Week1").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week2").is(":checked")) {
-                $("#MainContent_Week2").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week3").is(":checked")) {
-                $("#MainContent_Week3").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week4").is(":checked")) {
-                $("#MainContent_Week4").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week5").is(":checked")) {
-                $("#MainContent_Week5").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week6").is(":checked")) {
-                $("#MainContent_Week6").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week7").is(":checked")) {
-                $("#MainContent_Week7").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week8").is(":checked")) {
-                $("#MainContent_Week8").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week9").is(":checked")) {
-                $("#MainContent_Week9").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week10").is(":checked")) {
-                $("#MainContent_Week10").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week11").is(":checked")) {
-                $("#MainContent_Week11").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week12").is(":checked")) {
-                $("#MainContent_Week12").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week13").is(":checked")) {
-                $("#MainContent_Week13").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week14").is(":checked")) {
-                $("#MainContent_Week14").parent().addClass("btn btn-danger");
-            }
-            if ($("#MainContent_Week15").is(":checked")) {
-                $("#MainContent_Week15").parent().addClass("btn btn-danger");
-            }
-
-            //Days and Periods 
-            if ($("#MainContent_CheckBoxM1").is(":checked")) {
-                $("#MainContent_CheckBoxM1").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM2").is(":checked")) {
-                $("#MainContent_CheckBoxM2").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM3").is(":checked")) {
-                $("#MainContent_CheckBoxM3").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM4").is(":checked")) {
-                $("#MainContent_CheckBoxM4").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM5").is(":checked")) {
-                $("#MainContent_CheckBoxM5").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM6").is(":checked")) {
-                $("#MainContent_CheckBoxM6").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM7").is(":checked")) {
-                $("#MainContent_CheckBoxM7").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM8").is(":checked")) {
-                $("#MainContent_CheckBoxM8").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxM9").is(":checked")) {
-                $("#MainContent_CheckBoxM9").parent().addClass("btn btn-danger");
-            };
-            //Tuesday
-            if ($("#MainContent_CheckBoxT1").is(":checked")) {
-                $("#MainContent_CheckBoxT1").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT2").is(":checked")) {
-                $("#MainContent_CheckBoxT2").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT3").is(":checked")) {
-                $("#MainContent_CheckBoxT3").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT4").is(":checked")) {
-                $("#MainContent_CheckBoxT4").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT5").is(":checked")) {
-                $("#MainContent_CheckBoxT5").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT6").is(":checked")) {
-                $("#MainContent_CheckBoxT6").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT7").is(":checked")) {
-                $("#MainContent_CheckBoxT7").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT8").is(":checked")) {
-                $("#MainContent_CheckBoxT8").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxT9").is(":checked")) {
-                $("#MainContent_CheckBoxT9").parent().addClass("btn btn-danger");
-            };
-            //Wednesday
-            if ($("#MainContent_CheckBoxW1").is(":checked")) {
-                $("#MainContent_CheckBoxW1").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW2").is(":checked")) {
-                $("#MainContent_CheckBoxW2").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW3").is(":checked")) {
-                $("#MainContent_CheckBoxW3").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW4").is(":checked")) {
-                $("#MainContent_CheckBoxW4").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW5").is(":checked")) {
-                $("#MainContent_CheckBoxW5").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW6").is(":checked")) {
-                $("#MainContent_CheckBoxW6").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW7").is(":checked")) {
-                $("#MainContent_CheckBoxW7").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW8").is(":checked")) {
-                $("#MainContent_CheckBoxW8").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxW9").is(":checked")) {
-                $("#MainContent_CheckBoxW9").parent().addClass("btn btn-danger");
-            };
-            //THURSDAY
-            if ($("#MainContent_CheckBoxJ1").is(":checked")) {
-                $("#MainContent_CheckBoxJ1").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ2").is(":checked")) {
-                $("#MainContent_CheckBoxJ2").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ3").is(":checked")) {
-                $("#MainContent_CheckBoxJ3").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ4").is(":checked")) {
-                $("#MainContent_CheckBoxJ4").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ5").is(":checked")) {
-                $("#MainContent_CheckBoxJ5").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ6").is(":checked")) {
-                $("#MainContent_CheckBoxJ6").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ7").is(":checked")) {
-                $("#MainContent_CheckBoxJ7").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ8").is(":checked")) {
-                $("#MainContent_CheckBoxJ8").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxJ9").is(":checked")) {
-                $("#MainContent_CheckBoxJ9").parent().addClass("btn btn-danger");
-            };
-            //Friday
-            if ($("#MainContent_CheckBoxF1").is(":checked")) {
-                $("#MainContent_CheckBoxF1").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF2").is(":checked")) {
-                $("#MainContent_CheckBoxF2").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF3").is(":checked")) {
-                $("#MainContent_CheckBoxF3").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF4").is(":checked")) {
-                $("#MainContent_CheckBoxF4").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF5").is(":checked")) {
-                $("#MainContent_CheckBoxF5").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF6").is(":checked")) {
-                $("#MainContent_CheckBoxF6").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF7").is(":checked")) {
-                $("#MainContent_CheckBoxF7").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF8").is(":checked")) {
-                $("#MainContent_CheckBoxF8").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_CheckBoxF9").is(":checked")) {
-                $("#MainContent_CheckBoxF9").parent().addClass("btn btn-danger");
-            };
-            //Park
-
-            if ($('#MainContent_RadioButtonList1_0').is(":checked")) {
-                $('#MainContent_RadioButtonList1_0').parent().addClass("btn btn-danger");
-            };
-            if ($('#MainContent_RadioButtonList1_1').is(":checked")) {
-                $('#MainContent_RadioButtonList1_1').parent().addClass("btn btn-danger");
-            };
-            if ($('#MainContent_RadioButtonList1_2').is(":checked")) {
-                $('#MainContent_RadioButtonList1_2').parent().addClass("btn btn-danger");
-            };
-
-            //Semester
-            if ($("#MainContent_RadioButtonListSemester_1").is(":checked")) {
-                $("#MainContent_RadioButtonListSemester_1").parent().addClass("btn btn-danger");
-            };*/
-
-
-        });
+            //implement jquery ui slider to 'number of rooms' option
+            $("#slider-rooms").slider({
+                range: "max",
+                min: 1,
+                max: 5,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#amount").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'amount'
+            $("#amount").val($("#slider-rooms").slider("value"));
+       });
+        //get current username
         function getModuleAjax() {
             $.ajax(
             {
@@ -279,6 +149,7 @@
                 success: function (data) {
                     var result = data.d;
                     for (var i = 0; i < result.length; i++) {
+                        //populate module drop down list
                         $("#module").append("<option>" + result[i].module_code + " : " + result[i].module_title + "</option>");
                     }
                 },
@@ -287,6 +158,7 @@
                 }
             });
         }
+        //get modules that belongs to current department
         function getDeptCode() {
             $.ajax(
             {
@@ -308,8 +180,7 @@
             });
         }
     </script>
-    <!-- Create Request CSS -->
-    <link rel="Stylesheet" type="text/css" href="Styles/CreateRequest.css" />
+
   
 </asp:Content>
 
@@ -321,544 +192,122 @@
 <%-- MAIN BODY CONTENT --%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-            <!-- Module Details -->
-            <div class="canister =">
-            
-                <div class="canistertitle">
-                    <h2>Module Details</h2>
-                </div>
-                <div class="clearfix"></div>
+      <div>
+        <%-- General information --%>
+        <table class="inputs box_class">
+            <tr>
+                <td align="left">Department</td>
+                <td align="left">Module</td>
+                <td align="left">Number of Rooms</td>
+                <td align="left">Session Type</td>
+            </tr>
+            <tr>
+                <%-- Department --%>
+                <td align="left">
+                    <input type="text" id="dept" name="dept" style="border:0;" />
+                </td>
+                <%-- Module --%>
+                <td align="left">
+                    <select id="module" name="module">
 
-                <div class="row modulerow">
-                    <div class="text-center col-md-4 col-sm-4 ">
-                        <h3 style="margin-top:-0px;">Department</h3>
-                    </div>
-                    <div class="text-center col-md-4 col-sm-4">
-                        <h3 style="margin-top:0px;">Module</h3>
-                    </div>
-                    <div class="text-center col-md-4 col-sm-4">
-                        <h3 style="margin-top:-0px;">Capacity</h3>
-                    </div>
-                </div><!-- ./row -->
+                    </select>
+                </td>
+                <%-- Number of rooms --%>
+                <td align="left">
+                    <div id="slider-rooms"></div><br />
+                    <input type="text" id="amount" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold;"/>
+                </td>
+                <%-- Session type --%>
+                <td align="left">
+                    <ol id="selectable-session">
+                        <li class="ui-state-default ui-selected">Lecture</li>
+                        <li class="ui-state-default">Practical</li>
+                        <li class="ui-state-default">Seminar</li>
+                        <li class="ui-state-default">Tutorial</li>
+                    </ol>
+                    <input type="hidden" id="session" name="session" value="Lecture" />
+                </td>
+            </tr>
+        </table>
 
-                <div class="row modulerow">
-                    <div class="text-center col-md-4 col-sm-4">
-                        <input type="text" class="form-control" id="dept" name="dept" value="" />
-                    </div>
-                    <div class="text-center col-md-4 col-sm-4">
-                        <select id="module" name="module" class="form-control">
-                            
-                        </select>
-                    </div>
-                    <div class="text-center col-md-4 col-sm-4">
-                        <%--<asp:TextBox class="form-control" ID="TextBoxCapacity" runat="server" AutoPostBack="True" ontextchanged="TextBoxCapacity_TextChanged" ></asp:TextBox>--%>
-                    </div>
-                </div><!-- ./row -->
-            
-            </div><!-- ./canister -->
-            
-            <div class="clearfix"></div>
-            
-            <!-- Facilities -->
-            <div class="canister">
-                
-                <div class="canistertitle">
-                    <h2>Facility Options</h2>
-                </div>
-
-                <div class="canistercontainer">
-                    
-                    <div class="row">
-                        <div class="text-center col-md-4 col-sm-4">
-                            <h3 style="margin-top:-0px;">Room Type:</h3>
-                        </div>
-                        <div class="text-center col-md-4 col-sm-4">
-                            <h3 style="margin-top:-0px;">Arrangement:</h3>
-                        </div>
-                        <div class="text-center col-md-4 col-sm-4">
-                            <h3 style="margin-top:-0px;">WheelChair Access:</h3>
-                        </div>
-                    </div><!-- ./row -->
-                    
-                    
-
-                    <div class="row">
-
-                        <div class="text-center col-md-4 col-sm-4">
-                            <%--<asp:RadioButtonList ID="RadioButtonListRoomType" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListRoomType_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary moveright">Lecture</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarg">Seminar</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-
-                        <div class="text-center col-md-4 col-sm-4">
-                            <%--<asp:RadioButtonList ID="RadioButtonListArrangement" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListArrangement_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary moverightarrange">Tiered</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarg">Flat</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-
-                        <div class="text-center col-md-4 col-sm-4">
-                            <%--<asp:RadioButtonList ID="RadioButtonListWheelchair" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListWheelchair_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary moverightarrange">Yes</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarg">No</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-4 col-sm-4">
-                            <h3 style="margin-top:4px;">Board Type(s)</h3>
-                        </div>
-                        <div class="text-center col-md-4 col-sm-4">
-                            <h3 style="margin-top:4px;">Data Projector(s)</h3>
-                        </div>
-                        <div class="text-center col-md-4 col-sm-4">
-                            <h3 style="margin-top:4px;">Visualiser</h3>
-                        </div>
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-4 col-sm-4">
-                           <%--<asp:CheckBox class="btn btn-primary" ID="CheckBoxWB" runat="server" Text="White Board" Checked="True" autopostback="true"/>
-                            <asp:CheckBox class="btn btn-primary leftmarg" ID="CheckBoxCB" runat="server" Text="Chalk Board" autopostback="true" />--%>
-                        </div>
-                        <div class="text-center col-md-4 col-sm-4">
-                            <%--<asp:RadioButtonList ID="RadioButtonListProjector" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListProjector_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary">Data Projector</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarg">Double Projector</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-                        <div class="text-center col-md-4 col-sm-4">
-                            <%--<asp:RadioButtonList ID="RadioButtonListVisualiser" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListVisualiser_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary moverightarrange" Selected="True">Yes</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarg">No</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-4 col-sm-4">
-                            <h3 style="margin-top:4px;">Fixed Computer</h3>
-                        </div>
-                        <div class="text-center col-md-8 col-sm-8">
-                            <h3 style="margin-top:4px;">Additional Requirements</h3>
-                        </div>
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-4 col-sm-4">
-                            <%--<asp:RadioButtonList ID="RadioButtonListComputer" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonListComputer_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary moverightarrange" Selected="True">Yes</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarg">No</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-                        <div class="text-center col-md-8 col-sm-8">
-                            <%--<asp:TextBox class="form-control" ID="TextBox2" runat="server"></asp:TextBox>--%>
-                        </div>
-                    </div><!-- ./row -->
-                </div><!-- ./canister container -->
-            </div><!-- ./canister -->
-
-            <div class="clearfix"></div>
-
-            <div class="canister">
-                <div class="canistertitle">
-                    <h2>Room Selection</h2>
-                </div>
-
-                <div class="canistercontainer">
-                    <div class="row">
-                        <div class="text-center col-md-3 col-sm-3">
-                            <h3 style="margin-top:-0px;">Park</h3>
-                        </div>
-                        <div class="text-center col-md-3 col-sm-3">
-                            <h3 style="margin-top:-0px;">Building</h3>
-                        </div>
-                        <div class="text-center col-md-3 col-sm-3">
-                            <h3 style="margin-top:-0px;">Room to book</h3>
-                        </div>
-                        <div class="text-center col-md-3 col-sm-3">
-                            <h3 style="margin-top:-0px;">Alternate Rooms</h3>
-                        </div>
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-                    
-                    
-                    
-                    <div class="row">
-                        <div class="text-center col-md-3 col-sm-3">
-                            <%--<asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" onselectedindexchanged="RadioButtonList1_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary">Central</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarglittle">East</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarglittle">West</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-
-                        <div class="text-center col-md-3 col-sm-3">
-                             <%--<asp:DropDownList class="form-control" ID="DropDownListBuildings" runat="server" AutoPostBack="true" onselectedindexchanged="DropDownListBuildings_SelectedIndexChanged"></asp:DropDownList>--%>
-                        </div>
-                        <div class="text-center col-md-3 col-sm-3">
-                            <!-- DROP DOWN FOR ROOM BOOKING -->                    
-                           
-                            <%--<asp:DropDownList class="form-control" ID="DropDownListRooms" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListRooms_SelectedIndexChanged"></asp:DropDownList>--%>
-                        </div>
-                        <div class="text-center col-md-3 col-sm-3">
-                            <!-- DROPDOWN FOR ALTERNATE ROOM BOOKING -->
-                            <%--<asp:DropDownList class="form-control" ID="DropDownListRoomsAlt" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListRoomsAlt_SelectedIndexChanged"></asp:DropDownList>--%>
-                        </div>
-                    </div><!-- ./row -->
-                    
-                    <div class="clearfix"></div>
-
-                     
-                    <div class="row">
-                        <div class="text-right col-md-3 col-sm-3 col-md-offset-6 col-sm-offset-6">
-                           <!-- Book Room 1 label -->
-                           <%-- <asp:Label ID="LabelRoom1" runat="server" Text="None"></asp:Label>
-                            <!-- Book Room 1 Delete Button-->
-                            <asp:Button class="btn btn-success moveleft" ID="ButtonDeleteRoom1" runat="server" Text="Delete" onclick="ButtonDeleteRoom1_Click" />
-                                   </br>                     
-                            <!-- Book Room 2 label -->
-                            <asp:Label ID="LabelRoom2" runat="server" Text="None"></asp:Label>
-                            <!-- Book Room 2 Delete Button -->
-                            <asp:Button ID="ButtonDeleteRoom2" runat="server" 
-                                class="btn btn-success moveleft" onclick="ButtonDeleteRoom2_Click" 
-                                Text="Delete" />
-                            <br />
-                            <!-- Book Room 3 label -->
-                           <asp:Label ID="LabelRoom3" runat="server" Text="None"></asp:Label>
-                            <!-- Book Room 3 Delete Button-->
-                            <asp:Button style="margin-right:24px;" ID="ButtonDeleteRoom3" runat="server" 
-                                class="btn btn-success moveleft" onclick="ButtonDeleteRoom3_Click" 
-                                Text="Delete" />--%>
-                            
-                        </div>
-                        <div class="text-right col-md-3 col-sm-3">
-                            
-                            
-                        </div>
-                    </div><!-- ./row -->
-                </div><!-- ./canistercontainer -->
-            </div><!-- ./canister -->
-           <!--</ContentTemplate>
-                            </asp:UpdatePanel> -->
-
-            <div class="canister">
-                <div class="canistertitle">
-                    <h2>Times</h2>
-                </div>
-                <div class="canistercontainer">
-                    <div class="row">
-                        <div class="text-center col-md-12 col-sm-12">
-                            <div class="text-center col-md-12 col-sm-12">
-                            <%--<asp:RadioButtonList CssClass="center" ID="RadioButtonListSemester" runat="server" RepeatDirection="Horizontal">
-                                <asp:ListItem class="btn btn-primary " Enabled="False">Semester 1</asp:ListItem>
-                                <asp:ListItem class="btn btn-primary leftmarg" Selected="True">Semester 2</asp:ListItem>
-                            </asp:RadioButtonList>--%>
-                        </div>
-                        </div>
-                    </div><!-- ./row -->
-                    
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-12 col-sm-12">
-                            <h3>Week(s)</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-             
-                    <div class="row">
-                        <div class="text-center col-md-12 col-sm-12">
-                            <%--<asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                                <ContentTemplate> 
-                                   <!-- <asp:CheckBox class="btn btn-primary" ID="Week1" text="1" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week2" text="2" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week3" text="3" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week4" text="4" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week5" text="5" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week6" text="6" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week7" text="7" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week8" text="8" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week9" text="9" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week10" text="10" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week11" text="11" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week12" text="12" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week13" text="13" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week14" text="14" runat="server" AutoPostBack="true" />
-                                    <asp:CheckBox class="btn btn-primary" ID="Week15" text="15" runat="server" AutoPostBack="true" />-->
-                                    
-                                </ContentTemplate>
-                            </asp:UpdatePanel>--%>
-                        </div><!-- ./col -->
-                    </div><!-- ./row -->
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-12 col-sm-12">
-                           <%--<asp:Button class="btn btn-success topmarg" ID="All" runat="server" onclick="All_Click" Text="All" />
-                            <asp:Button class="btn btn-success topmarg" ID="Twelve" runat="server" onclick="Twelve_Click" Text="1-12" />
-                            <asp:Button class="btn btn-success topmarg" ID="Odd" runat="server" onclick="Odd_Click" Text="Odd" />
-                            <asp:Button class="btn btn-success topmarg" ID="Even" runat="server" onclick="Even_Click" Text="Even" />
-                            <asp:Button class="btn btn-warning topmarg" ID="Clear" runat="server" onclick="Clear_Click" Text="Clear All" />--%>
-                        </div>
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-12 col-sm-12">
-                            <h3>Day(s) and Period(s)</h3>
-                        </div>
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-
-                    <div class="row">
-                        <div class="text-center col-md-12 col-sm-12">
-                            <!-- Periods and Times Table -->
-                            <%--<table class="center">
-                                <tr>
-                                    <td class="style2">
-                                        <asp:Button class="btn btn-warning" ID="ButtonClearPeriods" runat="server" onclick="ButtonClearPeriods_Click" Text="Clear Periods" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod1" runat="server" Text="Period 1" onclick="ButtonPeriod1_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod2" runat="server" Text="Period 2" onclick="ButtonPeriod2_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod3" runat="server" Text="Period 3" onclick="ButtonPeriod3_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod4" runat="server" Text="Period 4" onclick="ButtonPeriod4_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod5" runat="server" Text="Period 5" onclick="ButtonPeriod5_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod6" runat="server" Text="Period 6" onclick="ButtonPeriod6_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod7" runat="server" Text="Period 7" onclick="ButtonPeriod7_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod8" runat="server" Text="Period 8" onclick="ButtonPeriod8_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button class="btn btn-success" ID="ButtonPeriod9" runat="server" Text="Period 9" onclick="ButtonPeriod9_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="style2">
-                                        <asp:Button class="btn btn-success btn-block" ID="ButtonMonday" runat="server" Text="Monday" onclick="ButtonMonday_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM1" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM2" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM3" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM4" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM5" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM6" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM7" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM8" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxM9" runat="server" autopostback="true" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="style2">
-                                        <asp:Button class="btn btn-success btn-block" ID="ButtonTuesday" runat="server" Text="Tuesday" onclick="ButtonTuesday_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT1" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT2" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT3" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT4" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT5" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT6" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT7" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT8" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxT9" runat="server" autopostback="true" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="style2">
-                                        <asp:Button class="btn btn-success btn-block" ID="ButtonWednesday" runat="server" Text="Wednesday" onclick="ButtonWednesday_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW1" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW2" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW3" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW4" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW5" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW6" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW7" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW8" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxW9" runat="server" autopostback="true" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="style2">
-                                        <asp:Button class="btn btn-success btn-block" ID="ButtonThursday" runat="server" Text="Thursday" onclick="ButtonThursday_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ1" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ2" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ3" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ4" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ5" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ6" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ7" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ8" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxJ9" runat="server" autopostback="true" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="style2">
-                                        <asp:Button class="btn btn-success btn-block" ID="ButtonFriday" runat="server" Text="Friday" onclick="ButtonFriday_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF1" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF2" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF3" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF4" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF5" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF6" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF7" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF8" runat="server" autopostback="true" />
-                                    </td>
-                                    <td>
-                                        <asp:CheckBox class="btn btn-primary btn-block" text="x" ID="CheckBoxF9" runat="server" autopostback="true" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                     <asp:Button class="btn btn-success btn-block topmarg" ID="Button1" runat="server" onclick="Button1_Click" Text="Submit Request" />
-                       
-                                    </td>
-                                    <td colspan="5">
-                                     <asp:Button class="btn btn-warning btn-block topmarg" ID="ButtonClearAll" runat="server" onclick="ButtonClearAll_Click" Text="Clear All" />
-                        
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="errorMessage" runat="server" Text="" />
-                                    </td>
-                                </tr>
-                            </table>--%>
-                        </div><!-- ./col -->
-                    </div><!-- ./row -->
-
-                    <div class="clearfix"></div>
-                    </br>
-                    <div class="row">
-                        <div class="text-center col-md-6 col-sm-6">
-                            </div>
-                        <div class="text-center col-md-6 col-sm-6">
-                            </div>
-                    </div><!-- ./row -->
-                </div><!-- ./canistercontainer -->
-            </div><!-- ./canister -->
-
-
+        <%--Room preference 1--%>
+        <table class="inputs box_class">
+            <tr>
+                <td align="left">Arrangement</td>
+                <td align="left">Computer</td>
+                <td align="left">Wheelchair Access</td>
+            </tr>
+            <tr>
+                <%-- Arrangement --%>
+                <td  align="left">
+                    <ol id="selectable-arrangement">
+                        <li class="ui-state-default ui-selected">Tiered</li>
+                        <li class="ui-state-default">Flat</li>
+                    </ol>
+                    <input type="hidden" id="arrangement" name="arrangement" value="Tiered" />
+                </td>
+                <%-- Computer --%>
+                <td align="left">
+                    <ol id="selectable-computer">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default">No</li>
+                    </ol>
+                    <input type="hidden" id="computer" name="computer" value="1" />
+                </td>
+                <%-- wheelchair --%>
+                <td align="left">
+                    <ol id="selectable-wheelchair">
+                        <li class="ui-state-default">Yes</li>
+                        <li class="ui-state-default ui-selected">No</li>
+                    </ol>
+                    <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
+                </td>
+            </tr>
+            <tr>
+                <td align="left">Whiteboard</td>
+                <td align="left">Projector</td>
+                <td align="left">Visualiser</td>
+            </tr>
+            <tr>
+                <%-- Whiteboard --%>
+                <td align="left">
+                    <ol id="selectable-whiteboard">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default">No</li>
+                    </ol>
+                    <input type="hidden" id="whiteboard" name="whiteboard" value="1" />
+                </td>
+                <%-- Projector --%>
+                <td align="left">
+                    <ol id="selectable-projector">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default ">No</li>
+                    </ol>
+                    <input type="hidden" id="projector" name="projector" value="1" />
+                </td>
+                <%-- Visualiser --%>
+                <td align="left">
+                    <ol id="selectable-visualiser">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default">No</li>
+                    </ol>
+                    <input type="hidden" id="visualiser" name="visualiser" value="1" />
+                </td>
+            </tr>
+             <tr>
+                <td align="left">Video/DVD Player</td>
+                <td align="left">PA System</td>
+                <td align="left">Radio Microphone</td>
+            </tr>
+            <tr>
+                <td align="left">Lecture Capture</td>
+                <td align="left" colspan="2">Capacity</td>
+            </tr>
+            <tr>
+                <td align="left">Park</td>
+                <td align="left">Building</td>
+                <td align="left">Room</td>
+            </tr>
+        </table> 
+      </div>      
 </asp:Content>

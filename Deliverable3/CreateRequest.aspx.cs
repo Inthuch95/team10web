@@ -23,6 +23,7 @@ namespace Team11
     {
         protected void Page_Init(object sender, EventArgs e)
         {
+            //go back to log in page if the users haven't logged in
             if (Session["dept_name"] == null)
             {
                 Response.Redirect("Default.aspx");
@@ -137,11 +138,13 @@ namespace Team11
             //if (!IsPostBack)
             //    RadioButtonList1_SelectedIndexChanged(null, null);
         }
+        //get modules from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         [WebMethod]
 
         public static List<module> getModule()
         {
+            //can only return list as json
             List<module> modules = new List<module> { };
 
             string query = "SELECT  * FROM [MODULES] WHERE [dept_code] = '" + HttpContext.Current.Session["dept_code"].ToString() + "'";
@@ -158,6 +161,7 @@ namespace Team11
 
             return modules;
         }
+        //get current username from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         [WebMethod]
         public static List<string> getDept()
@@ -1923,6 +1927,6 @@ namespace Team11
 
 
 
-        public static string dept_code_db { get; set; }
+        
     }
 }

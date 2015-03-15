@@ -27,7 +27,8 @@
     font-size:10pt;
    
 }
-.none input[type=radio], .none input[type=checkbox]
+
+.none input[type=checkbox]
 {
      -webkit-appearance:none;
 }
@@ -73,7 +74,7 @@ label
 {
     margin-top:10px;   
 }
-input[type=radio], input[type=checkbox] 
+input[type=checkbox] 
 {
     display:none;   
 }
@@ -82,4 +83,125 @@ input[type=radio], input[type=checkbox]
     height:100% !important;
     width:100% !important;   
 }
+table
+{
+    font-family: Franklin Gothic Medium,Helvetica,Arial,sans-serif;
+    text-align: center;
+    position: relative;
+}
+.inputs 
+{
+    position: relative;
+    left: 5%;
+    top: 63%;
+    text-align:left;
+    font-size:1em;
+    background-color: #F7F7F0;
+}
+.box_class {
+    -moz-border-radius-topright:22px;
+    -webkit-border-top-right-radius:22px;
+    border-top-right-radius:22px;
+
+    -moz-border-radius-topleft:22px;
+    -webkit-border-top-left-radius:22px;
+    border-top-left-radius:22px;
+
+	-moz-border-radius-bottomright:22px;
+    -webkit-border-bottom-right-radius:22px;
+    border-bottom-right-radius:22px;
+
+    -moz-border-radius-bottomleft:22px;
+    -webkit-border-bottom-left-radius:22px;
+    border-bottom-left-radius:22px;
+    border: 3px solid #c1c1c1;
+    border: 3px solid #c1c1c1;
+	background-color: #f9f9f6;
+	padding: 10px;
+}
+#selectable-session .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-session .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-session { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-session li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-arrangement .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-arrangement .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-arrangement { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-arrangement li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-wheelchair .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-wheelchair .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-wheelchair { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-wheelchair li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-whiteboard .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-whiteboard .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-whiteboard { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-whiteboard li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-projector .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-projector .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-projector { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-projector li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-visualiser .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-visualiser .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-visualiser { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-visualiser li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-computer .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-computer .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-computer { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-computer li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+
     

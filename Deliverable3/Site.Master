@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head runat="server">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" /> 
+     <
     <title>Timetabling System</title>
     
     <!-- Favicon -->
@@ -19,8 +19,14 @@
     <!-- Site Css -->
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
 
+    <!-- Jquery UI css -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"/>
+    
     <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="Scripts/jquery-1.11.1.min.js"></script>
+
+    <!-- Jquery UI -->
+    <script src="Scripts/jquery-ui.js"></script>	
 
     <!-- Latest compiled and minified Javascript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
