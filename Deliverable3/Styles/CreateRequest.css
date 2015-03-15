@@ -204,4 +204,53 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 
+#selectable-video .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-video .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-video { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-video li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-pa .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-pa .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-pa { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-pa li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-mic .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-mic .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-mic { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-mic li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-capture .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-capture .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-capture { 
+	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+}
+#selectable-capture li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+
     

@@ -19,6 +19,31 @@ namespace Team11
         public string module_code;
         public string module_title;
     }
+    public class ROOMS 
+    {
+        public string park;
+        public string building_name;
+        public string room_code;
+        public string building_code;
+        public int capacity;
+        public int wheelchair;
+        public int projector;
+        public int visualiser;
+        public int whiteboard;
+        public int computer;
+        public int video_dvd;
+        public int pa_system;
+        public int radio_microphone; 
+        public int lecture_capture;
+        public int tiered;
+        public int flat;
+    }
+    public class BUILDINGS
+    { 
+        public string park;
+        public string building_name;
+        public string building_code;
+    }
     public partial class CreateRequest : System.Web.UI.Page
     {
         protected void Page_Init(object sender, EventArgs e)
@@ -160,6 +185,59 @@ namespace Team11
             }
 
             return modules;
+        }
+        //get all room data along with park and building they are in
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        [WebMethod]
+        public static List<ROOMS> getRooms() 
+        {
+            List<ROOMS> roomData = new List<ROOMS> { };
+            string query = "SELECT DISTINCT [BUILDINGS].park, [BUILDINGS].building_name, [ROOMS].room_code, [ROOMS].building_code, [ROOMS].capacity, [ROOMS].wheelchair, [ROOMS].projector, [ROOMS].visualiser, [ROOMS].whiteboard, [ROOMS].computer, [ROOMS].video_dvd, [ROOMS].pa_system, [ROOMS].radio_microphone, [ROOMS].lecture_capture, [ROOMS].tiered, [ROOMS].flat FROM [ROOMS],[BUILDINGS] WHERE [ROOMS].building_code = [BUILDINGS].building_code";
+            SqlCommand cmd = new SqlCommand(query);
+            DataSet ds = GetData(cmd);
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow item in ds.Tables[0].Rows)
+            { 
+                ROOMS room = new ROOMS();
+                room.park = item["park"].ToString();
+                room.building_name = item["building_name"].ToString();
+                room.room_code = item["room_code"].ToString();
+                room.building_code = item["building_code"].ToString();
+                room.capacity = Convert.ToInt32(item["capacity"]);
+                room.wheelchair = Convert.ToInt32(item["wheelchair"]);
+                room.projector = Convert.ToInt32(item["projector"]);
+                room.visualiser = Convert.ToInt32(item["visualiser"]);
+                room.whiteboard = Convert.ToInt32(item["whiteboard"]);
+                room.computer = Convert.ToInt32(item["computer"]);
+                room.video_dvd = Convert.ToInt32(item["video_dvd"]);
+                room.pa_system = Convert.ToInt32(item["pa_system"]);
+                room.radio_microphone = Convert.ToInt32(item["radio_microphone"]);
+                room.lecture_capture = Convert.ToInt32(item["lecture_capture"]);
+                room.tiered = Convert.ToInt32(item["tiered"]);
+                room.flat = Convert.ToInt32(item["flat"]);
+                roomData.Add(room);
+            }
+            return roomData;
+        }
+        //get all building data and the park that they are in
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        [WebMethod]
+        public static List<BUILDINGS> getBuilding()
+        {
+            List<BUILDINGS> buildingData = new List<BUILDINGS> { };
+            string query = "SELECT * FROM [BUILDINGS]";
+            SqlCommand cmd = new SqlCommand(query);
+            DataSet ds = GetData(cmd);
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                BUILDINGS building = new BUILDINGS();
+                building.park = item["park"].ToString();
+                building.building_code = item["building_code"].ToString();
+                building.building_name = item["building_name"].ToString();
+                buildingData.Add(building);
+            }
+            return buildingData;
         }
         //get current username from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]

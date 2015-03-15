@@ -5,7 +5,9 @@
     <!-- Create Request CSS -->
     <link rel="Stylesheet" type="text/css" href="Styles/CreateRequest.css" />
     <script type="text/javascript" language="javascript">
-       $(document).ready(function () {
+        var roomData;
+        var buildingData;
+        $(document).ready(function () {
            //implement jquery ui selectable to facility options 
             //start selectable
            $("#selectable-session").selectable({
@@ -119,10 +121,73 @@
                    });
                }
            });
+           $("#selectable-video").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-video li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#video").val("1");
+                               break;
+                           case 1:
+                               $("#video").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-pa").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-pa li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#pa").val("1");
+                               break;
+                           case 1:
+                               $("#pa").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-mic").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-mic li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#mic").val("1");
+                               break;
+                           case 1:
+                               $("#mic").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-capture").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-capture li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#capture").val("1");
+                               break;
+                           case 1:
+                               $("#capture").val("0");
+                               break;
+                       }
+                   });
+               }
+           });
             //end selectable
             getDeptCode();
             getModuleAjax();
-            //implement jquery ui slider to 'number of rooms' option
+            getRoomAjax();
+            getBuildingAjax();
+            //implement jquery ui slider to 'number of rooms' and 'capacity'
+            //start slider
             $("#slider-rooms").slider({
                 range: "max",
                 min: 1,
@@ -130,12 +195,25 @@
                 value: 1,
                 step: 1,
                 slide: function (event, ui) {
-                    $("#amount").val(ui.value);
+                    $("#noRooms").val(ui.value);
                 }
             });
-            //put the slider value into text box with id 'amount'
-            $("#amount").val($("#slider-rooms").slider("value"));
-       });
+            //put the slider value into text box with id 'noRooms'
+            $("#noRooms").val($("#slider-rooms").slider("value"));
+            $("#slider-capacity").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity'
+            $("#capacity").val($("#slider-capacity").slider("value"));
+        });
+        //end slider
         //get current username
         function getModuleAjax() {
             $.ajax(
@@ -179,6 +257,44 @@
                 }
             });
         }
+        //get room data and their location
+        function getRoomAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "CreateRequest.aspx/getRooms",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    roomData = data.d;
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        function getBuildingAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "CreateRequest.aspx/getBuilding",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    buildingData = data.d;
+                    for (var i = 0; i < buildingData.length;i++){
+                        $("#building").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    }
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
     </script>
 
   
@@ -215,7 +331,7 @@
                 <%-- Number of rooms --%>
                 <td align="left">
                     <div id="slider-rooms"></div><br />
-                    <input type="text" id="amount" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold;"/>
+                    <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold;"/>
                 </td>
                 <%-- Session type --%>
                 <td align="left">
@@ -299,14 +415,71 @@
                 <td align="left">PA System</td>
                 <td align="left">Radio Microphone</td>
             </tr>
+             <tr>
+                <%-- Video/DVD --%>
+                <td align="left">
+                    <ol id="selectable-video">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default">No</li>
+                    </ol>
+                    <input type="hidden" id="video" name="video" value="1" />
+                </td>
+                <%-- PA System --%>
+                <td align="left">
+                    <ol id="selectable-pa">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default ">No</li>
+                    </ol>
+                    <input type="hidden" id="pa" name="pa" value="1" />
+                </td>
+                <%-- Visualiser --%>
+                <td align="left">
+                    <ol id="selectable-mic">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default">No</li>
+                    </ol>
+                    <input type="hidden" id="mic" name="mic" value="1" />
+                </td>
+            </tr>
             <tr>
                 <td align="left">Lecture Capture</td>
                 <td align="left" colspan="2">Capacity</td>
             </tr>
             <tr>
+                <%-- Lecture Capture --%>
+                <td align="left">
+                    <ol id="selectable-capture">
+                        <li class="ui-state-default ui-selected">Yes</li>
+                        <li class="ui-state-default">No</li>
+                    </ol>
+                    <input type="hidden" id="capture" name="capture" value="1" />
+                </td>
+                <%-- Capacity --%>
+                <td align="left" colspan="2">
+                    <div id="slider-capacity"></div><br />
+                    <input type="text" id="capacity" name="capacity" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold;"/>
+                </td>
+            </tr>
+            <tr>
                 <td align="left">Park</td>
                 <td align="left">Building</td>
                 <td align="left">Room</td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <select id="park" name="park">
+                        <option>Any</option>
+                        <option>Central</option>
+                        <option>East</option>
+                        <option>West</option>
+                    </select>
+                </td>
+                <td align="left">
+                    <select id="building" name="building"></select>
+                </td>
+                <td align="left">
+                    <select id="room1" name="room1"></select>
+                </td>
             </tr>
         </table> 
       </div>      
