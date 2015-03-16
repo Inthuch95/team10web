@@ -83,6 +83,27 @@ input[type=checkbox]
     height:100% !important;
     width:100% !important;   
 }
+#main_table {
+
+    width: 500px;
+
+}
+#slider-rooms {
+    height: 15px;
+    width: 140px;
+    padding-left: 5px; //add this
+}
+#slider-capacity {
+    height: 15px;
+    width: 600px;
+    padding-left: 5px; //add this
+}
+
+td {
+
+    padding-right: 20px;
+
+}
 table
 {
     font-family: Franklin Gothic Medium,Helvetica,Arial,sans-serif;
@@ -126,7 +147,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-session { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-session li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -138,7 +159,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-arrangement { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-arrangement li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -150,7 +171,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-wheelchair { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchair li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -162,7 +183,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-whiteboard { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboard li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -174,7 +195,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-projector { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projector li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -186,7 +207,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-visualiser { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiser li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -198,7 +219,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-computer { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computer li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -211,7 +232,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-video { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-video li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -223,7 +244,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-pa { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-pa li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -235,10 +256,10 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-mic { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-mic li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture .ui-selecting { 
 	background: #FECA40; 
@@ -247,7 +268,7 @@ table
 	background: #F39814; color: white; 
 }
 #selectable-capture { 
-	list-style-type: none; margin: 0; padding: 0; width: 450px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capture li { 
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 

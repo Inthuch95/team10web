@@ -310,7 +310,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
       <div>
         <%-- General information --%>
-        <table class="inputs box_class">
+        <table class="inputs box_class" id="top_table">
             <tr>
                 <td align="left">Department</td>
                 <td align="left">Module</td>
@@ -320,7 +320,7 @@
             <tr>
                 <%-- Department --%>
                 <td align="left">
-                    <input type="text" id="dept" name="dept" style="border:0;" />
+                    <input type="text" id="dept" name="dept" style="border:0;" readonly="readonly" />
                 </td>
                 <%-- Module --%>
                 <td align="left">
@@ -330,7 +330,7 @@
                 </td>
                 <%-- Number of rooms --%>
                 <td align="left">
-                    <div id="slider-rooms"></div><br />
+                    <div id="slider-rooms"></div>
                     <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold;"/>
                 </td>
                 <%-- Session type --%>
