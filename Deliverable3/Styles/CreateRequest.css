@@ -102,12 +102,11 @@ input[type=checkbox]
 td {
 
     padding-right: 20px;
-
 }
 table
 {
     font-family: Franklin Gothic Medium,Helvetica,Arial,sans-serif;
-    text-align: center;
+    text-align: left;
     position: relative;
 }
 .inputs 
@@ -174,7 +173,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchair li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard .ui-selecting { 
 	background: #FECA40; 
@@ -186,7 +185,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboard li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector .ui-selecting { 
 	background: #FECA40; 
@@ -198,7 +197,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projector li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser .ui-selecting { 
 	background: #FECA40; 
@@ -210,7 +209,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiser li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer .ui-selecting { 
 	background: #FECA40; 
@@ -222,7 +221,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computer li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 
 #selectable-video .ui-selecting { 
@@ -235,7 +234,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-video li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa .ui-selecting { 
 	background: #FECA40; 
@@ -247,7 +246,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-pa li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic .ui-selecting { 
 	background: #FECA40; 
@@ -259,7 +258,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-mic li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture .ui-selecting { 
 	background: #FECA40; 
@@ -271,7 +270,9 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capture li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
+
+
 
     
