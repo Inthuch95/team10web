@@ -64,3 +64,8 @@ C:\Users\coit\Desktop\team10web\Deliverable3\obj\Debug\Team11.Properties.Resourc
 C:\Users\coit\Desktop\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
 C:\Users\coit\Desktop\team10web\Deliverable3\obj\Debug\Team11.dll
 C:\Users\coit\Desktop\team10web\Deliverable3\obj\Debug\Team11.pdb
+C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.csprojResolveAssemblyReference.cache
+C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.Properties.Resources.resources
+C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
+C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.dll
+C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.pdb
