@@ -438,14 +438,12 @@
 <%-- MAIN BODY CONTENT --%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-      <div>
+      <div >
         <%-- General information --%>
-        <table class="inputs box_class">
+        <table class="inputs box_class" id="main_layout" >
             <tr>
                 <td align="left">Department</td>
                 <td align="left">Module</td>
-                <td align="left">Number of Rooms</td>
-                <td align="left">Session Type</td>
             </tr>
             <tr>
                 <%-- Department --%>
@@ -458,18 +456,31 @@
 
                     </select>
                 </td>
+            <tr>
+                <td align="left">Number of Rooms</td>
+                <td align="left">Session Type</td>
+            </tr>
+            <tr>
                 <%-- Number of rooms --%>
-                <td align="left">
-                    <div id="slider-rooms"></div>
-                    <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold;"/>
+                <td align="center">
+                    <table>
+                        <tr>
+                            <td>
+                                <div id="slider-rooms"></div>
+                            </td>
+                            <td>
+                                <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
                 <%-- Session type --%>
                 <td align="left">
                     <ol id="selectable-session">
-                        <li class="ui-state-default ui-selected">Lecture</li>
-                        <li class="ui-state-default">Practical</li>
-                        <li class="ui-state-default">Seminar</li>
-                        <li class="ui-state-default">Tutorial</li>
+                        <li class="ui-state-default ui-selected" style="width: 80px">Lecture</li>
+                        <li class="ui-state-default" style="width: 80px">Practical</li>
+                        <li class="ui-state-default" style="width: 80px">Seminar</li>
+                        <li class="ui-state-default" style="width: 80px">Tutorial</li>
                     </ol>
                     <input type="hidden" id="session" name="session" value="Lecture" />
                 </td>
@@ -477,54 +488,84 @@
         </table>
 
         <%--Room preference 1--%> 
-        <table class="inputs box_class">
+        <table class="inputs box_class" id="main_layout">
             <tr>
                 <td colspan="2" align="left">Facility</td>
                 <td align="left">Arrangement</td>
             </tr>
             <tr>
                 <td align="left" colspan="2">
-                    <ol id="selectable-computer">
-                        <li class="ui-state-default">Computer</li>
-                    </ol>
-                    <input type="hidden" id="computer" name="computer" value="0" />
-                    <ol id="selectable-capture">
-                        <li class="ui-state-default">Lecture Capture</li>
-                    </ol>
-                    <input type="hidden" id="capture" name="capture" value="0" />
-                    <ol id="selectable-pa">
-                        <li class="ui-state-default">PA System</li>
-                    </ol>
-                    <input type="hidden" id="pa" name="pa" value="0" />
-                    <ol id="selectable-projector">
-                        <li class="ui-state-default">Projector</li>
-                    </ol>
-                    <input type="hidden" id="projector" name="projector" value="0" />
-                    <ol id="selectable-mic">
-                        <li class="ui-state-default">Radio Microphone</li>
-                    </ol>
-                    <input type="hidden" id="mic" name="mic" value="0" />
-                    <ol id="selectable-video">
-                        <li class="ui-state-default">Video/DVD Player</li>
-                    </ol>
-                    <input type="hidden" id="video" name="video" value="0" />
-                    <ol id="selectable-visualiser">
-                        <li class="ui-state-default">Visualiser</li>
-                    </ol>
-                    <input type="hidden" id="visualiser" name="visualiser" value="0" />
-                    <ol id="selectable-whiteboard">
-                        <li class="ui-state-default">Whiteboard</li>
-                    </ol>
-                    <input type="hidden" id="whiteboard" name="whiteboard" value="0" />
-                    <ol id="selectable-wheelchair">
-                        <li class="ui-state-default">Wheelchair Access</li>
-                    </ol>
-                    <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
+                    <table>
+                        <tr>
+                            <td>
+                                <ol id="selectable-computer">
+                                    <li class="ui-state-default" style="width: 200px">Computer</li>
+                                </ol>
+                                <input type="hidden" id="computer" name="computer" value="0"/>
+                            </td>
+                            <td>
+                                 <ol id="selectable-capture">
+                                     <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                 </ol>
+                                 <input type="hidden" id="capture" name="capture" value="0" />
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                                <ol id="selectable-pa">
+                                    <li class="ui-state-default" style="width: 200px">PA System</li>
+                                </ol>
+                                <input type="hidden" id="pa" name="pa" value="0" />
+                            </td>
+                            <td>
+                                <ol id="selectable-projector">
+                                    <li class="ui-state-default" style="width: 200px">Projector</li>
+                                </ol>
+                                <input type="hidden" id="projector" name="projector" value="0" />
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                                <ol id="selectable-mic">
+                                    <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                                </ol>
+                                <input type="hidden" id="mic" name="mic" value="0" />
+                            </td>
+                            <td>
+                                <ol id="selectable-video">
+                                    <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                                </ol>
+                                <input type="hidden" id="video" name="video" value="0" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol id="selectable-visualiser">
+                                    <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                                </ol>
+                                <input type="hidden" id="visualiser" name="visualiser" value="0" />
+                            </td>
+                            <td>
+                                <ol id="selectable-whiteboard">
+                                    <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                                </ol>
+                                <input type="hidden" id="whiteboard" name="whiteboard" value="0" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol id="selectable-wheelchair">
+                                    <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                                </ol>
+                                <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
+                            </td>
+                        </tr>
+                    </table>
                 </td>
                 <td align="left">
                     <ol id="selectable-arrangement">
-                        <li class="ui-state-default ui-selected">Tiered</li>
-                        <li class="ui-state-default">Flat</li>
+                        <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                        <li class="ui-state-default" style="width: 200px">Flat</li>
                     </ol>
                     <input type="hidden" id="arrangement" name="arrangement" value="Tiered" />
                 </td>
@@ -535,9 +576,17 @@
                 </td>
             </tr>
             <tr>
-                <td align="left" colspan="3">
-                    <div id="slider-capacity1"></div><br />
-                    <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold;"/>
+                <td align="center" colspan="3">
+                    <table>
+                        <tr>
+                            <td>
+                                <div id="slider-capacity1"></div>
+                            </td>
+                            <td>
+                                <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
             <tr>
