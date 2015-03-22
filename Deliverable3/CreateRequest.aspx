@@ -7,6 +7,7 @@
     <script type="text/javascript" language="javascript">
         var roomData;
         var buildingData;
+        //selectable 1
         var selectedWhiteboard = false;
         var selectedComputer = false;
         var selectedCap = false;
@@ -16,9 +17,50 @@
         var selectedVideo = false;
         var selectedVisualiser = false;
         var selectedWheelchair = false;
+        //selectable 2
+        var selectedWhiteboard2 = false;
+        var selectedComputer2 = false;
+        var selectedCap2 = false;
+        var selectedPa2 = false;
+        var selectedProjector2 = false;
+        var selectedMic2 = false;
+        var selectedVideo2 = false;
+        var selectedVisualiser2 = false;
+        var selectedWheelchair2 = false;
+        //selectable 3
+        var selectedWhiteboard3 = false;
+        var selectedComputer3 = false;
+        var selectedCap3 = false;
+        var selectedPa3 = false;
+        var selectedProjector3 = false;
+        var selectedMic3 = false;
+        var selectedVideo3 = false;
+        var selectedVisualiser3 = false;
+        var selectedWheelchair3 = false;
+        //selectable 4
+        var selectedWhiteboard4 = false;
+        var selectedComputer4 = false;
+        var selectedCap4 = false;
+        var selectedPa4 = false;
+        var selectedProjector4 = false;
+        var selectedMic4 = false;
+        var selectedVideo4 = false;
+        var selectedVisualiser4 = false;
+        var selectedWheelchair4 = false;
+        //selectable 5
+        var selectedWhiteboard5 = false;
+        var selectedComputer5 = false;
+        var selectedCap5 = false;
+        var selectedPa5 = false;
+        var selectedProjector5 = false;
+        var selectedMic5 = false;
+        var selectedVideo5 = false;
+        var selectedVisualiser5 = false;
+        var selectedWheelchair5 = false;
         $(document).ready(function () {
            //implement jquery ui selectable to facility options 
             //start selectable
+            //room preference 1
            $("#selectable-session").selectable({
                stop: function () {
                    $(".ui-selected", this).each(function () {
@@ -154,6 +196,121 @@
                else
                    $("#capture").val("0");
            }).selectable();
+            //room preference 2
+           $("#selectable-arrangement2").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-arrangement2 li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#arrangement2").val("Tired");
+                               break;
+                           case 1:
+                               $("#arrangement2").val("Flat");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-wheelchair2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWheelchair2 == false)
+                   selectedWheelchair2 = true;
+               else
+                   selectedWheelchair2 = false;
+               if (selectedWheelchair2)
+                   $("#wheelchair2").val("1");
+               else
+                   $("#wheelchair2").val("0");
+           }).selectable();
+           $("#selectable-whiteboard2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWhiteboard2 == false)
+                   selectedWhiteboard2 = true;
+               else
+                   selectedWhiteboard2 = false;
+               if (selectedWhiteboard2)
+                   $("#whiteboard2").val("1");
+               else
+                   $("#whiteboard2").val("0");
+           }).selectable();
+           $("#selectable-projector2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedProjector2 == false)
+                   selectedProjector2 = true;
+               else
+                   selectedProjector2 = false;
+               if (selectedProjector2)
+                   $("#projector2").val("1");
+               else
+                   $("#projector2").val("0");
+           }).selectable();
+           $("#selectable-visualiser2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVisualiser2 == false)
+                   selectedVisualiser2 = true;
+               else
+                   selectedVisualiser2 = false;
+               if (selectedVisualiser2)
+                   $("#visualiser2").val("1");
+               else
+                   $("#visualiser2").val("0");
+           }).selectable();
+           $("#selectable-computer2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedComputer2 == false)
+                   selectedComputer2 = true;
+               else
+                   selectedComputer2 = false;
+               if (selectedComputer2)
+                   $("#computer2").val("1");
+               else
+                   $("#computer2").val("0");
+           }).selectable();
+           $("#selectable-video2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVideo2 == false)
+                   selectedVideo2 = true;
+               else
+                   selectedVideo2 = false;
+               if (selectedVideo2)
+                   $("#video2").val("1");
+               else
+                   $("#video2").val("0");
+           }).selectable();
+           $("#selectable-pa2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedPa2 == false)
+                   selectedPa2 = true;
+               else
+                   selectedPa2 = false;
+               if (selectedPa2)
+                   $("#pa2").val("1");
+               else
+                   $("#pa2").val("0");
+           }).selectable();
+           $("#selectable-mic2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedMic2 == false)
+                   selectedMic2 = true;
+               else
+                   selectedMic2 = false;
+               if (selectedMic2)
+                   $("#mic2").val("1");
+               else
+                   $("#mic2").val("0");
+           }).selectable();
+           $("#selectable-capture2").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedCap2 == false)
+                   selectedCap2 = true;
+               else
+                   selectedCap2 = false;
+               if (selectedCap2)
+                   $("#capture2").val("1");
+               else
+                   $("#capture2").val("0");
+           }).selectable();
             //end selectable
             getDeptCode();
             getModuleAjax();
@@ -173,6 +330,7 @@
             });
             //put the slider value into text box with id 'noRooms'
             $("#noRooms").val($("#slider-rooms").slider("value"));
+            //capacity 1
             $("#slider-capacity1").slider({
                 range: "max",
                 min: 1,
@@ -185,8 +343,62 @@
             });
             //put the slider value into text box with id 'capacity'
             $("#capacity1").val($("#slider-capacity1").slider("value"));
+            //capacity 2
+            $("#slider-capacity2").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity2").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity2'
+            $("#capacity2").val($("#slider-capacity2").slider("value"));
+            //capacity 3
+            $("#slider-capacity3").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity3").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity3'
+            $("#capacity3").val($("#slider-capacity3").slider("value"));
+            //capacity 4
+            $("#slider-capacity4").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity4").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity4'
+            $("#capacity4").val($("#slider-capacity4").slider("value"));
+            //capacity 5
+            $("#slider-capacity5").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity5").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity'
+            $("#capacity5").val($("#slider-capacity5").slider("value"));
+            //end slider
         });
-        //end slider
+
+        
         //start AJAX
         //get current username
         function getModuleAjax() {
@@ -246,6 +458,14 @@
                     for (var i = 0; i < roomData.length; i++) {
                         if(roomData[i].tiered == 1)
                             $("#room1").append("<option>" + roomData[i].room_code + "</option>");
+                        if (i > 1 && roomData[i].tiered == 1)
+                            $("#room2").append("<option>" + roomData[i].room_code + "</option>");
+                        if (i > 2 && roomData[i].tiered == 1)
+                            $("#room3").append("<option>" + roomData[i].room_code + "</option>");
+                        if (i > 3 && roomData[i].tiered == 1)
+                            $("#room4").append("<option>" + roomData[i].room_code + "</option>");
+                        if (i > 4 && roomData[i].tiered == 1)
+                            $("#room5").append("<option>" + roomData[i].room_code + "</option>");
                     }
                 },
                 error: function (response) {
@@ -267,6 +487,14 @@
                     buildingData = data.d;
                     for (var i = 0; i < buildingData.length;i++){
                         $("#building").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                        if (i > 1)
+                            $("#building2").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                        if (i > 2)
+                            $("#building3").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                        if (i > 3)
+                            $("#building4").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                        if (i > 4)
+                            $("#building5").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
                     }
                 },
                 error: function (response) {
@@ -494,6 +722,7 @@
                 <td align="left">Arrangement</td>
             </tr>
             <tr>
+                <%--Facility options 1--%> 
                 <td align="left" colspan="2">
                     <table>
                         <tr>
@@ -613,5 +842,521 @@
                 </td>
             </tr>
         </table>
+          <%--Room preference 2--%> 
+        <div>
+            <table class="inputs box_class" id="main_layout">
+                <tr>
+                    <td colspan="2" align="left">Facility</td>
+                    <td align="left">Arrangement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="2">
+                        <table>
+                            <tr>
+                                <%--Facility options 2--%> 
+                                <td>
+                                    <ol id="selectable-computer2">
+                                        <li class="ui-state-default" style="width: 200px">Computer</li>
+                                    </ol>
+                                    <input type="hidden" id="computer2" name="computer2" value="0"/>
+                                </td>
+                                <td>
+                                     <ol id="selectable-capture2">
+                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                     </ol>
+                                     <input type="hidden" id="capture2" name="capture2" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-pa2">
+                                        <li class="ui-state-default" style="width: 200px">PA System</li>
+                                    </ol>
+                                    <input type="hidden" id="pa2" name="pa2" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-projector2">
+                                        <li class="ui-state-default" style="width: 200px">Projector</li>
+                                    </ol>
+                                    <input type="hidden" id="projector2" name="projector2" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-mic2">
+                                        <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                                    </ol>
+                                    <input type="hidden" id="mic2" name="mic2" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-video2">
+                                        <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                                    </ol>
+                                    <input type="hidden" id="video2" name="video2" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-visualiser2">
+                                        <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                                    </ol>
+                                    <input type="hidden" id="visualiser2" name="visualiser2" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-whiteboard2">
+                                        <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                                    </ol>
+                                    <input type="hidden" id="whiteboard2" name="whiteboard2" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-wheelchair2">
+                                        <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                                    </ol>
+                                    <input type="hidden" id="wheelchair2" name="wheelchair2" value="0" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="left">
+                        <ol id="selectable-arrangement2">
+                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default" style="width: 200px">Flat</li>
+                        </ol>
+                        <input type="hidden" id="arrangement2" name="arrangement2" value="Tiered" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        Capacity
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="3">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="slider-capacity2"></div>
+                                </td>
+                                <td>
+                                    <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Park</td>
+                    <td align="left">Building</td>
+                    <td align="left">Room</td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <select id="park2" name="park2">
+                            <option>Any</option>
+                            <option>Central</option>
+                            <option>East</option>
+                            <option>West</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="building2" name="building2">
+                            <option>Any</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="room2" name="room2"></select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <%--Room preference 3--%> 
+        <div>
+            <table class="inputs box_class" id="room_pref3">
+                <tr>
+                    <td colspan="2" align="left">Facility</td>
+                    <td align="left">Arrangement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="2">
+                        <table>
+                            <tr>
+                                <%--Facility options 3--%> 
+                                <td>
+                                    <ol id="selectable-computer3">
+                                        <li class="ui-state-default" style="width: 200px">Computer</li>
+                                    </ol>
+                                    <input type="hidden" id="computer3" name="computer3" value="0"/>
+                                </td>
+                                <td>
+                                     <ol id="selectable-capture3">
+                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                     </ol>
+                                     <input type="hidden" id="capture3" name="capture3" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-pa3">
+                                        <li class="ui-state-default" style="width: 200px">PA System</li>
+                                    </ol>
+                                    <input type="hidden" id="pa3" name="pa3" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-projector3">
+                                        <li class="ui-state-default" style="width: 200px">Projector</li>
+                                    </ol>
+                                    <input type="hidden" id="projector3" name="projector3" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-mic3">
+                                        <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                                    </ol>
+                                    <input type="hidden" id="mic3" name="mic3" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-video3">
+                                        <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                                    </ol>
+                                    <input type="hidden" id="video3" name="video3" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-visualiser3">
+                                        <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                                    </ol>
+                                    <input type="hidden" id="visualiser3" name="visualiser3" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-whiteboard3">
+                                        <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                                    </ol>
+                                    <input type="hidden" id="whiteboard3" name="whiteboard3" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-wheelchair3">
+                                        <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                                    </ol>
+                                    <input type="hidden" id="wheelchair3" name="wheelchair3" value="0" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="left">
+                        <ol id="selectable-arrangement3">
+                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default" style="width: 200px">Flat</li>
+                        </ol>
+                        <input type="hidden" id="arrangement3" name="arrangement3" value="Tiered" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        Capacity
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="3">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="slider-capacity3"></div>
+                                </td>
+                                <td>
+                                    <input type="text" id="capacity3" name="capacity3" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Park</td>
+                    <td align="left">Building</td>
+                    <td align="left">Room</td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <select id="park3" name="park3">
+                            <option>Any</option>
+                            <option>Central</option>
+                            <option>East</option>
+                            <option>West</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="building3" name="building3">
+                            <option>Any</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="room3" name="room3"></select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <%--Room preference 4--%> 
+        <div>
+            <table class="inputs box_class" id="room_pref4">
+                <tr>
+                    <td colspan="2" align="left">Facility</td>
+                    <td align="left">Arrangement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="2">
+                        <table>
+                            <tr>
+                                <%--Facility options 4--%> 
+                                <td>
+                                    <ol id="selectable-computer4">
+                                        <li class="ui-state-default" style="width: 200px">Computer</li>
+                                    </ol>
+                                    <input type="hidden" id="computer4" name="computer4" value="0"/>
+                                </td>
+                                <td>
+                                     <ol id="selectable-capture4">
+                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                     </ol>
+                                     <input type="hidden" id="capture4" name="capture4" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-pa4">
+                                        <li class="ui-state-default" style="width: 200px">PA System</li>
+                                    </ol>
+                                    <input type="hidden" id="pa4" name="pa4" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-projector4">
+                                        <li class="ui-state-default" style="width: 200px">Projector</li>
+                                    </ol>
+                                    <input type="hidden" id="projector4" name="projector4" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-mic4">
+                                        <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                                    </ol>
+                                    <input type="hidden" id="mic4" name="mic4" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-video4">
+                                        <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                                    </ol>
+                                    <input type="hidden" id="video4" name="video4" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-visualiser4">
+                                        <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                                    </ol>
+                                    <input type="hidden" id="visualiser4" name="visualiser4" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-whiteboard4">
+                                        <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                                    </ol>
+                                    <input type="hidden" id="whiteboard4" name="whiteboard4" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-wheelchair4">
+                                        <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                                    </ol>
+                                    <input type="hidden" id="wheelchair4" name="wheelchair4" value="0" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="left">
+                        <ol id="selectable-arrangement4">
+                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default" style="width: 200px">Flat</li>
+                        </ol>
+                        <input type="hidden" id="arrangement4" name="arrangement4" value="Tiered" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        Capacity
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="3">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="slider-capacity4"></div>
+                                </td>
+                                <td>
+                                    <input type="text" id="capacity4" name="capacity4" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Park</td>
+                    <td align="left">Building</td>
+                    <td align="left">Room</td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <select id="park4" name="park4">
+                            <option>Any</option>
+                            <option>Central</option>
+                            <option>East</option>
+                            <option>West</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="building4" name="building4">
+                            <option>Any</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="room4" name="room4"></select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <%--Room preference 5--%> 
+        <div>
+            <table class="inputs box_class" id="room_pref5">
+                <tr>
+                    <td colspan="2" align="left">Facility</td>
+                    <td align="left">Arrangement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="2">
+                        <table>
+                            <tr>
+                                <%--Facility options 5--%> 
+                                <td>
+                                    <ol id="selectable-computer5">
+                                        <li class="ui-state-default" style="width: 200px">Computer</li>
+                                    </ol>
+                                    <input type="hidden" id="computer5" name="computer5" value="0"/>
+                                </td>
+                                <td>
+                                     <ol id="selectable-capture5">
+                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                     </ol>
+                                     <input type="hidden" id="capture5" name="capture5" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-pa5">
+                                        <li class="ui-state-default" style="width: 200px">PA System</li>
+                                    </ol>
+                                    <input type="hidden" id="pa5" name="pa5" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-projector5">
+                                        <li class="ui-state-default" style="width: 200px">Projector</li>
+                                    </ol>
+                                    <input type="hidden" id="projector5" name="projector5" value="0" />
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>
+                                    <ol id="selectable-mic5">
+                                        <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                                    </ol>
+                                    <input type="hidden" id="mic5" name="mic5" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-video5">
+                                        <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                                    </ol>
+                                    <input type="hidden" id="video5" name="video5" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-visualiser5">
+                                        <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                                    </ol>
+                                    <input type="hidden" id="visualiser5" name="visualiser5" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-whiteboard5">
+                                        <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                                    </ol>
+                                    <input type="hidden" id="whiteboard5" name="whiteboard5" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-wheelchair5">
+                                        <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                                    </ol>
+                                    <input type="hidden" id="wheelchair5" name="wheelchair5" value="0" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="left">
+                        <ol id="selectable-arrangement5">
+                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default" style="width: 200px">Flat</li>
+                        </ol>
+                        <input type="hidden" id="arrangement5" name="arrangement5" value="Tiered" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        Capacity
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="3">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="slider-capacity5"></div>
+                                </td>
+                                <td>
+                                    <input type="text" id="capacity5" name="capacity5" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Park</td>
+                    <td align="left">Building</td>
+                    <td align="left">Room</td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <select id="park5" name="park5">
+                            <option>Any</option>
+                            <option>Central</option>
+                            <option>East</option>
+                            <option>West</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="building5" name="building5">
+                            <option>Any</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="room5" name="room5"></select>
+                    </td>
+                </tr>
+            </table>
+        </div>
       </div>      
 </asp:Content>
