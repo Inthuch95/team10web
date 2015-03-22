@@ -311,6 +311,351 @@
                else
                    $("#capture2").val("0");
            }).selectable();
+            //room preference 3
+           $("#selectable-arrangement3").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-arrangement3 li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#arrangement3").val("Tired");
+                               break;
+                           case 1:
+                               $("#arrangement3").val("Flat");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-wheelchair3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWheelchair3 == false)
+                   selectedWheelchair3 = true;
+               else
+                   selectedWheelchair3 = false;
+               if (selectedWheelchair3)
+                   $("#wheelchair3").val("1");
+               else
+                   $("#wheelchair3").val("0");
+           }).selectable();
+           $("#selectable-whiteboard3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWhiteboard3 == false)
+                   selectedWhiteboard3 = true;
+               else
+                   selectedWhiteboard3 = false;
+               if (selectedWhiteboard3)
+                   $("#whiteboard3").val("1");
+               else
+                   $("#whiteboard3").val("0");
+           }).selectable();
+           $("#selectable-projector3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedProjector3 == false)
+                   selectedProjector3 = true;
+               else
+                   selectedProjector3 = false;
+               if (selectedProjector3)
+                   $("#projector3").val("1");
+               else
+                   $("#projector3").val("0");
+           }).selectable();
+           $("#selectable-visualiser3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVisualiser3 == false)
+                   selectedVisualiser3 = true;
+               else
+                   selectedVisualiser3 = false;
+               if (selectedVisualiser3)
+                   $("#visualiser3").val("1");
+               else
+                   $("#visualiser3").val("0");
+           }).selectable();
+           $("#selectable-computer3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedComputer3 == false)
+                   selectedComputer3 = true;
+               else
+                   selectedComputer3 = false;
+               if (selectedComputer3)
+                   $("#computer3").val("1");
+               else
+                   $("#computer3").val("0");
+           }).selectable();
+           $("#selectable-video3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVideo3 == false)
+                   selectedVideo3 = true;
+               else
+                   selectedVideo3 = false;
+               if (selectedVideo3)
+                   $("#video3").val("1");
+               else
+                   $("#video3").val("0");
+           }).selectable();
+           $("#selectable-pa3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedPa3 == false)
+                   selectedPa3 = true;
+               else
+                   selectedPa3 = false;
+               if (selectedPa3)
+                   $("#pa3").val("1");
+               else
+                   $("#pa3").val("0");
+           }).selectable();
+           $("#selectable-mic3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedMic3 == false)
+                   selectedMic3 = true;
+               else
+                   selectedMic3 = false;
+               if (selectedMic3)
+                   $("#mic3").val("1");
+               else
+                   $("#mic3").val("0");
+           }).selectable();
+           $("#selectable-capture3").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedCap3 == false)
+                   selectedCap3 = true;
+               else
+                   selectedCap3 = false;
+               if (selectedCap3)
+                   $("#capture3").val("1");
+               else
+                   $("#capture3").val("0");
+           }).selectable();
+            //room preference 4
+           $("#selectable-arrangement4").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-arrangement4 li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#arrangement4").val("Tired");
+                               break;
+                           case 1:
+                               $("#arrangement4").val("Flat");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-wheelchair4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWheelchair4 == false)
+                   selectedWheelchair4 = true;
+               else
+                   selectedWheelchair4 = false;
+               if (selectedWheelchair4)
+                   $("#wheelchair4").val("1");
+               else
+                   $("#wheelchair4").val("0");
+           }).selectable();
+           $("#selectable-whiteboard4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWhiteboard4 == false)
+                   selectedWhiteboard4 = true;
+               else
+                   selectedWhiteboard4 = false;
+               if (selectedWhiteboard4)
+                   $("#whiteboard4").val("1");
+               else
+                   $("#whiteboard4").val("0");
+           }).selectable();
+           $("#selectable-projector4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedProjector4 == false)
+                   selectedProjector4 = true;
+               else
+                   selectedProjector4 = false;
+               if (selectedProjector4)
+                   $("#projector4").val("1");
+               else
+                   $("#projector4").val("0");
+           }).selectable();
+           $("#selectable-visualiser4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVisualiser4 == false)
+                   selectedVisualiser4 = true;
+               else
+                   selectedVisualiser4 = false;
+               if (selectedVisualiser4)
+                   $("#visualiser4").val("1");
+               else
+                   $("#visualiser4").val("0");
+           }).selectable();
+           $("#selectable-computer4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedComputer4 == false)
+                   selectedComputer4 = true;
+               else
+                   selectedComputer4 = false;
+               if (selectedComputer4)
+                   $("#computer4").val("1");
+               else
+                   $("#computer4").val("0");
+           }).selectable();
+           $("#selectable-video4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVideo4 == false)
+                   selectedVideo4 = true;
+               else
+                   selectedVideo4 = false;
+               if (selectedVideo4)
+                   $("#video4").val("1");
+               else
+                   $("#video4").val("0");
+           }).selectable();
+           $("#selectable-pa4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedPa4 == false)
+                   selectedPa4 = true;
+               else
+                   selectedPa4 = false;
+               if (selectedPa4)
+                   $("#pa4").val("1");
+               else
+                   $("#pa4").val("0");
+           }).selectable();
+           $("#selectable-mic4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedMic4 == false)
+                   selectedMic4 = true;
+               else
+                   selectedMic4 = false;
+               if (selectedMic4)
+                   $("#mic4").val("1");
+               else
+                   $("#mic4").val("0");
+           }).selectable();
+           $("#selectable-capture4").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedCap4 == false)
+                   selectedCap4 = true;
+               else
+                   selectedCap4 = false;
+               if (selectedCap4)
+                   $("#capture4").val("1");
+               else
+                   $("#capture4").val("0");
+           }).selectable();
+            //room preference 5
+           $("#selectable-arrangement5").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-arrangement5 li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#arrangement5").val("Tired");
+                               break;
+                           case 1:
+                               $("#arrangement5").val("Flat");
+                               break;
+                       }
+                   });
+               }
+           });
+           $("#selectable-wheelchair5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWheelchair5 == false)
+                   selectedWheelchair5 = true;
+               else
+                   selectedWheelchair5 = false;
+               if (selectedWheelchair5)
+                   $("#wheelchair5").val("1");
+               else
+                   $("#wheelchair5").val("0");
+           }).selectable();
+           $("#selectable-whiteboard5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedWhiteboard5 == false)
+                   selectedWhiteboard5 = true;
+               else
+                   selectedWhiteboard5 = false;
+               if (selectedWhiteboard5)
+                   $("#whiteboard5").val("1");
+               else
+                   $("#whiteboard5").val("0");
+           }).selectable();
+           $("#selectable-projector5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedProjector5 == false)
+                   selectedProjector5 = true;
+               else
+                   selectedProjector5 = false;
+               if (selectedProjector5)
+                   $("#projector5").val("1");
+               else
+                   $("#projector5").val("0");
+           }).selectable();
+           $("#selectable-visualiser5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVisualiser5 == false)
+                   selectedVisualiser5 = true;
+               else
+                   selectedVisualiser5 = false;
+               if (selectedVisualiser5)
+                   $("#visualiser5").val("1");
+               else
+                   $("#visualiser5").val("0");
+           }).selectable();
+           $("#selectable-computer5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedComputer5 == false)
+                   selectedComputer5 = true;
+               else
+                   selectedComputer5 = false;
+               if (selectedComputer5)
+                   $("#computer5").val("1");
+               else
+                   $("#computer5").val("0");
+           }).selectable();
+           $("#selectable-video5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedVideo5 == false)
+                   selectedVideo5 = true;
+               else
+                   selectedVideo5 = false;
+               if (selectedVideo5)
+                   $("#video5").val("1");
+               else
+                   $("#video5").val("0");
+           }).selectable();
+           $("#selectable-pa5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedPa5 == false)
+                   selectedPa5 = true;
+               else
+                   selectedPa5 = false;
+               if (selectedPa5)
+                   $("#pa5").val("1");
+               else
+                   $("#pa5").val("0");
+           }).selectable();
+           $("#selectable-mic5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedMic5 == false)
+                   selectedMic5 = true;
+               else
+                   selectedMic5 = false;
+               if (selectedMic5)
+                   $("#mic5").val("1");
+               else
+                   $("#mic5").val("0");
+           }).selectable();
+           $("#selectable-capture5").bind("mousedown", function (e) {
+               e.metaKey = true;
+               if (selectedCap5 == false)
+                   selectedCap5 = true;
+               else
+                   selectedCap5 = false;
+               if (selectedCap5)
+                   $("#capture5").val("1");
+               else
+                   $("#capture5").val("0");
+           }).selectable();
             //end selectable
             getDeptCode();
             getModuleAjax();
@@ -1013,7 +1358,7 @@
         </div>
         <%--Room preference 3--%> 
         <div>
-            <table class="inputs box_class" id="room_pref3">
+            <table class="inputs box_class" id="main_layout">
                 <tr>
                     <td colspan="2" align="left">Facility</td>
                     <td align="left">Arrangement</td>
@@ -1142,7 +1487,7 @@
         </div>
         <%--Room preference 4--%> 
         <div>
-            <table class="inputs box_class" id="room_pref4">
+            <table class="inputs box_class" id="main_layout">
                 <tr>
                     <td colspan="2" align="left">Facility</td>
                     <td align="left">Arrangement</td>
@@ -1271,7 +1616,7 @@
         </div>
         <%--Room preference 5--%> 
         <div>
-            <table class="inputs box_class" id="room_pref5">
+            <table class="inputs box_class" id="main_layout">
                 <tr>
                     <td colspan="2" align="left">Facility</td>
                     <td align="left">Arrangement</td>
