@@ -58,7 +58,8 @@
         var selectedVisualiser5 = false;
         var selectedWheelchair5 = false;
         $(document).ready(function () {
-           //implement jquery ui selectable to facility options 
+            //implement jquery ui selectable to facility options
+            //room list also change everytime facility option change
             //start selectable
             //room preference 1
            $("#selectable-session").selectable({
@@ -88,12 +89,16 @@
                        var index = $("#selectable-arrangement li").index(this);
                        switch (index) {
                            case 0:
-                               $("#arrangement").val("Tired");
+                               $("#arrangement").val("Any");
                                break;
                            case 1:
+                               $("#arrangement").val("Tired");
+                               break;
+                           case 2:
                                $("#arrangement").val("Flat");
                                break;
                        }
+                       changeRoom();
                    });
                }
            });
@@ -107,6 +112,7 @@
                    $("#wheelchair").val("1");
                else
                    $("#wheelchair").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-whiteboard").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -118,6 +124,7 @@
                    $("#whiteboard").val("1");
                else
                    $("#whiteboard").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-projector").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -129,6 +136,7 @@
                    $("#projector").val("1");
                else
                    $("#projector").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-visualiser").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -140,6 +148,7 @@
                    $("#visualiser").val("1");
                else
                    $("#visualiser").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-computer").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -151,6 +160,7 @@
                    $("#computer").val("1");
                else
                    $("#computer").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-video").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -162,6 +172,7 @@
                    $("#video").val("1");
                else
                    $("#video").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-pa").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -173,6 +184,7 @@
                    $("#pa").val("1");
                else
                    $("#pa").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-mic").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -184,6 +196,7 @@
                    $("#mic").val("1");
                else
                    $("#mic").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-capture").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -195,6 +208,7 @@
                    $("#capture").val("1");
                else
                    $("#capture").val("0");
+               changeRoom();
            }).selectable();
             //room preference 2
            $("#selectable-arrangement2").selectable({
@@ -203,12 +217,16 @@
                        var index = $("#selectable-arrangement2 li").index(this);
                        switch (index) {
                            case 0:
-                               $("#arrangement2").val("Tired");
+                               $("#arrangement2").val("Any");
                                break;
                            case 1:
+                               $("#arrangement2").val("Tired");
+                               break;
+                           case 2:
                                $("#arrangement2").val("Flat");
                                break;
                        }
+                       changeRoom();
                    });
                }
            });
@@ -222,6 +240,7 @@
                    $("#wheelchair2").val("1");
                else
                    $("#wheelchair2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-whiteboard2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -233,6 +252,7 @@
                    $("#whiteboard2").val("1");
                else
                    $("#whiteboard2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-projector2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -244,6 +264,7 @@
                    $("#projector2").val("1");
                else
                    $("#projector2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-visualiser2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -255,6 +276,7 @@
                    $("#visualiser2").val("1");
                else
                    $("#visualiser2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-computer2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -266,6 +288,7 @@
                    $("#computer2").val("1");
                else
                    $("#computer2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-video2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -277,6 +300,7 @@
                    $("#video2").val("1");
                else
                    $("#video2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-pa2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -288,6 +312,7 @@
                    $("#pa2").val("1");
                else
                    $("#pa2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-mic2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -299,6 +324,7 @@
                    $("#mic2").val("1");
                else
                    $("#mic2").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-capture2").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -310,6 +336,7 @@
                    $("#capture2").val("1");
                else
                    $("#capture2").val("0");
+               changeRoom();
            }).selectable();
             //room preference 3
            $("#selectable-arrangement3").selectable({
@@ -318,12 +345,16 @@
                        var index = $("#selectable-arrangement3 li").index(this);
                        switch (index) {
                            case 0:
-                               $("#arrangement3").val("Tired");
+                               $("#arrangement3").val("Any");
                                break;
                            case 1:
+                               $("#arrangement3").val("Tired");
+                               break;
+                           case 2:
                                $("#arrangement3").val("Flat");
                                break;
                        }
+                       changeRoom();
                    });
                }
            });
@@ -337,6 +368,7 @@
                    $("#wheelchair3").val("1");
                else
                    $("#wheelchair3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-whiteboard3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -348,6 +380,7 @@
                    $("#whiteboard3").val("1");
                else
                    $("#whiteboard3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-projector3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -359,6 +392,7 @@
                    $("#projector3").val("1");
                else
                    $("#projector3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-visualiser3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -370,6 +404,7 @@
                    $("#visualiser3").val("1");
                else
                    $("#visualiser3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-computer3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -381,6 +416,7 @@
                    $("#computer3").val("1");
                else
                    $("#computer3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-video3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -392,6 +428,7 @@
                    $("#video3").val("1");
                else
                    $("#video3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-pa3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -403,6 +440,7 @@
                    $("#pa3").val("1");
                else
                    $("#pa3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-mic3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -414,6 +452,7 @@
                    $("#mic3").val("1");
                else
                    $("#mic3").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-capture3").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -425,6 +464,7 @@
                    $("#capture3").val("1");
                else
                    $("#capture3").val("0");
+               changeRoom();
            }).selectable();
             //room preference 4
            $("#selectable-arrangement4").selectable({
@@ -433,12 +473,16 @@
                        var index = $("#selectable-arrangement4 li").index(this);
                        switch (index) {
                            case 0:
-                               $("#arrangement4").val("Tired");
+                               $("#arrangement4").val("Any");
                                break;
                            case 1:
+                               $("#arrangement4").val("Tired");
+                               break;
+                           case 2:
                                $("#arrangement4").val("Flat");
                                break;
                        }
+                       changeRoom();
                    });
                }
            });
@@ -452,6 +496,7 @@
                    $("#wheelchair4").val("1");
                else
                    $("#wheelchair4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-whiteboard4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -463,6 +508,7 @@
                    $("#whiteboard4").val("1");
                else
                    $("#whiteboard4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-projector4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -474,6 +520,7 @@
                    $("#projector4").val("1");
                else
                    $("#projector4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-visualiser4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -485,6 +532,7 @@
                    $("#visualiser4").val("1");
                else
                    $("#visualiser4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-computer4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -496,6 +544,7 @@
                    $("#computer4").val("1");
                else
                    $("#computer4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-video4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -507,6 +556,7 @@
                    $("#video4").val("1");
                else
                    $("#video4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-pa4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -518,6 +568,7 @@
                    $("#pa4").val("1");
                else
                    $("#pa4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-mic4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -529,6 +580,7 @@
                    $("#mic4").val("1");
                else
                    $("#mic4").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-capture4").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -540,6 +592,7 @@
                    $("#capture4").val("1");
                else
                    $("#capture4").val("0");
+               changeRoom();
            }).selectable();
             //room preference 5
            $("#selectable-arrangement5").selectable({
@@ -548,12 +601,16 @@
                        var index = $("#selectable-arrangement5 li").index(this);
                        switch (index) {
                            case 0:
-                               $("#arrangement5").val("Tired");
+                               $("#arrangement5").val("Any");
                                break;
                            case 1:
+                               $("#arrangement5").val("Tired");
+                               break;
+                           case 2:
                                $("#arrangement5").val("Flat");
                                break;
                        }
+                       changeRoom();
                    });
                }
            });
@@ -567,6 +624,7 @@
                    $("#wheelchair5").val("1");
                else
                    $("#wheelchair5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-whiteboard5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -578,6 +636,7 @@
                    $("#whiteboard5").val("1");
                else
                    $("#whiteboard5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-projector5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -589,6 +648,7 @@
                    $("#projector5").val("1");
                else
                    $("#projector5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-visualiser5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -600,6 +660,7 @@
                    $("#visualiser5").val("1");
                else
                    $("#visualiser5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-computer5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -611,6 +672,7 @@
                    $("#computer5").val("1");
                else
                    $("#computer5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-video5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -622,6 +684,7 @@
                    $("#video5").val("1");
                else
                    $("#video5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-pa5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -633,6 +696,7 @@
                    $("#pa5").val("1");
                else
                    $("#pa5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-mic5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -644,6 +708,7 @@
                    $("#mic5").val("1");
                else
                    $("#mic5").val("0");
+               changeRoom();
            }).selectable();
            $("#selectable-capture5").bind("mousedown", function (e) {
                e.metaKey = true;
@@ -655,6 +720,7 @@
                    $("#capture5").val("1");
                else
                    $("#capture5").val("0");
+               changeRoom();
            }).selectable();
             //end selectable
             getDeptCode();
@@ -671,6 +737,9 @@
                 step: 1,
                 slide: function (event, ui) {
                     $("#noRooms").val(ui.value);
+                    //show room preference based on number of rooms
+                    showPref();
+                    changeRoom();
                 }
             });
             //put the slider value into text box with id 'noRooms'
@@ -684,6 +753,7 @@
                 step: 1,
                 slide: function (event, ui) {
                     $("#capacity1").val(ui.value);
+                    changeRoom();
                 }
             });
             //put the slider value into text box with id 'capacity'
@@ -697,6 +767,7 @@
                 step: 1,
                 slide: function (event, ui) {
                     $("#capacity2").val(ui.value);
+                    changeRoom();
                 }
             });
             //put the slider value into text box with id 'capacity2'
@@ -710,6 +781,7 @@
                 step: 1,
                 slide: function (event, ui) {
                     $("#capacity3").val(ui.value);
+                    changeRoom();
                 }
             });
             //put the slider value into text box with id 'capacity3'
@@ -723,6 +795,7 @@
                 step: 1,
                 slide: function (event, ui) {
                     $("#capacity4").val(ui.value);
+                    changeRoom();
                 }
             });
             //put the slider value into text box with id 'capacity4'
@@ -736,13 +809,14 @@
                 step: 1,
                 slide: function (event, ui) {
                     $("#capacity5").val(ui.value);
+                    changeRoom();
                 }
             });
             //put the slider value into text box with id 'capacity'
             $("#capacity5").val($("#slider-capacity5").slider("value"));
             //end slider
         });
-
+        //end document.ready
         
         //start AJAX
         //get current username
@@ -800,18 +874,7 @@
                 dataType: "json",
                 success: function (data) {
                     roomData = data.d;
-                    for (var i = 0; i < roomData.length; i++) {
-                        if(roomData[i].tiered == 1)
-                            $("#room1").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 1 && roomData[i].tiered == 1)
-                            $("#room2").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 2 && roomData[i].tiered == 1)
-                            $("#room3").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 3 && roomData[i].tiered == 1)
-                            $("#room4").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 4 && roomData[i].tiered == 1)
-                            $("#room5").append("<option>" + roomData[i].room_code + "</option>");
-                    }
+                    changeRoom();
                 },
                 error: function (response) {
                     console.log(response);
@@ -830,16 +893,8 @@
                 dataType: "json",
                 success: function (data) {
                     buildingData = data.d;
-                    for (var i = 0; i < buildingData.length;i++){
-                        $("#building").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
-                        if (i > 1)
-                            $("#building2").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
-                        if (i > 2)
-                            $("#building3").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
-                        if (i > 3)
-                            $("#building4").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
-                        if (i > 4)
-                            $("#building5").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    for (var i = 0; i < buildingData.length; i++) {
+                        $("#building1").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
                     }
                 },
                 error: function (response) {
@@ -848,16 +903,103 @@
             });
         }
         //end AJAX
-
+        //display room preference options based on number of rooms
+        function showPref() {
+            var park = document.getElementById("park").value;
+            for (var i = 1; i < 5; i++) {
+                document.getElementById("room_pref" + (i + 1)).style.display = "none";
+            }
+            var noOfRooms = parseInt(document.getElementById('noRooms').value);
+            if (noOfRooms > 1) {
+                for (var j = 1; j < noOfRooms; j++) {
+                    document.getElementById("room_pref" + (j + 1)).style.display = "block";
+                }
+            }
+            for (var i = 0; i < buildingData.length; i++) {
+                //if building is in selected park then add to building list
+                if (park == "Any" || park == buildingData[i].park) {
+                    $("#building1").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 1)
+                        $("#building2").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 2)
+                        $("#building3").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 3)
+                        $("#building4").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 4)
+                        $("#building5").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                }
+            }
+        }
+        function changePark() {
+            var noOfRooms = parseInt(document.getElementById('noRooms').value);
+            var park = document.getElementById("park").value;
+            //empty building list
+            $("#building1").empty();
+            $("#building2").empty();
+            $("#building3").empty();
+            $("#building4").empty();
+            $("#building5").empty();
+            //add "Any" option to building list
+            $("#building1").append("<option>Any</option>");
+            $("#building2").append("<option>Any</option>");
+            $("#building3").append("<option>Any</option>");
+            $("#building4").append("<option>Any</option>");
+            $("#building5").append("<option>Any</option>");
+            for (var i = 0; i < buildingData.length; i++) {
+                //if building is in selected park then add to building list
+                if (park == "Any" || park == buildingData[i].park) {
+                    $("#building1").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 1)
+                        $("#building2").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 2)
+                        $("#building3").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 3)
+                        $("#building4").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    if (noOfRooms > 4)
+                        $("#building5").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                }
+            }
+            changeRoom();
+        }
         //change room preference Based on capacity, park and additional options
         function changeRoom(){
             //get values of user's selection
             var noOfRooms = parseInt(document.getElementById('noRooms').value);
             var park = document.getElementById("park").value;
-            var park2 = document.getElementById("park2").value;
-            var park3 = document.getElementById("park3").value;
-            var park4 = document.getElementById("park4").value;
-            var park5 = document.getElementById("park5").value;
+            var building;
+            if (document.getElementById("building1").value == "Any")
+                building = "any";
+            else
+                building = document.getElementById("building1").value.substr(0, document.getElementById("building1").value.indexOf(":") - 1);
+            //assign value based on number of rooms
+            var building2;
+            if (noOfRooms > 1) {
+                if (document.getElementById("building2").value == "Any")
+                    building2 = "any";
+                else
+                    building2 = document.getElementById("building2").value.substr(0, document.getElementById("building2").value.indexOf(":") - 1);
+            }
+            var building3;
+            if (noOfRooms > 2) {
+                if (document.getElementById("building3").value == "Any")
+                    building3 = "any";
+                else
+                    building3 = document.getElementById("building3").value.substr(0, document.getElementById("building3").value.indexOf(":") - 1);
+            }
+            var building4;
+            if (noOfRooms > 3) {
+                if (document.getElementById("building4").value == "Any")
+                    building4 = "any";
+                else
+                    building4 = document.getElementById("building4").value.substr(0, document.getElementById("building4").value.indexOf(":") - 1);
+            }
+            var building5;
+            if (noOfRooms > 4) {
+                if (document.getElementById("building5").value == "Any")
+                    building5 = "any";
+                else
+                    building5 = document.getElementById("building5").value.substr(0, document.getElementById("building5").value.indexOf(":") - 1);
+            }
             var capacity = parseInt(document.getElementById("capacity1").value);
             var capacity2; if (noOfRooms > 1) capacity2 = parseInt(document.getElementById("capacity2").value);
             var capacity3; if (noOfRooms > 2) capacity3 = parseInt(document.getElementById("capacity3").value);
@@ -908,134 +1050,200 @@
             var video3; if (noOfRooms > 2) video3 = parseInt(document.getElementById("video3").value);
             var video4; if (noOfRooms > 3) video4 = parseInt(document.getElementById("video4").value);
             var video5; if (noOfRooms > 4) video5 = parseInt(document.getElementById("video5").value);
-            var arrangement = document.getElementById("arrangement").value;
-            var arrangement2; if (noOfRooms > 1) arrangement2 = document.getElementById("arrangement2").value;
-            var arrangement3; if (noOfRooms > 2) arrangement3 = document.getElementById("arrangement3").value;
-            var arrangement4; if (noOfRooms > 3) arrangement4 = document.getElementById("arrangement4").value;
-            var arrangement5; if (noOfRooms > 4) arrangement5 = document.getElementById("arrangement5").value;
-
-            var n = parseInt(document.forms.requestForm.elements.day.value) - 1;
-            var day;
-            if (n > -1) {
-                day = document.forms.requestForm.elements.day[n].id;
-                day = day.charAt(0).toUpperCase() + day.slice(1);
-            }
-
-            var weeks = [];
-
-            for (var x = 0; x < 16; x++) {
-                if (document.forms.requestForm.elements['weeks[]'][x].checked) {
-                    weeks.push(x + 1);
-                }
-            }
-
-
-
-            var period = document.getElementById('time').selectedIndex + 1;
-            var duration = document.getElementById('duration').selectedIndex + 1;
-
-            var bookedRooms = [];
-
-            var flag = false;
-
-            for (var x = 0; x < weeks.length; x++) {
-                if (weeks[x] > 0 && weeks[x] < 13) flag = true;
-            }
-
-
-            for (var x = 1; x < bookingData.length; x++) {
-                for (var y = 0; y < weeks.length; y++) {
-                    if (parseInt(bookingData[x].week) == weeks[y] || (bookingData[x].week == "0" && flag == true)) {
-                        if (bookingData[x].day == day) {
-                            if ((parseInt(bookingData[x].period) <= period && ((parseInt(bookingData[x].period) + parseInt(bookingData[x].duration)) > period)) ||
-                            ((period + duration) > parseInt(bookingData[x].period) && period < parseInt(bookingData[x].period) + parseInt(bookingData[x].duration))) {
-                                bookedRooms.push(bookingData[x].room_code);
-                            }
-                        }
-                    }
-                }
-            }
+            var arrangement_select = document.getElementById("arrangement").value;
+            if (arrangement_select == "Tiered")
+                arrangement = "tiered";
+            else if (arrangement_select == "Any")
+                arrangement = "any";
+            else
+                arrangement = "flat";
+            
+            var arrangement_select2; if (noOfRooms > 1) arrangement_select2 = document.getElementById("arrangement2").value;
+            if (arrangement_select2 == "Tiered")
+                arrangement2 = "tiered";
+            else if (arrangement_select2 == "Any")
+                arrangement2 = "any";
+            else
+                arrangement2 = "flat";
+            var arrangement_select3; if (noOfRooms > 2) arrangement_select3 = document.getElementById("arrangement3").value;
+            if (arrangement_select3 == "Tiered")
+                arrangement3 = "tiered";
+            else if (arrangement_select3 == "Any")
+                arrangement3 = "any";
+            else
+                arrangement3 = "flat";
+            var arrangement_select4; if (noOfRooms > 3) arrangement_select4 = document.getElementById("arrangement4").value;
+            if (arrangement_select4 == "Tiered")
+                arrangement4 = "tiered";
+            else if (arrangement_select4 == "Any")
+                arrangement4 = "any";
+            else
+                arrangement4 = "flat";
+            var arrangement_select5; if (noOfRooms > 4) arrangement_select5 = document.getElementById("arrangement5").value;
+            if (arrangement_select5 == "Tiered")
+                arrangement5 = "tiered";
+            else if (arrangement_select5 == "Any")
+                arrangement5 = "any";
+            else
+                arrangement5 = "flat";
+            var room_arr1;
+            var room_arr2;
+            var room_arr3;
+            var room_arr4;
+            var room_arr5;
 
             //empty the room code list
-            $("#room_list").empty();
-            $("#room_list").append("<option>" + "" + "</option>");
-            $("#room_list2").find("select").empty();
-            $("#room_list2").find("select").append("<option>" + "" + "</option>");
-            $("#room_list3").find("select").empty();
-            $("#room_list3").find("select").append("<option>" + "" + "</option>");
-            $("#room_list4").find("select").empty();
-            $("#room_list4").find("select").append("<option>" + "" + "</option>");
+            $("#room1").empty();
+            $("#room1").append("<option>" + "Any" + "</option>");
+            $("#room2").empty();
+            $("#room2").append("<option>" + "Any" + "</option>");
+            $("#room3").empty();
+            $("#room3").append("<option>" + "Any" + "</option>");
+            $("#room4").empty();
+            $("#room4").append("<option>" + "Any" + "</option>");
+            $("#room5").empty();
+            $("#room5").append("<option>" + "Any" + "</option>");
+            
             for (var i = 0; i < roomData.length; i++) {
-                //if the room has enough capacity, and has the options the user asked for - or he didn't ask for the option, then add it to the list
-                if (bookedRooms.indexOf(roomData[i].room_code) == -1 && (roomData[i].capacity >= capacity || isNaN(capacity)) &&
-                (park == "Any" || park == roomData[i].park) &&
-                (!isWheelchair || roomData[i].wheelchair == 1) &&
-                (!isVisualiser || roomData[i].visualiser == 1) &&
-                (!isProjector || roomData[i].projector == 1) &&
-                (!isWhiteboard || roomData[i].whiteboard == 1))
-                    $("#room_list").append("<option value='" + roomData[i].room_code + "'>" + roomData[i].room_code + "</option>");
-            }
-            //additional stages if more than one room pref option required
-            //Tom middleton
-            if (parseInt(document.getElementById('noRooms').value) > 1) {
-
-                for (var i = 0; i < roomData.length; i++) {
-                    if (bookedRooms.indexOf(roomData[i].room_code) == -1 && (roomData[i].capacity >= capacity2 || isNaN(capacity2)) &&
-                    (park == "Any" || park == roomData[i].park) &&
-                    (!isWheelchair2 || roomData[i].wheelchair == 1) &&
-                    (!isVisualiser2 || roomData[i].visualiser == 1) &&
-                    (!isProjector2 || roomData[i].projector == 1) &&
-                    (!isWhiteboard2 || roomData[i].whiteboard == 1))
-                        $("#room_list2").find("select").append("<option value='" + roomData[i].room_code + "'>" + roomData[i].room_code + "</option>");
+                //room preference 1
+                //check room arrangement selection
+                if (arrangement == "tiered")
+                    room_arr1 = roomData[i].tiered;
+                else if (arrangement == "any")
+                    room_arr1 = arrangement;
+                else
+                    room_arr1 = roomData[i].flat;
+                
+                //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                if ((park == "Any" || park == roomData[i].park) &&
+                (isWheelchair == 0 || roomData[i].wheelchair == 1) &&
+                (isVisualiser == 0 || roomData[i].visualiser == 1) &&
+                (isProjector == 0 || roomData[i].projector == 1) &&
+                (isWhiteboard == 0 || roomData[i].whiteboard == 1) &&
+                (computer == 0 || roomData[i].computer == 1) &&
+                (capture == 0 || roomData[i].lecture_capture == 1) &&
+                (pa == 0 || roomData[i].pa_system == 1) &&
+                (mic == 0 || roomData[i].radio_microphone == 1) &&
+                (video == 0 || roomData[i].video_dvd == 1) &&
+                (roomData[i].capacity >= capacity) &&
+                (room_arr1 == "any" || room_arr1 == 1) &&
+                (building == "any" || building == roomData[i].building_code)) {
+                    $("#room1").append("<option>" + roomData[i].room_code + "</option>");
                 }
 
-                //else {}
-                for (var x = 1; x < 4; x++) {
-                    document.getElementById('room_list' + (x + 1)).style.display = 'none';
-                    document.getElementById('roomlabel' + (x + 1)).style.display = 'none';
-                    document.getElementById('advancedinputs' + (x + 1)).style.display = 'none';
-                }
-                noOfRooms = parseInt(document.getElementById('noRooms').value);
+                //room preference 2
+                //only apply this if number of rooms is 2
+                //check room arrangement selection
                 if (noOfRooms > 1) {
-                    for (var x = 1; x < noOfRooms; x++) {
-                        document.getElementById('room_list' + (x + 1)).style.display = 'block';
-                        document.getElementById('roomlabel' + (x + 1)).style.display = 'block';
-                        document.getElementById('advancedinputs' + (x + 1)).style.display = 'block';
+                    if (arrangement2 == "tiered")
+                        room_arr2 = roomData[i].tiered;
+                    else if (arrangement2 == "any")
+                        room_arr2 = arrangement;
+                    else
+                        room_arr2 = roomData[i].flat;
+                    //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                    //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                    if ((park == "Any" || park == roomData[i].park) &&
+                    (isWheelchair2 == 0 || roomData[i].wheelchair == 1) &&
+                    (isVisualiser2 == 0 || roomData[i].visualiser == 1) &&
+                    (isProjector2 == 0 || roomData[i].projector == 1) &&
+                    (isWhiteboard2 == 0 || roomData[i].whiteboard == 1) &&
+                    (computer2 == 0 || roomData[i].computer == 1) &&
+                    (capture2 == 0 || roomData[i].lecture_capture == 1) &&
+                    (pa2 == 0 || roomData[i].pa_system == 1) &&
+                    (mic2 == 0 || roomData[i].radio_microphone == 1) &&
+                    (video2 == 0 || roomData[i].video_dvd == 1) &&
+                    (roomData[i].capacity >= capacity2) &&
+                    (room_arr2 == "any" || room_arr2 == 1) &&
+                    (building2 == "any" || building2 == roomData[i].building_code)) {
+                        $("#room2").append("<option>" + roomData[i].room_code + "</option>");
+                }
+            }
+                //room preference 3
+                //only apply this if number of rooms is 3
+                //check room arrangement selection
+                if (noOfRooms > 2) {
+                    if (arrangement3 == "tiered")
+                        room_arr3 = roomData[i].tiered;
+                    else if (arrangement3 == "any")
+                        room_arr3 = arrangement;
+                    else
+                        room_arr3 = roomData[i].flat;
+                    //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                    //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                    if ((park == "Any" || park == roomData[i].park) &&
+                    (isWheelchair3 == 0 || roomData[i].wheelchair == 1) &&
+                    (isVisualiser3 == 0 || roomData[i].visualiser == 1) &&
+                    (isProjector3 == 0 || roomData[i].projector == 1) &&
+                    (isWhiteboard3 == 0 || roomData[i].whiteboard == 1) &&
+                    (computer3 == 0 || roomData[i].computer == 1) &&
+                    (capture3 == 0 || roomData[i].lecture_capture == 1) &&
+                    (pa3 == 0 || roomData[i].pa_system == 1) &&
+                    (mic3 == 0 || roomData[i].radio_microphone == 1) &&
+                    (video3 == 0 || roomData[i].video_dvd == 1) &&
+                    (roomData[i].capacity >= capacity3) &&
+                    (room_arr3 == "any" || room_arr3 == 1) &&
+                    (building3 == "any" || building3 == roomData[i].building_code)) {
+                        $("#room3").append("<option>" + roomData[i].room_code + "</option>");
                     }
                 }
-            }
-            else {
-                for (var x = 1; x < 4; x++) {
-                    document.getElementById('room_list' + (x + 1)).style.display = 'none';
-                    document.getElementById('roomlabel' + (x + 1)).style.display = 'none';
-                    document.getElementById('advancedinputs' + (x + 1)).style.display = 'none';
+                //room preference 4
+                //only apply this if number of rooms is 4
+                //check room arrangement selection
+                if (noOfRooms > 3) {
+                    if (arrangement4 == "tiered")
+                        room_arr4 = roomData[i].tiered;
+                    else if (arrangement4 == "any")
+                        room_arr4 = arrangement;
+                    else
+                        room_arr4 = roomData[i].flat;
+                    //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                    //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                    if ((park == "Any" || park == roomData[i].park) &&
+                    (isWheelchair4 == 0 || roomData[i].wheelchair == 1) &&
+                    (isVisualiser4 == 0 || roomData[i].visualiser == 1) &&
+                    (isProjector4 == 0 || roomData[i].projector == 1) &&
+                    (isWhiteboard4 == 0 || roomData[i].whiteboard == 1) &&
+                    (computer4 == 0 || roomData[i].computer == 1) &&
+                    (capture4 == 0 || roomData[i].lecture_capture == 1) &&
+                    (pa4 == 0 || roomData[i].pa_system == 1) &&
+                    (mic4 == 0 || roomData[i].radio_microphone == 1) &&
+                    (video4 == 0 || roomData[i].video_dvd == 1) &&
+                    (roomData[i].capacity >= capacity4) &&
+                    (room_arr4 == "any" || room_arr4 == 1) &&
+                    (building4 == "any" || building4 == roomData[i].building_code)) {
+                        $("#room4").append("<option>" + roomData[i].room_code + "</option>");
+                    }
                 }
-            }
-            if (parseInt(document.getElementById('noRooms').value) > 2) {
-                for (var i = 0; i < roomData.length; i++) {
-
-                    if (bookedRooms.indexOf(roomData[i].room_code) == -1 && (roomData[i].capacity >= capacity3 || isNaN(capacity3)) &&
-                    (park == "Any" || park == roomData[i].park) &&
-                    (!isWheelchair3 || roomData[i].wheelchair == 1) &&
-                    (!isVisualiser3 || roomData[i].visualiser == 1) &&
-                    (!isProjector3 || roomData[i].projector == 1) &&
-                    (!isWhiteboard3 || roomData[i].whiteboard == 1))
-                        $("#room_list3").find("select").append("<option value='" + roomData[i].room_code + "'>" + roomData[i].room_code + "</option>");
-
+                //room preference 5
+                //only apply this if number of rooms is 5
+                //check room arrangement selection
+                if (noOfRooms > 4) {
+                    if (arrangement5 == "tiered")
+                        room_arr5 = roomData[i].tiered;
+                    else if (arrangement5 == "any")
+                        room_arr5 = arrangement;
+                    else
+                        room_arr5 = roomData[i].flat;
+                    //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                    //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                    if ((park == "Any" || park == roomData[i].park) &&
+                    (isWheelchair5 == 0 || roomData[i].wheelchair == 1) &&
+                    (isVisualiser5 == 0 || roomData[i].visualiser == 1) &&
+                    (isProjector5 == 0 || roomData[i].projector == 1) &&
+                    (isWhiteboard5 == 0 || roomData[i].whiteboard == 1) &&
+                    (computer5 == 0 || roomData[i].computer == 1) &&
+                    (capture5 == 0 || roomData[i].lecture_capture == 1) &&
+                    (pa5 == 0 || roomData[i].pa_system == 1) &&
+                    (mic5 == 0 || roomData[i].radio_microphone == 1) &&
+                    (video5 == 0 || roomData[i].video_dvd == 1) &&
+                    (roomData[i].capacity >= capacity5) &&
+                    (room_arr5 == "any" || room_arr5 == 1) &&
+                    (building5 == "any" || building5 == roomData[i].building_code)) {
+                        $("#room5").append("<option>" + roomData[i].room_code + "</option>");
+                    }
                 }
-            }
-            if (parseInt(document.getElementById('noRooms').value) > 3) {
-
-                for (var i = 0; i < roomData.length; i++) {
-                    if (bookedRooms.indexOf(roomData[i].room_code) == -1 && (roomData[i].capacity >= capacity4 || isNaN(capacity)) &&
-                    (park == "Any" || park == roomData[i].park) &&
-                    (!isWheelchair4 || roomData[i].wheelchair == 1) &&
-                    (!isVisualiser4 || roomData[i].visualiser == 1) &&
-                    (!isProjector4 || roomData[i].projector == 1) &&
-                    (!isWhiteboard4 || roomData[i].whiteboard == 1))
-                        $("#room_list4").find("select").append("<option value='" + roomData[i].room_code + "'>" + roomData[i].room_code + "</option>");
-                }
-
             }
         }
     </script>
@@ -1045,13 +1253,13 @@
 
 <%-- Page Title Content --%>
 <asp:Content ID="TitlesContent" runat="server" ContentPlaceHolderID="TitleContent">
-    <h1>Create Request - Round: 3 (Ad-Hoc Only)</h1>
+    <h1>Create Request - Round: 1</h1>
 </asp:Content>
 
 <%-- MAIN BODY CONTENT --%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-      <div >
+      <div id="general_info">
         <%-- General information --%>
         <table class="inputs box_class" id="main_layout" >
             <tr>
@@ -1069,6 +1277,7 @@
 
                     </select>
                 </td>
+            </tr>
             <tr>
                 <td align="left">Number of Rooms</td>
                 <td align="left">Session Type</td>
@@ -1098,138 +1307,154 @@
                     <input type="hidden" id="session" name="session" value="Lecture" />
                 </td>
             </tr>
-        </table>
-
-        <%--Room preference 1--%> 
-        <table class="inputs box_class" id="main_layout">
             <tr>
-                <td colspan="2" align="left">Facility</td>
-                <td align="left">Arrangement</td>
+                <td align="left" colspan="2">
+                    Park
+                </td>
             </tr>
             <tr>
-                <%--Facility options 1--%> 
+                <%-- Park --%>
                 <td align="left" colspan="2">
                     <table>
                         <tr>
-                            <td>
-                                <ol id="selectable-computer">
-                                    <li class="ui-state-default" style="width: 200px">Computer</li>
-                                </ol>
-                                <input type="hidden" id="computer" name="computer" value="0"/>
-                            </td>
-                            <td>
-                                 <ol id="selectable-capture">
-                                     <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                 </ol>
-                                 <input type="hidden" id="capture" name="capture" value="0" />
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>
-                                <ol id="selectable-pa">
-                                    <li class="ui-state-default" style="width: 200px">PA System</li>
-                                </ol>
-                                <input type="hidden" id="pa" name="pa" value="0" />
-                            </td>
-                            <td>
-                                <ol id="selectable-projector">
-                                    <li class="ui-state-default" style="width: 200px">Projector</li>
-                                </ol>
-                                <input type="hidden" id="projector" name="projector" value="0" />
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>
-                                <ol id="selectable-mic">
-                                    <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
-                                </ol>
-                                <input type="hidden" id="mic" name="mic" value="0" />
-                            </td>
-                            <td>
-                                <ol id="selectable-video">
-                                    <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
-                                </ol>
-                                <input type="hidden" id="video" name="video" value="0" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <ol id="selectable-visualiser">
-                                    <li class="ui-state-default" style="width: 200px">Visualiser</li>
-                                </ol>
-                                <input type="hidden" id="visualiser" name="visualiser" value="0" />
-                            </td>
-                            <td>
-                                <ol id="selectable-whiteboard">
-                                    <li class="ui-state-default" style="width: 200px">Whiteboard</li>
-                                </ol>
-                                <input type="hidden" id="whiteboard" name="whiteboard" value="0" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <ol id="selectable-wheelchair">
-                                    <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
-                                </ol>
-                                <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
+                            <td colspan="2">
+                                <select id="park" name="park" onchange="changePark()">
+                                    <option>Any</option>
+                                    <option>Central</option>
+                                    <option>East</option>
+                                    <option>West</option>
+                                </select>
                             </td>
                         </tr>
                     </table>
-                </td>
-                <td align="left">
-                    <ol id="selectable-arrangement">
-                        <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
-                        <li class="ui-state-default" style="width: 200px">Flat</li>
-                    </ol>
-                    <input type="hidden" id="arrangement" name="arrangement" value="Tiered" />
-                </td>
-            </tr>
-            <tr>
-                <td align="left" colspan="3">
-                    Capacity
-                </td>
-            </tr>
-            <tr>
-                <td align="center" colspan="3">
-                    <table>
-                        <tr>
-                            <td>
-                                <div id="slider-capacity1"></div>
-                            </td>
-                            <td>
-                                <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td align="left">Park</td>
-                <td align="left">Building</td>
-                <td align="left">Room</td>
-            </tr>
-            <tr>
-                <td align="left">
-                    <select id="park" name="park">
-                        <option>Any</option>
-                        <option>Central</option>
-                        <option>East</option>
-                        <option>West</option>
-                    </select>
-                </td>
-                <td align="left">
-                    <select id="building" name="building">
-                        <option>Any</option>
-                    </select>
-                </td>
-                <td align="left">
-                    <select id="room1" name="room1"></select>
                 </td>
             </tr>
         </table>
+
+        <%--Room preference 1--%> 
+        <div id="room_pref1">     
+            <table class="inputs box_class">
+                <tr>
+                    <td colspan="2" align="left">Facility</td>
+                    <td align="left">Arrangement</td>
+                </tr>
+                <tr>
+                    <%--Facility options 1--%> 
+                    <td align="left" colspan="2">
+                        <table>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-computer">
+                                        <li class="ui-state-default" style="width: 200px">Computer</li>
+                                    </ol>
+                                    <input type="hidden" id="computer" name="computer" value="0"/>
+                                </td>
+                                <td>
+                                        <ol id="selectable-capture">
+                                            <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                        </ol>
+                                        <input type="hidden" id="capture" name="capture" value="0" />
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <ol id="selectable-pa">
+                                        <li class="ui-state-default" style="width: 200px">PA System</li>
+                                    </ol>
+                                    <input type="hidden" id="pa" name="pa" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-projector">
+                                        <li class="ui-state-default" style="width: 200px">Projector</li>
+                                    </ol>
+                                    <input type="hidden" id="projector" name="projector" value="0" />
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <ol id="selectable-mic">
+                                        <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                                    </ol>
+                                    <input type="hidden" id="mic" name="mic" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-video">
+                                        <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                                    </ol>
+                                    <input type="hidden" id="video" name="video" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-visualiser">
+                                        <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                                    </ol>
+                                    <input type="hidden" id="visualiser" name="visualiser" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-whiteboard">
+                                        <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                                    </ol>
+                                    <input type="hidden" id="whiteboard" name="whiteboard" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-wheelchair">
+                                        <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                                    </ol>
+                                    <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
+                                </td>
+                            </tr>
+                        </table>
+                        </td>
+                        <td align="left">
+                            <ol id="selectable-arrangement">
+                                <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                                <li class="ui-state-default" style="width: 200px">Tiered</li>
+                                <li class="ui-state-default" style="width: 200px">Flat</li>
+                            </ol>
+                            <input type="hidden" id="arrangement" name="arrangement" value="Any" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" colspan="3">
+                            Capacity
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div id="slider-capacity1"></div>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" colspan="2">Building</td>
+                        <td align="left">Room</td>
+                    </tr>
+                    <tr>
+                        <td align="left" colspan="2">
+                            <select id="building1" name="building1" onchange="changeRoom()">
+                                <option>Any</option>
+                            </select>
+                        </td>
+                        <td align="left">
+                            <select id="room1" name="room1"></select>
+                        </td>
+                    </tr>
+                </table>
+            </div> 
           <%--Room preference 2--%> 
-        <div>
-            <table class="inputs box_class" id="main_layout">
+        <div id="room_pref2" style="display:none">
+            <table class="inputs box_class">
                 <tr>
                     <td colspan="2" align="left">Facility</td>
                     <td align="left">Arrangement</td>
@@ -1306,10 +1531,11 @@
                     </td>
                     <td align="left">
                         <ol id="selectable-arrangement2">
-                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                            <li class="ui-state-default" style="width: 200px">Tiered</li>
                             <li class="ui-state-default" style="width: 200px">Flat</li>
                         </ol>
-                        <input type="hidden" id="arrangement2" name="arrangement2" value="Tiered" />
+                        <input type="hidden" id="arrangement2" name="arrangement2" value="Any" />
                     </td>
                 </tr>
                 <tr>
@@ -1332,21 +1558,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left">Park</td>
-                    <td align="left">Building</td>
+                    <td align="left" colspan="2">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left">
-                        <select id="park2" name="park2">
-                            <option>Any</option>
-                            <option>Central</option>
-                            <option>East</option>
-                            <option>West</option>
-                        </select>
-                    </td>
-                    <td align="left">
-                        <select id="building2" name="building2">
+                    <td align="left" colspan="2">
+                        <select id="building2" name="building2" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
                     </td>
@@ -1357,8 +1574,8 @@
             </table>
         </div>
         <%--Room preference 3--%> 
-        <div>
-            <table class="inputs box_class" id="main_layout">
+        <div id="room_pref3" style="display:none">
+            <table class="inputs box_class">
                 <tr>
                     <td colspan="2" align="left">Facility</td>
                     <td align="left">Arrangement</td>
@@ -1435,10 +1652,11 @@
                     </td>
                     <td align="left">
                         <ol id="selectable-arrangement3">
-                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                            <li class="ui-state-default" style="width: 200px">Tiered</li>
                             <li class="ui-state-default" style="width: 200px">Flat</li>
                         </ol>
-                        <input type="hidden" id="arrangement3" name="arrangement3" value="Tiered" />
+                        <input type="hidden" id="arrangement3" name="arrangement3" value="Any" />
                     </td>
                 </tr>
                 <tr>
@@ -1461,21 +1679,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left">Park</td>
-                    <td align="left">Building</td>
+                    <td align="left" colspan="2">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left">
-                        <select id="park3" name="park3">
-                            <option>Any</option>
-                            <option>Central</option>
-                            <option>East</option>
-                            <option>West</option>
-                        </select>
-                    </td>
-                    <td align="left">
-                        <select id="building3" name="building3">
+                    <td align="left" colspan="2">
+                        <select id="building3" name="building3" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
                     </td>
@@ -1486,8 +1695,8 @@
             </table>
         </div>
         <%--Room preference 4--%> 
-        <div>
-            <table class="inputs box_class" id="main_layout">
+        <div id="room_pref4" style="display:none">
+            <table class="inputs box_class">
                 <tr>
                     <td colspan="2" align="left">Facility</td>
                     <td align="left">Arrangement</td>
@@ -1564,10 +1773,11 @@
                     </td>
                     <td align="left">
                         <ol id="selectable-arrangement4">
-                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                            <li class="ui-state-default" style="width: 200px">Tiered</li>
                             <li class="ui-state-default" style="width: 200px">Flat</li>
                         </ol>
-                        <input type="hidden" id="arrangement4" name="arrangement4" value="Tiered" />
+                        <input type="hidden" id="arrangement4" name="arrangement4" value="Any" />
                     </td>
                 </tr>
                 <tr>
@@ -1590,21 +1800,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left">Park</td>
-                    <td align="left">Building</td>
+                    <td align="left" colspan="2">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left">
-                        <select id="park4" name="park4">
-                            <option>Any</option>
-                            <option>Central</option>
-                            <option>East</option>
-                            <option>West</option>
-                        </select>
-                    </td>
-                    <td align="left">
-                        <select id="building4" name="building4">
+                    <td align="left" colspan="2">
+                        <select id="building4" name="building4" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
                     </td>
@@ -1615,8 +1816,8 @@
             </table>
         </div>
         <%--Room preference 5--%> 
-        <div>
-            <table class="inputs box_class" id="main_layout">
+        <div id="room_pref5" style="display:none">
+            <table class="inputs box_class">
                 <tr>
                     <td colspan="2" align="left">Facility</td>
                     <td align="left">Arrangement</td>
@@ -1693,10 +1894,11 @@
                     </td>
                     <td align="left">
                         <ol id="selectable-arrangement5">
-                            <li class="ui-state-default ui-selected" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                            <li class="ui-state-default" style="width: 200px">Tiered</li>
                             <li class="ui-state-default" style="width: 200px">Flat</li>
                         </ol>
-                        <input type="hidden" id="arrangement5" name="arrangement5" value="Tiered" />
+                        <input type="hidden" id="arrangement5" name="arrangement5" value="Any" />
                     </td>
                 </tr>
                 <tr>
@@ -1719,21 +1921,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left">Park</td>
-                    <td align="left">Building</td>
+                    <td align="left" colspan="2">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left">
-                        <select id="park5" name="park5">
-                            <option>Any</option>
-                            <option>Central</option>
-                            <option>East</option>
-                            <option>West</option>
-                        </select>
-                    </td>
-                    <td align="left">
-                        <select id="building5" name="building5">
+                    <td align="left" colspan="2">
+                        <select id="building5" name="building5" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
                     </td>
