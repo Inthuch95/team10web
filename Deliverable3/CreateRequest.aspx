@@ -722,11 +722,37 @@
                    $("#capture5").val("0");
                changeRoom();
            }).selectable();
+           $("#selectable-day").selectable({
+               stop: function () {
+                   $(".ui-selected", this).each(function () {
+                       var index = $("#selectable-day li").index(this);
+                       switch (index) {
+                           case 0:
+                               $("#day").val("Monday");
+                               break;
+                           case 1:
+                               $("#day").val("Tuesday");
+                               break;
+                           case 2:
+                               $("#day").val("Wednesday");
+                               break;
+                           case 3:
+                               $("#day").val("Thursday");
+                               break;
+                           case 4:
+                               $("#day").val("Friday");
+                               break;
+                       }
+                   });
+               }
+           });
             //end selectable
             getDeptCode();
             getModuleAjax();
             getRoomAjax();
             getBuildingAjax();
+            loadDuration();
+            loadPeriod();
             //implement jquery ui slider to 'number of rooms' and 'capacity'
             //start slider
             $("#slider-rooms").slider({
@@ -960,6 +986,27 @@
                 }
             }
             changeRoom();
+        }
+        //fill duration drop down list
+        function loadDuration() {
+            for (var i = 1; i <= 9;i++){
+                $("#duration").append("<option>" + i + "</option>");
+            }
+        }
+        //fill period drop down list
+        function loadPeriod() {
+            for (var i = 1; i <= 9; i++) {
+                var time = i + 8;
+                $("#period").append("<option value='" + i + "'>" + i + " - " + time + ":00</option>");
+            }
+        }
+        //change uration based on period
+        function refillDuration() {
+            $("#duration").empty();
+            var period = $("#period").val();
+            for (var i = 1; i <= 10 - period; i++) {
+                $("#duration").append("<option value='" + i + "'>" + i + "</option>");
+            }
         }
         //change room preference Based on capacity, park and additional options
         function changeRoom(){
@@ -1450,6 +1497,14 @@
                             <select id="room1" name="room1"></select>
                         </td>
                     </tr>
+                    <tr>
+                        <td align="left" colspan="3">Additional requirement</td>
+                    </tr>
+                    <tr>
+                        <td align="left" colspan="3">
+                            <textarea style="width:835px;" name="specialReq1" cols="80" maxlength="1000"></textarea>
+                        </td>
+                    </tr>
                 </table>
             </div> 
           <%--Room preference 2--%> 
@@ -1569,6 +1624,14 @@
                     </td>
                     <td align="left">
                         <select id="room2" name="room2"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">Additional requirement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        <textarea style="width:835px;" name="specialReq2" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
@@ -1692,6 +1755,14 @@
                         <select id="room3" name="room3"></select>
                     </td>
                 </tr>
+                <tr>
+                    <td align="left" colspan="3">Additional requirement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        <textarea style="width:835px;" name="specialReq3" cols="80" maxlength="1000"></textarea>
+                    </td>
+                </tr>
             </table>
         </div>
         <%--Room preference 4--%> 
@@ -1813,6 +1884,14 @@
                         <select id="room4" name="room4"></select>
                     </td>
                 </tr>
+                <tr>
+                    <td align="left" colspan="3">Additional requirement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        <textarea style="width:835px;" name="specialReq4" cols="80" maxlength="1000"></textarea>
+                    </td>
+                </tr>
             </table>
         </div>
         <%--Room preference 5--%> 
@@ -1932,6 +2011,88 @@
                     </td>
                     <td align="left">
                         <select id="room5" name="room5"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">Additional requirement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">
+                        <textarea style="width:835px;" name="specialReq5" cols="80" maxlength="1000"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <%--Time--%>
+        <div id="time">
+            <table class="inputs box_class">
+                <tr>
+                    <td align="left">Day</td>
+                    <td align="left">Period</td>
+                    <td align="left">Duration</td>
+                </tr>
+                <tr>
+                    <%--Selectable - Day--%>
+                    <td align="left">
+                        <ol id="selectable-day">
+                            <li class="ui-state-default" style="width: 100px">Monday</li>
+                            <li class="ui-state-default" style="width: 100px">Tuesday</li>
+                            <li class="ui-state-default" style="width: 100px">Wednesday</li>
+                            <li class="ui-state-default" style="width: 100px">Thursday</li>
+                            <li class="ui-state-default" style="width: 100px">Friday</li>
+                        </ol>
+                        <input type="hidden" id="day" name="day" value="" />
+                    </td>
+                    <%--Drop down for period - content populate by function loadPeriod() when the page load--%>
+                    <td aligh="left">
+                        <select id="period" name="period" onchange="refillDuration()">
+
+                        </select>
+                    </td>
+                    <%--Drop down for duration - content populate by function loadDuration() when the page load--%>
+                     <td aligh="left">
+                        <select id="duration" name="duration">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="left">Week</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="left">
+                        <input type="checkbox" name="weeks[]" id="week1" value="1" checked="checked" class="vis-hidden new-post-tags"/>
+						<label style="margin-left: 100px;" id="week" for="week1" class="week_label">  1  </label>
+						<input type="checkbox" name="weeks[]" id="week2" value="2" checked="checked" class="vis-hidden new-post-tags"/>
+						<label  id="week" for="week2" class="week_label">  2  </label>
+						<input type="checkbox" name="weeks[]" id="week3" value="3" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week3" class="week_label">  3  </label>
+						<input type="checkbox" name="weeks[]" id="week4" value="4" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week4" class="week_label">  4  </label>
+						<input type="checkbox" name="weeks[]" id="week5" value="5" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week5" class="week_label">  5  </label>
+						<input type="checkbox" name="weeks[]" id="week6" value="6" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week6" class="week_label">  6  </label>
+						<input type="checkbox" name="weeks[]" id="week7" value="7" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week7" class="week_label">  7  </label>
+						<input type="checkbox" name="weeks[]" id="week8" value="8" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week8" class="week_label">  8  </label>
+						<input type="checkbox" name="weeks[]" id="week9" value="9" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week9" class="week_label">  9  </label>
+						<input type="checkbox" name="weeks[]" id="week10" value="10" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week10" class="week_label"> 10 </label>
+						<input type="checkbox" name="weeks[]" id="week11" value="11" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week11" class="week_label"> 11 </label>
+						<input type="checkbox" name="weeks[]" id="week12" value="12" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week12" class="week_label"> 12 </label>
+						<input type="checkbox" name="weeks[]" id="week13" value="13" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week13" class="week_label"> 13 </label>
+						<input type="checkbox" name="weeks[]" id="week14" value="14" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week14" class="week_label"> 14 </label>
+						<input type="checkbox" name="weeks[]" id="week15" value="15" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week15" class="week_label"> 15 </label>
+						<input type="checkbox" name="weeks[]" id="week16" value="16" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week16" class="week_label"> 16 </label>
                     </td>
                 </tr>
             </table>
