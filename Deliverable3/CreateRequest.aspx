@@ -2035,11 +2035,15 @@
                     <%--Selectable - Day--%>
                     <td align="left">
                         <ol id="selectable-day">
-                            <li class="ui-state-default" style="width: 100px">Monday</li>
-                            <li class="ui-state-default" style="width: 100px">Tuesday</li>
-                            <li class="ui-state-default" style="width: 100px">Wednesday</li>
-                            <li class="ui-state-default" style="width: 100px">Thursday</li>
-                            <li class="ui-state-default" style="width: 100px">Friday</li>
+                            <table>
+                                <tr>
+                                    <td><li class="ui-state-default" style="width: 100px">Monday</li></td>
+                                    <td><li class="ui-state-default" style="width: 100px">Tuesday</li></td>
+                                    <td><li class="ui-state-default" style="width: 100px">Wednesday</li></td>
+                                    <td><li class="ui-state-default" style="width: 100px">Thursday</li></td>
+                                    <td><li class="ui-state-default" style="width: 100px">Friday</li></td>
+                                </tr>
+                            </table>
                         </ol>
                         <input type="hidden" id="day" name="day" value="" />
                     </td>
@@ -2064,7 +2068,7 @@
                         <input type="checkbox" name="weeks[]" id="week1" value="1" checked="checked" class="vis-hidden new-post-tags"/>
 						<label style="margin-left: 100px;" id="week" for="week1" class="week_label">  1  </label>
 						<input type="checkbox" name="weeks[]" id="week2" value="2" checked="checked" class="vis-hidden new-post-tags"/>
-						<label  id="week" for="week2" class="week_label">  2  </label>
+						<label id="week" for="week2" class="week_label">  2  </label>
 						<input type="checkbox" name="weeks[]" id="week3" value="3" checked="checked" class="vis-hidden new-post-tags"/>
 						<label id="week" for="week3" class="week_label">  3  </label>
 						<input type="checkbox" name="weeks[]" id="week4" value="4" checked="checked" class="vis-hidden new-post-tags"/>

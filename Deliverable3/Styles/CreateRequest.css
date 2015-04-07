@@ -827,13 +827,13 @@ table
 }
 /*Day*/
 #selectable-day .ui-selecting { 
-	background: #FECA40; 
+	background: #F9F9F7; 
 }
 #selectable-day .ui-selected { 
 	background: #F39814; color: white; 
 }
 #selectable-day { 
-	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; background: #F9F9F7; 
 }
 #selectable-day li { 
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -853,21 +853,22 @@ table
 #week {
   margin: 10px;
   padding: 5px;
-  border: 1px solid #cc0066;
-  background-color: white;
-  color:#cc0066;
+  border: 1px solid #DFDFDD;
+  background-color: #EEEEEE;
+  color:black;
   font-weight:bold;
+  width: 25px;
+  text-align:center;
 }
 
 #week:hover {
-  background-color: #cc0066;
+  background-color: #FECA40;
   color:white;
 }
 
 input:checked + #week {
-  border-color: ;
-  background-color: #cc0066;
+  border-color: #DFDFDD;
+  background-color: #F39814;
   color:white;
 }
-
     
