@@ -69,3 +69,5 @@ C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web
 C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
 C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.dll
 C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\obj\Debug\Team11.pdb
+C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\bin\Team11.dll
+C:\Users\Brooksey\Documents\University\Second Year\Team Projects\Dev 3\team10web\Deliverable3\bin\Team11.pdb

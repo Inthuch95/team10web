@@ -69,6 +69,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="AddEditModule.aspx" />
     <Content Include="Availibility.aspx" />
+    <Content Include="AdminPage.aspx" />
     <Content Include="CreateRequest.aspx" />
     <Content Include="EditRequest.aspx" />
     <Content Include="Preference.aspx" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Availibility.aspx.designer.cs">
       <DependentUpon>Availibility.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPage.aspx.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPage.aspx.designer.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CreateRequest.aspx.cs">
       <DependentUpon>CreateRequest.aspx</DependentUpon>
