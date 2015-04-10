@@ -5,7 +5,7 @@
     <!-- Create Request CSS -->
     <link rel="Stylesheet" type="text/css" href="Styles/CreateRequest.css" />
     <script type="text/javascript" language="javascript">
-            $(document).ready(function () {
+        $(document).ready(function () {
 
             //Room Buttons
             if ($("#MainContent_RadioButtonListView_0").is(":checked")) {
@@ -14,7 +14,7 @@
             if ($("#MainContent_RadioButtonListView_1").is(":checked")) {
                 $("#MainContent_RadioButtonListView_1").parent().addClass("btn btn-danger");
             };
-        }
+        });
     </script>
     <script type="text/javascript" language="javascript">
         function getRoomAjax() {
