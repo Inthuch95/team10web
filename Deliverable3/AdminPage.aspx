@@ -14,6 +14,7 @@
             if ($("#MainContent_RadioButtonListView_1").is(":checked")) {
                 $("#MainContent_RadioButtonListView_1").parent().addClass("btn btn-danger");
             };
+            $("#tabs").tabs();
         });
     </script>
     <script type="text/javascript" language="javascript">
@@ -57,9 +58,25 @@
 
 <%-- MAIN BODY CONTENT --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-      <div>
+  <div id="tabs">
+      <ul>
+        <li><a href="#room-allocation-tabs">Room Allocation</a></li>
+        <li><a href="#facility-tabs">Facility Management</a></li>
+        <li><a href="#round-tabs">Round Dates</a></li>
+      </ul>
+      <div id="room-allocation-tabs">
+        <p>Room allocation</p>
+      </div>
+      <div id="facility-tabs">
+        <p>Facility management</p>
+      </div>
+      <div id="round-tabs">
+        <p>Round dates</p>
+      </div>
+</div>  
+    <%--<div>--%>
         <%-- General information --%>
-        <table class="inputs box_class" id="main_layout" >
+<%--        <table class="inputs box_class" id="main_layout" >
             <tr>
                 
                 <td>
@@ -154,7 +171,7 @@
                 <td align="left">Allocate Rooms</td>
             </tr>
         </table>
-      </div>     
+      </div>   --%>  
 </asp:Content>
 <%-- <tr>
               <td align="left">Current Rooms Facilities</td>

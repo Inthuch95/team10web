@@ -2035,15 +2035,11 @@
                     <%--Selectable - Day--%>
                     <td align="left">
                         <ol id="selectable-day">
-                            <table>
-                                <tr>
-                                    <td><li class="ui-state-default" style="width: 100px">Monday</li></td>
-                                    <td><li class="ui-state-default" style="width: 100px">Tuesday</li></td>
-                                    <td><li class="ui-state-default" style="width: 100px">Wednesday</li></td>
-                                    <td><li class="ui-state-default" style="width: 100px">Thursday</li></td>
-                                    <td><li class="ui-state-default" style="width: 100px">Friday</li></td>
-                                </tr>
-                            </table>
+                            <li class="ui-state-default" style="width: 100px">Monday</li>
+                            <li class="ui-state-default" style="width: 100px">Tuesday</li>
+                            <li class="ui-state-default" style="width: 100px">Wednesday</li>
+                            <li class="ui-state-default" style="width: 100px">Thursday</li>
+                            <li class="ui-state-default" style="width: 100px">Friday</li>
                         </ol>
                         <input type="hidden" id="day" name="day" value="" />
                     </td>

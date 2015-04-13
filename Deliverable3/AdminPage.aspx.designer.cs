@@ -10,7 +10,7 @@
 namespace Team11 {
     
     
-    public partial class EditRequest {
+    public partial class AdminPage {
         
         /// <summary>
         /// SqlDataSource1 control.

@@ -50,7 +50,7 @@
                     <li><a href="ViewRequest.aspx">View Request</a></li>
                     <li><a href="Availibility.aspx">Ad-Hoc</a></li>
                     <li><a href="AddEditModule.aspx">Modules</a></li>
-                    <li><a href="Preference.aspx">Preferences</a></li>
+                    <li><a href="AdminPage.aspx">Admin(temp link)</a></li>
                     <li><a href="Default.aspx">Logout</a></li>
                 </ul>    
             </div>    
