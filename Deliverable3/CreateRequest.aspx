@@ -1310,12 +1310,12 @@
         <%-- General information --%>
         <table class="inputs box_class" id="main_layout" >
             <tr>
-                <td align="left">Department</td>
+                <td align="left" colspan="2">Department</td>
                 <td align="left">Module</td>
             </tr>
             <tr>
                 <%-- Department --%>
-                <td align="left">
+                <td align="left" colspan="2">
                     <input type="text" id="dept" name="dept" style="border:0;" readonly="readonly" />
                 </td>
                 <%-- Module --%>
@@ -1326,12 +1326,12 @@
                 </td>
             </tr>
             <tr>
-                <td align="left">Number of Rooms</td>
+                <td align="left" colspan="2">Number of Rooms</td>
                 <td align="left">Session Type</td>
             </tr>
             <tr>
                 <%-- Number of rooms --%>
-                <td align="center">
+                <td align="center" colspan="2">
                     <table>
                         <tr>
                             <td>
@@ -1355,16 +1355,26 @@
                 </td>
             </tr>
             <tr>
-                <td align="left" colspan="2">
+                <td align="left">
+                    Priority
+                </td>
+                <td align="left">
                     Park
+                </td>
+                <td align="left">
+                    Lecturer
                 </td>
             </tr>
             <tr>
+                <td align="left">
+                    <input type="text" readonly="readonly" value="P" />
+                </td>
                 <%-- Park --%>
-                <td align="left" colspan="2">
+                <td align="left">
                     <table>
                         <tr>
-                            <td colspan="2">
+                            <td>
+                                
                                 <select id="park" name="park" onchange="changePark()">
                                     <option>Any</option>
                                     <option>Central</option>
@@ -1374,6 +1384,9 @@
                             </td>
                         </tr>
                     </table>
+                </td>
+                <td align="left">
+                    <input type="text" id="lecturer" name="lecturer" />
                 </td>
             </tr>
         </table>
@@ -2028,6 +2041,7 @@
             <table class="inputs box_class">
                 <tr>
                     <td align="left">Day</td>
+                    <td align="left">Semester</td>
                     <td align="left">Period</td>
                     <td align="left">Duration</td>
                 </tr>
@@ -2043,14 +2057,21 @@
                         </ol>
                         <input type="hidden" id="day" name="day" value="" />
                     </td>
+                    <%--Drop down for semester--%>
+                    <td align="left">
+                        <select id="semester" name="semester">
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </td>
                     <%--Drop down for period - content populate by function loadPeriod() when the page load--%>
-                    <td aligh="left">
+                    <td align="left">
                         <select id="period" name="period" onchange="refillDuration()">
 
                         </select>
                     </td>
                     <%--Drop down for duration - content populate by function loadDuration() when the page load--%>
-                     <td aligh="left">
+                     <td align="left">
                         <select id="duration" name="duration">
 
                         </select>
