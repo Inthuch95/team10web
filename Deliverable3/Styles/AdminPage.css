@@ -1,9 +1,9 @@
-#tabs 
+﻿#tabs 
 {
     background-color: #F7F7F0;
     clear: both;
     margin-left: 0;
-    min-width: 1260px;
+    min-width: 1316px;
     width: 100%;
 }
 .entries_table tr:nth-child(odd)
@@ -18,7 +18,7 @@
 
 #dataTable 
 {
-    width:1250px;
+    width:1306px;
     border:1px solid #f1f1f1;
     overflow:hidden;
     -moz-border-radius-bottomleft:2px;
@@ -81,7 +81,7 @@ table
     background-color: #F7F7F0;
     clear: both;
     margin-left: 0;
-    width: 1250px;
+    width: 1306px;
     z-index:0;
      padding-bottom: 800px;
 }
@@ -90,7 +90,7 @@ table
 {
     clear:both;
     z-index:99;
-    width:1250px;
+    width:1306px;
     background-color: #F7F7F0;
 }
 #room-allocation-tabs 

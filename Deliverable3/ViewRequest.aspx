@@ -67,18 +67,9 @@
 			        <td id="capacity">
 				        Capacity
 			        </td>
-			        <td id="wheelchair">
-				        Wheelchair
-			        </td>
-			        <td id="projector">
-				        Projector
-			        </td>
-			        <td id="visualiser">
-				        Visualiser
-			        </td>
-			        <td id="whiteboard">
-				        Whiteboard
-			        </td>
+			        <td id="facility">
+                            Facility
+                    </td>
 			        <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">
 				        Special </br>Requirements
 			        </td>
@@ -125,18 +116,9 @@
 		            <td id="capacity">
 			            capacity
 		            </td>
-		            <td id="wheelchair">
-			            wheelchair
-		            </td>
-		            <td id="projector">
-			            projector
-		            </td>
-		            <td id="visualiser">
-			            visualiser
-		            </td>
-		            <td id="whiteboard">
-			            whiteboard
-		            </td>
+		            <td id="facility">
+                            Facility
+                    </td>
 		            <td id="special_requirements">
 			            Special </br>Requirements
 		            </td>

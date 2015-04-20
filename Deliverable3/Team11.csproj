@@ -75,6 +75,7 @@
     <None Include="Resources\favicon.png" />
     <None Include="Resources\logo2.jpg" />
     <Content Include="Styles\AddEditModule.css" />
+    <Content Include="Styles\AdminPage.css" />
     <Content Include="Styles\Availability.css" />
     <Content Include="Styles\CreateRequest.css" />
     <Content Include="Styles\Default.css" />

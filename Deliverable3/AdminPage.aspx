@@ -2,8 +2,9 @@
 
 <%-- Create Request Header Content --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <!-- Create Request CSS -->
-    <link rel="Stylesheet" type="text/css" href="Styles/CreateRequest.css" />
+    <!-- Admin page CSS -->
+    <link rel="Stylesheet" type="text/css" href="Styles/AdminPage.css"/>  
+    
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
 
@@ -15,40 +16,55 @@
                 $("#MainContent_RadioButtonListView_1").parent().addClass("btn btn-danger");
             };
             $("#tabs").tabs();
+            getRequestAjax();
         });
-    </script>
-    <script type="text/javascript" language="javascript">
-        function getRoomAjax() {
+        var requestData;
+        //start ajax
+        //get all request data into an array
+        function getRequestAjax() {
             $.ajax(
-            {
-                type: "POST",
-                async: true,
-                url: "CreateRequest.aspx/getRooms",
-                data: "{}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    roomData = data.d;
-                    for (var i = 0; i < roomData.length; i++) {
-                        if (roomData[i].tiered == 1)
-                            $("#room1").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 1 && roomData[i].tiered == 1)
-                            $("#room2").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 2 && roomData[i].tiered == 1)
-                            $("#room3").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 3 && roomData[i].tiered == 1)
-                            $("#room4").append("<option>" + roomData[i].room_code + "</option>");
-                        if (i > 4 && roomData[i].tiered == 1)
-                            $("#room5").append("<option>" + roomData[i].room_code + "</option>");
+                {
+                    type: "POST",
+                    async: true,
+                    url: "ViewRequest.aspx/getRequest",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        requestData = data.d;
+                        console.log(requestData);
+                        for (var i = 0; i < requestData.length; i++) {
+                            var id = "#" + (i + 1);
+                            $("#dataTable").append("<tr id='" + (i + 1) + "'>");
+                            $(id).append("<td>" + requestData[i].request_id + "</td>");
+                            $(id).append("<td>" + requestData[i].dept_code + "</td>");
+                            $(id).append("<td>" + requestData[i].module + "</td>");
+                            $(id).append("<td>" + requestData[i].room_code + "</td>");
+                            $(id).append("<td>" + requestData[i].capacity + "</td>");
+                            $(id).append("<td>" + "facility" + "</td>");
+                            $(id).append("<td>" + requestData[i].special_req + "</td>");
+                            $(id).append("<td>" + requestData[i].priority + "</td>");
+                            $(id).append("<td>" + requestData[i].day + "</td>");
+                            $(id).append("<td>" + requestData[i].period + "</td>");
+                            $(id).append("<td>" + requestData[i].duration + "</td>");
+                            $(id).append("<td>" + "Weeks" + "</td>");
+                            //$(id).append("<td>" + requestData[i].semester + "</td>");
+                            //$(id).append("<td>" + requestData[i].lecturer + "</td>");
+                            //$(id).append("<td>" + requestData[i].session + "</td>");
+                            //$(id).append("<td>" + requestData[i].status + "</td>");
+                            $(id).append("<td>" + "button" + "</td>");
+                            $("#dataTable").append("</tr>");
+                        }
+                    },
+                    error: function (response) {
+                        console.log(response);
                     }
-                },
-                error: function (response) {
-                    console.log(response);
-                }
-            });
+                });
         }
-        getRoomAjax();
+
+        //end ajax
     </script>
+   
 </asp:Content>
 
 <%-- Page Title Content --%>
@@ -58,22 +74,142 @@
 
 <%-- MAIN BODY CONTENT --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-  <div id="tabs">
+    <%-- Tabs containing different admin functionality --%>
+    <div id="tabs">
       <ul>
         <li><a href="#room-allocation-tabs">Room Allocation</a></li>
         <li><a href="#facility-tabs">Facility Management</a></li>
         <li><a href="#round-tabs">Round Dates</a></li>
       </ul>
       <div id="room-allocation-tabs">
-        <p>Room allocation</p>
-      </div>
-      <div id="facility-tabs">
-        <p>Facility management</p>
-      </div>
-      <div id="round-tabs">
-        <p>Round dates</p>
-      </div>
-</div>  
+        <h2>Room allocation</h2>
+        <%-- These allow us to see table head and use filter when scrolling down the page --%>
+        <div id="table_header">
+            <table id="scrollTable">
+	            <tr>
+		            <h4>Click on the headers to sort the table</h4><br/><br/>
+			            <td id="request_id">
+				            Request</br>Id
+			            </td>
+                        <td id="dept_code">
+			                Depaertment
+		                </td>
+			            <td id="module_code">
+				            Module </br> Code
+			            </td>
+			            <td id="room_code">
+				            Room Code
+			            </td>
+			            <td id="capacity">
+				            Capacity
+			            </td>
+                        <td id="facility">
+                            Facility
+                        </td>
+			            <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">
+				            Special </br>Requirements
+			            </td>
+			            <td id="priority">
+				            Priority
+			            </td>
+			            <td id="day">
+				            Day
+			            </td>
+			            <td id="period">
+				            Period
+				
+			            <td id="duration">
+				            Duration
+			            </td>
+			            <td id="week(s)" style="cursor:default;">
+				            Week(s)
+			            </td>
+                        <%--<td id="semester">
+                            Semester
+                        </td>
+                        <td id="lecturer">
+                            Lecturer
+                        </td>
+                        <td id="session">
+                            Session Type
+                        </td>
+                        <td id="status">
+                            Status
+                        </td>--%>
+			            <td id="edit_cell" style="cursor:default;">
+				            Edit/Delete
+			            </td>
+                    </tr>
+	            </table>
+            </div>
+
+            <div id="content_wrap">
+                <table id="dataTable" class="entries_table">
+	                <tr style="display:none;">
+		                <td id="request_id">
+			                Request_id
+		                </td>
+                        <td id="dept_code">
+			                Depaertment
+		                </td>
+		                <td id="module_code">
+			                Module_code
+		                </td>
+		                <td id="room_code">
+			                Room_code
+		                </td>
+		                <td id="capacity">
+			                Capacity
+		                </td>
+		                <td id="facility">
+                            Facility
+		                </td>
+		                <td id="special_requirements">
+			                Special </br>Requirements
+		                </td>
+		                <td id="priority">
+			                Priority
+		                </td>
+		                <td id="day">
+			                Day
+		                </td>
+		                <td id="period">
+			                Period
+		                </td>
+				
+		                <td id="duration">
+			                Duration
+		                </td>
+		                <td id="week(s)" >
+			                Week(s)
+		                </td>
+                        <%--<td id="semester">
+                            Semester
+                        </td>
+                        <td id="lecturer">
+                            Lecturer
+                        </td>
+                        <td id="session">
+                            Session Type
+                        </td>
+                        <td id="status">
+                            Status
+                        </td>--%>
+		                <td id="edit_cell" style="cursor:default;">
+			                Edit/Delete
+		                </td>
+				
+	                </tr>
+                </table>
+            </div>
+          </div>
+          <div id="facility-tabs">
+            <p>Facility management</p>
+          </div>
+          <div id="round-tabs">
+            <p>Round dates</p>
+          </div>
+    </div>  
     <%--<div>--%>
         <%-- General information --%>
 <%--        <table class="inputs box_class" id="main_layout" >
