@@ -753,6 +753,7 @@
             getBuildingAjax();
             loadDuration();
             loadPeriod();
+            init_module_dialog();
             //implement jquery ui slider to 'number of rooms' and 'capacity'
             //start slider
             $("#slider-rooms").slider({
@@ -841,6 +842,7 @@
             //put the slider value into text box with id 'capacity'
             $("#capacity5").val($("#slider-capacity5").slider("value"));
             //end slider
+            
         });
         //end document.ready
         
@@ -881,6 +883,7 @@
                     var result = data.d;
                     for (var i = 0; i < result.length; i++) {
                         $("#dept").val(result[0]);
+                        $("#mod_dept").val(result[1]);
                     }
                 },
                 error: function (response) {
@@ -1292,6 +1295,10 @@
                     }
                 }
             }
+        }
+        function init_module_dialog() {
+            $("#dialog-module").dialog();
+            $("#dialog-module").dialog("close");
         }
     </script>
 
@@ -2118,5 +2125,21 @@
                 </tr>
             </table>
         </div>
-      </div>      
+      </div>
+    <div id="dialog-module" title="Add New Module">
+        <form id="module_form" method="post">
+            Module code: <input type="text" id="mod_dept" readonly="readonly" name="mod_dept" /> &nbsp; 
+            <select id="mod_part" name="mod_part">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+                <option>F</option>
+                <option>I</option>
+                <option>P</option>
+            </select> &nbsp;
+            <input type="text" id="mod_num" name="mod_num" /><br />
+            Module title: <input type="text" id="mod_title" name="mod_title" /><br /> 
+        </form>
+    </div>      
 </asp:Content>

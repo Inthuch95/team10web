@@ -142,6 +142,7 @@ namespace Team11
         {
             List<string> dept = new List<string> { };
             dept.Add(HttpContext.Current.Session["dept_name"].ToString());
+            dept.Add(HttpContext.Current.Session["dept_code"].ToString());
             return dept;
         }
         private static DataSet GetData(SqlCommand cmd)
