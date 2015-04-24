@@ -859,6 +859,7 @@
                 dataType: "json",
                 success: function (data) {
                     var result = data.d;
+                    $("#module").empty();
                     for (var i = 0; i < result.length; i++) {
                         //populate module drop down list
                         $("#module").append("<option>" + result[i].module_code + " : " + result[i].module_title + "</option>");
@@ -925,6 +926,25 @@
                     for (var i = 0; i < buildingData.length; i++) {
                         $("#building1").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
                     }
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        //let the user manually add new module into the database
+        function addNewModuleAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "CreateRequest.aspx/insertModule",
+                data: $("#module_form").serialize(),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+                    alert("success");
+                    getModuleAjax();
                 },
                 error: function (response) {
                     console.log(response);
@@ -1300,6 +1320,9 @@
             $("#dialog-module").dialog();
             $("#dialog-module").dialog("close");
         }
+        function showModDialog() {
+            $("#dialog-module").dialog("open");
+        }
     </script>
 
   
@@ -1329,7 +1352,8 @@
                 <td align="left">
                     <select id="module" name="module">
 
-                    </select>
+                    </select><br />
+                    <input type="button" id="add_mod" onclick="showModDialog()" value="Add New Module" />
                 </td>
             </tr>
             <tr>
@@ -2127,7 +2151,7 @@
         </div>
       </div>
     <div id="dialog-module" title="Add New Module">
-        <form id="module_form" method="post">
+        <form id="module_form" name="module_form" method="post">
             Module code: <input type="text" id="mod_dept" readonly="readonly" name="mod_dept" /> &nbsp; 
             <select id="mod_part" name="mod_part">
                 <option>A</option>
@@ -2140,6 +2164,7 @@
             </select> &nbsp;
             <input type="text" id="mod_num" name="mod_num" /><br />
             Module title: <input type="text" id="mod_title" name="mod_title" /><br /> 
+            <input type="button" id="module_submit" onclick="addNewModuleAjax()" /> 
         </form>
     </div>      
 </asp:Content>

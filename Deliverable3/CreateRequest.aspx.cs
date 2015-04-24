@@ -10,7 +10,7 @@ using System.Web.Script.Services;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Configuration;
-
+using System.Collections.Specialized;
 
 namespace Team11
 {
@@ -18,6 +18,7 @@ namespace Team11
     {
         public string module_code;
         public string module_title;
+        public string dept;
     }
     public class ROOMS 
     {
@@ -46,6 +47,7 @@ namespace Team11
     }
     public partial class CreateRequest : System.Web.UI.Page
     {
+        public static string mod_title, mod_code;
         protected void Page_Init(object sender, EventArgs e)
         {
             //go back to log in page if the users haven't logged in
@@ -144,6 +146,14 @@ namespace Team11
             dept.Add(HttpContext.Current.Session["dept_name"].ToString());
             dept.Add(HttpContext.Current.Session["dept_code"].ToString());
             return dept;
+        }
+        [WebMethod]
+        public void insertModule()
+        {
+            
+            List<string> modules = new List<string> { };
+            modules.Add(HttpContext.Current.Session["mod_title"].ToString());
+            
         }
         private static DataSet GetData(SqlCommand cmd)
         {
