@@ -17,6 +17,7 @@
             };
             $("#tabs").tabs();
             getRequestAjax();
+            initFacilityDialog()
         });
         var requestData;
         //start ajax
@@ -36,23 +37,21 @@
                         for (var i = 0; i < requestData.length; i++) {
                             var id = "#" + (i + 1);
                             $("#dataTable").append("<tr id='" + (i + 1) + "'>");
-                            $(id).append("<td>" + requestData[i].request_id + "</td>");
+                           // $(id).append("<td>" + requestData[i].request_id + "</td>");
                             $(id).append("<td>" + requestData[i].dept_code + "</td>");
                             $(id).append("<td>" + requestData[i].module + "</td>");
                             $(id).append("<td>" + requestData[i].room_code + "</td>");
                             $(id).append("<td>" + requestData[i].capacity + "</td>");
-                            $(id).append("<td>" + "facility" + "</td>");
+                            $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' value='Show' onclick='showFacilityDialog()' /></td>");
                             $(id).append("<td>" + requestData[i].special_req + "</td>");
                             $(id).append("<td>" + requestData[i].priority + "</td>");
                             $(id).append("<td>" + requestData[i].day + "</td>");
                             $(id).append("<td>" + requestData[i].period + "</td>");
                             $(id).append("<td>" + requestData[i].duration + "</td>");
                             $(id).append("<td>" + "Weeks" + "</td>");
-                            //$(id).append("<td>" + requestData[i].semester + "</td>");
-                            //$(id).append("<td>" + requestData[i].lecturer + "</td>");
-                            //$(id).append("<td>" + requestData[i].session + "</td>");
-                            //$(id).append("<td>" + requestData[i].status + "</td>");
-                            $(id).append("<td>" + "button" + "</td>");
+                            $(id).append("<td>" + requestData[i].semester + "</td>");
+                            $(id).append("<td>" + requestData[i].session + "</td>");
+                            $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' value='Allocate' onclick='' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' value='Reject' onclick='' /></td>");
                             $("#dataTable").append("</tr>");
                         }
                     },
@@ -61,8 +60,55 @@
                     }
                 });
         }
+        function allocateAjax() {
+            var request = {};
+            request.request_id = "";
+            //assign var here
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AdminPage.aspx/allocateRequest",
+                data: "{request: " + JSON.stringify(request) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("success");
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        function rejectAjax() {
+            var request = {};
+            request.request_id = "";
+            //assign var here
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AdminPage.aspx/rejectRequest",
+                data: "{request: " + JSON.stringify(request) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("success");
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
 
         //end ajax
+        function initFacilityDialog() {
+            $("#dialog-facility").dialog();
+            $("#dialog-facility").dialog("close");
+        }
+        function showFacilityDialog() {
+            $("#dialog-facility").dialog("open");
+        }
     </script>
    
 </asp:Content>
@@ -88,11 +134,11 @@
             <table id="scrollTable">
 	            <tr>
 		            <h4>Click on the headers to sort the table</h4><br/><br/>
-			            <td id="request_id">
+<%--			            <td id="request_id">
 				            Request</br>Id
-			            </td>
+			            </td>--%>
                         <td id="dept_code">
-			                Depaertment
+			                Dept
 		                </td>
 			            <td id="module_code">
 				            Module </br> Code
@@ -107,7 +153,7 @@
                             Facility
                         </td>
 			            <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">
-				            Special </br>Requirements
+				            Special </br>Req
 			            </td>
 			            <td id="priority">
 				            Priority
@@ -124,20 +170,14 @@
 			            <td id="week(s)" style="cursor:default;">
 				            Week(s)
 			            </td>
-                        <%--<td id="semester">
+                        <td id="semester">
                             Semester
-                        </td>
-                        <td id="lecturer">
-                            Lecturer
                         </td>
                         <td id="session">
                             Session Type
                         </td>
-                        <td id="status">
-                            Status
-                        </td>--%>
 			            <td id="edit_cell" style="cursor:default;">
-				            Edit/Delete
+				            Action
 			            </td>
                     </tr>
 	            </table>
@@ -146,11 +186,11 @@
             <div id="content_wrap">
                 <table id="dataTable" class="entries_table">
 	                <tr style="display:none;">
-		                <td id="request_id">
+<%--		            <td id="request_id">
 			                Request_id
-		                </td>
+		                </td>--%>
                         <td id="dept_code">
-			                Depaertment
+			                Dept
 		                </td>
 		                <td id="module_code">
 			                Module_code
@@ -165,7 +205,7 @@
                             Facility
 		                </td>
 		                <td id="special_requirements">
-			                Special </br>Requirements
+			                Special </br>Req
 		                </td>
 		                <td id="priority">
 			                Priority
@@ -183,25 +223,24 @@
 		                <td id="week(s)" >
 			                Week(s)
 		                </td>
-                        <%--<td id="semester">
+                        <td id="semester">
                             Semester
-                        </td>
-                        <td id="lecturer">
-                            Lecturer
                         </td>
                         <td id="session">
                             Session Type
                         </td>
-                        <td id="status">
-                            Status
-                        </td>--%>
 		                <td id="edit_cell" style="cursor:default;">
-			                Edit/Delete
+			                Action
 		                </td>
 				
 	                </tr>
                 </table>
             </div>
+            <div id="dialog-facility" title="Facilities">
+                <ul id="facility_list">
+
+                </ul>
+            </div>      
           </div>
           <div id="facility-tabs">
             <p>Facility management</p>

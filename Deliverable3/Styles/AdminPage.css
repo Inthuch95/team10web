@@ -32,11 +32,12 @@
 
 #dataTable td 
 {
-    width:120px;
-    max-width:120px;
+    width:93.33px;
+    max-width:93.33px;
     font-size:1em;
     border:1px solid #f1f1f1;
     overflow:hidden;
+    height: 100%;
 }
 
 
@@ -60,8 +61,8 @@
 
 #scrollTable td 
 {
-    width:120px;
-    max-width:120px;
+    width:93.33px;
+    max-width:93.33px;
     font-size:1em;
     overflow:hidden;
     cursor: pointer;
@@ -75,6 +76,7 @@ table
 	border-spacing: 0px;
     border-collapse: separate;
 	overflow:hidden;
+    height: 100%;
 }
 #content_wrap 
 {
