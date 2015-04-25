@@ -934,15 +934,18 @@
         }
         //let the user manually add new module into the database
         function addNewModuleAjax() {
+            var module = {};
+            module.mod_code = $("#mod_dept").val() + $("#mod_part").val() + $("#mod_num").val();
+            module.mod_title = $("#mod_title").val();
             $.ajax(
             {
                 type: "POST",
                 async: true,
                 url: "CreateRequest.aspx/insertModule",
-                data: $("#module_form").serialize(),
+                data: "{module: " + JSON.stringify(module) + "}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function () {
+                success: function (response) {
                     alert("success");
                     getModuleAjax();
                 },
@@ -2164,7 +2167,8 @@
             </select> &nbsp;
             <input type="text" id="mod_num" name="mod_num" /><br />
             Module title: <input type="text" id="mod_title" name="mod_title" /><br /> 
-            <input type="button" id="module_submit" onclick="addNewModuleAjax()" /> 
+            <input type="button" id="module_submit" value="Submit" onclick="addNewModuleAjax()" />&nbsp; 
+            <input type="button" id="module_cancel" value="Cancel" onclick="$('#dialog-module').dialog('close')" />  
         </form>
     </div>      
 </asp:Content>

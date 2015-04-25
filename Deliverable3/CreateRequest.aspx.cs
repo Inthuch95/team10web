@@ -20,6 +20,11 @@ namespace Team11
         public string module_title;
         public string dept;
     }
+    public class Module
+    {
+        public string mod_code { get; set; }
+        public string mod_title { get; set; }
+    }
     public class ROOMS 
     {
         public string park;
@@ -148,11 +153,24 @@ namespace Team11
             return dept;
         }
         [WebMethod]
-        public void insertModule()
+        [ScriptMethod]
+        public static void insertModule(Module module)
         {
-            
-            List<string> modules = new List<string> { };
-            modules.Add(HttpContext.Current.Session["mod_title"].ToString());
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [MODULES] ([dept_code], [module_code], [module_title]) VALUES(@dept, @module_code,@module_title)"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
+                    cmd.Parameters.AddWithValue("@module_code", module.mod_code);
+                    cmd.Parameters.AddWithValue("@module_title", module.mod_title);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
             
         }
         private static DataSet GetData(SqlCommand cmd)

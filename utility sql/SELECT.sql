@@ -1,1 +1,1 @@
-SELECT MAX(capacity) FROM [ROOMS];
+SELECT [module_title] FROM [MODULES] WHERE [module_title] = 'abcd';
