@@ -21,6 +21,7 @@ namespace Team11
     
     public partial class AdminPage : System.Web.UI.Page
     {
+        //change the status of a request to 'booked'
         [WebMethod]
         [ScriptMethod]
         public static void allocateRequest(Request request)
@@ -28,6 +29,7 @@ namespace Team11
             string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
             {
+                //request_id received from ajax function allocateAjax(el)
                 using (SqlCommand cmd = new SqlCommand("UPDATE [REQUESTS] SET [status] = 'Booked' WHERE [request_id] = @request_id"))
                 {
                     cmd.CommandType = CommandType.Text;
@@ -39,7 +41,7 @@ namespace Team11
                 }
             }
         }
-
+        //change the status of a request to 'rejected'
         [WebMethod]
         [ScriptMethod]
         public static void rejectRequest(Request request)
@@ -47,6 +49,7 @@ namespace Team11
             string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
             {
+                //request_id received from ajax function rejectAjax(el)
                 using (SqlCommand cmd = new SqlCommand("UPDATE [REQUESTS] SET [status] = 'Rejected' WHERE [request_id] = @request_id"))
                 {
                     cmd.CommandType = CommandType.Text;

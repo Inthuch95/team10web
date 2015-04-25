@@ -35,6 +35,7 @@
                     success: function (data) {
                         requestData = data.d;
                         console.log(requestData);
+                        //display all request data in a table
                         for (var i = 0; i < requestData.length; i++) {
                             var id = "#" + (i + 1);
                             $("#dataTable").append("<tr id='" + (i + 1) + "'>");
@@ -61,10 +62,13 @@
                     }
                 });
         }
+        //change the status of a request to 'booked'
         function allocateAjax(el) {
             var request = {};
             currentRow = el.parentNode.parentNode;
+            //get id of current row
             var id = "#row" + $(currentRow).attr('id');
+            //get value of request_id from hidden input form
             request.request_id = $(id).val();
             //assign var here
             $.ajax(
@@ -72,6 +76,7 @@
                 type: "POST",
                 async: true,
                 url: "AdminPage.aspx/allocateRequest",
+                //send request_id of current row to process in the codebehind environment
                 data: "{request: " + JSON.stringify(request) + "}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -83,16 +88,20 @@
                 }
             });
         }
+        //change the status of a request to 'rejected'
         function rejectAjax(el) {
             var request = {};
             currentRow = el.parentNode.parentNode;
+            //get id of current row
             var id = "#row" + $(currentRow).attr('id');
+            //get value of request_id from hidden input form
             request.request_id = $(id).val();
             $.ajax(
             {
                 type: "POST",
                 async: true,
                 url: "AdminPage.aspx/rejectRequest",
+                //send request_id of current row to process in the codebehind environment
                 data: "{request: " + JSON.stringify(request) + "}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -106,6 +115,8 @@
         }
 
         //end ajax
+        //start dialog
+        //initialise facility dialog. this will be used to display facilities requested by timetablers in the room allocation tab
         function initFacilityDialog() {
             $("#dialog-facility").dialog();
             $("#dialog-facility").dialog("close");
@@ -113,6 +124,7 @@
         function showFacilityDialog() {
             $("#dialog-facility").dialog("open");
         }
+        //end dialog
     </script>
    
 </asp:Content>
@@ -240,6 +252,7 @@
 	                </tr>
                 </table>
             </div>
+            <%--dialog displaying list of facilities specified by timetablers--%>
             <div id="dialog-facility" title="Facilities">
                 <ul id="facility_list">
 
