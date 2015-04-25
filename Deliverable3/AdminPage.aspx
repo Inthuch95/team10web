@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateRequest.aspx.cs" Inherits="Team11.CreateRequest" MaintainScrollPositionOnPostback = "true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminPage.aspx.cs" Inherits="Team11.AdminPage" MaintainScrollPositionOnPostback = "true"%>
 
 <%-- Create Request Header Content --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -20,6 +20,7 @@
             initFacilityDialog()
         });
         var requestData;
+        var currentRow;
         //start ajax
         //get all request data into an array
         function getRequestAjax() {
@@ -38,7 +39,7 @@
                             var id = "#" + (i + 1);
                             $("#dataTable").append("<tr id='" + (i + 1) + "'>");
                            // $(id).append("<td>" + requestData[i].request_id + "</td>");
-                            $(id).append("<td>" + requestData[i].dept_code + "</td>");
+                            $(id).append("<td>" + requestData[i].dept_code + "<input type='hidden' id='row" + (i + 1) + "' value='" + requestData[i].request_id + "' />" + "</td>");
                             $(id).append("<td>" + requestData[i].module + "</td>");
                             $(id).append("<td>" + requestData[i].room_code + "</td>");
                             $(id).append("<td>" + requestData[i].capacity + "</td>");
@@ -51,7 +52,7 @@
                             $(id).append("<td>" + "Weeks" + "</td>");
                             $(id).append("<td>" + requestData[i].semester + "</td>");
                             $(id).append("<td>" + requestData[i].session + "</td>");
-                            $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' value='Allocate' onclick='' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' value='Reject' onclick='' /></td>");
+                            $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' value='Allocate' onclick='allocateAjax(this)' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' value='Reject' onclick='rejectAjax(this)' /></td>");
                             $("#dataTable").append("</tr>");
                         }
                     },
@@ -60,9 +61,11 @@
                     }
                 });
         }
-        function allocateAjax() {
+        function allocateAjax(el) {
             var request = {};
-            request.request_id = "";
+            currentRow = el.parentNode.parentNode;
+            var id = "#row" + $(currentRow).attr('id');
+            request.request_id = $(id).val();
             //assign var here
             $.ajax(
             {
@@ -80,10 +83,11 @@
                 }
             });
         }
-        function rejectAjax() {
+        function rejectAjax(el) {
             var request = {};
-            request.request_id = "";
-            //assign var here
+            currentRow = el.parentNode.parentNode;
+            var id = "#row" + $(currentRow).attr('id');
+            request.request_id = $(id).val();
             $.ajax(
             {
                 type: "POST",

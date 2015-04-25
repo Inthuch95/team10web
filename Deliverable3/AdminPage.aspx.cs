@@ -14,8 +14,51 @@ using System.Web.Configuration;
 
 namespace Team11
 {
+    public class Request
+    {
+        public string request_id { get; set; }
+    }
+    
     public partial class AdminPage : System.Web.UI.Page
     {
+        [WebMethod]
+        [ScriptMethod]
+        public static void allocateRequest(Request request)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE [REQUESTS] SET [status] = 'Booked' WHERE [request_id] = @request_id"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod]
+        public static void rejectRequest(Request request)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE [REQUESTS] SET [status] = 'Rejected' WHERE [request_id] = @request_id"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+        
         protected void Page_Init(object sender, EventArgs e)
         {
             //go back to log in page if the users haven't logged in
@@ -2121,7 +2164,7 @@ namespace Team11
 //        //    clearEverything();
 //        //    SearchRooms();
 //        //}
-
+        
 
     }
 }
