@@ -17,11 +17,121 @@
             };
             $("#tabs").tabs();
             getRequestAjax();
-            initFacilityDialog()
+            initFacilityDialog();
+            getRoundAjax()
+            //start datepicker
+            $("#from1").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                onClose: function (selectedDate) {
+                    $("#to").datepicker("option", "minDate", selectedDate);
+                }
+            });
+            $("#from1").datepicker("option", "dateFormat", "dd/mm/yy");
+            $("#to1").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                onClose: function (selectedDate) {
+                    $("#from").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+            $("#to1").datepicker("option", "dateFormat", "dd/mm/yy");
+            $("#from2").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                onClose: function (selectedDate) {
+                    $("#to").datepicker("option", "minDate", selectedDate);
+                }
+            });
+            $("#from2").datepicker("option", "dateFormat", "dd/mm/yy");
+            $("#to2").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                onClose: function (selectedDate) {
+                    $("#from").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+            $("#to2").datepicker("option", "dateFormat", "dd/mm/yy");
+            $("#from3").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                onClose: function (selectedDate) {
+                    $("#to").datepicker("option", "minDate", selectedDate);
+                }
+            });
+            $("#from3").datepicker("option", "dateFormat", "dd/mm/yy");
+            $("#to3").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                onClose: function (selectedDate) {
+                    $("#from").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+            $("#to3").datepicker("option", "dateFormat", "dd/mm/yy");
+            //end datepicker
         });
         var requestData;
         var currentRow;
+        var roundData;
         //start ajax
+        //get all round dates into an array
+        function getRoundAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AdminPage.aspx/getRound",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    roundData = data.d;
+                    console.log(roundData);
+                    for (var i = 0; i < 3; i++) {
+                        var from = "#from" + (i + 1);
+                        var to = "#to" + (i + 1);
+                        $(from).val(roundData[i].from);
+                        $(to).val(roundData[i].to);
+                    }
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        //update round date
+        function updateRoundAjax() {
+            var round = {};
+            //get all round date into 'round'
+            round.from1 = $("#from1").val();
+            round.to1 = $("#to1").val();
+            round.from2 = $("#from2").val();
+            round.to2 = $("#to2").val();
+            round.from3 = $("#from3").val();
+            round.to3 = $("#to3").val();
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AdminPage.aspx/updateRound",
+                data: "{round: " + JSON.stringify(round) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("success");
+                    getRoundAjax();
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
         //get all request data into an array
         function getRequestAjax() {
             $.ajax(
@@ -44,7 +154,7 @@
                             $(id).append("<td>" + requestData[i].module + "</td>");
                             $(id).append("<td>" + requestData[i].room_code + "</td>");
                             $(id).append("<td>" + requestData[i].capacity + "</td>");
-                            $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' value='Show' onclick='showFacilityDialog()' /></td>");
+                            $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' value='Show' onclick='showFacilityDialog(this)' /></td>");
                             $(id).append("<td>" + requestData[i].special_req + "</td>");
                             $(id).append("<td>" + requestData[i].priority + "</td>");
                             $(id).append("<td>" + requestData[i].day + "</td>");
@@ -121,7 +231,36 @@
             $("#dialog-facility").dialog();
             $("#dialog-facility").dialog("close");
         }
-        function showFacilityDialog() {
+        function showFacilityDialog(el) {
+            $("#facility_list").empty();
+            var row = el.parentNode.parentNode;
+            //get id of current row
+            var id = "#row" + $(row).attr('id');
+            //get value of request_id from hidden input form
+            var request_id = parseInt($(id).val());
+            for (var i = 0; i < requestData.length;i++){
+                if (requestData[i].request_id == request_id) {
+                    if (requestData[i].wheelchair == 1)
+                        $("#facility_list").append("<li>Wheelchair</li>");
+                    if (requestData[i].projector == 1)
+                        $("#facility_list").append("<li>Projector</li>");
+                    if (requestData[i].whiteboard == 1)
+                        $("#facility_list").append("<li>Whiteboard</li>");
+                    if (requestData[i].visualiser == 1)
+                        $("#facility_list").append("<li>Visualiser</li>");
+                    if (requestData[i].computer == 1)
+                        $("#facility_list").append("<li>Computer</li>");
+                    if (requestData[i].lecture_capture == 1)
+                        $("#facility_list").append("<li>Lecture Capture</li>");
+                    if (requestData[i].pa_system == 1)
+                        $("#facility_list").append("<li>PA System</li>");
+                    if (requestData[i].video_dvd == 1)
+                        $("#facility_list").append("<li>Video/DVD</li>");
+                    if (requestData[i].radio_microphone == 1)
+                        $("#facility_list").append("<li>Radio Microphone</li>");
+                }
+            }
+            
             $("#dialog-facility").dialog("open");
         }
         //end dialog
@@ -263,7 +402,20 @@
             <p>Facility management</p>
           </div>
           <div id="round-tabs">
-            <p>Round dates</p>
+            <h2>Round dates</h2>
+            Round 1: <label for="from">From</label>
+            <input type="text" id="from1" name="from1">
+            <label for="to">to</label>
+            <input type="text" id="to1" name="to1"><br />
+            Round 2: <label for="from">From</label>
+            <input type="text" id="from2" name="from2">
+            <label for="to">to</label>
+            <input type="text" id="to2" name="to2"><br />
+            Round 3: <label for="from">From</label>
+            <input type="text" id="from3" name="from3">
+            <label for="to">to</label>
+            <input type="text" id="to3" name="to3"><br />
+            <input type="button" id="save_round" name="save_round" onclick="updateRoundAjax()" />
           </div>
     </div>  
     <%--<div>--%>
