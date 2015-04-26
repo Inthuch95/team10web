@@ -415,7 +415,7 @@
             <input type="text" id="from3" name="from3">
             <label for="to">to</label>
             <input type="text" id="to3" name="to3"><br />
-            <input type="button" id="save_round" name="save_round" onclick="updateRoundAjax()" />
+            <input type="button" id="save_round" name="save_round" value="Submit" onclick="updateRoundAjax()" />
           </div>
     </div>  
     <%--<div>--%>
