@@ -7,18 +7,13 @@
     
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
-
-            //Room Buttons
-            if ($("#MainContent_RadioButtonListView_0").is(":checked")) {
-                $("#MainContent_RadioButtonListView_0").parent().addClass("btn btn-danger");
-            };
-            if ($("#MainContent_RadioButtonListView_1").is(":checked")) {
-                $("#MainContent_RadioButtonListView_1").parent().addClass("btn btn-danger");
-            };
+            
             $("#tabs").tabs();
             getRequestAjax();
             initFacilityDialog();
-            getRoundAjax()
+            getRoundAjax();
+            getRoomAjax();
+            getBuildingAjax();
             //start datepicker
             $("#from1").datepicker({
                 defaultDate: "+1w",
@@ -79,7 +74,76 @@
         var requestData;
         var currentRow;
         var roundData;
+        var roomData;
+        var buildingData;
+        function filterChange() {
+            var buildingOption = $("#building_filter").val();
+            var building = buildingOption.substr((buildingOption.indexOf(":") + 2));
+            var park = $("#park_filter").val();
+            $("#accordion").remove();
+            $("#room-tabs").append("<div id='accordion'>");
+            for (var i = 0; i < roomData.length; i++) {
+                if ((park == "Any" || roomData[i].park == park) && (buildingOption == "Any" || roomData[i].building_name == building)) {
+                    $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
+                    $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /></div>");
+                }
+            }
+            $("#accordion").accordion({
+                collapsible: true,
+                heightStyle: "content"
+            });
+            $("#room-tabs").append("</div>");
+        }
         //start ajax
+        //get building data
+        function getBuildingAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "CreateRequest.aspx/getBuilding",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    buildingData = data.d;
+                    for (var i = 0; i < buildingData.length; i++) {
+                        $("#building_filter").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                    }
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        //get room data and their location
+        function getRoomAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "CreateRequest.aspx/getRooms",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    roomData = data.d;
+                    console.log(roomData);
+                    $("#accordion").empty();
+                    for (var i = 0; i < roomData.length;i++){
+                        $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
+                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /></div>");
+                    }
+                    $("#accordion").accordion({
+                        collapsible: true,
+                        heightStyle: "content"
+                    });
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
         //get all round dates into an array
         function getRoundAjax() {
             $.ajax(
@@ -281,6 +345,7 @@
         <li><a href="#room-allocation-tabs">Room Allocation</a></li>
         <li><a href="#facility-tabs">Facility Management</a></li>
         <li><a href="#round-tabs">Round Dates</a></li>
+        <li><a href="#room-tabs">Room Management</a></li>
       </ul>
       <div id="room-allocation-tabs">
         <h2>Room allocation</h2>
@@ -417,177 +482,21 @@
             <input type="text" id="to3" name="to3"><br />
             <input type="button" id="save_round" name="save_round" value="Submit" onclick="updateRoundAjax()" />
           </div>
-    </div>  
-    <%--<div>--%>
-        <%-- General information --%>
-<%--        <table class="inputs box_class" id="main_layout" >
-            <tr>
+          <div id="room-tabs">
+              <div id="room_filter">
+                  Park: <select id="park_filter" onchange="filterChange()">
+                            <option>Any</option>
+                            <option>Central</option>
+                            <option>East</option>    
+                            <option>West</option>                 
+                        </select>&nbsp;
+                  Building: <select id="building_filter" onchange="filterChange()">
+                                <option>Any</option>
+                            </select>&nbsp;
+              </div>
+              <div id="accordion">
                 
-                <td>
-                    <table align="center">
-                        <tr>
-                            <td align="center" colspan="2">Select a Room:</td>
-                            <td align="center" colspan="3">
-                                <select id="room1" name="room1"></select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><asp:ListItem class="none btn btn-primary">Delete Room</asp:ListItem></td>
-                            <td><asp:ListItem class="none btn btn-primary">Change Room</asp:ListItem></td>
-                            <td><asp:ListItem class="none btn btn-primary">View Room Facilities</asp:ListItem></td>
-                            <td><asp:ListItem class="none btn btn-primary">Edit Room Facilities</asp:ListItem></td>
-                            <td><asp:ListItem class="none btn btn-primary">Add Room Facility</asp:ListItem></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <div id="divDelRoom" runat="server" visible="false">
-
-
-
-        </div>
-        <div id="divEditRoom" runat="server" visible="false">
-
-
-
-        </div>
-        <div id="divViewFac" runat="server" visible="false">
-
-
-
-        </div>
-        <div id="divEditFac" runat="server" visible="false">
-
-
-
-        </div>
-        <div id="divAddFac" runat="server" visible="false">
-
-
-
-        </div>
-    </div>
-    <div>
-        <table class="inputs box_class" id="Table1" >
-            <tr>
-                <td align="left">Change Round Dates</td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>Round 1:</td>
-                        </tr>
-                        <tr>
-                            <td>Start:</td>
-                            <td>dd/mm/yyyy</td>
-                            <td>End:</td>
-                            <td>dd/mm/yyyy</td>
-                        </tr>
-                        <tr>
-                            <td>Round 2:</td>
-                        </tr>
-                        <tr>
-                            <td>Start:</td>
-                            <td>dd/mm/yyyy</td>
-                            <td>End:</td>
-                            <td>dd/mm/yyyy</td>
-                        </tr>
-                        <tr>
-                            <td>Round 3:</td>
-                        </tr>
-                        <tr>
-                            <td>Start:</td>
-                            <td>dd/mm/yyyy</td>
-                            <td>End:</td>
-                            <td>dd/mm/yyyy</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <table class="inputs box_class" id="Table2" >
-            <tr>
-                <td align="left">Change Status of Request</td>
-            </tr>
-        </table>
-        <table class="inputs box_class" id="Table3" >
-            <tr>
-                <td align="left">Allocate Rooms</td>
-            </tr>
-        </table>
-      </div>   --%>  
+              </div>
+          </div>
+    </div>  
 </asp:Content>
-<%-- <tr>
-              <td align="left">Current Rooms Facilities</td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-                                <ol id="selectable-computer">
-                                    <li class="ui-state-default" style="width: 200px">Computer</li>
-                                </ol>
-                                <input type="hidden" id="computer" name="computer" value="0"/>
-                            </td>
-                            <td>
-                                 <ol id="selectable-capture">
-                                     <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                 </ol>
-                                 <input type="hidden" id="capture" name="capture" value="0" />
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>
-                                <ol id="selectable-pa">
-                                    <li class="ui-state-default" style="width: 200px">PA System</li>
-                                </ol>
-                                <input type="hidden" id="pa" name="pa" value="0" />
-                            </td>
-                            <td>
-                                <ol id="selectable-projector">
-                                    <li class="ui-state-default" style="width: 200px">Projector</li>
-                                </ol>
-                                <input type="hidden" id="projector" name="projector" value="0" />
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>
-                                <ol id="selectable-mic">
-                                    <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
-                                </ol>
-                                <input type="hidden" id="mic" name="mic" value="0" />
-                            </td>
-                            <td>
-                                <ol id="selectable-video">
-                                    <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
-                                </ol>
-                                <input type="hidden" id="video" name="video" value="0" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <ol id="selectable-visualiser">
-                                    <li class="ui-state-default" style="width: 200px">Visualiser</li>
-                                </ol>
-                                <input type="hidden" id="visualiser" name="visualiser" value="0" />
-                            </td>
-                            <td>
-                                <ol id="selectable-whiteboard">
-                                    <li class="ui-state-default" style="width: 200px">Whiteboard</li>
-                                </ol>
-                                <input type="hidden" id="whiteboard" name="whiteboard" value="0" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <ol id="selectable-wheelchair">
-                                    <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
-                                </ol>
-                                <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
-                            </td>
-                            <td>
-                                Add New Facility
-                            </td>
-                        </tr>
-                    </table>
-                 </td>
-            </tr> --%>
