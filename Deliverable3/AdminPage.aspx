@@ -7,13 +7,26 @@
     
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
-            
+            //capacity slider
+            $("#slider-capacity").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity1").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity'
+            $("#capacity1").val($("#slider-capacity").slider("value"));
             $("#tabs").tabs();
             getRequestAjax();
             initFacilityDialog();
             getRoundAjax();
             getRoomAjax();
             getBuildingAjax();
+            initRoomDialog();
             //start datepicker
             $("#from1").datepicker({
                 defaultDate: "+1w",
@@ -70,7 +83,116 @@
             });
             $("#to3").datepicker("option", "dateFormat", "dd/mm/yy");
             //end datepicker
+            $("#selectable-wheelchair").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWheelchair == false)
+                    selectedWheelchair = true;
+                else
+                    selectedWheelchair = false;
+                if (selectedWheelchair)
+                    $("#wheelchair").val("1");
+                else
+                    $("#wheelchair").val("0");
+            }).selectable();
+            $("#selectable-whiteboard").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWhiteboard == false)
+                    selectedWhiteboard = true;
+                else
+                    selectedWhiteboard = false;
+                if (selectedWhiteboard)
+                    $("#whiteboard").val("1");
+                else
+                    $("#whiteboard").val("0");
+            }).selectable();
+            $("#selectable-projector").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedProjector == false)
+                    selectedProjector = true;
+                else
+                    selectedProjector = false;
+                if (selectedProjector)
+                    $("#projector").val("1");
+                else
+                    $("#projector").val("0");
+            }).selectable();
+            $("#selectable-visualiser").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVisualiser == false)
+                    selectedVisualiser = true;
+                else
+                    selectedVisualiser = false;
+                if (selectedVisualiser)
+                    $("#visualiser").val("1");
+                else
+                    $("#visualiser").val("0");
+            }).selectable();
+            $("#selectable-computer").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedComputer == false)
+                    selectedComputer = true;
+                else
+                    selectedComputer = false;
+                if (selectedComputer)
+                    $("#computer").val("1");
+                else
+                    $("#computer").val("0");
+            }).selectable();
+            $("#selectable-video").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVideo == false)
+                    selectedVideo = true;
+                else
+                    selectedVideo = false;
+                if (selectedVideo)
+                    $("#video").val("1");
+                else
+                    $("#video").val("0");
+            }).selectable();
+            $("#selectable-pa").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedPa == false)
+                    selectedPa = true;
+                else
+                    selectedPa = false;
+                if (selectedPa)
+                    $("#pa").val("1");
+                else
+                    $("#pa").val("0");
+            }).selectable();
+            $("#selectable-mic").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedMic == false)
+                    selectedMic = true;
+                else
+                    selectedMic = false;
+                if (selectedMic)
+                    $("#mic").val("1");
+                else
+                    $("#mic").val("0");
+            }).selectable();
+            $("#selectable-capture").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedCap == false)
+                    selectedCap = true;
+                else
+                    selectedCap = false;
+                if (selectedCap)
+                    $("#capture").val("1");
+                else
+                    $("#capture").val("0");
+            }).selectable();
         });
+        //selectable 1
+        var selectedWhiteboard = false;
+        var selectedComputer = false;
+        var selectedCap = false;
+        var selectedPa = false;
+        var selectedProjector = false;
+        var selectedMic = false;
+        var selectedVideo = false;
+        var selectedVisualiser = false;
+        var selectedWheelchair = false;
         var requestData;
         var currentRow;
         var roundData;
@@ -85,7 +207,7 @@
             for (var i = 0; i < roomData.length; i++) {
                 if ((park == "Any" || roomData[i].park == park) && (buildingOption == "Any" || roomData[i].building_name == building)) {
                     $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
-                    $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /></div>");
+                    $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='updateRoomAjax(this)' value='Edit' />" + "<br /></div>");
                 }
             }
             $("#accordion").accordion({
@@ -95,6 +217,11 @@
             $("#room-tabs").append("</div>");
         }
         //start ajax
+        //allow user to edit pool room
+        function updateRoomAjax(room) {
+            console.log($(room).closest("div").attr("id"));
+            $("#dialog-room").dialog("open");
+        }
         //get building data
         function getBuildingAjax() {
             $.ajax(
@@ -132,7 +259,7 @@
                     $("#accordion").empty();
                     for (var i = 0; i < roomData.length;i++){
                         $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
-                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /></div>");
+                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='updateRoomAjax(this)' value='Edit' />" + "<br /></div>");
                     }
                     $("#accordion").accordion({
                         collapsible: true,
@@ -294,6 +421,18 @@
         function initFacilityDialog() {
             $("#dialog-facility").dialog();
             $("#dialog-facility").dialog("close");
+        }
+        function initRoomDialog() {
+            $("#dialog-room").dialog({
+                height: 500,
+                width: 700,
+                position: {
+                    my: "center",
+                    at: "top",
+                    of: window
+                }
+            });
+            $("#dialog-room").dialog("close");
         }
         function showFacilityDialog(el) {
             $("#facility_list").empty();
@@ -484,6 +623,7 @@
           </div>
           <div id="room-tabs">
               <div id="room_filter">
+                  <br />
                   Park: <select id="park_filter" onchange="filterChange()">
                             <option>Any</option>
                             <option>Central</option>
@@ -496,6 +636,75 @@
               </div>
               <div id="accordion">
                 
+              </div>
+              <div id="dialog-room" title="Pool Room Management">
+                Capacity: <div id="slider-capacity"></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
+                Facility: <table>
+                    <tr>
+                        <td>
+                            <ol id="selectable-computer">
+                                <li class="ui-state-default" style="width: 200px">Computer</li>
+                            </ol>
+                            <input type="hidden" id="computer" name="computer" value="0"/>
+                        </td>
+                        <td>
+                                <ol id="selectable-capture">
+                                    <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                </ol>
+                                <input type="hidden" id="capture" name="capture" value="0" />
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                            <ol id="selectable-pa">
+                                <li class="ui-state-default" style="width: 200px">PA System</li>
+                            </ol>
+                            <input type="hidden" id="pa" name="pa" value="0" />
+                        </td>
+                        <td>
+                            <ol id="selectable-projector">
+                                <li class="ui-state-default" style="width: 200px">Projector</li>
+                            </ol>
+                            <input type="hidden" id="projector" name="projector" value="0" />
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                            <ol id="selectable-mic">
+                                <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                            </ol>
+                            <input type="hidden" id="mic" name="mic" value="0" />
+                        </td>
+                        <td>
+                            <ol id="selectable-video">
+                                <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                            </ol>
+                            <input type="hidden" id="video" name="video" value="0" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol id="selectable-visualiser">
+                                <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                            </ol>
+                            <input type="hidden" id="visualiser" name="visualiser" value="0" />
+                        </td>
+                        <td>
+                            <ol id="selectable-whiteboard">
+                                <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                            </ol>
+                            <input type="hidden" id="whiteboard" name="whiteboard" value="0" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol id="selectable-wheelchair">
+                                <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                            </ol>
+                            <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
+                        </td>
+                    </tr>
+                </table>
               </div>
           </div>
     </div>  
