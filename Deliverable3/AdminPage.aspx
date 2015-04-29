@@ -207,7 +207,7 @@
             for (var i = 0; i < roomData.length; i++) {
                 if ((park == "Any" || roomData[i].park == park) && (buildingOption == "Any" || roomData[i].building_name == building)) {
                     $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
-                    $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='updateRoomAjax(this)' value='Edit' />" + "<br /></div>");
+                    $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />" + "<br /></div>");
                 }
             }
             $("#accordion").accordion({
@@ -216,11 +216,90 @@
             });
             $("#room-tabs").append("</div>");
         }
-        //start ajax
         //allow user to edit pool room
-        function updateRoomAjax(room) {
-            console.log($(room).closest("div").attr("id"));
+        function showRoomDialog(room) {
+            var room_code = $(room).closest("div").attr("id");
+            resetFacility();
+            var capacity;
+            for (var i = 0; i < roomData.length; i++) {
+                if (roomData[i].room_code == room_code) {
+                    capacity = roomData[i].capacity;
+                    $("#slider-capacity").slider({
+                        range: "max",
+                        min: 1,
+                        max: 500,
+                        value: capacity,
+                        step: 1,
+                        slide: function (event, ui) {
+                            $("#capacity1").val(ui.value);
+                        }
+                    });
+                    //put the slider value into text box with id 'capacity'
+                    $("#capacity1").val($("#slider-capacity").slider("value"));
+                    if (roomData[i].wheelchair == 1) {
+                        $("#wheelchair").val("1");
+                        $("#selectable-wheelchair").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].projector == 1) {
+                        $("#projector").val("1");
+                        $("#selectable-projector").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].whiteboard == 1) {
+                        $("#whiteboard").val("1");
+                        $("#selectable-whiteboard").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].visualiser == 1) {
+                        $("#visualiser").val("1");
+                        $("#selectable-visualiser").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].projector == 1) {
+                        $("#computer").val("1");
+                        $("#selectable-computer").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].projector == 1) {
+                        $("#capture").val("1");
+                        $("#selectable-capture").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].projector == 1) {
+                        $("#pa").val("1");
+                        $("#selectable-pa").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].projector == 1) {
+                        $("#mic").val("1");
+                        $("#selectable-mic").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                    if (roomData[i].projector == 1) {
+                        $("#video").val("1");
+                        $("#selectable-video").children("li").attr("class", "ui-state-default ui-selected");
+                    }
+                }
+            }
             $("#dialog-room").dialog("open");
+        }
+        function resetFacility() {
+            $("#selectable-computer").children("li").attr("class", "ui-state-default");
+            $("#selectable-capture").children("li").attr("class", "ui-state-default");
+            $("#selectable-pa").children("li").attr("class", "ui-state-default");
+            $("#selectable-wheelchair").children("li").attr("class", "ui-state-default");
+            $("#selectable-projector").children("li").attr("class", "ui-state-default");
+            $("#selectable-visualiser").children("li").attr("class", "ui-state-default");
+            $("#selectable-whiteboard").children("li").attr("class", "ui-state-default");
+            $("#selectable-mic").children("li").attr("class", "ui-state-default");
+            $("#selectable-video").children("li").attr("class", "ui-state-default");
+            $("#wheelchair").val("0");
+            $("#projector").val("0");
+            $("#visualiser").val("0");
+            $("#whiteboard").val("0");
+            $("#computer").val("0");
+            $("#capture").val("0");
+            $("#pa").val("0");
+            $("#mic").val("0");
+            $("#video").val("0");
+        }
+        //start ajax
+        //update room information
+        function updateRoomAjax() {
+            
         }
         //get building data
         function getBuildingAjax() {
@@ -259,7 +338,7 @@
                     $("#accordion").empty();
                     for (var i = 0; i < roomData.length;i++){
                         $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
-                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='updateRoomAjax(this)' value='Edit' />" + "<br /></div>");
+                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />" + "<br /></div>");
                     }
                     $("#accordion").accordion({
                         collapsible: true,
@@ -467,6 +546,7 @@
             $("#dialog-facility").dialog("open");
         }
         //end dialog
+        
     </script>
    
 </asp:Content>
@@ -704,7 +784,8 @@
                             <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
                         </td>
                     </tr>
-                </table>
+                </table><br />
+                <input type="button" id="room-submit" value="Submit" onclick="updateRoomAjax()" />
               </div>
           </div>
     </div>  
