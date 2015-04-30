@@ -18,6 +18,10 @@ namespace Team11
     {
         public string request_id { get; set; }
     }
+    public class ROOM
+    {
+        public string room_code { get; set; }
+    }
     public class ROUND
     {
         public int round { get; set; }
@@ -33,6 +37,26 @@ namespace Team11
     
     public partial class AdminPage : System.Web.UI.Page
     {
+        //delete a pool room
+        [WebMethod]
+        [ScriptMethod]
+        public static void deleteRoom(ROOM room)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                //request_id received from ajax function allocateAjax(el)
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM [ROOMS] WHERE [room_code] = @room_code"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@room_code", room.room_code);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
         //get round date from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         [WebMethod]
