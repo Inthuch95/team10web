@@ -27,6 +27,7 @@
             getRoomAjax();
             getBuildingAjax();
             initRoomDialog();
+            initAddRoomDialog();
             //start datepicker
             $("#from1").datepicker({
                 defaultDate: "+1w",
@@ -83,6 +84,7 @@
             });
             $("#to3").datepicker("option", "dateFormat", "dd/mm/yy");
             //end datepicker
+            //start selectable
             $("#selectable-wheelchair").bind("mousedown", function (e) {
                 e.metaKey = true;
                 if (selectedWheelchair == false)
@@ -182,6 +184,7 @@
                 else
                     $("#capture").val("0");
             }).selectable();
+            //end selectable
         });
         //selectable 1
         var selectedWhiteboard = false;
@@ -279,6 +282,9 @@
             }
             $("#dialog-room").dialog("open");
         }
+        function showAddRoomDialog() {
+            $("#dialog-add-room").dialog("open");
+        }
         function resetFacility() {
             $("#selectable-computer").children("li").attr("class", "ui-state-default");
             $("#selectable-capture").children("li").attr("class", "ui-state-default");
@@ -313,7 +319,7 @@
                     type: "POST",
                     async: true,
                     url: "AdminPage.aspx/deleteRoom",
-                    //send request_id of current row to process in the codebehind environment
+                    //send room_code of selected room to process in the codebehind environment
                     data: "{room: " + JSON.stringify(room) + "}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -327,9 +333,28 @@
                 });
             }
         }
-        //update room information
-        function updateRoomAjax(room) {
-            
+        //add pool room
+        function insertRoomAjax(room) {
+            var room = {};
+            if (confirm("Are you sure you want to add this room?")) {
+                $.ajax(
+                {
+                    type: "POST",
+                    async: true,
+                    url: "AdminPage.aspx/insertRoom",
+                    //send request_id of current row to process in the codebehind environment
+                    data: "{room: " + JSON.stringify(room) + "}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        alert("success");
+                        getRoomAjax();
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            }
         }
         //get building data
         function getBuildingAjax() {
@@ -535,13 +560,25 @@
             $("#dialog-facility").dialog();
             $("#dialog-facility").dialog("close");
         }
+        function initAddRoomDialog() {
+            $("#dialog-add-room").dialog({
+                height: 500,
+                width: 700,
+                position: {
+                    my: "center",
+                    at: "center",
+                    of: window
+                }
+            });
+            $("#dialog-add-room").dialog("close");
+        }
         function initRoomDialog() {
             $("#dialog-room").dialog({
                 height: 500,
                 width: 700,
                 position: {
                     my: "center",
-                    at: "top",
+                    at: "center",
                     of: window
                 }
             });
@@ -747,9 +784,13 @@
                   Building: <select id="building_filter" onchange="filterChange()">
                                 <option>Any</option>
                             </select>&nbsp;
+                  <input type="button" id="room-insert" value="Add Room" onclick="showAddRoomDialog()" />
               </div>
               <div id="accordion">
                 
+              </div>
+              <div id="dialog-add-room" title="Add New Room">
+
               </div>
               <div id="dialog-room" title="Pool Room Management">
                 Room Code
