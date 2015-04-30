@@ -207,7 +207,10 @@
             for (var i = 0; i < roomData.length; i++) {
                 if ((park == "Any" || roomData[i].park == park) && (buildingOption == "Any" || roomData[i].building_name == building)) {
                     $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
-                    $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />" + "<br /></div>");
+                    $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />"
+                    + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " +
+                    roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />"
+                    + "<input type='button' id='delete" + (i + 1) + "' onclick='deleteRoomAjax(this)' value='Delete' />" + "<br /></div>");
                 }
             }
             $("#accordion").accordion({
@@ -297,8 +300,35 @@
             $("#video").val("0");
         }
         //start ajax
+        //delete a pool room
+        function deleteRoomAjax(room) {
+            var code = $(room).closest("div").attr("id");
+            var room = {};
+            room.room_code = code;
+            console.log(code);
+            console.log(room);
+            if (confirm("Are you sure you want to delete this room?")) {
+                $.ajax(
+                {
+                    type: "POST",
+                    async: true,
+                    url: "AdminPage.aspx/deleteRoom",
+                    //send request_id of current row to process in the codebehind environment
+                    data: "{room: " + JSON.stringify(room) + "}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        alert("success");
+                        getRoomAjax();
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            }
+        }
         //update room information
-        function updateRoomAjax() {
+        function updateRoomAjax(room) {
             
         }
         //get building data
@@ -335,10 +365,14 @@
                 success: function (data) {
                     roomData = data.d;
                     console.log(roomData);
-                    $("#accordion").empty();
+                    $("#accordion").remove();
+                    $("#room-tabs").append("<div id='accordion'>");
                     for (var i = 0; i < roomData.length;i++){
                         $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
-                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />" + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " + roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />" + "<br /></div>");
+                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />"
+                        + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " +
+                        roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />"
+                        + "<input type='button' id='delete" + (i + 1) + "' onclick='deleteRoomAjax(this)' value='Delete' />" + "<br /></div>");
                     }
                     $("#accordion").accordion({
                         collapsible: true,
@@ -718,6 +752,7 @@
                 
               </div>
               <div id="dialog-room" title="Pool Room Management">
+                Room Code
                 Capacity: <div id="slider-capacity"></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
                 Facility: <table>
                     <tr>
