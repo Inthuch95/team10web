@@ -7,7 +7,7 @@
     
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
-            //capacity slider
+            //start slider
             $("#slider-capacity").slider({
                 range: "max",
                 min: 1,
@@ -20,6 +20,19 @@
             });
             //put the slider value into text box with id 'capacity'
             $("#capacity1").val($("#slider-capacity").slider("value"));
+            $("#slider-capacity2").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity2").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity'
+            $("#capacity2").val($("#slider-capacity").slider("value"));
+            //end slider
             $("#tabs").tabs();
             getRequestAjax();
             initFacilityDialog();
@@ -85,6 +98,7 @@
             $("#to3").datepicker("option", "dateFormat", "dd/mm/yy");
             //end datepicker
             //start selectable
+            //edit room
             $("#selectable-wheelchair").bind("mousedown", function (e) {
                 e.metaKey = true;
                 if (selectedWheelchair == false)
@@ -184,6 +198,106 @@
                 else
                     $("#capture").val("0");
             }).selectable();
+            //add new room selectable
+            $("#selectable-wheelchair2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWheelchair2 == false)
+                    selectedWheelchair2 = true;
+                else
+                    selectedWheelchair2 = false;
+                if (selectedWheelchair2)
+                    $("#wheelchair2").val("1");
+                else
+                    $("#wheelchair2").val("0");
+            }).selectable();
+            $("#selectable-whiteboard2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWhiteboard2 == false)
+                    selectedWhiteboard2 = true;
+                else
+                    selectedWhiteboard2 = false;
+                if (selectedWhiteboard2)
+                    $("#whiteboard2").val("1");
+                else
+                    $("#whiteboard2").val("0");
+            }).selectable();
+            $("#selectable-projector2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedProjector2 == false)
+                    selectedProjector2 = true;
+                else
+                    selectedProjector2 = false;
+                if (selectedProjector2)
+                    $("#projector2").val("1");
+                else
+                    $("#projector2").val("0");
+            }).selectable();
+            $("#selectable-visualiser2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVisualiser2 == false)
+                    selectedVisualiser2 = true;
+                else
+                    selectedVisualiser2 = false;
+                if (selectedVisualiser2)
+                    $("#visualiser2").val("1");
+                else
+                    $("#visualiser2").val("0");
+            }).selectable();
+            $("#selectable-computer2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedComputer2 == false)
+                    selectedComputer2 = true;
+                else
+                    selectedComputer2 = false;
+                if (selectedComputer2)
+                    $("#computer2").val("1");
+                else
+                    $("#computer2").val("0");
+            }).selectable();
+            $("#selectable-video2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVideo2 == false)
+                    selectedVideo2 = true;
+                else
+                    selectedVideo2 = false;
+                if (selectedVideo2)
+                    $("#video2").val("1");
+                else
+                    $("#video2").val("0");
+            }).selectable();
+            $("#selectable-pa2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedPa2 == false)
+                    selectedPa2 = true;
+                else
+                    selectedPa2 = false;
+                if (selectedPa2)
+                    $("#pa2").val("1");
+                else
+                    $("#pa2").val("0");
+            }).selectable();
+            $("#selectable-mic2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedMic2 == false)
+                    selectedMic2 = true;
+                else
+                    selectedMic2 = false;
+                if (selectedMic2)
+                    $("#mic2").val("1");
+                else
+                    $("#mic2").val("0");
+            }).selectable();
+            $("#selectable-capture2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedCap2 == false)
+                    selectedCap2 = true;
+                else
+                    selectedCap2 = false;
+                if (selectedCap2)
+                    $("#capture2").val("1");
+                else
+                    $("#capture2").val("0");
+            }).selectable();
             //end selectable
         });
         //selectable 1
@@ -196,6 +310,16 @@
         var selectedVideo = false;
         var selectedVisualiser = false;
         var selectedWheelchair = false;
+        //selectable 2
+        var selectedWhiteboard2 = false;
+        var selectedComputer2 = false;
+        var selectedCap2 = false;
+        var selectedPa2 = false;
+        var selectedProjector2 = false;
+        var selectedMic2 = false;
+        var selectedVideo2 = false;
+        var selectedVisualiser2 = false;
+        var selectedWheelchair2 = false;
         var requestData;
         var currentRow;
         var roundData;
@@ -370,6 +494,7 @@
                     buildingData = data.d;
                     for (var i = 0; i < buildingData.length; i++) {
                         $("#building_filter").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                        $("#building_add").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
                     }
                 },
                 error: function (response) {
@@ -790,7 +915,83 @@
                 
               </div>
               <div id="dialog-add-room" title="Add New Room">
+                  Building: <select id="building_add">
 
+                            </select><br />
+                  Room Code: <input type="text" readonly="readonly" id="building_part" />.
+                  <select id="floor_part">
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                  </select>.
+                  <input type="text" id="room_part" /><br />
+                  Capacity: <div id="slider-capacity2"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
+                  Facility: <table>
+                    <tr>
+                        <td>
+                            <ol id="selectable-computer2">
+                                <li class="ui-state-default" style="width: 200px">Computer</li>
+                            </ol>
+                            <input type="hidden" id="computer2" name="computer2" value="0"/>
+                        </td>
+                        <td>
+                                <ol id="selectable-capture2">
+                                    <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                </ol>
+                                <input type="hidden" id="capture2" name="capture2" value="0" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol id="selectable-pa2">
+                                <li class="ui-state-default" style="width: 200px">PA System</li>
+                            </ol>
+                            <input type="hidden" id="pa2" name="pa2" value="0" />
+                        </td>
+                        <td>
+                            <ol id="selectable-projector2">
+                                <li class="ui-state-default" style="width: 200px">Projector</li>
+                            </ol>
+                            <input type="hidden" id="projector2" name="projector2" value="0" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol id="selectable-mic2">
+                                <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                            </ol>
+                            <input type="hidden" id="mic2" name="mic" value="0" />
+                        </td>
+                        <td>
+                            <ol id="selectable-video2">
+                                <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                            </ol>
+                            <input type="hidden" id="video2" name="video" value="0" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol id="selectable-visualiser2">
+                                <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                            </ol>
+                            <input type="hidden" id="visualiser2" name="visualiser" value="0" />
+                        </td>
+                        <td>
+                            <ol id="selectable-whiteboard2">
+                                <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                            </ol>
+                            <input type="hidden" id="whiteboard2" name="whiteboard" value="0" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol id="selectable-wheelchair2">
+                                <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                            </ol>
+                            <input type="hidden" id="wheelchair2" name="wheelchair" value="0" />
+                        </td>
+                    </tr>
+                </table>
               </div>
               <div id="dialog-room" title="Pool Room Management">
                 Room Code

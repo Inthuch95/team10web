@@ -217,3 +217,129 @@ ul.tabs li.ui-tabs-active a, ul.tabs li.ui-tabs-selected a
 #selectable-capture li { 
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
+/*add new room selectable*/
+#selectable-wheelchair2
+{
+    width: 200px;
+}
+#selectable-arrangement2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-arrangement2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-arrangement2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-arrangement2 li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-wheelchair2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-wheelchair2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-wheelchair2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-wheelchair2 li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-whiteboard2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-whiteboard2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-whiteboard2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-whiteboard2 li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-projector2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-projector2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-projector2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-projector2 li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-visualiser2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-visualiser2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-visualiser2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-visualiser2 li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-computer2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-computer2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-computer2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-computer2 li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+
+#selectable-video2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-video2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-video2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-video2 li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-pa2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-pa2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-pa2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-pa2 li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-mic2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-mic2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-mic2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-mic2 li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-capture2 .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-capture2 .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-capture2 { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-capture2 li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
