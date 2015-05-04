@@ -20,6 +20,18 @@
             });
             //put the slider value into text box with id 'capacity'
             $("#capacity1").val($("#slider-capacity").slider("value"));
+            $("#slider-capacity2").slider({
+                range: "max",
+                min: 1,
+                max: 500,
+                value: 1,
+                step: 1,
+                slide: function (event, ui) {
+                    $("#capacity2").val(ui.value);
+                }
+            });
+            //put the slider value into text box with id 'capacity'
+            $("#capacity2").val($("#slider-capacity").slider("value"));
             $("#tabs").tabs();
             getRequestAjax();
             initFacilityDialog();
@@ -185,6 +197,25 @@
                     $("#capture").val("0");
             }).selectable();
             //add new room selectable
+            $("#selectable-arrangement2").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-arrangement2 li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#arrangement2").val("Any");
+                                break;
+                            case 1:
+                                $("#arrangement2").val("Tired");
+                                break;
+                            case 2:
+                                $("#arrangement2").val("Flat");
+                                break;
+                        }
+                        changeRoom();
+                    });
+                }
+            });
             $("#selectable-wheelchair2").bind("mousedown", function (e) {
                 e.metaKey = true;
                 if (selectedWheelchair2 == false)
@@ -480,6 +511,7 @@
                     buildingData = data.d;
                     for (var i = 0; i < buildingData.length; i++) {
                         $("#building_filter").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                        $("#building_add").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
                     }
                 },
                 error: function (response) {
@@ -727,7 +759,11 @@
             $("#dialog-facility").dialog("open");
         }
         //end dialog
-        
+        function fillBuildingPart() {
+            var buildingSelect = document.getElementById("building_add").value;
+            var building = buildingSelect.substr(0,1);
+            $("#building_part").val(building);
+        }
     </script>
    
 </asp:Content>
@@ -873,16 +909,27 @@
                 
               </div>
               <div id="dialog-add-room" title="Add New Room">
-                  Building: <select id="building_add">
+                  Building: <select id="building_add" onchange="fillBuildingPart()">
 
                             </select><br />
-                  Room Code: <input type="text" readonly="readonly" id="building_part" />.
+                  Room Code: <input type="text" readonly="readonly" id="building_part" value="A" />.
                   <select id="floor_part">
                       <option>0</option>
                       <option>1</option>
                       <option>2</option>
                   </select>.
                   <input type="text" id="room_part" /><br />
+                  Arrangement: <table>
+                                    <tr>
+                                        <td>
+                                            <ol id="selectable-arrangement2">
+                                                <li class="ui-state-default" style="width: 200px">Tiered</li>
+                                                <li class="ui-state-default" style="width: 200px">Flat</li>
+                                            </ol>
+                                            <input type="hidden" id="arrangement2" name="arrangement2" value="Any" />
+                                        </td>
+                                    </tr>
+                               </table>
                   Capacity: <div id="slider-capacity2"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
                   Facility: <table>
                     <tr>
