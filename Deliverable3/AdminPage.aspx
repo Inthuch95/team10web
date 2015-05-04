@@ -477,6 +477,45 @@
         //add pool room
         function insertRoomAjax(room) {
             var room = {};
+            //get user input value
+            var buildingSelect = document.getElementById("building_add").value;
+            var building = buildingSelect.substr(0, 1);
+            var roomCode = document.getElementById("building_part").value + "." + document.getElementById("floor_part").value + "." + document.getElementById("room_part").value;
+            var capacity = $("#capacity2").val();
+            var wheelchair = $("#wheelchair2").val();
+            var visualiser = $("#visualiser2").val();
+            var projector = $("#projector2").val();
+            var whiteboard = $("#whiteboard2").val();
+            var computer = $("#computer2").val();
+            var capture = $("#capture2").val();
+            var pa = $("#pa2").val();
+            var mic = $("#mic2").val();
+            var video = $("#video2").val();
+
+            var tiered
+            var flat 
+            if (document.getElementById("#arrangement2").value == "Tiered") {
+                tiered = 1;
+                flat = 0;
+            }
+            else {
+                tiered = 0;
+                flat = 1;
+            }
+            room.building_code = building;
+            room.room_code = roomCode;
+            room.capacity = capacity;
+            room.wheelchair = wheelchair;
+            room.projector = projector;
+            room.visualiser = visualiser;
+            room.whiteboard = whiteboard;
+            room.computer = computer;
+            room.lecture_capture = capture;
+            room.video_dvd = video;
+            room.pa_system = pa;
+            room.radio_microphone = mic;
+            room.tiered = tiered;
+            room.flat = flat;
             if (confirm("Are you sure you want to add this room?")) {
                 $.ajax(
                 {
@@ -996,7 +1035,8 @@
                             <input type="hidden" id="wheelchair2" name="wheelchair" value="0" />
                         </td>
                     </tr>
-                </table>
+                </table><br />
+                <input type="button" id="add_room_submit" value="Submit" onclick="" />
               </div>
               <div id="dialog-room" title="Pool Room Management">
                 Room Code
