@@ -46,7 +46,8 @@
                     <asp:Label ID="LabelResponse" runat="server" Text=""></asp:Label>
                 </div>
             </div><!-- ./canistercontainer -->
-        </div><!-- ./canister -->
+        </div>
+    <!-- ./canister -->
 
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
         ConnectionString="<%$ ConnectionStrings:myConnectionString %>" 
@@ -71,11 +72,13 @@
                 <asp:Parameter Name="moduleID" Type="Int32" />
             </UpdateParameters>
     </asp:SqlDataSource>
-    </br>
-    <asp:GridView ID="GridView2" runat="server" AllowSorting="True" 
-        AutoGenerateColumns="False" CellPadding="4" DataKeyNames="moduleID" 
-        DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" 
-        Width="927px">
+  
+     <br />
+
+    <asp:GridView ID="GridView2" CssClass="canistertable" runat="server" AllowSorting="True" 
+        AutoGenerateColumns="False" CellPadding="8" DataKeyNames="moduleID" 
+        DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="none" 
+        Width="1250px">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -87,18 +90,17 @@
                 InsertVisible="False" ReadOnly="True" SortExpression="moduleID" />
         </Columns>
         <EditRowStyle BackColor="#999999" />
-        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#CC0066" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+        <FooterStyle BackColor="#9D009D" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#330066" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#9D009D" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
         <SortedAscendingCellStyle BackColor="#E9E7E2" />
-        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+        <SortedAscendingHeaderStyle BackColor="#9D009D" />
         <SortedDescendingCellStyle BackColor="#FFFDF8" />
-        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        <SortedDescendingHeaderStyle BackColor="#9D009D" />
     </asp:GridView>
 
-        </br>
 
     <div class="tablecontainer">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
@@ -114,6 +116,5 @@
             <asp:Parameter DefaultValue="1" Name="userID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-
-    </div>
+   </div>
 </asp:Content>

@@ -7,7 +7,7 @@
     
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
-            //start slider
+            //capacity slider
             $("#slider-capacity").slider({
                 range: "max",
                 min: 1,
@@ -20,19 +20,6 @@
             });
             //put the slider value into text box with id 'capacity'
             $("#capacity1").val($("#slider-capacity").slider("value"));
-            $("#slider-capacity2").slider({
-                range: "max",
-                min: 1,
-                max: 500,
-                value: 1,
-                step: 1,
-                slide: function (event, ui) {
-                    $("#capacity2").val(ui.value);
-                }
-            });
-            //put the slider value into text box with id 'capacity'
-            $("#capacity2").val($("#slider-capacity").slider("value"));
-            //end slider
             $("#tabs").tabs();
             getRequestAjax();
             initFacilityDialog();
@@ -98,7 +85,6 @@
             $("#to3").datepicker("option", "dateFormat", "dd/mm/yy");
             //end datepicker
             //start selectable
-            //edit room
             $("#selectable-wheelchair").bind("mousedown", function (e) {
                 e.metaKey = true;
                 if (selectedWheelchair == false)
@@ -494,7 +480,6 @@
                     buildingData = data.d;
                     for (var i = 0; i < buildingData.length; i++) {
                         $("#building_filter").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
-                        $("#building_add").append("<option>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
                     }
                 },
                 error: function (response) {
@@ -754,66 +739,60 @@
 
 <%-- MAIN BODY CONTENT --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+        <script>
+            // JQuery that allows the tabs to change
+            jQuery(document).ready(function () {
+                jQuery('.tabs .tab-links a').on('click', function (e) {
+                    var currentAttrValue = jQuery(this).attr('href');
+
+                    // Show/Hide Tabs
+                    jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+                    // Change/remove current tab to active
+                    jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                    e.preventDefault();
+                });
+            });
+            </script>
+
+
+
+
     <%-- Tabs containing different admin functionality --%>
-    <div id="tabs">
-      <ul>
-        <li><a href="#room-allocation-tabs">Room Allocation</a></li>
+    <div class="tabs">
+      <ul class="tab-links">
+        <li class="active"><a href="#allocation-tabs">Room Allocation</a></li>
         <li><a href="#facility-tabs">Facility Management</a></li>
         <li><a href="#round-tabs">Round Dates</a></li>
         <li><a href="#room-tabs">Room Management</a></li>
       </ul>
-      <div id="room-allocation-tabs">
-        <h2>Room allocation</h2>
+
+  <div class="tab-content">
+      <div id="allocation-tabs" class="tab active">
         <%-- These allow us to see table head and use filter when scrolling down the page --%>
         <div id="table_header">
             <table id="scrollTable">
 	            <tr>
+                     <h2>Room allocation</h2>
 		            <h4>Click on the headers to sort the table</h4><br/><br/>
-<%--			            <td id="request_id">
+                      <%--<td id="request_id">
 				            Request</br>Id
 			            </td>--%>
-                        <td id="dept_code">
-			                Dept
-		                </td>
-			            <td id="module_code">
-				            Module </br> Code
-			            </td>
-			            <td id="room_code">
-				            Room Code
-			            </td>
-			            <td id="capacity">
-				            Capacity
-			            </td>
-                        <td id="facility">
-                            Facility
-                        </td>
-			            <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">
-				            Special </br>Req
-			            </td>
-			            <td id="priority">
-				            Priority
-			            </td>
-			            <td id="day">
-				            Day
-			            </td>
-			            <td id="period">
-				            Period
-				
-			            <td id="duration">
-				            Duration
-			            </td>
-			            <td id="week(s)" style="cursor:default;">
-				            Week(s)
-			            </td>
-                        <td id="semester">
-                            Semester
-                        </td>
-                        <td id="session">
-                            Session Type
-                        </td>
-			            <td id="edit_cell" style="cursor:default;">
-				            Action
-			            </td>
+                        <td id="dept_code">Dept</td>
+			            <td id="module_code">Module </br> Code</td>
+			            <td id="room_code">Room Code</td>
+			            <td id="capacity">Capacity</td>
+                        <td id="facility">Facility</td>
+			            <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">Special </br>Req</td>
+			            <td id="priority">Priority</td>
+			            <td id="day">Day</td>
+			            <td id="period">Period</td>
+			            <td id="duration">Duration</td>
+			            <td id="week(s)" style="cursor:default;">Week(s)</td>
+                        <td id="semester">Semester</td>
+                        <td id="session">Session Type</td>
+                        <td id="edit_cell" style="cursor:default;">Action</td>
                     </tr>
 	            </table>
             </div>
@@ -821,67 +800,45 @@
             <div id="content_wrap">
                 <table id="dataTable" class="entries_table">
 	                <tr style="display:none;">
-<%--		            <td id="request_id">
+                        <%--<td id="request_id">
 			                Request_id
 		                </td>--%>
-                        <td id="dept_code">
-			                Dept
-		                </td>
-		                <td id="module_code">
-			                Module_code
-		                </td>
-		                <td id="room_code">
-			                Room_code
-		                </td>
-		                <td id="capacity">
-			                Capacity
-		                </td>
-		                <td id="facility">
-                            Facility
-		                </td>
-		                <td id="special_requirements">
-			                Special </br>Req
-		                </td>
-		                <td id="priority">
-			                Priority
-		                </td>
-		                <td id="day">
-			                Day
-		                </td>
-		                <td id="period">
-			                Period
-		                </td>
-				
-		                <td id="duration">
-			                Duration
-		                </td>
-		                <td id="week(s)" >
-			                Week(s)
-		                </td>
-                        <td id="semester">
-                            Semester
-                        </td>
-                        <td id="session">
-                            Session Type
-                        </td>
-		                <td id="edit_cell" style="cursor:default;">
-			                Action
-		                </td>
+                        <td id="dept_code">Dept</td>
+		                <td id="module_code">Module_code</td>
+		                <td id="room_code">Room_code</td>
+		                <td id="capacity">Capacity</td>
+		                <td id="facility">Facility</td>
+		                <td id="special_requirements">Special </br>Req</td>
+		                <td id="priority">Priority</td>
+		                <td id="day">Day</td>
+		                <td id="period">Period</td>
+		                <td id="duration">Duration</td>
+		                <td id="week(s)" >Week(s)</td>
+                        <td id="semester">Semester</td>
+                        <td id="session">Session Type</td>
+		                <td id="edit_cell" style="cursor:default;">Action</td>
 				
 	                </tr>
                 </table>
             </div>
-            <%--dialog displaying list of facilities specified by timetablers--%>
-            <div id="dialog-facility" title="Facilities">
-                <ul id="facility_list">
+           </div>
 
+           <%-- dialog displaying list of facilities specified by timetablers--%>
+            <div id="dialog-facility" >
+                <ul id="facility_list" >
                 </ul>
-            </div>      
-          </div>
-          <div id="facility-tabs">
-            <p>Facility management</p>
-          </div>
-          <div id="round-tabs">
+                </div>
+
+                <div id="facility-tabs" class="tab">
+                   <div id="content_wrap">
+                      <p>Facility management</p>
+                   </div>
+                </div>
+                
+
+
+          <div id="round-tabs" class="tab">
+            <div id="content_wrap">
             <h2>Round dates</h2>
             Round 1: <label for="from">From</label>
             <input type="text" id="from1" name="from1">
@@ -897,7 +854,8 @@
             <input type="text" id="to3" name="to3"><br />
             <input type="button" id="save_round" name="save_round" value="Submit" onclick="updateRoundAjax()" />
           </div>
-          <div id="room-tabs">
+                </div>
+          <div id="room-tabs" class="tab">
               <div id="room_filter">
                   <br />
                   Park: <select id="park_filter" onchange="filterChange()">
@@ -1066,4 +1024,5 @@
               </div>
           </div>
     </div>  
+</div>
 </asp:Content>

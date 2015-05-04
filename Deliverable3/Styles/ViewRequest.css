@@ -1,19 +1,54 @@
-#tabs 
-{
-    background-color: #F7F7F0;
-    clear: both;
-    margin-left: 0;
-    min-width: 1260px;
-    width: 100%;
+.tabs {
+
+    display:inline-block;
 }
-.entries_table tr:nth-child(odd)
-{ 
-    overflow:hidden; background-color:#f7c9ff;  
-}
-.entries_table tr:nth-child(even)
-{ 
-    overflow:hidden; background-color:#ffffff;  
-}
+ 
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#330066;
+            font-size:16px;
+            font-weight:600;
+            color:#FFFFFF;
+            transition:all linear 0.15s;
+        }
+ 
+ 
+    li.active a, li.active a:hover {
+        background:#9D009D;
+        color:#FFFFFF;
+    }
+ 
+
+    .tab-content {
+        padding:15px;
+        border-radius:3px;
+        box-shadow:-1px -1px 2px 2px rgba(0,0,0,0.15);
+        background:#FFFFFF;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:inline;
+        }
+
+
 
 
 #dataTable 
@@ -43,19 +78,12 @@
 
 #scrollTable 
 {
-    border:1px solid #000000;
-    background:-o-linear-gradient(bottom, #600060 5%, #a801a8 100%); background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #600060), color-stop(1, #a801a8) );
-    background:-moz-linear-gradient( center top, #600060 5%, #a801a8 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#600060", endColorstr="#a801a8"); background: -o-linear-gradient(top,#600060,a801a8);
+    border:1px solid #ffffff;
+    background:#330066;
     color:#fff;
+	border-radius:3px;
 
-    -moz-border-radius-topright:22px;
-    -webkit-border-top-right-radius:22px;
-    border-top-right-radius:22px;
 
-    -moz-border-radius-topleft:22px;
-    -webkit-border-top-left-radius:22px;
-    border-top-left-radius:22px;
 }
 
 #scrollTable td 
@@ -72,7 +100,7 @@ table
     text-align: center;
     position: relative;
     empty-cells: show;
-	border-spacing: 0px;
+	border-spacing: 1px;
     border-collapse: separate;
 	overflow:hidden;
 }
