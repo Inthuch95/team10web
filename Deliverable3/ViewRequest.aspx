@@ -26,7 +26,10 @@
 
                     console.log(requestData);
                     for (var i = 0; i < requestData.length; i++) {
-                        $("#rejectedtable").append("<tr>" + "<td>" + requestData[i].room_code + "</td>" + "</tr>");
+                        $("#" + requestData[i].status).append("<tr>" + "<td>" + requestData[i].request_id + "</td>" + "<td>" + requestData[i].module + "</td>" + "<td>" + requestData[i].room_code + "</td>"
+                            + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='buttons'>Click Me!</button> " + "</td>" + "<td>" + " <button type='button' class='buttons'>Click Me!</button> " + "</td>"
+                            + "<td>" + requestData[i].priority + "</td>" + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" 
+                            + "<td>" + requestData[i].duration + "</td>" + "<td>" + " <button type='button' >Click Me!</button> " + "</td>" + "<td>" + "<button type='button' class='buttons'>Click Me!</button>" + "</td>" + "</tr>");
 
                     }
                  },
@@ -95,7 +98,7 @@
 	          </table>
           </div>
           <div class="content_wrap"> 
-            <table id="rejectedtable">
+            <table id="Rejected" class="dataTable">
             </table>
           </div>
        </div>
@@ -120,9 +123,8 @@
             </table>
          </div>
            <div class="content_wrap">
-            
-
-
+           <table id="Booked" class="dataTable">
+            </table>
             </div>
           </div>
  
@@ -148,12 +150,12 @@
           </div>
           <div class="content_wrap">
             
-
+            <table id="Pending" class="dataTable">
+            </table>
 
 
             </div>
         </div>
-
 
   </div>
  </div>
