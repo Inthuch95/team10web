@@ -51,7 +51,7 @@
 
 
 
-#dataTable 
+.dataTable 
 {
     width:1250px;
     border:1px solid #f1f1f1;
@@ -65,7 +65,7 @@
     border-bottom-right-radius:2px;
 }
 
-#dataTable td 
+.dataTable td 
 {
     width:120px;
     max-width:120px;
@@ -76,7 +76,7 @@
 
 
 
-#scrollTable 
+.scrollTable 
 {
     border:1px solid #ffffff;
     background:#330066;
@@ -86,7 +86,7 @@
 
 }
 
-#scrollTable td 
+.scrollTable td 
 {
     width:120px;
     max-width:120px;
@@ -104,7 +104,7 @@ table
     border-collapse: separate;
 	overflow:hidden;
 }
-#content_wrap 
+.content_wrap 
 {
     background-color: #F7F7F0;
     clear: both;
@@ -114,7 +114,7 @@ table
      padding-bottom: 800px;
 }
 
-#table_header 
+.table_header 
 {
     clear:both;
     z-index:99;
