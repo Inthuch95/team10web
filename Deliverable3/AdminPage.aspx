@@ -846,6 +846,7 @@
   <div class="tab-content">
       <div id="allocation-tabs" class="tab active">
         <%-- These allow us to see table head and use filter when scrolling down the page --%>
+        <h2>Room Allocation</h2>
         <div id="table_header">
             <table class="scrollTable">
 	            <tr>
@@ -883,8 +884,18 @@
                 </div>
 
                 <div id="facility-tabs" class="tab">
-                   <div id="content_wrap">
-                      <p>Facility management</p>
+                   <div id="Div1">
+                      <h2>Facility Management</h2>
+                      <table>
+                            <tr>
+                                <td>Add New Facility:</td>
+                                <td><input type="text" id="facName" name="facName"></td>
+                            </tr>
+                            <tr>
+                                <td colspan=2 align=right>
+                                    <input type="button" id="Button1" name="save_round" value="Submit" class="btns" onclick="" /></td>
+                            </tr>
+                      </table>
                    </div>
                 </div>
                 
@@ -893,22 +904,30 @@
           <div id="round-tabs" class="tab">
             <div id="content_wrap">
             <h2>Round dates</h2>
-            Round 1: <label for="from">From</label>
-            <input type="text" id="from1" name="from1">
-            <label for="to">to</label>
-            <input type="text" id="to1" name="to1"><br />
-            Round 2: <label for="from">From</label>
-            <input type="text" id="from2" name="from2">
-            <label for="to">to</label>
-            <input type="text" id="to2" name="to2"><br />
-            Round 3: <label for="from">From</label>
-            <input type="text" id="from3" name="from3">
-            <label for="to">to</label>
-            <input type="text" id="to3" name="to3"><br />
-            <input type="button" id="save_round" name="save_round" value="Submit" class="btns" onclick="updateRoundAjax()" />
+            <table>
+            <tr>
+            <td>Round 1: <label for="from">From</label></td>
+            <td><input type="text" id="from1" name="from1"></td>
+            <td><label for="to">to</label></td>
+            <td><input type="text" id="to1" name="to1"></td>
+            </tr><tr>
+            <td>Round 2: <label for="from">From</label></td>
+            <td><input type="text" id="from2" name="from2"></td>
+            <td><label for="to">to</label></td>
+            <td><input type="text" id="to2" name="to2"></td>
+            </tr><tr>
+            <td>Round 3: <label for="from">From</label></td>
+            <td><input type="text" id="from3" name="from3"></td>
+            <td><label for="to">to</label></td>
+            <td><input type="text" id="to3" name="to3"></td>
+            </tr><tr>
+            <td colspan=4 align=right><input type="button" id="save_round" name="save_round" value="Submit" class="btns" onclick="updateRoundAjax()" /></td>
+            </tr>
+            </table>
           </div>
                 </div>
           <div id="room-tabs" class="tab">
+            <h2>Room Management</h2>
               <div id="room_filter">
                   <br />
                   Park: <select id="park_filter" onchange="filterChange()">

@@ -13,3 +13,10 @@ C:\Users\Deniz\Documents\GitHub\team10web\Deliverable3\obj\Debug\Team11.Properti
 C:\Users\Deniz\Documents\GitHub\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
 C:\Users\Deniz\Documents\GitHub\team10web\Deliverable3\obj\Debug\Team11.dll
 C:\Users\Deniz\Documents\GitHub\team10web\Deliverable3\obj\Debug\Team11.pdb
+C:\Users\Brooksey\team10web\Deliverable3\bin\Team11.dll
+C:\Users\Brooksey\team10web\Deliverable3\bin\Team11.pdb
+C:\Users\Brooksey\team10web\Deliverable3\obj\Debug\Team11.csprojResolveAssemblyReference.cache
+C:\Users\Brooksey\team10web\Deliverable3\obj\Debug\Team11.Properties.Resources.resources
+C:\Users\Brooksey\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
+C:\Users\Brooksey\team10web\Deliverable3\obj\Debug\Team11.dll
+C:\Users\Brooksey\team10web\Deliverable3\obj\Debug\Team11.pdb
