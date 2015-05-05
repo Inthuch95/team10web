@@ -203,16 +203,12 @@
                         var index = $("#selectable-arrangement2 li").index(this);
                         switch (index) {
                             case 0:
-                                $("#arrangement2").val("Any");
+                                $("#arrangement2").val("Tiered");
                                 break;
                             case 1:
-                                $("#arrangement2").val("Tired");
-                                break;
-                            case 2:
                                 $("#arrangement2").val("Flat");
                                 break;
                         }
-                        changeRoom();
                     });
                 }
             });
@@ -366,6 +362,8 @@
         //allow user to edit pool room
         function showRoomDialog(room) {
             var room_code = $(room).closest("div").attr("id");
+            $("#roomCode_edit").html("Room Code: " + room_code);
+            $("#roomCode_val").val(room_code);
             resetFacility();
             var capacity;
             for (var i = 0; i < roomData.length; i++) {
@@ -399,23 +397,23 @@
                         $("#visualiser").val("1");
                         $("#selectable-visualiser").children("li").attr("class", "ui-state-default ui-selected");
                     }
-                    if (roomData[i].projector == 1) {
+                    if (roomData[i].computer == 1) {
                         $("#computer").val("1");
                         $("#selectable-computer").children("li").attr("class", "ui-state-default ui-selected");
                     }
-                    if (roomData[i].projector == 1) {
+                    if (roomData[i].lecture_capture == 1) {
                         $("#capture").val("1");
                         $("#selectable-capture").children("li").attr("class", "ui-state-default ui-selected");
                     }
-                    if (roomData[i].projector == 1) {
+                    if (roomData[i].pa_system == 1) {
                         $("#pa").val("1");
                         $("#selectable-pa").children("li").attr("class", "ui-state-default ui-selected");
                     }
-                    if (roomData[i].projector == 1) {
+                    if (roomData[i].radio_microphone == 1) {
                         $("#mic").val("1");
                         $("#selectable-mic").children("li").attr("class", "ui-state-default ui-selected");
                     }
-                    if (roomData[i].projector == 1) {
+                    if (roomData[i].video_dvd == 1) {
                         $("#video").val("1");
                         $("#selectable-video").children("li").attr("class", "ui-state-default ui-selected");
                     }
@@ -475,7 +473,7 @@
             }
         }
         //add pool room
-        function insertRoomAjax(room) {
+        function insertRoomAjax() {
             var room = {};
             //get user input value
             var buildingSelect = document.getElementById("building_add").value;
@@ -494,7 +492,7 @@
 
             var tiered
             var flat 
-            if (document.getElementById("#arrangement2").value == "Tiered") {
+            if (document.getElementById("arrangement2").value == "Tiered") {
                 tiered = 1;
                 flat = 0;
             }
@@ -516,25 +514,81 @@
             room.radio_microphone = mic;
             room.tiered = tiered;
             room.flat = flat;
+            room.dept = "pool";
             if (confirm("Are you sure you want to add this room?")) {
                 $.ajax(
                 {
                     type: "POST",
                     async: true,
                     url: "AdminPage.aspx/insertRoom",
-                    //send request_id of current row to process in the codebehind environment
                     data: "{room: " + JSON.stringify(room) + "}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
                         alert("success");
                         getRoomAjax();
+                        $("#dialog-add-room").dialog("close");
                     },
                     error: function (response) {
                         console.log(response);
                     }
                 });
             }
+            else
+                return false;
+        }
+        //edit pool room
+        function updateRoomAjax() {
+            console.log($("#roomCode_val").val());
+            console.log($("#wheelchair").val());
+            console.log($("#visualiser").val());
+            console.log($("#projector").val());
+            console.log($("#whiteboard").val());
+            var room = {};
+            //get user input value
+            var capacity = $("#capacity1").val();
+            var wheelchair = $("#wheelchair").val();
+            var visualiser = $("#visualiser").val();
+            var projector = $("#projector").val();
+            var whiteboard = $("#whiteboard").val();
+            var computer = $("#computer").val();
+            var capture = $("#capture").val();
+            var pa = $("#pa").val();
+            var mic = $("#mic").val();
+            var video = $("#video").val();
+
+            room.room_code = $("#roomCode_val").val();
+            room.capacity = capacity;
+            room.wheelchair = wheelchair;
+            room.projector = projector;
+            room.visualiser = visualiser;
+            room.whiteboard = whiteboard;
+            room.computer = computer;
+            room.lecture_capture = capture;
+            room.video_dvd = video;
+            room.pa_system = pa;
+            room.radio_microphone = mic;
+            if (confirm("Are you sure you want to edit this room?")) {
+                $.ajax(
+                {
+                    type: "POST",
+                    async: true,
+                    url: "AdminPage.aspx/updateRoom",
+                    data: "{room: " + JSON.stringify(room) + "}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        alert("success");
+                        getRoomAjax();
+                        $("#dialog-room").dialog("close");
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            }
+            else
+                return false;
         }
         //get building data
         function getBuildingAjax() {
@@ -658,7 +712,7 @@
                         //display all request data in a table
                         for (var i = 0; i < requestData.length; i++) {
                             var id = "#" + (i + 1);
-                            $("#dataTable").append("<tr id='" + (i + 1) + "'>");
+                            $("#RoomAllocations").append("<tr id='" + (i + 1) + "'>");
                            // $(id).append("<td>" + requestData[i].request_id + "</td>");
                             $(id).append("<td>" + requestData[i].dept_code + "<input type='hidden' id='row" + (i + 1) + "' value='" + requestData[i].request_id + "' />" + "</td>");
                             $(id).append("<td>" + requestData[i].module + "</td>");
@@ -674,7 +728,7 @@
                             $(id).append("<td>" + requestData[i].semester + "</td>");
                             $(id).append("<td>" + requestData[i].session + "</td>");
                             $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' value='Allocate' onclick='allocateAjax(this)' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' value='Reject' onclick='rejectAjax(this)' /></td>");
-                            $("#dataTable").append("</tr>");
+                            $("#RoomAllocations").append("</tr>");
                         }
                     },
                     error: function (response) {
@@ -1033,11 +1087,14 @@
                         </td>
                     </tr>
                 </table><br />
-                <input type="button" id="add_room_submit" value="Submit" class="btns" onclick="" />
+                <input type="button" id="add_room_submit" value="Submit" class="btns" onclick="insertRoomAjax()" />
               </div>
 
               <div id="dialog-room" title="Pool Room Management">
-                Room Code
+                 <div id="roomCode_edit">
+                        Room Code:        
+                 </div><br />
+                <input type="hidden" id="roomCode_val" />
                 Capacity: <div id="slider-capacity"></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
                 Facility: <table>
                     <tr>

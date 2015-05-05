@@ -21,6 +21,20 @@ namespace Team11
     public class ROOM
     {
         public string room_code { get; set; }
+        public string building_code { get; set; }
+        public string capacity { get; set; }
+        public string wheelchair { get; set; }
+        public string projector { get; set; }
+        public string visualiser { get; set; }
+        public string whiteboard { get; set; }
+        public string computer { get; set; }
+        public string lecture_capture { get; set; }
+        public string video_dvd { get; set; }
+        public string pa_system { get; set; }
+        public string radio_microphone { get; set; }
+        public string tiered { get; set; }
+        public string flat { get; set; }
+        public string dept { get; set; }
     }
     public class ROUND
     {
@@ -37,6 +51,68 @@ namespace Team11
     
     public partial class AdminPage : System.Web.UI.Page
     {
+        //edit a pool room
+        [WebMethod]
+        [ScriptMethod]
+        public static void updateRoom(ROOM room)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE [ROOMS] SET [capacity] = @capacity, [wheelchair] = @wheelchair, [projector] = @projector, [visualiser] = @visualiser, [whiteboard] = @whiteboard, [computer] = @computer, [video_dvd] = @video_dvd, [pa_system] = @pa_system, [radio_microphone] = @radio_microphone, [lecture_capture] = @lecture_capture WHERE [room_code] = @room_code"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@room_code", room.room_code);
+                    cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(room.capacity));
+                    cmd.Parameters.AddWithValue("@wheelchair", Convert.ToInt32(room.wheelchair));
+                    cmd.Parameters.AddWithValue("@projector", Convert.ToInt32(room.projector));
+                    cmd.Parameters.AddWithValue("@visualiser", Convert.ToInt32(room.visualiser));
+                    cmd.Parameters.AddWithValue("@whiteboard", Convert.ToInt32(room.whiteboard));
+                    cmd.Parameters.AddWithValue("@computer", Convert.ToInt32(room.computer));
+                    cmd.Parameters.AddWithValue("@video_dvd", Convert.ToInt32(room.video_dvd));
+                    cmd.Parameters.AddWithValue("@pa_system", Convert.ToInt32(room.pa_system));
+                    cmd.Parameters.AddWithValue("@radio_microphone", Convert.ToInt32(room.radio_microphone));
+                    cmd.Parameters.AddWithValue("@lecture_capture", Convert.ToInt32(room.lecture_capture));
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+        //add a pool room
+        [WebMethod]
+        [ScriptMethod]
+        public static void insertRoom(ROOM room)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [ROOMS] ([building_code], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [video_dvd], [pa_system], [radio_microphone], [lecture_capture], [tiered], [flat], [dept]) VALUES (@building_code, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @video_dvd, @pa_system, @radio_microphone, @lecture_capture, @tiered, @flat, @dept)"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@building_code", room.building_code);
+                    cmd.Parameters.AddWithValue("@room_code", room.room_code);
+                    cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(room.capacity));
+                    cmd.Parameters.AddWithValue("@wheelchair", Convert.ToInt32(room.wheelchair));
+                    cmd.Parameters.AddWithValue("@projector", Convert.ToInt32(room.projector));
+                    cmd.Parameters.AddWithValue("@visualiser", Convert.ToInt32(room.visualiser));
+                    cmd.Parameters.AddWithValue("@whiteboard", Convert.ToInt32(room.whiteboard));
+                    cmd.Parameters.AddWithValue("@computer", Convert.ToInt32(room.computer));
+                    cmd.Parameters.AddWithValue("@video_dvd", Convert.ToInt32(room.video_dvd));
+                    cmd.Parameters.AddWithValue("@pa_system", Convert.ToInt32(room.pa_system));
+                    cmd.Parameters.AddWithValue("@radio_microphone", Convert.ToInt32(room.radio_microphone));
+                    cmd.Parameters.AddWithValue("@lecture_capture", Convert.ToInt32(room.lecture_capture));
+                    cmd.Parameters.AddWithValue("@tiered", Convert.ToInt32(room.tiered));
+                    cmd.Parameters.AddWithValue("@flat", Convert.ToInt32(room.flat));
+                    cmd.Parameters.AddWithValue("@dept", room.dept);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
         //delete a pool room
         [WebMethod]
         [ScriptMethod]
