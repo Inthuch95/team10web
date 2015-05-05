@@ -1,17 +1,4 @@
-﻿.btns {
-	border: 2px solid #ffffff;
-    background: #9D009D;
-  	color: #ffffff;
-    height: auto;
-    width: 86px;
-	transition: all 0.3s;
-}
-
-.btns:hover {
-	background: #ffffff;
-	color: #9D009D;
-    border: 2px solid #9D009D;
-}
+﻿
 
 .tabs {
     display:inline-block;
@@ -64,7 +51,34 @@
             display:inline;
         }
 
+        .btns {
+	border: 2px solid #ffffff;
+    background: #9D009D;
+  	color: #ffffff;
+    width: 86px;
+	transition: all 0.3s;
+}
 
+.btns:hover {
+	background: #ffffff;
+	color: #9D009D;
+    border: 2px solid #9D009D;
+}
+
+.btnsTa{
+    	border: 2px solid #ffffff;
+    background: #9D009D;
+  	color: #ffffff;
+    height: 56px;
+    width: 86px;
+	transition: all 0.3s;
+}
+
+.btnsTa:hover {
+	background: #ffffff;
+	color: #9D009D;
+    border: 2px solid #9D009D;
+}
 
 
 

@@ -718,7 +718,7 @@
                             $(id).append("<td>" + requestData[i].module + "</td>");
                             $(id).append("<td>" + requestData[i].room_code + "</td>");
                             $(id).append("<td>" + requestData[i].capacity + "</td>");
-                            $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' class='btns' value='Show' onclick='showFacilityDialog(this)' /></td>");
+                            $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' class='btnsTa' value='Show' onclick='showFacilityDialog(this)' /></td>");
                             $(id).append("<td>" + requestData[i].special_req + "</td>");
                             $(id).append("<td>" + requestData[i].priority + "</td>");
                             $(id).append("<td>" + requestData[i].day + "</td>");
@@ -904,8 +904,6 @@
         <div id="table_header">
             <table class="scrollTable">
 	            <tr>
-     
-             
                         <td>Dept</td>
 			            <td>Module <br /> Code</td>
 			            <td>Room Code</td>
