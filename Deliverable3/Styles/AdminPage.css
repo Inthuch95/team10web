@@ -3,7 +3,7 @@
     background: #9D009D;
   	color: #ffffff;
     height: auto;
-    width: 88px;
+    width: 86px;
 	transition: all 0.3s;
 }
 
@@ -70,7 +70,7 @@
 
 .dataTable 
 {
-    width:1250px;
+    width:1232px;
     border:1px solid #ffffff;
     overflow:hidden;
     opacity: 0.75;
@@ -120,14 +120,13 @@ table
 	overflow:hidden;
 }
 
-#content_wrap 
+.content_wrap 
 {
     background-color: #FFFFFF;
     clear: both;
     margin-left: 0;
     width: 1250px;
     z-index:0;
-    padding-bottom: 800px;
 }
 
 #table_header 

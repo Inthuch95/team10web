@@ -5,7 +5,7 @@
     <!-- Admin page CSS -->
     <link rel="Stylesheet" type="text/css" href="Styles/AdminPage.css"/>  
     
-    <script type="text/javascript" language="javascript">
+    <script type="text/javascript">
         $(document).ready(function () {
             //capacity slider
             $("#slider-capacity").slider({
@@ -718,7 +718,7 @@
                             $(id).append("<td>" + requestData[i].module + "</td>");
                             $(id).append("<td>" + requestData[i].room_code + "</td>");
                             $(id).append("<td>" + requestData[i].capacity + "</td>");
-                            $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' value='Show' onclick='showFacilityDialog(this)' /></td>");
+                            $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' class='btns' value='Show' onclick='showFacilityDialog(this)' /></td>");
                             $(id).append("<td>" + requestData[i].special_req + "</td>");
                             $(id).append("<td>" + requestData[i].priority + "</td>");
                             $(id).append("<td>" + requestData[i].day + "</td>");
@@ -727,7 +727,7 @@
                             $(id).append("<td>" + "Weeks" + "</td>");
                             $(id).append("<td>" + requestData[i].semester + "</td>");
                             $(id).append("<td>" + requestData[i].session + "</td>");
-                            $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' value='Allocate' onclick='allocateAjax(this)' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' value='Reject' onclick='rejectAjax(this)' /></td>");
+                            $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' class='btns' value='Allocate' onclick='allocateAjax(this)' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' class='btns' value='Reject' onclick='rejectAjax(this)' /></td>");
                             $("#RoomAllocations").append("</tr>");
                         }
                     },
@@ -868,7 +868,7 @@
 
 <%-- MAIN BODY CONTENT --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-        <script>
+        <script type="text/javascript">
             // JQuery that allows the tabs to change
             jQuery(document).ready(function () {
                 jQuery('.tabs .tab-links a').on('click', function (e) {
@@ -907,11 +907,11 @@
      
              
                         <td>Dept</td>
-			            <td>Module </br> Code</td>
+			            <td>Module <br /> Code</td>
 			            <td>Room Code</td>
 			            <td>Capacity</td>
                         <td>Facility</td>
-			            <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special </br>Req</td>
+			            <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Req</td>
 			            <td>Priority</td>
 			            <td>Day</td>
 			            <td>Period</td>
@@ -924,9 +924,8 @@
 	            </table>
             </div>
 
-            <div id="content_wrap">
+            <div class="content_wrap">
                 <table id="RoomAllocations" class="dataTable">
-	               
                 </table>
             </div>
            </div>
@@ -938,15 +937,15 @@
                 </div>
 
                 <div id="facility-tabs" class="tab">
-                   <div id="Div1">
+                   <div class="content_wrap">
                       <h2>Facility Management</h2>
                       <table>
                             <tr>
                                 <td>Add New Facility:</td>
-                                <td><input type="text" id="facName" name="facName"></td>
+                                <td><input type="text" id="facName" name="facName"/></td>
                             </tr>
                             <tr>
-                                <td colspan=2 align=right>
+                                <td colspan='2' align='right'>
                                     <input type="button" id="Button1" name="save_round" value="Submit" class="btns" onclick="" /></td>
                             </tr>
                       </table>
@@ -956,33 +955,33 @@
 
 
           <div id="round-tabs" class="tab">
-            <div id="content_wrap">
+            <div class="content_wrap">
             <h2>Round dates</h2>
             <table>
             <tr>
             <td>Round 1: <label for="from">From</label></td>
-            <td><input type="text" id="from1" name="from1"></td>
+            <td><input type="text" id="from1" name="from1"/></td>
             <td><label for="to">to</label></td>
-            <td><input type="text" id="to1" name="to1"></td>
+            <td><input type="text" id="to1" name="to1"/></td>
             </tr><tr>
             <td>Round 2: <label for="from">From</label></td>
-            <td><input type="text" id="from2" name="from2"></td>
+            <td><input type="text" id="from2" name="from2"/></td>
             <td><label for="to">to</label></td>
-            <td><input type="text" id="to2" name="to2"></td>
+            <td><input type="text" id="to2" name="to2"/></td>
             </tr><tr>
             <td>Round 3: <label for="from">From</label></td>
-            <td><input type="text" id="from3" name="from3"></td>
+            <td><input type="text" id="from3" name="from3"/></td>
             <td><label for="to">to</label></td>
-            <td><input type="text" id="to3" name="to3"></td>
+            <td><input type="text" id="to3" name="to3"/></td>
             </tr><tr>
-            <td colspan=4 align=right><input type="button" id="save_round" name="save_round" value="Submit" class="btns" onclick="updateRoundAjax()" /></td>
+            <td colspan='4' align='right'><input type="button" id="save_round" name="save_round" value="Submit" class="btns" onclick="updateRoundAjax()" /></td>
             </tr>
             </table>
           </div>
                 </div>
           <div id="room-tabs" class="tab">
             <h2>Room Management</h2>
-              <div id="room_filter">
+              <div class="content_wrap">
                   <br />
                   Park: <select id="park_filter" onchange="filterChange()">
                             <option>Any</option>
@@ -1166,7 +1165,6 @@
               </div>
              </div>
           </div>
-        </div>
-    </div>  
+        </div> 
 
 </asp:Content>

@@ -38,10 +38,10 @@
                 </div>
                 <div class="row">
                     <div class="text-center col-md-4 col-sm-4 col-md-offset-2 col-sm-offset-2">
-                        <asp:Button class="btn btn-success btn-block full" ID="Button1" runat="server" onclick="Button1_Click" Text="Add" Width="96px" />
+                        <asp:Button class="btns" ID="Button1" runat="server" onclick="Button1_Click" Text="Add" />
                     </div>
                     <div class="text-center col-md-4 col-sm-4">
-                        <button class="btn btn-success btn-block">Clear All</button>
+                        <button class="btns">Clear All</button>
                     </div>
                     <asp:Label ID="LabelResponse" runat="server" Text=""></asp:Label>
                 </div>
