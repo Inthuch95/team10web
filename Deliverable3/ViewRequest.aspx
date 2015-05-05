@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link rel="Stylesheet" type="text/css" href="Styles/ViewRequest.css"/>  
    
-    <script type="text/javascript" language="javascript">
+    <script type="text/javascript">
      $(document).ready(function () {
          getRequestAjax();
      });
@@ -26,11 +26,12 @@
 
                     console.log(requestData);
                     for (var i = 0; i < requestData.length; i++) {
-                        $("#" + requestData[i].status).append("<tr>" + "<td>" + requestData[i].request_id + "</td>" + "<td>" + requestData[i].module + "</td>" + "<td>" + requestData[i].room_code + "</td>"
-                            + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='buttons'>Click Me!</button> " + "</td>" + "<td>" + " <button type='button' class='buttons'>Click Me!</button> " + "</td>"
-                            + "<td>" + requestData[i].priority + "</td>" + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" 
-                            + "<td>" + requestData[i].duration + "</td>" + "<td>" + " <button type='button' >Click Me!</button> " + "</td>" + "<td>" + "<button type='button' class='buttons'>Click Me!</button>" + "</td>" + "</tr>");
-
+                        $("#" + requestData[i].status).append("<tr>" + "<td>" + requestData[i].request_id + "</td>" + "<td>" + requestData[i].module + "</td>" + "<td>" + requestData[i].room_code
+                            + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btns'>show</button> " + "</td>"
+                            + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
+                            + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
+                            + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>" + "<td>" + "<button type='button' class='btns'>show</button>"
+                            + "</td>" + "</tr>");
                     }
                  },
                  error: function (response) {
@@ -77,55 +78,51 @@
     </ul>
 
     <div class="tab-content">
-
         <div id="rejected" class="tab active">
           <div id="table_header"> 
             <table class="scrollTable">
 	         <tr>
-			        <td id="request_id">Request</br>Id</td>
-			        <td id="module_code">Module </br> Code</td>
-			        <td id="room_code">Room Code</td>
-			        <td id="capacity">Capacity</td>
-			        <td id="facility">Facility</td>
-			        <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">Special </br>Requirements</td>
-			        <td id="priority">Priority</td>
-			        <td id="day">Day</td>
-			        <td id="period">Period</td>
-			        <td id="duration">Duration</td>
-			        <td id="week(s)" style="cursor:default;">Week(s)</td>
-			        <td id="edit_cell" style="cursor:default;">Edit/Delete</td>
+			        <td>Request<br/>Id</td>
+			        <td>Module <br/> Code</td>
+			        <td>Room Code</td>
+			        <td>Capacity</td>
+			        <td>Facility</td>
+			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
+			        <td>Priority</td>
+			        <td>Day</td>
+			        <td>Period</td>
+			        <td>Duration</td>
+			        <td style="cursor:default;">Week(s)</td>
+			        <td style="cursor:default;">Edit/Delete</td>
                 </tr>
 	          </table>
-          </div>
-          <div class="content_wrap"> 
+            </div> 
             <table id="Rejected" class="dataTable">
             </table>
-          </div>
+
        </div>
  
         <div id="booked" class="tab">
           <div class="table_header"> 
             <table class="scrollTable">
 	          <tr>
-			        <td id="request_id">Request</br>Id</td>
-			        <td id="module_code">Module </br> Code</td>
-			        <td id="room_code">Room Code</td>
-			        <td id="capacity">Capacity</td>
-			        <td id="facility">Facility</td>
-			        <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">Special </br>Requirements</td>
-			        <td id="priority">Priority</td>
-			        <td id="day">Day</td>
-			        <td id="period">Period</td>
-			        <td id="duration">Duration</td>
-			        <td id="week(s)" style="cursor:default;">Week(s)</td>
-			        <td id="edit_cell" style="cursor:default;">Edit/Delete </td>
+			        <td>Request<br/>Id</td>
+			        <td>Module <br/> Code</td>
+			        <td>Room Code</td>
+			        <td>Capacity</td>
+			        <td>Facility</td>
+			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
+			        <td>Priority</td>
+			        <td>Day</td>
+			        <td>Period</td>
+			        <td>Duration</td>
+			        <td style="cursor:default;">Week(s)</td>
+			        <td style="cursor:default;">Edit/Delete</td>
 	           </tr>
             </table>
          </div>
-           <div class="content_wrap">
            <table id="Booked" class="dataTable">
             </table>
-            </div>
           </div>
  
 
@@ -133,28 +130,23 @@
           <div class="table_header"> 
             <table class="scrollTable">
 	          <tr>
-			        <td id="request_id">Request</br>Id</td>
-			        <td id="module_code">Module </br> Code</td>
-			        <td id="room_code">Room Code</td>
-			        <td id="capacity">Capacity</td>
-			        <td id="facility">Facility</td>
-			        <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">Special </br>Requirements</td>
-			        <td id="priority">Priority</td>
-			        <td id="day">Day</td>
-			        <td id="period">Period</td>
-			        <td id="duration">Duration</td>
-			        <td id="week(s)" style="cursor:default;">Week(s)</td>
-			        <td id="edit_cell" style="cursor:default;">Edit/Delete </td>
+				    <td>Request<br/>Id</td>
+			        <td>Module <br/> Code</td>
+			        <td>Room Code</td>
+			        <td>Capacity</td>
+			        <td>Facility</td>
+			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
+			        <td>Priority</td>
+			        <td>Day</td>
+			        <td>Period</td>
+			        <td>Duration</td>
+			        <td style="cursor:default;">Week(s)</td>
+			        <td style="cursor:default;">Edit/Delete</td>
 	           </tr>
             </table>
           </div>
-          <div class="content_wrap">
-            
             <table id="Pending" class="dataTable">
             </table>
-
-
-            </div>
         </div>
 
   </div>

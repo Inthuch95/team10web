@@ -1,12 +1,22 @@
-.tabs {
+.btns {
+	border: 2px solid #ffffff;
+    background: #9D009D;
+  	color: #ffffff;
+    height: auto;
+    width: 102px;
+	transition: all 0.3s;
+}
 
+.btns:hover {
+	background: #ffffff;
+	color: #9D009D;
+    border: 2px solid #9D009D;
+}
+
+.tabs {
     display:inline-block;
 }
-.buttons{
-	color:#000000;
-	width:95px;
-} 
- 
+
     .tab-links:after {
         display:block;
         clear:both;
@@ -14,7 +24,7 @@
     }
  
     .tab-links li {
-        margin:0px 5px;
+        margin:0px 2px;
         float:left;
         list-style:none;
     }
@@ -22,9 +32,9 @@
         .tab-links a {
             padding:9px 15px;
             display:inline-block;
-            border-radius:3px 3px 0px 0px;
+            border-radius:2px 2px 0px 0px;
             background:#330066;
-            font-size:16px;
+            font-size:15px;
             font-weight:600;
             color:#FFFFFF;
             transition:all linear 0.15s;
@@ -39,9 +49,11 @@
 
     .tab-content {
         padding:15px;
-        border-radius:3px;
+        border-radius:2px;
         box-shadow:-1px -1px 2px 2px rgba(0,0,0,0.15);
         background:#FFFFFF;
+        min-height: 340px;
+        padding-bottom: 30px;
     }
  
         .tab {
@@ -106,6 +118,7 @@ table
     border-collapse: separate;
 	overflow:hidden;
 }
+
 .content_wrap 
 {
     background-color: #FFFFFF;
@@ -113,7 +126,7 @@ table
     margin-left: 0;
     width: 1250px;
     z-index:0;
-     padding-bottom: 200px;
+    padding-bottom: 200px;
 }
 
 .table_header 
@@ -137,4 +150,3 @@ ul.tabs li.ui-tabs-active a, ul.tabs li.ui-tabs-selected a
     background-color:blue; 
 }
 
-。

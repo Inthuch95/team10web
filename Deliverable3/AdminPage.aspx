@@ -577,8 +577,8 @@
                         $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
                         $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />"
                         + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " +
-                        roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />"
-                        + "<input type='button' id='delete" + (i + 1) + "' onclick='deleteRoomAjax(this)' value='Delete' />" + "<br /></div>");
+                        roomData[i].capacity + "<br /><input type='button' class='btns' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />"
+                        + "<input type='button' class='btns' id='delete" + (i + 1) + "' onclick='deleteRoomAjax(this)' value='Delete' />" + "<br /></div>");
                     }
                     $("#accordion").accordion({
                         collapsible: true,
@@ -847,53 +847,31 @@
       <div id="allocation-tabs" class="tab active">
         <%-- These allow us to see table head and use filter when scrolling down the page --%>
         <div id="table_header">
-            <table id="scrollTable">
+            <table class="scrollTable">
 	            <tr>
-                     <h2>Room allocation</h2>
-		            <h4>Click on the headers to sort the table</h4><br/><br/>
-                      <%--<td id="request_id">
-				            Request</br>Id
-			            </td>--%>
-                        <td id="dept_code">Dept</td>
-			            <td id="module_code">Module </br> Code</td>
-			            <td id="room_code">Room Code</td>
-			            <td id="capacity">Capacity</td>
-                        <td id="facility">Facility</td>
-			            <td id="special_requirements" style="cursor:default; font-size:0.8em; font-weight:bold;">Special </br>Req</td>
-			            <td id="priority">Priority</td>
-			            <td id="day">Day</td>
-			            <td id="period">Period</td>
-			            <td id="duration">Duration</td>
-			            <td id="week(s)" style="cursor:default;">Week(s)</td>
-                        <td id="semester">Semester</td>
-                        <td id="session">Session Type</td>
-                        <td id="edit_cell" style="cursor:default;">Action</td>
+     
+             
+                        <td>Dept</td>
+			            <td>Module </br> Code</td>
+			            <td>Room Code</td>
+			            <td>Capacity</td>
+                        <td>Facility</td>
+			            <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special </br>Req</td>
+			            <td>Priority</td>
+			            <td>Day</td>
+			            <td>Period</td>
+			            <td>Duration</td>
+			            <td style="cursor:default;">Week(s)</td>
+                        <td>Semester</td>
+                        <td>Session Type</td>
+                        <td style="cursor:default;">Action</td>
                     </tr>
 	            </table>
             </div>
 
             <div id="content_wrap">
-                <table id="dataTable" class="entries_table">
-	                <tr style="display:none;">
-                        <%--<td id="request_id">
-			                Request_id
-		                </td>--%>
-                        <td id="dept_code">Dept</td>
-		                <td id="module_code">Module_code</td>
-		                <td id="room_code">Room_code</td>
-		                <td id="capacity">Capacity</td>
-		                <td id="facility">Facility</td>
-		                <td id="special_requirements">Special </br>Req</td>
-		                <td id="priority">Priority</td>
-		                <td id="day">Day</td>
-		                <td id="period">Period</td>
-		                <td id="duration">Duration</td>
-		                <td id="week(s)" >Week(s)</td>
-                        <td id="semester">Semester</td>
-                        <td id="session">Session Type</td>
-		                <td id="edit_cell" style="cursor:default;">Action</td>
-				
-	                </tr>
+                <table id="RoomAllocations" class="dataTable">
+	               
                 </table>
             </div>
            </div>
@@ -927,7 +905,7 @@
             <input type="text" id="from3" name="from3">
             <label for="to">to</label>
             <input type="text" id="to3" name="to3"><br />
-            <input type="button" id="save_round" name="save_round" value="Submit" onclick="updateRoundAjax()" />
+            <input type="button" id="save_round" name="save_round" value="Submit" class="btns" onclick="updateRoundAjax()" />
           </div>
                 </div>
           <div id="room-tabs" class="tab">
@@ -942,7 +920,7 @@
                   Building: <select id="building_filter" onchange="filterChange()">
                                 <option>Any</option>
                             </select>&nbsp;
-                  <input type="button" id="room-insert" value="Add Room" onclick="showAddRoomDialog()" />
+                  <input type="button" id="room-insert" value="Add Room" class="btns" onclick="showAddRoomDialog()" style="width:auto" />
               </div>
               <div id="accordion">
                 
@@ -1036,8 +1014,9 @@
                         </td>
                     </tr>
                 </table><br />
-                <input type="button" id="add_room_submit" value="Submit" onclick="" />
+                <input type="button" id="add_room_submit" value="Submit" class="btns" onclick="" />
               </div>
+
               <div id="dialog-room" title="Pool Room Management">
                 Room Code
                 Capacity: <div id="slider-capacity"></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
@@ -1107,9 +1086,11 @@
                         </td>
                     </tr>
                 </table><br />
-                <input type="button" id="room-submit" value="Submit" onclick="updateRoomAjax()" />
+                <input type="button" id="room-submit" value="Submit" class="btns" onclick="updateRoomAjax()" />
               </div>
+             </div>
           </div>
+        </div>
     </div>  
-</div>
+
 </asp:Content>

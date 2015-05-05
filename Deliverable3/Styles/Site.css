@@ -33,7 +33,7 @@ h1
     background-color: #fff;
     margin: 10px auto 0px auto;
     border: 1px solid #496077;
-    border-radius:5px; 
+    border-radius:2px; 
 }
 /* .page title */
 .header
@@ -46,8 +46,7 @@ h1
     height:60px;
     background-color:#330066;
     text-align:center;
-    border-top-left-radius:3px;
-    border-top-right-radius:3px;
+
 }
 .header h1 
 {
@@ -81,7 +80,7 @@ div.navbar
     width:1336px;
     height:60px;
     background-color:#330066;
-    border-radius:5px;
+    border-radius:2px;
     margin:10px auto 0px auto;
     padding:0;
     text-align:center;
@@ -104,30 +103,32 @@ div.navbar ul li
     height:60px;
     font-size:12pt;
     padding-top:17px;
-    border-right:1px solid white;
+    border:2px solid white;
     margin-top:-1px;
+    transition: all 0.3s; 
 }
 div.navbar ul li a 
 {
-    color:White;
+    color:white;
     display:block;
-   
+   transition: all 0.3s; 
 }
 div.navbar ul li a:hover 
 {
+    color:#330066;
     text-decoration:none;
+    transition: all 0.3s; 
 }
 /* First child = logo */
 div.navbar ul li:first-child 
 {
+    border-style:none;
     padding-top:12.5px;
     padding-bottom:2.5px;
     padding-left:2.5px;
     padding-right:2.5px;
     width:240px;   
-    border-right:none;
-    border-top-left-radius:5px;
-    border-bottom-left-radius:5px; 
+
 }
 div.navbar ul li:first-child:hover 
 {
@@ -137,20 +138,20 @@ div.navbar ul li:first-child:hover
 /* ************************************** */
 /* Last child = Log out */
 div.navbar ul li:last-child 
-{
-    border-right:none; 
-    width:119px;  
+{ 
+    width:119px; 
+    transition: all 0.3s;  
 }
 div.navbar ul li:last-child:hover 
 {
-    border-top-right-radius:5px;
-    border-bottom-right-radius:5px;   
+transition: all 0.3s; 
 }
 /* ************************************** */
 /* First nav link */
 div.navbar ul li:nth-child(2) 
 {
-    border-left:1px solid white;   
+    border:2px solid white; 
+    color:#330066;
 }
 div.navbar ul li:nth-child(2):hover :
 {
@@ -160,8 +161,9 @@ div.navbar ul li:nth-child(2):hover :
 div.navbar ul li:hover 
 {
     cursor:pointer;   
-    background-color:#6666CC;
-    color:#fff;
+    background-color:#ffffff;
+    border-color:#330066;
+    color:#000000;
 }
 .navlogo 
 {
@@ -170,8 +172,7 @@ div.navbar ul li:hover
     margin:0;
     margin-top:-10px;
     padding:0;  
-    border-top-left-radius:5px;
-    border-bottom-left-radius:5px; 
+ 
 }
 /* MISC  
 ----------------------------------------------------------*/

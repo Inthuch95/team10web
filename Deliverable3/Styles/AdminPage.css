@@ -1,8 +1,22 @@
-﻿.tabs {
+﻿.btns {
+	border: 2px solid #ffffff;
+    background: #9D009D;
+  	color: #ffffff;
+    height: auto;
+    width: 88px;
+	transition: all 0.3s;
+}
 
+.btns:hover {
+	background: #ffffff;
+	color: #9D009D;
+    border: 2px solid #9D009D;
+}
+
+.tabs {
     display:inline-block;
 }
- 
+
     .tab-links:after {
         display:block;
         clear:both;
@@ -10,7 +24,7 @@
     }
  
     .tab-links li {
-        margin:0px 5px;
+        margin:0px 2px;
         float:left;
         list-style:none;
     }
@@ -18,9 +32,9 @@
         .tab-links a {
             padding:9px 15px;
             display:inline-block;
-            border-radius:3px 3px 0px 0px;
+            border-radius:2px 2px 0px 0px;
             background:#330066;
-            font-size:16px;
+            font-size:15px;
             font-weight:600;
             color:#FFFFFF;
             transition:all linear 0.15s;
@@ -35,9 +49,11 @@
 
     .tab-content {
         padding:15px;
-        border-radius:3px;
+        border-radius:2px;
         box-shadow:-1px -1px 2px 2px rgba(0,0,0,0.15);
         background:#FFFFFF;
+        min-height: 340px;
+        padding-bottom: 30px;
     }
  
         .tab {
@@ -51,48 +67,47 @@
 
 
 
-#dataTable 
+
+.dataTable 
 {
     width:1250px;
-    border:1px solid #f1f1f1;
-    overflow:hidden;
-    -moz-border-radius-bottomleft:2px;
-    -webkit-border-bottom-left-radius:2px;
-    border-bottom-left-radius:2px;
-    opacity: 0.75;
-    -moz-border-radius-bottomright:2px;
-    -webkit-border-bottom-right-radius:2px;
-    border-bottom-right-radius:2px;
-}
-
-#dataTable td 
-{
-    width:120px;
-    max-width:120px;
-    font-size:1em;
-    border:1px solid #f1f1f1;
-    overflow:hidden;
-}
-
-
-
-#scrollTable 
-{
     border:1px solid #ffffff;
-    background:#330066;
-    color:#fff;
-	border-radius:3px;
-
-
+    overflow:hidden;
+    opacity: 0.75;
+   
 }
 
-#scrollTable td 
+.dataTable td 
 {
-    width:120px;
-    max-width:120px;
+	background:#9D009D;
+    width:88px;
+    max-width:88px;
+	min-width:88px;
     font-size:1em;
+    border:1px solid #ffffff;
+	color:#FFFFFF;
     overflow:hidden;
+}
+
+.scrollTable 
+{
+    width:1250px;
+    border:1px solid #ffffff;
+	border-radius:1px;
+    opacity: 0.90;
+}
+
+.scrollTable td 
+{
+	background:#330066;
+    width:88px;
+    max-width:88px;
+	min-width:88px;
+    font-size:1em;
+    border:1px solid #ffffff;
+	color:#ffffff;
     cursor: pointer;
+	overflow:hidden;
 }
 table
 {
@@ -104,14 +119,15 @@ table
     border-collapse: separate;
 	overflow:hidden;
 }
+
 #content_wrap 
 {
-    background-color: #F7F7F0;
+    background-color: #FFFFFF;
     clear: both;
     margin-left: 0;
     width: 1250px;
     z-index:0;
-     padding-bottom: 800px;
+    padding-bottom: 800px;
 }
 
 #table_header 
