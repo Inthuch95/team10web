@@ -12,6 +12,10 @@
      });
 
      var requestData;
+     //sorting template
+     //requestData.sort(function (a, b) {
+     //    return a.room_code > b.room_code;
+     //});
      //start ajax
      function deleteRequestAjax(el) {
          var request = {};
