@@ -338,6 +338,7 @@
         var roundData;
         var roomData;
         var buildingData;
+        var currentRoom = 0;
         function filterChange() {
             var buildingOption = $("#building_filter").val();
             var building = buildingOption.substr((buildingOption.indexOf(":") + 2));
@@ -568,6 +569,9 @@
             room.video_dvd = video;
             room.pa_system = pa;
             room.radio_microphone = mic;
+            var id = $("#roomCode_val").val() + "Index"
+            currentRoom = document.getElementById(id).value;
+            console.log(currentRoom);
             if (confirm("Are you sure you want to edit this room?")) {
                 $.ajax(
                 {
@@ -629,14 +633,21 @@
                     $("#room-tabs").append("<div id='accordion'>");
                     for (var i = 0; i < roomData.length;i++){
                         $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
-                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />"
+                        $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<input type='hidden' id='" + roomData[i].room_code + "Index' value='" + i + "' />" + "<br />"
                         + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " +
                         roomData[i].capacity + "<br /><input type='button' class='btns' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />"
                         + "<input type='button' class='btns' id='delete" + (i + 1) + "' onclick='deleteRoomAjax(this)' value='Delete' />" + "<br /></div>");
                     }
+                    var active;
+                    if (currentRoom == "")
+                        active = 0;
+                    else
+                        active = parseInt(currentRoom);
+                    console.log(currentRoom);
                     $("#accordion").accordion({
                         collapsible: true,
-                        heightStyle: "content"
+                        heightStyle: "content",
+                        active: parseInt(currentRoom)
                     });
                 },
                 error: function (response) {

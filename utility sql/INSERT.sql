@@ -1,10 +1,3 @@
-INSERT INTO [ROOMS] ([building_code], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [video_dvd], [pa_system], [radio_microphone], [lecture_capture], [tired], [flat]) VALUES
-('CC', 'CC.0.11', 280, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0),
-('CC', 'CC.0.12', 234, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0),
-('CC', 'CC.0.13', 201, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0),
-('CC', 'CC.0.14', 40, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1),
-('CC', 'CC.0.21', 120, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0),
-('CC', 'CC.0.029a', 64, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1),
-('CC', 'CC.1.09', 44, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1),
-('CC', 'CC.1.10', 36, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1),
-('CC', 'CC.1.11', 48, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1);
+INSERT INTO [REQUESTS] ([request_id], [module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [tiered], [flat], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) VALUES (6, N'COA101', N'A.0.01', 45, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, N'test', 1, N'Monday', 1, 1, N'Rejected', N'c', 1, 2015, N'not ray dawson', N'co', N'lecture')
+INSERT INTO [REQUESTS] ([request_id], [module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [tiered], [flat], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) VALUES (7, N'COA123', N'J.0.01', 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, N'dfjdgbdf', 1, N'Tuesday', 2, 1, N'Rejected', N'c', 2, 2015, N'not ray', N'co', N'lecture')
+INSERT INTO [REQUESTS] ([request_id], [module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [tiered], [flat], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) VALUES (8, N'COB107', N'CC.0.21', 80, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, N'Please get some pillow, it''s really boring', 1, N'Friday', 5, 2, N'Rejected', N'c', 1, 2015, N'boring lady', N'CO', N'lecture')
