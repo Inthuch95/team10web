@@ -1343,12 +1343,12 @@
         <%-- General information --%>
         <table class="inputs box_class" id="main_layout" >
             <tr>
-                <td align="left" colspan="2">Department</td>
+                <td align="left" colspan="2" style="padding-left:5px;">Department</td>
                 <td align="left">Module</td>
             </tr>
             <tr>
                 <%-- Department --%>
-                <td align="left" colspan="2">
+                <td align="left" colspan="2" style="padding-left:5px;">
                     <input type="text" id="dept" name="dept" style="border:0;" readonly="readonly" />
                 </td>
                 <%-- Module --%>
@@ -1360,7 +1360,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="left" colspan="2">Number of Rooms</td>
+                <td align="left" colspan="2" style="padding-left:5px;">Number of Rooms</td>
                 <td align="left">Session Type</td>
             </tr>
             <tr>
@@ -1372,7 +1372,7 @@
                                 <div id="slider-rooms"></div>
                             </td>
                             <td>
-                                <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
                             </td>
                         </tr>
                     </table>
@@ -1389,7 +1389,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="left">
+                <td align="left" style="padding-left:5px;">
                     Priority
                 </td>
                 <td align="left">
@@ -1400,7 +1400,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="left">
+                <td align="left" style="padding-left:5px;">
                     <input type="text" readonly="readonly" value="P" />
                 </td>
                 <%-- Park --%>
@@ -1429,7 +1429,7 @@
         <div id="room_pref1">     
             <table class="inputs box_class">
                 <tr>
-                    <td colspan="2" align="left">Facility</td>
+                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
@@ -1437,7 +1437,7 @@
                     <td align="left" colspan="2">
                         <table>
                             <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-computer">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
@@ -1451,7 +1451,7 @@
                                 </td>
                                 </tr>
                                 <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-pa">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
                                     </ol>
@@ -1465,7 +1465,7 @@
                                 </td>
                                 </tr>
                                 <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-mic">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
                                     </ol>
@@ -1479,7 +1479,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-visualiser">
                                         <li class="ui-state-default" style="width: 200px">Visualiser</li>
                                     </ol>
@@ -1493,7 +1493,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-wheelchair">
                                         <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
                                     </ol>
@@ -1512,7 +1512,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="left" colspan="3">
+                        <td align="left" colspan="3"  style="padding-left:5px;">
                             Capacity
                         </td>
                     </tr>
@@ -1524,18 +1524,18 @@
                                         <div id="slider-capacity1"></div>
                                     </td>
                                     <td>
-                                        <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                        <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
                                     </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     <tr>
-                        <td align="left" colspan="2">Building</td>
+                        <td align="left" colspan="2"  style="padding-left:5px;">Building</td>
                         <td align="left">Room</td>
                     </tr>
                     <tr>
-                        <td align="left" colspan="2">
+                        <td align="left" colspan="2" style="padding-left:5px;">
                             <select id="building1" name="building1" onchange="changeRoom()">
                                 <option>Any</option>
                             </select>
@@ -1545,10 +1545,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="left" colspan="3">Additional requirement</td>
+                        <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
                     </tr>
                     <tr>
-                        <td align="left" colspan="3">
+                        <td align="left" colspan="3"  style="padding-left:5px;">
                             <textarea style="width:835px;" name="specialReq1" cols="80" maxlength="1000"></textarea>
                         </td>
                     </tr>
@@ -1558,7 +1558,7 @@
         <div id="room_pref2" style="display:none">
             <table class="inputs box_class">
                 <tr>
-                    <td colspan="2" align="left">Facility</td>
+                    <td colspan="2" align="left"  style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
@@ -1566,7 +1566,7 @@
                         <table>
                             <tr>
                                 <%--Facility options 2--%> 
-                                <td>
+                                <td  style="padding-left:5px;">
                                     <ol id="selectable-computer2">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
@@ -1580,7 +1580,7 @@
                                 </td>
                              </tr>
                              <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-pa2">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
                                     </ol>
@@ -1594,7 +1594,7 @@
                                 </td>
                              </tr>
                              <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-mic2">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
                                     </ol>
@@ -1608,7 +1608,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-visualiser2">
                                         <li class="ui-state-default" style="width: 200px">Visualiser</li>
                                     </ol>
@@ -1622,7 +1622,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-wheelchair2">
                                         <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
                                     </ol>
@@ -1641,30 +1641,30 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3">
+                    <td align="center" colspan="3" style="padding-left:5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity2"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">Building</td>
+                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">
+                    <td align="left" colspan="2" style="padding-left:5px;">
                         <select id="building2" name="building2" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -1674,10 +1674,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         <textarea style="width:835px;" name="specialReq2" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
@@ -1687,7 +1687,7 @@
         <div id="room_pref3" style="display:none">
             <table class="inputs box_class">
                 <tr>
-                    <td colspan="2" align="left">Facility</td>
+                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
@@ -1695,7 +1695,7 @@
                         <table>
                             <tr>
                                 <%--Facility options 3--%> 
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-computer3">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
@@ -1709,7 +1709,7 @@
                                 </td>
                              </tr>
                              <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-pa3">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
                                     </ol>
@@ -1723,7 +1723,7 @@
                                 </td>
                              </tr>
                              <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-mic3">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
                                     </ol>
@@ -1737,7 +1737,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-visualiser3">
                                         <li class="ui-state-default" style="width: 200px">Visualiser</li>
                                     </ol>
@@ -1751,7 +1751,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="padding-left:5px;">
                                     <ol id="selectable-wheelchair3">
                                         <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
                                     </ol>
@@ -1770,30 +1770,30 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3">
+                    <td align="center" colspan="3" style="padding-left:5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity3"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity3" name="capacity3" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity3" name="capacity3" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">Building</td>
+                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">
+                    <td align="left" colspan="2" style="padding-left:5px;">
                         <select id="building3" name="building3" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -1803,10 +1803,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         <textarea style="width:835px;" name="specialReq3" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
@@ -1816,11 +1816,11 @@
         <div id="room_pref4" style="display:none">
             <table class="inputs box_class">
                 <tr>
-                    <td colspan="2" align="left">Facility</td>
+                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">
+                    <td align="left" colspan="2" style="padding-left:5px;">
                         <table>
                             <tr>
                                 <%--Facility options 4--%> 
@@ -1899,30 +1899,30 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3">
+                    <td align="center" colspan="3" style="padding-left:5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity4"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity4" name="capacity4" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity4" name="capacity4" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">Building</td>
+                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">
+                    <td align="left" colspan="2" style="padding-left:5px;">
                         <select id="building4" name="building4" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -1932,10 +1932,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         <textarea style="width:835px;" name="specialReq4" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
@@ -1945,11 +1945,11 @@
         <div id="room_pref5" style="display:none">
             <table class="inputs box_class">
                 <tr>
-                    <td colspan="2" align="left">Facility</td>
+                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">
+                    <td align="left" colspan="2" style="padding-left:5px;">
                         <table>
                             <tr>
                                 <%--Facility options 5--%> 
@@ -2028,30 +2028,30 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3">
+                    <td align="center" colspan="3" style="padding-left:5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity5"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity5" name="capacity5" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity5" name="capacity5" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">Building</td>
+                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2">
+                    <td align="left" colspan="2" style="padding-left:5px;">
                         <select id="building5" name="building5" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -2061,10 +2061,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3">
+                    <td align="left" colspan="3" style="padding-left:5px;">
                         <textarea style="width:835px;" name="specialReq5" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
@@ -2072,16 +2072,17 @@
         </div>
         <%--Time--%>
         <div id="time">
-            <table class="inputs box_class">
+            <table class="inputs box_bottom_class">
                 <tr>
-                    <td align="left">Day</td>
+                    <td align="left" style="padding-left:5px;">Day</td>
                     <td align="left">Semester</td>
                     <td align="left">Period</td>
                     <td align="left">Duration</td>
                 </tr>
                 <tr>
                     <%--Selectable - Day--%>
-                    <td align="left">
+                    <td align="left" style="padding-left:5px;" >
+                        <table><tr>
                         <ol id="selectable-day">
                             <li class="ui-state-default" style="width: 100px">Monday</li>
                             <li class="ui-state-default" style="width: 100px">Tuesday</li>
@@ -2089,7 +2090,8 @@
                             <li class="ui-state-default" style="width: 100px">Thursday</li>
                             <li class="ui-state-default" style="width: 100px">Friday</li>
                         </ol>
-                        <input type="hidden" id="day" name="day" value="" />
+                        </td></tr></table>
+                        <input type="hidden" id="day" name="day" value=""/>
                     </td>
                     <%--Drop down for semester--%>
                     <td align="left">
@@ -2112,10 +2114,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" align="left">Week</td>
+                    <td colspan="4" align="left" style="padding-left:200px;">Week</td>
                 </tr>
                 <tr>
-                    <td colspan="3" align="left">
+                    <td colspan="4" align="center">
                         <input type="checkbox" name="weeks[]" id="week1" value="1" checked="checked" class="vis-hidden new-post-tags"/>
 						<label style="margin-left: 100px;" id="week" for="week1" class="week_label">  1  </label>
 						<input type="checkbox" name="weeks[]" id="week2" value="2" checked="checked" class="vis-hidden new-post-tags"/>

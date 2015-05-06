@@ -3,8 +3,8 @@
    width:900px;
    margin: 10px auto 0 auto;
    border:2px solid #CC0066;
-   border-top-left-radius:15px;
-   border-top-right-radius:15px;
+  /* border-top-left-radius:15px;
+   border-top-right-radius:15px;*/
 }
 .canistercontainer 
 {
@@ -19,8 +19,8 @@
 {
     text-align:center;
     border:2px solid #CC0066; 
-    border-top-left-radius:10px;
-    border-top-right-radius:10px;
+   /* border-top-left-radius:10px;
+    border-top-right-radius:10px; */
     background-color:#CC0066;
     color:White;
     height:40px;
@@ -130,7 +130,7 @@ table
     background-color: #F7F7F0;
 }
 .box_class {
-    -moz-border-radius-topright:22px;
+    /*-moz-border-radius-topright:22px;
     -webkit-border-top-right-radius:22px;
     border-top-right-radius:22px;
 
@@ -144,18 +144,46 @@ table
 
     -moz-border-radius-bottomleft:22px;
     -webkit-border-bottom-left-radius:22px;
-    border-bottom-left-radius:22px;
+    border-bottom-left-radius:22px; */
     
-    border: 3px solid #c1c1c1;
+    border-top: 3px solid #c1c1c1;
+    border-left: 3px solid #c1c1c1;
+    border-right: 3px solid #c1c1c1;
+    width: 1150px;
+	background-color: #f9f9f6;
+	padding: 10px;
+}
+.box_bottom_class {
+    /*-moz-border-radius-topright:22px;
+    -webkit-border-top-right-radius:22px;
+    border-top-right-radius:22px;
+
+    -moz-border-radius-topleft:22px;
+    -webkit-border-top-left-radius:22px;
+    border-top-left-radius:22px;
+
+	-moz-border-radius-bottomright:22px;
+    -webkit-border-bottom-right-radius:22px;
+    border-bottom-right-radius:22px;
+
+    -moz-border-radius-bottomleft:22px;
+    -webkit-border-bottom-left-radius:22px;
+    border-bottom-left-radius:22px; */
+    
+    border-top: 3px solid #c1c1c1;
+    border-left: 3px solid #c1c1c1;
+    border-right: 3px solid #c1c1c1;
+    border-bottom: 3px solid #c1c1c1;
+    text-align: center;
     width: 1150px;
 	background-color: #f9f9f6;
 	padding: 10px;
 }
 #selectable-session .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-session .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-session { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -164,10 +192,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-arrangement .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-arrangement .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-arrangement { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -176,10 +204,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-wheelchair .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-wheelchair { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -188,10 +216,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-whiteboard .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-whiteboard { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -200,10 +228,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-projector .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-projector { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -212,10 +240,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-visualiser .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-visualiser { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -224,10 +252,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-computer .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-computer { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -237,10 +265,10 @@ table
 }
 
 #selectable-video .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-video .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-video { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -249,10 +277,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-pa .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-pa { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -261,10 +289,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-mic .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-mic { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -273,10 +301,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-capture .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-capture { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -300,10 +328,10 @@ table
     width: 200px;
 }
 #selectable-arrangement2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-arrangement2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-arrangement2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -312,10 +340,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-wheelchair2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-wheelchair2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -324,10 +352,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-whiteboard2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-whiteboard2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -336,10 +364,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-projector2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-projector2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -348,10 +376,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-visualiser2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-visualiser2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -360,10 +388,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-computer2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-computer2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -373,10 +401,10 @@ table
 }
 
 #selectable-video2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-video2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-video2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -385,10 +413,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-pa2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-pa2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -397,10 +425,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-mic2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-mic2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -409,10 +437,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture2 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-capture2 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-capture2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -435,10 +463,10 @@ table
     width: 200px;
 }
 #selectable-arrangement3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-arrangement3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-arrangement3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -447,10 +475,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-wheelchair3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-wheelchair3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -459,10 +487,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-whiteboard3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-whiteboard3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -471,10 +499,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-projector3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-projector3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -483,10 +511,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-visualiser3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-visualiser3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -495,10 +523,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-computer3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-computer3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -508,10 +536,10 @@ table
 }
 
 #selectable-video3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-video3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-video3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -520,10 +548,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-pa3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-pa3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -532,10 +560,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-mic3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-mic3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -544,10 +572,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture3 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-capture3 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-capture3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -570,10 +598,10 @@ table
     width: 200px;
 }
 #selectable-arrangement4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-arrangement4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-arrangement4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -582,10 +610,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-wheelchair4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-wheelchair4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -594,10 +622,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-whiteboard4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-whiteboard4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -606,10 +634,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-projector4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-projector4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -618,10 +646,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-visualiser4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-visualiser4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -630,10 +658,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-computer4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-computer4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -643,10 +671,10 @@ table
 }
 
 #selectable-video4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-video4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-video4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -655,10 +683,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-pa4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-pa4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -667,10 +695,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-mic4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-mic4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -679,10 +707,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture4 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-capture4 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-capture4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -705,10 +733,10 @@ table
     width: 200px;
 }
 #selectable-arrangement5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-arrangement5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-arrangement5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -717,10 +745,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-wheelchair5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-wheelchair5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -729,10 +757,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-whiteboard5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-whiteboard5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -741,10 +769,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-projector5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-projector5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -753,10 +781,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-visualiser5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-visualiser5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -765,10 +793,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-computer5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-computer5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -778,10 +806,10 @@ table
 }
 
 #selectable-video5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-video5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-video5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -790,10 +818,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-pa5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-pa5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -802,10 +830,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-mic5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-mic5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -814,10 +842,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture5 .ui-selecting { 
-	background: #FECA40; 
+	background: #B531B5; 
 }
 #selectable-capture5 .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-capture5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -830,7 +858,7 @@ table
 	background: #F9F9F7; 
 }
 #selectable-day .ui-selected { 
-	background: #F39814; color: white; 
+	background: #9D009D; color: white; 
 }
 #selectable-day { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; background: #F9F9F7; 
@@ -862,13 +890,13 @@ table
 }
 
 #week:hover {
-  background-color: #FECA40;
+  background-color: #B531B5;
   color:white;
 }
 
 input:checked + #week {
   border-color: #DFDFDD;
-  background-color: #F39814;
+  background-color: #9D009D;
   color:white;
 }
     

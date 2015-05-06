@@ -6,6 +6,8 @@
     <script type="text/javascript">
      $(document).ready(function () {
          getRequestAjax();
+         initFacilityDialog();
+         initSpecialDialog();
      });
 
      var requestData;
@@ -27,8 +29,8 @@
                     console.log(requestData);
                     for (var i = 0; i < requestData.length; i++) {
                         $("#" + requestData[i].status).append("<tr>" + "<td>" + requestData[i].request_id + "</td>" + "<td>" + requestData[i].module + "</td>" + "<td>" + requestData[i].room_code
-                            + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btns'>show</button> " + "</td>"
-                            + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
+                            + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btns' onclick='showFacilityDialog(this)'>show</button> " + "</td>"
+                            + "<td>" + "<button type='button' class='btns' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
                             + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
                             + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>" + "<td>" + "<button type='button' class='btns'>show</button>"
                             + "</td>" + "</tr>");
@@ -55,6 +57,67 @@
          });
      });
     //end ajax
+     function initFacilityDialog() {
+         $("#dialog-facility").dialog({
+             position: {
+                 my: "center",
+                 at: "top",
+                 of: window
+             }
+         });
+         $("#dialog-facility").dialog("close");
+     }
+     function initSpecialDialog() {
+         $("#dialog-special").dialog({
+             position: {
+                 my: "center",
+                 at: "top",
+                 of: window
+             }
+         });
+         $("#dialog-special").dialog("close");
+     }
+     function showSpecialDialog(el) {
+         $("#special_req").empty();
+         var id = el.parentNode.parentNode.cells[0].textContent;
+         var request_id = parseInt(id);
+         for (var i = 0; i < requestData.length; i++) {
+             if (requestData[i].request_id == request_id) {
+                 $("#special_req").append(requestData[i].special_req);
+             }
+         }
+
+         $("#dialog-special").dialog("open");
+     }
+     function showFacilityDialog(el) {
+         $("#facility_list").empty();
+         var id = el.parentNode.parentNode.cells[0].textContent;
+         var request_id = parseInt(id);
+         for (var i = 0; i < requestData.length; i++) {
+             if (requestData[i].request_id == request_id) {
+                 if (requestData[i].wheelchair == 1)
+                     $("#facility_list").append("<li>Wheelchair</li>");
+                 if (requestData[i].projector == 1)
+                     $("#facility_list").append("<li>Projector</li>");
+                 if (requestData[i].whiteboard == 1)
+                     $("#facility_list").append("<li>Whiteboard</li>");
+                 if (requestData[i].visualiser == 1)
+                     $("#facility_list").append("<li>Visualiser</li>");
+                 if (requestData[i].computer == 1)
+                     $("#facility_list").append("<li>Computer</li>");
+                 if (requestData[i].lecture_capture == 1)
+                     $("#facility_list").append("<li>Lecture Capture</li>");
+                 if (requestData[i].pa_system == 1)
+                     $("#facility_list").append("<li>PA System</li>");
+                 if (requestData[i].video_dvd == 1)
+                     $("#facility_list").append("<li>Video/DVD</li>");
+                 if (requestData[i].radio_microphone == 1)
+                     $("#facility_list").append("<li>Radio Microphone</li>");
+             }
+         }
+
+         $("#dialog-facility").dialog("open");
+     }
     </script>
 
 
@@ -151,4 +214,11 @@
 
   </div>
  </div>
+ <div id="dialog-facility" >
+    <ul id="facility_list" >
+    </ul>
+</div>
+<div id="dialog-special" >
+    <p id="special_req"></p>
+</div>
 </asp:Content>
