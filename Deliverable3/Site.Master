@@ -48,12 +48,12 @@
             <div class="center">
                 <ul class="center">
                     <li><img alt="Loughborough University Logo" class="navlogo" src="Resources/logo2.jpg" /></li>
-                    <li><a href="CreateRequest.aspx">Request</a></li>
-                    <li><a href="ViewRequest.aspx">View Request</a></li>
-                    <li><a href="Availibility.aspx">Ad-Hoc</a></li>
-                    <li><a href="AddEditModule.aspx">Modules</a></li>
-                    <li><a href="AdminPage.aspx">Admin(temp link)</a></li>
-                    <li><a href="Default.aspx">Logout</a></li>
+                    <li><a href="CreateRequest.aspx" class="button">Request</a></li>
+                    <li><a href="ViewRequest.aspx" class="button">View Request</a></li>
+                    <li><a href="Availibility.aspx"  class="button">Ad-Hoc</a></li>
+                    <li><a href="AddEditModule.aspx"  class="button">Modules</a></li>
+                    <li><a href="AdminPage.aspx"  class="button">Admin(temp link)</a></li>
+                    <li><a href="Default.aspx"  class="button">Logout</a></li>
                 </ul>    
             </div>    
         </div>

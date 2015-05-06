@@ -23,6 +23,21 @@ h1
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
 /* Main Div */
+.button
+    {
+    vertical-align:top;
+    display:inline;
+    font-size:16pt;
+    height:55px;
+    width:120px;
+    color:white;
+    }
+    .button:hover
+    {
+    color:#ffffff;
+    background-color:#9D009D;
+    }
+
 .blue 
 {
     background-color:Teal;   
@@ -74,6 +89,9 @@ h1
 /* NAV BAR
 ----------------------------------------------------------*/
 /* Overall navbar container */
+
+
+
 
 div.navbar
 {
@@ -135,6 +153,8 @@ div.navbar ul li:first-child:hover
    background-color:#330066;
    cursor:default;  
 }
+
+
 /* ************************************** */
 /* Last child = Log out */
 div.navbar ul li:last-child 
