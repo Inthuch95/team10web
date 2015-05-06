@@ -149,4 +149,195 @@ ul.tabs li.ui-tabs-active a, ul.tabs li.ui-tabs-selected a
 { 
     background-color:blue; 
 }
+#selectable-session .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-session .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-session { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-session li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-arrangement .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-arrangement .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-arrangement { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-arrangement li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-wheelchair .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-wheelchair .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-wheelchair { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-wheelchair li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-whiteboard .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-whiteboard .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-whiteboard { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-whiteboard li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-projector .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-projector .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-projector { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-projector li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-visualiser .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-visualiser .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-visualiser { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-visualiser li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-computer .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-computer .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-computer { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-computer li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+
+#selectable-video .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-video .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-video { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-video li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-pa .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-pa .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-pa { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-pa li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-mic .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-mic .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-mic { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-mic li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-capture .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-capture .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-capture { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-capture li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-priority .ui-selecting { 
+	background: #B531B5; 
+}
+#selectable-priority .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-priority { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-priority li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+/*Day*/
+#selectable-day .ui-selecting { 
+	background: #F9F9F7; 
+}
+#selectable-day .ui-selected { 
+	background: #9D009D; color: white; 
+}
+#selectable-day { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; background: #F9F9F7; 
+}
+#selectable-day li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+/*week checkbox*/
+.vis-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+#week {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #DFDFDD;
+  background-color: #EEEEEE;
+  color:black;
+  font-weight:bold;
+  width: 25px;
+  text-align:center;
+}
+
+#week:hover {
+  background-color: #B531B5;
+  color:white;
+}
+
+input:checked + #week {
+  border-color: #DFDFDD;
+  background-color: #9D009D;
+  color:white;
+}
 

@@ -865,7 +865,7 @@
         //end dialog
         function fillBuildingPart() {
             var buildingSelect = document.getElementById("building_add").value;
-            var building = buildingSelect.substr(0,1);
+            var building = buildingSelect.substring(0, buildingSelect.indexOf(":") - 1);
             $("#building_part").val(building);
         }
     </script>

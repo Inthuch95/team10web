@@ -9,14 +9,279 @@
          initFacilityDialog();
          initSpecialDialog();
          initRequestDialog();
+         loadDuration();
+         loadPeriod();
+         getModuleAjax();
+         getRoomAjax();
+         getBuildingAjax();
+         //start selectable
+         //room preference 1
+         $("#selectable-session").selectable({
+             stop: function () {
+                 $(".ui-selected", this).each(function () {
+                     var index = $("#selectable-session li").index(this);
+                     switch (index) {
+                         case 0:
+                             $("#session").val("Lecture");
+                             break;
+                         case 1:
+                             $("#session").val("Practical");
+                             break;
+                         case 2:
+                             $("#session").val("Seminar");
+                             break;
+                         case 3:
+                             $("#session").val("Tutorial");
+                             break;
+                     }
+                 });
+             }
+         });
+         $("#selectable-arrangement").selectable({
+             stop: function () {
+                 $(".ui-selected", this).each(function () {
+                     var index = $("#selectable-arrangement li").index(this);
+                     switch (index) {
+                         case 0:
+                             $("#arrangement").val("Any");
+                             break;
+                         case 1:
+                             $("#arrangement").val("Tired");
+                             break;
+                         case 2:
+                             $("#arrangement").val("Flat");
+                             break;
+                     }
+                     changeRoom();
+                 });
+             }
+         });
+         $("#selectable-priority").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedPriority == false)
+                 selectedPriority = true;
+             else
+                 selectedPriority = false;
+             if (selectedPriority)
+                 $("#priority").val("1");
+             else
+                 $("#priority").val("0");
+         }).selectable();
+         $("#selectable-wheelchair").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedWheelchair == false)
+                 selectedWheelchair = true;
+             else
+                 selectedWheelchair = false;
+             if (selectedWheelchair)
+                 $("#wheelchair").val("1");
+             else
+                 $("#wheelchair").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-whiteboard").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedWhiteboard == false)
+                 selectedWhiteboard = true;
+             else
+                 selectedWhiteboard = false;
+             if (selectedWhiteboard)
+                 $("#whiteboard").val("1");
+             else
+                 $("#whiteboard").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-projector").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedProjector == false)
+                 selectedProjector = true;
+             else
+                 selectedProjector = false;
+             if (selectedProjector)
+                 $("#projector").val("1");
+             else
+                 $("#projector").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-visualiser").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedVisualiser == false)
+                 selectedVisualiser = true;
+             else
+                 selectedVisualiser = false;
+             if (selectedVisualiser)
+                 $("#visualiser").val("1");
+             else
+                 $("#visualiser").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-computer").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedComputer == false)
+                 selectedComputer = true;
+             else
+                 selectedComputer = false;
+             if (selectedComputer)
+                 $("#computer").val("1");
+             else
+                 $("#computer").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-video").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedVideo == false)
+                 selectedVideo = true;
+             else
+                 selectedVideo = false;
+             if (selectedVideo)
+                 $("#video").val("1");
+             else
+                 $("#video").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-pa").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedPa == false)
+                 selectedPa = true;
+             else
+                 selectedPa = false;
+             if (selectedPa)
+                 $("#pa").val("1");
+             else
+                 $("#pa").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-mic").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedMic == false)
+                 selectedMic = true;
+             else
+                 selectedMic = false;
+             if (selectedMic)
+                 $("#mic").val("1");
+             else
+                 $("#mic").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-capture").bind("mousedown", function (e) {
+             e.metaKey = true;
+             if (selectedCap == false)
+                 selectedCap = true;
+             else
+                 selectedCap = false;
+             if (selectedCap)
+                 $("#capture").val("1");
+             else
+                 $("#capture").val("0");
+             changeRoom();
+         }).selectable();
+         $("#selectable-day").selectable({
+             stop: function () {
+                 $(".ui-selected", this).each(function () {
+                     var index = $("#selectable-day li").index(this);
+                     switch (index) {
+                         case 0:
+                             $("#day").val("Monday");
+                             break;
+                         case 1:
+                             $("#day").val("Tuesday");
+                             break;
+                         case 2:
+                             $("#day").val("Wednesday");
+                             break;
+                         case 3:
+                             $("#day").val("Thursday");
+                             break;
+                         case 4:
+                             $("#day").val("Friday");
+                             break;
+                     }
+                 });
+             }
+         });
+         //end selectable
      });
-
+     //selectable 1
+     var selectedWhiteboard = false;
+     var selectedComputer = false;
+     var selectedCap = false;
+     var selectedPa = false;
+     var selectedProjector = false;
+     var selectedMic = false;
+     var selectedVideo = false;
+     var selectedVisualiser = false;
+     var selectedWheelchair = false;
+     var selectedPriority = false;
      var requestData;
+     var buildingData;
+     var roomData;
      //sorting template
      //requestData.sort(function (a, b) {
      //    return a.room_code > b.room_code;
      //});
      //start ajax
+     function getModuleAjax() {
+         $.ajax(
+         {
+             type: "POST",
+             async: true,
+             url: "CreateRequest.aspx/getModule",
+             data: "{}",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (data) {
+                 var result = data.d;
+                 $("#module").empty();
+                 for (var i = 0; i < result.length; i++) {
+                     //populate module drop down list
+                     $("#module").append("<option>" + result[i].module_code + " : " + result[i].module_title + "</option>");
+                 }
+             },
+             error: function (response) {
+                 console.log(response);
+             }
+         });
+     }
+     //get room data and their location
+     function getRoomAjax() {
+         $.ajax(
+         {
+             type: "POST",
+             async: true,
+             url: "CreateRequest.aspx/getRooms",
+             data: "{}",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (data) {
+                 roomData = data.d;
+                 changeRoom();
+             },
+             error: function (response) {
+                 console.log(response);
+             }
+         });
+     }
+     //get building data
+     function getBuildingAjax() {
+         $.ajax(
+         {
+             type: "POST",
+             async: true,
+             url: "CreateRequest.aspx/getBuilding",
+             data: "{}",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (data) {
+                 buildingData = data.d;
+                 for (var i = 0; i < buildingData.length; i++) {
+                     $("#building").append("<option value='" + buildingData[i].building_code + "'>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                 }
+             },
+             error: function (response) {
+                 console.log(response);
+             }
+         });
+     }
      function deleteRequestAjax(el) {
          var request = {};
          var id = el.parentNode.parentNode.cells[0].textContent;
@@ -64,12 +329,12 @@
                             + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
                             + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>");
                         if (requestData[i].status == "Pending" || requestData[i].status == "Booked") {
-                            $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='updateRequestAjax(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
+                            $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
                             + "</td>");
                             $("#" + requestData[i].status).append("</tr>");
                         }
                         else {
-                            $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='resubmitRequestAjax(this)' class='btns'>Resubmit</button><br /><button type='button' onclick='updateRequestAjax(this)' class='btns'>Edit</button>"
+                            $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='resubmitRequestAjax(this)' class='btns'>Resubmit</button><br /><button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button>"
                             + "</td>");
                             $("#" + requestData[i].status).append("</tr>");
                         }
@@ -168,6 +433,33 @@
          }
 
          $("#dialog-facility").dialog("open");
+     }
+     function showEditDialog(el) {
+         $("#dialog-request").dialog("open");
+     }
+     //fill duration drop down list
+     function loadDuration() {
+         for (var i = 1; i <= 9; i++) {
+             $("#duration").append("<option>" + i + "</option>");
+         }
+     }
+     //fill period drop down list
+     function loadPeriod() {
+         for (var i = 1; i <= 9; i++) {
+             var time = i + 8;
+             $("#period").append("<option value='" + i + "'>" + i + " - " + time + ":00</option>");
+         }
+     }
+     //change uration based on period
+     function refillDuration() {
+         $("#duration").empty();
+         var period = $("#period").val();
+         for (var i = 1; i <= 10 - period; i++) {
+             $("#duration").append("<option value='" + i + "'>" + i + "</option>");
+         }
+     }
+     function changeRoom() {
+
      }
     </script>
 
@@ -273,11 +565,43 @@
         <p id="special_req"></p>
     </div>
     <div id="dialog-request" title="Edit Request">
-        <div id="roomCode_edit">
-            Room Code:        
-        </div><br />
-        <input type="hidden" id="roomCode_val" />
+        <input type="hidden" id="request_id" />
+        Priority: <ol id="selectable-priority">
+                        <li class="ui-state-default" style="width: 80px">Priority</li>
+                  </ol><input type="hidden" id="priority" value="0"/>
+        
+        <br /><br /><br /><br />
+        Module: <select id="module">
+                    
+                </select><br />
+        Session Type: <table>
+                        <tr>
+                            <td>
+                                <ol id="selectable-session">
+                                    <li class="ui-state-default ui-selected" style="width: 80px">Lecture</li>
+                                    <li class="ui-state-default" style="width: 80px">Practical</li>
+                                    <li class="ui-state-default" style="width: 80px">Seminar</li>
+                                    <li class="ui-state-default" style="width: 80px">Tutorial</li>
+                                </ol>
+                                <input type="hidden" id="session" value="Lecture" />
+                            </td>
+                        </tr>
+                    </table><br />
+        Lecturer: <input type="text" id="lecturer" name="lecturer" /><br />
+        Arrangement: <table>
+                        <tr>
+                            <td>
+                                <ol id="selectable-arrangement">
+                                    <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                                    <li class="ui-state-default" style="width: 200px">Tiered</li>
+                                    <li class="ui-state-default" style="width: 200px">Flat</li>
+                                </ol>
+                                <input type="hidden" id="arrangement" name="arrangement" value="Any" />
+                            </td>
+                        </tr>
+                    </table><br />
         Capacity: <div id="slider-capacity"></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
+        
         Facility: <table>
             <tr>
                 <td>
@@ -344,6 +668,104 @@
                 </td>
             </tr>
         </table><br />
-        <input type="button" id="room-submit" value="Submit" class="btns" onclick="updateRoomAjax()" />
+        <table>
+            <tr>
+                <td>
+                    Park: <select id="park">
+                            <option>Any</option>
+                            <option>Central</option>
+                            <option>East</option>
+                            <option>West</option>
+                          </select>
+                </td>
+                <td>
+                    Building: <select id="building">
+                                
+                              </select>   
+                </td>
+                <td>
+                    Room: <select id="room">
+
+                          </select>
+                </td>
+            </tr>
+        </table><br />
+        Additional Requiements: <textarea id="extra_req" style="width:835px;" cols="80" maxlength="1000">
+
+                                </textarea><br />
+        Day: <table>
+                <tr>
+                    <td>
+                        <ol id="selectable-day">
+                            <li class="ui-state-default" style="width: 100px">Monday</li>
+                            <li class="ui-state-default" style="width: 100px">Tuesday</li>
+                            <li class="ui-state-default" style="width: 100px">Wednesday</li>
+                            <li class="ui-state-default" style="width: 100px">Thursday</li>
+                            <li class="ui-state-default" style="width: 100px">Friday</li>
+                        </ol>
+                    </td>
+               </tr>
+            </table>
+            <input type="hidden" id="day" name="day" value=""/><br />
+        <table>
+            <tr>
+                <td>
+                    Semester: <select id="semester">
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                </td>
+                <td>
+                    Period: <select id="period" onchange="refillDuration()">
+
+                            </select>
+                </td>
+                <td>
+                    Duration: <select id="duration">
+
+                              </select>
+                </td>
+            </tr>
+        </table><br />
+        Week: <table>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="weeks[]" id="week1" value="1" checked="checked" class="vis-hidden new-post-tags"/>
+						<label style="margin-left: 100px;" id="week" for="week1" class="week_label">  1  </label>
+						<input type="checkbox" name="weeks[]" id="week2" value="2" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week2" class="week_label">  2  </label>
+						<input type="checkbox" name="weeks[]" id="week3" value="3" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week3" class="week_label">  3  </label>
+						<input type="checkbox" name="weeks[]" id="week4" value="4" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week4" class="week_label">  4  </label>
+						<input type="checkbox" name="weeks[]" id="week5" value="5" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week5" class="week_label">  5  </label>
+						<input type="checkbox" name="weeks[]" id="week6" value="6" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week6" class="week_label">  6  </label>
+						<input type="checkbox" name="weeks[]" id="week7" value="7" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week7" class="week_label">  7  </label>
+						<input type="checkbox" name="weeks[]" id="week8" value="8" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week8" class="week_label">  8  </label>
+						<input type="checkbox" name="weeks[]" id="week9" value="9" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week9" class="week_label">  9  </label>
+						<input type="checkbox" name="weeks[]" id="week10" value="10" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week10" class="week_label"> 10 </label>
+						<input type="checkbox" name="weeks[]" id="week11" value="11" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week11" class="week_label"> 11 </label>
+						<input type="checkbox" name="weeks[]" id="week12" value="12" checked="checked" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week12" class="week_label"> 12 </label>
+						<input type="checkbox" name="weeks[]" id="week13" value="13" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week13" class="week_label"> 13 </label>
+						<input type="checkbox" name="weeks[]" id="week14" value="14" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week14" class="week_label"> 14 </label>
+						<input type="checkbox" name="weeks[]" id="week15" value="15" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week15" class="week_label"> 15 </label>
+						<input type="checkbox" name="weeks[]" id="week16" value="16" class="vis-hidden new-post-tags"/>
+						<label id="week" for="week16" class="week_label"> 16 </label>
+                    </td>
+                </tr>
+              </table>
+        <input type="button" id="request-submit" value="Submit" class="btns" onclick="updateRequestAjax()" />&nbsp
+        <input type="button" id="cancel" class="btns" value="cancel" onclick="$('#dialog-request').dialog('close')" />
     </div>
 </asp:Content>
