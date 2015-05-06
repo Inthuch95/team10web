@@ -349,8 +349,8 @@
                     $("#accordion").append("<h3>" + roomData[i].room_code + "</h3>");
                     $("#accordion").append("<div id='" + roomData[i].room_code + "'>Room: " + roomData[i].room_code + "<br />"
                     + "Building: " + roomData[i].building_name + "<br />" + "Park: " + roomData[i].park + "<br />" + "Capacity: " +
-                    roomData[i].capacity + "<br /><input type='button' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />"
-                    + "<input type='button' id='delete" + (i + 1) + "' onclick='deleteRoomAjax(this)' value='Delete' />" + "<br /></div>");
+                    roomData[i].capacity + "<br /><input type='button' class='btns' id='edit" + (i + 1) + "' onclick='showRoomDialog(this)' value='Edit' />"
+                    + "<input type='button' class='btns' id='delete" + (i + 1) + "' onclick='deleteRoomAjax(this)' value='Delete' />" + "<br /></div>");
                 }
             }
             $("#accordion").accordion({
