@@ -17,6 +17,31 @@ namespace Team11
     public class Request
     {
         public string request_id { get; set; }
+        public string module { get; set; }
+        public string room_code { get; set; }
+        public string capacity { get; set; }
+        public string wheelchair { get; set; }
+        public string projector { get; set; }
+        public string whiteboard { get; set; }
+        public string visualiser { get; set; }
+        public string computer { get; set; }
+        public string lecture_capture { get; set; }
+        public string pa_system { get; set; }
+        public string video_dvd { get; set; }
+        public string radio_microphone { get; set; }
+        public string arrangement { get; set; }
+        public string priority { get; set; }
+        public string period { get; set; }
+        public string duration { get; set; }
+        public string special_req { get; set; }
+        public string day { get; set; }
+        public string status { get; set; }
+        public string park { get; set; }
+        public string semester { get; set; }
+        public string year { get; set; }
+        public string lecturer { get; set; }
+        public string dept_code { get; set; }
+        public string session { get; set; }
     }
     public class ROOM
     {

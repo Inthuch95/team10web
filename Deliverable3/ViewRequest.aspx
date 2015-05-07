@@ -14,6 +14,19 @@
          getModuleAjax();
          getRoomAjax();
          getBuildingAjax();
+         //capacity slider
+         $("#slider-capacity").slider({
+             range: "max",
+             min: 1,
+             max: 500,
+             value: 1,
+             step: 1,
+             slide: function (event, ui) {
+                 $("#capacity1").val(ui.value);
+             }
+         });
+         //put the slider value into text box with id 'capacity'
+         $("#capacity1").val($("#slider-capacity").slider("value"));
          //start selectable
          //room preference 1
          $("#selectable-session").selectable({
@@ -234,8 +247,9 @@
                  $("#module").empty();
                  for (var i = 0; i < result.length; i++) {
                      //populate module drop down list
-                     $("#module").append("<option>" + result[i].module_code + " : " + result[i].module_title + "</option>");
+                     $("#module").append("<option value='" + result[i].module_code + "'>" + result[i].module_code + " : " + result[i].module_title + "</option>");
                  }
+                 console.log($("#module").val());
              },
              error: function (response) {
                  console.log(response);
@@ -273,6 +287,7 @@
              dataType: "json",
              success: function (data) {
                  buildingData = data.d;
+                 $("#building").append("<option value='Any'>Any</option>");
                  for (var i = 0; i < buildingData.length; i++) {
                      $("#building").append("<option value='" + buildingData[i].building_code + "'>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
                  }
@@ -297,6 +312,49 @@
                  dataType: "json",
                  success: function (data) {
                      alert("deleted");
+                     getRequestAjax();
+                 },
+                 error: function (response) {
+                     console.log(response);
+                 }
+             });
+     }
+     //edit request data in database
+     function updateRequestAjax() {
+         var request = {};
+         request.request_id = $("#request_id").val();
+         request.module = $("#module").val();
+         request.room_code = $("#room").val();
+         request.capacity = $("#capacity1").val();
+         request.wheelchair = $("#wheelchair").val();
+         request.projector = $("#projector").val();
+         request.visualiser = $("#visualiser").val();
+         request.whiteboard = $("#whiteboard").val();
+         request.computer = $("#computer").val();
+         request.lecture_capture = $("#capture").val();
+         request.video_dvd = $("#video").val();
+         request.pa_system = $("#pa").val();
+         request.radio_microphone = $("#mic").val();
+         request.arrangement = $("#arrangement").val();
+         request.special_req = $("#extra_req").val();
+         request.priority = $("#priority").val();
+         request.day = $("#day").val();
+         request.period = $("#period").val();
+         request.duration = $("#duration").val();
+         request.status = "Pending";
+         request.semester = $("#semester").val();
+         request.lecturer = $("#lecturer").val();
+         request.session = $("#session").val();
+         $.ajax(
+             {
+                 type: "POST",
+                 async: true,
+                 url: "ViewRequest.aspx/updateRequest",
+                 data: "{request: " + JSON.stringify(request) + "}",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (data) {
+                     alert("success");
                      getRequestAjax();
                  },
                  error: function (response) {
@@ -435,7 +493,161 @@
          $("#dialog-facility").dialog("open");
      }
      function showEditDialog(el) {
+         var currentRow = el.parentNode.parentNode;
+         var currentId = parseInt(el.parentNode.parentNode.cells[0].textContent);
+         $("#request_id").val(currentId);
+         $("#priority").val(parseInt(currentRow.cells[6].textContent));
+         resetForm();
+         if (parseInt(currentRow.cells[6].textContent) == 1) {
+             $("#selectable-priority").children("li").attr("class", "ui-state-default ui-selected");
+         }
+         else {
+             $("#selectable-priority").children("li").attr("class", "ui-state-default");
+         }
+         $("#module").val(currentRow.cells[1].textContent);
+         for (var i = 0; i < requestData.length; i++) {
+             if (requestData[i].request_id == currentId) {
+                 switch (requestData[i].session) {
+                     case "Lecture":
+                         $("#session").val("Lecture");
+                         $("#lecture").attr("class", "ui-state-default ui-selected");
+                         $("#practical").attr("class", "ui-state-default");
+                         $("#tutorial").attr("class", "ui-state-default");
+                         $("#seminar").attr("class", "ui-state-default");
+                         break;
+                     case "Practical":
+                         $("#session").val("Practical");
+                         $("#practical").attr("class", "ui-state-default ui-selected");
+                         $("#tutorial").attr("class", "ui-state-default");
+                         $("#seminar").attr("class", "ui-state-default");
+                         $("#lecture").attr("class", "ui-state-default");
+                         break;
+                     case "Tutorial":
+                         $("#session").val("Tutorial");
+                         $("#tutorial").attr("class", "ui-state-default ui-selected");
+                         $("#seminar").attr("class", "ui-state-default");
+                         $("#lecture").attr("class", "ui-state-default");
+                         $("#practical").attr("class", "ui-state-default");
+                         break;
+                     case "Seminar":
+                         $("#session").val("Seminar");
+                         $("#seminar").attr("class", "ui-state-default ui-selected");
+                         $("#lecture").attr("class", "ui-state-default");
+                         $("#practical").attr("class", "ui-state-default");
+                         $("#tutorial").attr("class", "ui-state-default");
+                         break;
+                 }
+                 $("#lecturer").val(requestData[i].lecturer);
+                 var capacity = requestData[i].capacity;
+                 $("#slider-capacity").slider({
+                     range: "max",
+                     min: 1,
+                     max: 500,
+                     value: capacity,
+                     step: 1,
+                     slide: function (event, ui) {
+                         $("#capacity1").val(ui.value);
+                     }
+                 });
+                 //put the slider value into text box with id 'capacity'
+                 $("#capacity1").val($("#slider-capacity").slider("value"));
+                 if (requestData[i].wheelchair == 1) {
+                     $("#wheelchair").val("1");
+                     $("#selectable-wheelchair").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].projector == 1) {
+                     $("#projector").val("1");
+                     $("#selectable-projector").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].whiteboard == 1) {
+                     $("#whiteboard").val("1");
+                     $("#selectable-whiteboard").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].visualiser == 1) {
+                     $("#visualiser").val("1");
+                     $("#selectable-visualiser").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].computer == 1) {
+                     $("#computer").val("1");
+                     $("#selectable-computer").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].lecture_capture == 1) {
+                     $("#capture").val("1");
+                     $("#selectable-capture").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].pa_system == 1) {
+                     $("#pa").val("1");
+                     $("#selectable-pa").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].radio_microphone == 1) {
+                     $("#mic").val("1");
+                     $("#selectable-mic").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 if (requestData[i].video_dvd == 1) {
+                     $("#video").val("1");
+                     $("#selectable-video").children("li").attr("class", "ui-state-default ui-selected");
+                 }
+                 $("#park").val(requestData[i].park);
+                 changePark();
+                 $("#room").val(requestData[i].room_code);
+                 $("#extra_req").val(requestData[i].special_req);
+                 switch (requestData[i].day) {
+                     case "Monday":
+                         $("#day").val("Monday");
+                         $("#monday").attr("class", "ui-state-default ui-selected");
+                         break;
+                     case "Tuesday":
+                         $("#day").val("Tuesday");
+                         $("#tuesday").attr("class", "ui-state-default ui-selected");
+                         break;
+                     case "Wednesday":
+                         $("#day").val("Wednesday");
+                         $("#wednesday").attr("class", "ui-state-default ui-selected");
+                         break;
+                     case "Thursday":
+                         $("#day").val("Thursday");
+                         $("#thursday").attr("class", "ui-state-default ui-selected");
+                         break;
+                     case "Friday":
+                         $("#day").val("Friday");
+                         $("#friday").attr("class", "ui-state-default ui-selected");
+                         break;
+                 }
+                 $("#day").val(requestData[i].day);
+                 $("#period").val(requestData[i].period);
+                 $("#semester").val(requestData[i].semester);
+                 $("#duration").val(requestData[i].duration);
+                 //week
+             }
+         }
+         
          $("#dialog-request").dialog("open");
+     }
+     function resetForm() {
+         $("#selectable-priority").children("li").attr("class", "ui-state-default");
+         $("#selectable-computer").children("li").attr("class", "ui-state-default");
+         $("#selectable-capture").children("li").attr("class", "ui-state-default");
+         $("#selectable-pa").children("li").attr("class", "ui-state-default");
+         $("#selectable-wheelchair").children("li").attr("class", "ui-state-default");
+         $("#selectable-projector").children("li").attr("class", "ui-state-default");
+         $("#selectable-visualiser").children("li").attr("class", "ui-state-default");
+         $("#selectable-whiteboard").children("li").attr("class", "ui-state-default");
+         $("#selectable-mic").children("li").attr("class", "ui-state-default");
+         $("#selectable-video").children("li").attr("class", "ui-state-default");
+         $("#wheelchair").val("0");
+         $("#projector").val("0");
+         $("#visualiser").val("0");
+         $("#whiteboard").val("0");
+         $("#computer").val("0");
+         $("#capture").val("0");
+         $("#pa").val("0");
+         $("#mic").val("0");
+         $("#video").val("0");
+         $("#monday").attr("class", "ui-state-default");
+         $("#tuesday").attr("class", "ui-state-default");
+         $("#wednesday").attr("class", "ui-state-default");
+         $("#thursday").attr("class", "ui-state-default");
+         $("#friday").attr("class", "ui-state-default");
      }
      //fill duration drop down list
      function loadDuration() {
@@ -459,7 +671,68 @@
          }
      }
      function changeRoom() {
+         //get values of user's selection
+         var park = document.getElementById("park").value;
+         var building = document.getElementById("building").value;
+         var capacity = parseInt(document.getElementById("capacity1").value);
+         var isWheelchair = parseInt(document.getElementById("wheelchair").value);
+         var isVisualiser = parseInt(document.getElementById("visualiser").value);
+         var isProjector = parseInt(document.getElementById("projector").value);
+         var isWhiteboard = parseInt(document.getElementById("whiteboard").value);
+         var computer = parseInt(document.getElementById("computer").value);
+         var capture = parseInt(document.getElementById("capture").value);
+         var pa = parseInt(document.getElementById("pa").value);
+         var mic = parseInt(document.getElementById("mic").value);
+         var video = parseInt(document.getElementById("video").value);
+         var arrangement = document.getElementById("arrangement").value;
+         var room_arr1;
 
+         //empty the room code list
+         $("#room").empty();
+         $("#room").append("<option>" + "Any" + "</option>");
+
+         for (var i = 0; i < roomData.length; i++) {
+             //room preference 1
+             //check room arrangement selection
+             if (arrangement == "Tiered")
+                 room_arr1 = roomData[i].tiered;
+             else if (arrangement == "Any")
+                 room_arr1 = arrangement;
+             else
+                 room_arr1 = roomData[i].flat;
+
+             //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+             //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+             if ((park == "Any" || park == roomData[i].park) &&
+             (isWheelchair == 0 || roomData[i].wheelchair == 1) &&
+             (isVisualiser == 0 || roomData[i].visualiser == 1) &&
+             (isProjector == 0 || roomData[i].projector == 1) &&
+             (isWhiteboard == 0 || roomData[i].whiteboard == 1) &&
+             (computer == 0 || roomData[i].computer == 1) &&
+             (capture == 0 || roomData[i].lecture_capture == 1) &&
+             (pa == 0 || roomData[i].pa_system == 1) &&
+             (mic == 0 || roomData[i].radio_microphone == 1) &&
+             (video == 0 || roomData[i].video_dvd == 1) &&
+             (roomData[i].capacity >= capacity) &&
+             (room_arr1 == "Any" || room_arr1 == 1) &&
+             (building == "Any" || building == roomData[i].building_code)) {
+                 $("#room").append("<option>" + roomData[i].room_code + "</option>");
+             }
+         }
+     }
+     function changePark() {
+         var park = document.getElementById("park").value;
+         //empty building list
+         $("#building").empty();
+         //add "Any" option to building list
+         $("#building").append("<option value='Any'>Any</option>");
+         for (var i = 0; i < buildingData.length; i++) {
+             //if building is in selected park then add to building list
+             if (park == "Any" || park == buildingData[i].park) {
+                 $("#building").append("<option value='" + buildingData[i].building_code + "'>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+             }
+         }
+         changeRoom();
      }
     </script>
 
@@ -564,6 +837,7 @@
     <div id="dialog-special" >
         <p id="special_req"></p>
     </div>
+    <%--edit request form - become visible when clicking edit--%>
     <div id="dialog-request" title="Edit Request">
         <input type="hidden" id="request_id" />
         Priority: <ol id="selectable-priority">
@@ -578,10 +852,10 @@
                         <tr>
                             <td>
                                 <ol id="selectable-session">
-                                    <li class="ui-state-default ui-selected" style="width: 80px">Lecture</li>
-                                    <li class="ui-state-default" style="width: 80px">Practical</li>
-                                    <li class="ui-state-default" style="width: 80px">Seminar</li>
-                                    <li class="ui-state-default" style="width: 80px">Tutorial</li>
+                                    <li class="ui-state-default ui-selected" style="width: 80px" id="lecter">Lecture</li>
+                                    <li class="ui-state-default" style="width: 80px" id="practical">Practical</li>
+                                    <li class="ui-state-default" style="width: 80px" id="seminar">Seminar</li>
+                                    <li class="ui-state-default" style="width: 80px" id="tutorial">Tutorial</li>
                                 </ol>
                                 <input type="hidden" id="session" value="Lecture" />
                             </td>
@@ -671,7 +945,7 @@
         <table>
             <tr>
                 <td>
-                    Park: <select id="park">
+                    Park: <select id="park" onchange="changePark()">
                             <option>Any</option>
                             <option>Central</option>
                             <option>East</option>
@@ -679,7 +953,7 @@
                           </select>
                 </td>
                 <td>
-                    Building: <select id="building">
+                    Building: <select id="building" onchange="changeRoom()">
                                 
                               </select>   
                 </td>
@@ -697,11 +971,11 @@
                 <tr>
                     <td>
                         <ol id="selectable-day">
-                            <li class="ui-state-default" style="width: 100px">Monday</li>
-                            <li class="ui-state-default" style="width: 100px">Tuesday</li>
-                            <li class="ui-state-default" style="width: 100px">Wednesday</li>
-                            <li class="ui-state-default" style="width: 100px">Thursday</li>
-                            <li class="ui-state-default" style="width: 100px">Friday</li>
+                            <li class="ui-state-default" style="width: 100px" id="monday">Monday</li>
+                            <li class="ui-state-default" style="width: 100px" id="tuesday">Tuesday</li>
+                            <li class="ui-state-default" style="width: 100px" id="wednesday">Wednesday</li>
+                            <li class="ui-state-default" style="width: 100px" id="thursday">Thursday</li>
+                            <li class="ui-state-default" style="width: 100px" id="friday">Friday</li>
                         </ol>
                     </td>
                </tr>

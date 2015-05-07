@@ -28,8 +28,7 @@ namespace Team11
         public int pa_system;
         public int video_dvd;
         public int radio_microphone;
-        public int tiered;
-        public int flat;
+        public string arrangement; 
         public int priority;
         public int period;
         public int duration;
@@ -57,6 +56,24 @@ namespace Team11
         protected void Page_Load(object sender, EventArgs e)
         {
         
+        }
+        //edit request
+        [WebMethod]
+        [ScriptMethod]
+        public static void updateRequest(Request request)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand(""))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
         }
         //delete request
         [WebMethod]
@@ -91,6 +108,7 @@ namespace Team11
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 REQUESTS request = new REQUESTS();
+                //put database data into request object
                 request.request_id = Convert.ToInt32(item["request_id"]);
                 request.module = item["module"].ToString();
                 request.room_code = item["room_code"].ToString();
@@ -104,8 +122,7 @@ namespace Team11
                 request.pa_system = Convert.ToInt32(item["pa_system"]);
                 request.radio_microphone = Convert.ToInt32(item["radio_microphone"]);
                 request.video_dvd = Convert.ToInt32(item["video_dvd"]);
-                request.tiered = Convert.ToInt32(item["tiered"]);
-                request.flat = Convert.ToInt32(item["flat"]);
+                request.arrangement = item["arrangement"].ToString();
                 request.special_req = item["special_req"].ToString();
                 request.priority = Convert.ToInt32(item["priority"]);
                 request.day = item["day"].ToString();
@@ -118,8 +135,10 @@ namespace Team11
                 request.lecturer = item["lecturer"].ToString();
                 request.dept_code = item["dept_code"].ToString();
                 request.session = item["session"].ToString();
+                //add request object to list
                 requestData.Add(request);
             }
+            //return as array of record in javascript
             return requestData;
         }
         
