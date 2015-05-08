@@ -228,10 +228,99 @@
      var requestData;
      var buildingData;
      var roomData;
-     //sorting template
+     //start sort function
      //requestData.sort(function (a, b) {
      //    return a.room_code > b.room_code;
      //});
+     function request_id(a, b) {
+         return parseInt(a["request_id"]) - parseInt(b["request_id"]);
+     }
+
+     //sorting the module code in order a-z 1-9
+     function module(a, b) {
+         return a["module"] > b["module"];
+     }
+
+     function room_code(a, b) {
+         return a["room_code"] > b["room_code"];
+
+     }
+
+     function capacity(a, b) {
+         return parseInt(a["capacity"]) - parseInt(b["capacity"]);
+     }
+     function priority(a, b) {
+         return parseInt(b["priority"]) - parseInt(a["priority"]);
+     }
+
+     function period(a, b) {
+         return parseInt(a["period"]) - parseInt(b["period"]);
+     }
+
+     //will find the index of the day in the dayInt array and order interms of days of the week
+     function day(a, b) {
+         var dayInt = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+         return parseInt(dayInt.indexOf(a["day"])) - parseInt(dayInt.indexOf(b["day"]));
+     }
+
+     function duration(a, b) {
+         return parseInt(a["duration"]) - parseInt(b["duration"]);
+     }
+     //sorts the data in the table according to which id has been passed (uses sort functions above)
+     //Callan Swanson
+     function sortHeader(id) {
+
+         //chooses which to sort by the id passed to this function
+         switch (id) {
+             case "request_id_td":
+                 requestData.sort(request_id);
+                 break;
+             case "module_td":
+                 requestData.sort(module);
+                 break;
+             case "room_code_td":
+                 requestData.sort(room_code);
+                 break;
+             case "capacity_td":
+                 requestData.sort(capacity);
+                 break;
+             case "priority_td":
+                 requestData.sort(priority);
+                 break;
+             case "period_td":
+                 requestData.sort(period);
+                 break;
+             case "day_td":
+                 requestData.sort(day);
+                 break;
+             case "duration_td":
+                 requestData.sort(duration);
+                 break;
+             default:
+                 break;
+         }
+         $("#Pending").empty();
+         $("#Booked").empty();
+         $("#Rejected").empty();
+         for (var i = 0; i < requestData.length; i++) {
+             $("#" + requestData[i].status).append("<tr id='" + requestData[i].request_id + "'>" + "<td>" + requestData[i].request_id + "</td>" + "<td>" + requestData[i].module + "</td>" + "<td>" + requestData[i].room_code
+                 + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btns' onclick='showFacilityDialog(this)'>show</button> " + "</td>"
+                 + "<td>" + "<button type='button' class='btns' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
+                 + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
+                 + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>");
+             if (requestData[i].status == "Pending" || requestData[i].status == "Booked") {
+                 $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
+                 + "</td>");
+                 $("#" + requestData[i].status).append("</tr>");
+             }
+             else {
+                 $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='resubmitRequestAjax(this)' class='btns'>Resubmit</button><br /><button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button>"
+                 + "</td>");
+                 $("#" + requestData[i].status).append("</tr>");
+             }
+         }
+     }
+    //end sort function
      //start ajax
      function getModuleAjax() {
          $.ajax(
@@ -425,7 +514,7 @@
          $("#dialog-facility").dialog({
              position: {
                  my: "center",
-                 at: "top",
+                 at: "center",
                  of: window
              }
          });
@@ -435,7 +524,7 @@
          $("#dialog-special").dialog({
              position: {
                  my: "center",
-                 at: "top",
+                 at: "center",
                  of: window
              }
          });
@@ -763,16 +852,16 @@
           <div id="table_header"> 
             <table class="scrollTable">
 	         <tr>
-			        <td>Request<br/>Id</td>
-			        <td>Module <br/> Code</td>
-			        <td>Room Code</td>
-			        <td>Capacity</td>
+			        <td id="request_id_td" onclick="sortHeader(this.id)">Request<br/>Id</td>
+			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
+			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
+			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
 			        <td>Facility</td>
 			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
-			        <td>Priority</td>
-			        <td>Day</td>
-			        <td>Period</td>
-			        <td>Duration</td>
+			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
+			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
+			        <td id="period_td" onclick="sortHeader(this.id)">Period</td>
+			        <td id="duration_td" onclick="sortHeader(this.id)">Duration</td>
 			        <td style="cursor:default;">Week(s)</td>
 			        <td style="cursor:default;">Edit/Delete</td>
                 </tr>
@@ -787,16 +876,16 @@
           <div class="table_header"> 
             <table class="scrollTable">
 	          <tr>
-			        <td>Request<br/>Id</td>
-			        <td>Module <br/> Code</td>
-			        <td>Room Code</td>
-			        <td>Capacity</td>
+			        <td id="request_id_td" onclick="sortHeader(this.id)">Request<br/>Id</td>
+			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
+			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
+			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
 			        <td>Facility</td>
 			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
-			        <td>Priority</td>
-			        <td>Day</td>
-			        <td>Period</td>
-			        <td>Duration</td>
+			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
+			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
+			        <td id="period_td" onclick="sortHeader(this.id)">Period</td>
+			        <td id="duration_td" onclick="sortHeader(this.id)">Duration</td>
 			        <td style="cursor:default;">Week(s)</td>
 			        <td style="cursor:default;">Edit/Delete</td>
 	           </tr>
@@ -811,16 +900,16 @@
           <div class="table_header"> 
             <table class="scrollTable">
 	          <tr>
-				    <td>Request<br/>Id</td>
-			        <td>Module <br/> Code</td>
-			        <td>Room Code</td>
-			        <td>Capacity</td>
+				    <td id="request_id_td" onclick="sortHeader(this.id)">Request<br/>Id</td>
+			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
+			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
+			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
 			        <td>Facility</td>
 			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
-			        <td>Priority</td>
-			        <td>Day</td>
-			        <td>Period</td>
-			        <td>Duration</td>
+			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
+			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
+			        <td id="period_td" onclick="sortHeader(this.id)">Period</td>
+			        <td id="duration_td" onclick="sortHeader(this.id)">Duration</td>
 			        <td style="cursor:default;">Week(s)</td>
 			        <td style="cursor:default;">Edit/Delete</td>
 	           </tr>
