@@ -50,6 +50,10 @@ namespace Team11
         public string building_name;
         public string building_code;
     }
+    public class REQUEST_FORM
+    {
+        public string module { get; set; }
+    }
     public partial class CreateRequest : System.Web.UI.Page
     {
         public static string mod_title, mod_code;
@@ -65,6 +69,13 @@ namespace Team11
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        //submit request
+        [WebMethod]
+        [ScriptMethod]
+        public static void insertRequest(REQUEST_FORM request)
+        { 
+        
         }
         //get modules from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
