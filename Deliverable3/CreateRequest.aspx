@@ -862,7 +862,7 @@
                     $("#module").empty();
                     for (var i = 0; i < result.length; i++) {
                         //populate module drop down list
-                        $("#module").append("<option>" + result[i].module_code + " : " + result[i].module_title + "</option>");
+                        $("#module").append("<option value='" + result[i].module_code + "'>" + result[i].module_code + " : " + result[i].module_title + "</option>");
                     }
                 },
                 error: function (response) {
