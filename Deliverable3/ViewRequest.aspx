@@ -357,6 +357,7 @@
                  success: function (data) {
                      alert("success");
                      getRequestAjax();
+                     $('#dialog-request').dialog('close')
                  },
                  error: function (response) {
                      console.log(response);
@@ -1005,37 +1006,37 @@
         Week: <table>
                 <tr>
                     <td>
-                        <input type="checkbox" name="weeks[]" id="week1" value="1" checked="checked" class="vis-hidden new-post-tags"/>
+                        <input type="checkbox" name="weeks" id="week1" value="1"  class="vis-hidden new-post-tags"/>
 						<label style="margin-left: 100px;" id="week" for="week1" class="week_label">  1  </label>
-						<input type="checkbox" name="weeks[]" id="week2" value="2" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week2" value="2"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week2" class="week_label">  2  </label>
-						<input type="checkbox" name="weeks[]" id="week3" value="3" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week3" value="3"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week3" class="week_label">  3  </label>
-						<input type="checkbox" name="weeks[]" id="week4" value="4" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week4" value="4"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week4" class="week_label">  4  </label>
-						<input type="checkbox" name="weeks[]" id="week5" value="5" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week5" value="5"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week5" class="week_label">  5  </label>
-						<input type="checkbox" name="weeks[]" id="week6" value="6" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week6" value="6"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week6" class="week_label">  6  </label>
-						<input type="checkbox" name="weeks[]" id="week7" value="7" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week7" value="7"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week7" class="week_label">  7  </label>
-						<input type="checkbox" name="weeks[]" id="week8" value="8" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week8" value="8"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week8" class="week_label">  8  </label>
-						<input type="checkbox" name="weeks[]" id="week9" value="9" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week9" value="9"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week9" class="week_label">  9  </label>
-						<input type="checkbox" name="weeks[]" id="week10" value="10" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week10" value="10"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week10" class="week_label"> 10 </label>
-						<input type="checkbox" name="weeks[]" id="week11" value="11" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week11" value="11"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week11" class="week_label"> 11 </label>
-						<input type="checkbox" name="weeks[]" id="week12" value="12" checked="checked" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week12" value="12"  class="vis-hidden new-post-tags"/>
 						<label id="week" for="week12" class="week_label"> 12 </label>
-						<input type="checkbox" name="weeks[]" id="week13" value="13" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week13" value="13" class="vis-hidden new-post-tags"/>
 						<label id="week" for="week13" class="week_label"> 13 </label>
-						<input type="checkbox" name="weeks[]" id="week14" value="14" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week14" value="14" class="vis-hidden new-post-tags"/>
 						<label id="week" for="week14" class="week_label"> 14 </label>
-						<input type="checkbox" name="weeks[]" id="week15" value="15" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week15" value="15" class="vis-hidden new-post-tags"/>
 						<label id="week" for="week15" class="week_label"> 15 </label>
-						<input type="checkbox" name="weeks[]" id="week16" value="16" class="vis-hidden new-post-tags"/>
+						<input type="checkbox" name="weeks" id="week16" value="16" class="vis-hidden new-post-tags"/>
 						<label id="week" for="week16" class="week_label"> 16 </label>
                     </td>
                 </tr>

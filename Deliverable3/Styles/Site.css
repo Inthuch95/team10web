@@ -137,14 +137,14 @@ div.navbar ul li:first-child
 }
 div.navbar ul li:first-child:hover 
 {
-   background-color:#ca006c;
+  
    cursor:default;  
 }
 /* ************************************** */
 /* Last child = Log out */
 div.navbar ul li:last-child 
 { 
-   background-color:#ca006c;
+   background-color:#f1f2ed;
     width:119px; 
     transition: all 0.3s;  
 }

@@ -1343,7 +1343,7 @@
         <%-- General information --%>
         <table class="inputs box_class" id="main_layout" >
             <tr>
-                <td align="left" colspan="2" style="padding-left:5px;">Department</td>
+                <td align="left" colspan="2" style="padding-left:5px; color:#CA006C;"  >Department</td>
                 <td align="left">Module</td>
             </tr>
             <tr>
@@ -1372,7 +1372,7 @@
                                 <div id="slider-rooms"></div>
                             </td>
                             <td>
-                                <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
+                                <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
                             </td>
                         </tr>
                     </table>
@@ -1524,7 +1524,7 @@
                                         <div id="slider-capacity1"></div>
                                     </td>
                                     <td>
-                                        <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
+                                        <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
                                     </td>
                                 </tr>
                             </table>
@@ -1653,7 +1653,7 @@
                                     <div id="slider-capacity2"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>
@@ -1782,7 +1782,7 @@
                                     <div id="slider-capacity3"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity3" name="capacity3" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity3" name="capacity3" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>
@@ -1911,7 +1911,7 @@
                                     <div id="slider-capacity4"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity4" name="capacity4" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity4" name="capacity4" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>
@@ -2040,7 +2040,7 @@
                                     <div id="slider-capacity5"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity5" name="capacity5" readonly="readonly" style="border:0; color:#9D009D; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity5" name="capacity5" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
                                 </td>
                             </tr>
                         </table>

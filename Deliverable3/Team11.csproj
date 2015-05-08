@@ -71,6 +71,8 @@
     <Content Include="Availibility.aspx" />
     <Content Include="AdminPage.aspx" />
     <Content Include="CreateRequest.aspx" />
+    <Content Include="CreateRequest2.aspx" />
+    <Content Include="CreateRequest3.aspx" />
     <Content Include="Preference.aspx" />
     <None Include="Resources\favicon.png" />
     <None Include="Resources\logo2.jpg" />
@@ -161,6 +163,20 @@
     </Compile>
     <Compile Include="CreateRequest.aspx.designer.cs">
       <DependentUpon>CreateRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateRequest2.aspx.cs">
+      <DependentUpon>CreateRequest2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateRequest2.aspx.designer.cs">
+      <DependentUpon>CreateRequest2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateRequest3.aspx.cs">
+      <DependentUpon>CreateRequest3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateRequest3.aspx.designer.cs">
+      <DependentUpon>CreateRequest3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

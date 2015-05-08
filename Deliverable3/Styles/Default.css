@@ -3,7 +3,7 @@
    width:400px;
    margin-left: 425px;
    margin-top: 50px;
-   border:2px solid #330066;
+   border:2px solid #b6b7bc;
    border-top-left-radius:15px;
    border-top-right-radius:15px;
 }
@@ -23,11 +23,11 @@
 .canistertitle 
 {
     text-align:center;
-    border:2px solid #330066;
+    border:2px solid #f1f2ed;
     border-top-left-radius:10px;
     border-top-right-radius:10px;
-    background-color:#330066;
-    color:White;
+    background-color:#f1f2ed;
+    color:#45186d;
    
 }
 .errormessage 
@@ -45,12 +45,12 @@ a
 }
 ul li 
 {
-    background-color:grey !important;
+    background-color:#f1f2ed !important;
        
 }
 .navbar ul li:first-child, .navbar ul li:first-child:hover
 {
-    background-color:#330066 !important;
+    
     cursor:default !important;
 }
 ul li:hover 
