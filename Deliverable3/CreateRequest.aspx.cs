@@ -152,10 +152,9 @@ namespace Team11
             string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand(""))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [REQUESTS] ([module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [arrangement], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) VALUES (@module, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @lecture_capture, @pa_system, @radio_microphone, @video_dvd, @arrangement, @special_req, @priority, @day, @period, @duration, @status, @park, @semester, @year, @lecturer, @dept, @session)"))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
                     cmd.Parameters.AddWithValue("@module", request.module);
                     cmd.Parameters.AddWithValue("@room_code", request.room_code1);
                     cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(request.capacity1));
@@ -179,6 +178,8 @@ namespace Team11
                     cmd.Parameters.AddWithValue("@semester", Convert.ToInt32(request.semester));
                     cmd.Parameters.AddWithValue("@lecturer", request.lecturer);
                     cmd.Parameters.AddWithValue("@session", request.session);
+                    cmd.Parameters.AddWithValue("@year", request.year);
+                    cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
                     cmd.Connection = con;
                     con.Open();
                     cmd.ExecuteNonQuery();

@@ -1030,6 +1030,7 @@
                 request.lecturer = $("#lecturer").val();
                 request.session = $("#session").val();
                 request.park = $("#park").val();
+                request.year = "2015";
                 $.ajax(
                  {
                      type: "POST",
@@ -1644,7 +1645,7 @@
                     </tr>
                     <tr>
                         <td align="left" colspan="3"  style="padding-left:5px;">
-                            <textarea style="width:835px;" name="specialReq1" cols="80" maxlength="1000"></textarea>
+                            <textarea style="width:835px;" id="specialReq1" cols="80" maxlength="1000"></textarea>
                         </td>
                     </tr>
                 </table>
@@ -1774,7 +1775,7 @@
                 </tr>
                 <tr>
                     <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" name="specialReq2" cols="80" maxlength="1000"></textarea>
+                        <textarea style="width:835px;" id="specialReq2" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
@@ -1904,7 +1905,7 @@
                 </tr>
                 <tr>
                     <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" name="specialReq3" cols="80" maxlength="1000"></textarea>
+                        <textarea style="width:835px;" id="specialReq3" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
@@ -2034,7 +2035,7 @@
                 </tr>
                 <tr>
                     <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" name="specialReq4" cols="80" maxlength="1000"></textarea>
+                        <textarea style="width:835px;" id="specialReq4" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
@@ -2164,7 +2165,7 @@
                 </tr>
                 <tr>
                     <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" name="specialReq5" cols="80" maxlength="1000"></textarea>
+                        <textarea style="width:835px;" id="specialReq5" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
