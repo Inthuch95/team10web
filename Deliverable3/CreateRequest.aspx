@@ -955,7 +955,7 @@
             });
         }
         function insertRequestAjax() {
-            if(confirm("Are you sure?")){
+            if (confirm("Are you sure?")) {
                 //collect form value as object
                 var request = {};
                 request.module = $("#module").val();
@@ -1046,6 +1046,8 @@
                      }
                  });
             }
+            else
+                return false;
         }
         //end AJAX
         //display room preference options based on number of rooms

@@ -148,8 +148,43 @@ namespace Team11
         [WebMethod]
         [ScriptMethod]
         public static void insertRequest(REQUEST_FORM request)
-        { 
-        
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand(""))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
+                    cmd.Parameters.AddWithValue("@module", request.module);
+                    cmd.Parameters.AddWithValue("@room_code", request.room_code1);
+                    cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(request.capacity1));
+                    cmd.Parameters.AddWithValue("@wheelchair", Convert.ToInt32(request.wheelchair));
+                    cmd.Parameters.AddWithValue("@projector", Convert.ToInt32(request.projector));
+                    cmd.Parameters.AddWithValue("@whiteboard", Convert.ToInt32(request.whiteboard));
+                    cmd.Parameters.AddWithValue("@visualiser", Convert.ToInt32(request.visualiser));
+                    cmd.Parameters.AddWithValue("@computer", Convert.ToInt32(request.computer));
+                    cmd.Parameters.AddWithValue("@lecture_capture", Convert.ToInt32(request.lecture_capture));
+                    cmd.Parameters.AddWithValue("@pa_system", Convert.ToInt32(request.pa_system));
+                    cmd.Parameters.AddWithValue("@video_dvd", Convert.ToInt32(request.video_dvd));
+                    cmd.Parameters.AddWithValue("@radio_microphone", Convert.ToInt32(request.radio_microphone));
+                    cmd.Parameters.AddWithValue("@arrangement", request.arrangement);
+                    cmd.Parameters.AddWithValue("@priority", Convert.ToInt32(request.priority));
+                    cmd.Parameters.AddWithValue("@period", Convert.ToInt32(request.period));
+                    cmd.Parameters.AddWithValue("@duration", Convert.ToInt32(request.duration));
+                    cmd.Parameters.AddWithValue("@special_req", request.special_req1);
+                    cmd.Parameters.AddWithValue("@day", request.day);
+                    cmd.Parameters.AddWithValue("@status", request.status);
+                    cmd.Parameters.AddWithValue("@park", request.park);
+                    cmd.Parameters.AddWithValue("@semester", Convert.ToInt32(request.semester));
+                    cmd.Parameters.AddWithValue("@lecturer", request.lecturer);
+                    cmd.Parameters.AddWithValue("@session", request.session);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
         }
         //get modules from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
