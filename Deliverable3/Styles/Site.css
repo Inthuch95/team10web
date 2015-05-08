@@ -44,7 +44,7 @@ h1
     padding: 10px 0px 0px 0px;
     width: 100%;
     height:60px;
-    background-color:#330066;
+    background-color:#ca006c;
     text-align:center;
 
 }
@@ -79,12 +79,12 @@ div.navbar
 {
     width:1336px;
     height:60px;
-    background-color:#330066;
+    background-color:#f1f2ed;
     border-radius:2px;
     margin:10px auto 0px auto;
     padding:0;
     text-align:center;
-    color:white;
+    color:#471763;
 }
 div.navbar ul 
 {
@@ -105,20 +105,25 @@ div.navbar ul li
     padding-top:17px;
     border:2px solid white;
     margin-top:-1px;
-    transition: all 0.3s; 
+ 
 }
+
+
 div.navbar ul li a 
 {
-    color:white;
+    color:#45186d;
     display:block;
    transition: all 0.3s; 
 }
 div.navbar ul li a:hover 
 {
-    color:#330066;
+    color:#45186d;
     text-decoration:none;
     transition: all 0.3s; 
+
 }
+
+
 /* First child = logo */
 div.navbar ul li:first-child 
 {
@@ -132,13 +137,14 @@ div.navbar ul li:first-child
 }
 div.navbar ul li:first-child:hover 
 {
-   background-color:#330066;
+   background-color:#ca006c;
    cursor:default;  
 }
 /* ************************************** */
 /* Last child = Log out */
 div.navbar ul li:last-child 
 { 
+   background-color:#ca006c;
     width:119px; 
     transition: all 0.3s;  
 }

@@ -150,7 +150,7 @@ table
     border-left: 3px solid #c1c1c1;
     border-right: 3px solid #c1c1c1;
     width: 1150px;
-	background-color: #f9f9f6;
+	background-color:#F7F7F0;
 	padding: 10px;
 }
 .box_bottom_class {
@@ -180,10 +180,10 @@ table
 	padding: 10px;
 }
 #selectable-session .ui-selecting { 
-	background: #B531B5; 
+	background:#ca006c ; 
 }
 #selectable-session .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-session { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -192,10 +192,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-arrangement .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-arrangement .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-arrangement { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -204,10 +204,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-wheelchair .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-wheelchair { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -216,10 +216,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-whiteboard .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-whiteboard { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -228,10 +228,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-projector .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-projector { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -240,10 +240,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-visualiser .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-visualiser { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -252,10 +252,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-computer .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-computer { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -265,10 +265,10 @@ table
 }
 
 #selectable-video .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-video .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-video { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -277,10 +277,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-pa .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-pa { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -289,10 +289,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-mic .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-mic { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -301,10 +301,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture .ui-selecting { 
-	background: #B531B5; 
+	background: #ca006c; 
 }
 #selectable-capture .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #ca006c; color: white; 
 }
 #selectable-capture { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -328,10 +328,10 @@ table
     width: 200px;
 }
 #selectable-arrangement2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-arrangement2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-arrangement2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -340,10 +340,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-wheelchair2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-wheelchair2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -352,10 +352,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-whiteboard2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-whiteboard2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -364,10 +364,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-projector2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-projector2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -376,10 +376,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-visualiser2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-visualiser2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -388,10 +388,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-computer2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-computer2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -401,10 +401,10 @@ table
 }
 
 #selectable-video2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-video2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-video2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -413,10 +413,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-pa2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-pa2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -425,10 +425,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-mic2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-mic2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -437,10 +437,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture2 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-capture2 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-capture2 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -463,10 +463,10 @@ table
     width: 200px;
 }
 #selectable-arrangement3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-arrangement3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-arrangement3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -475,10 +475,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-wheelchair3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-wheelchair3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -487,10 +487,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-whiteboard3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-whiteboard3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -499,10 +499,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-projector3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-projector3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -511,10 +511,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-visualiser3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-visualiser3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -523,10 +523,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-computer3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-computer3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -536,10 +536,10 @@ table
 }
 
 #selectable-video3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-video3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-video3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -548,10 +548,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-pa3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-pa3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -560,10 +560,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-mic3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-mic3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -572,10 +572,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture3 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-capture3 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-capture3 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -598,10 +598,10 @@ table
     width: 200px;
 }
 #selectable-arrangement4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-arrangement4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-arrangement4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -610,10 +610,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-wheelchair4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-wheelchair4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -622,10 +622,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-whiteboard4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-whiteboard4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -634,10 +634,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-projector4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-projector4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -646,10 +646,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-visualiser4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-visualiser4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -658,10 +658,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-computer4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-computer4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -671,10 +671,10 @@ table
 }
 
 #selectable-video4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-video4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-video4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -683,10 +683,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-pa4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-pa4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -695,10 +695,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-mic4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-mic4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -707,10 +707,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture4 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-capture4 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-capture4 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -733,10 +733,10 @@ table
     width: 200px;
 }
 #selectable-arrangement5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-arrangement5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-arrangement5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -745,10 +745,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-wheelchair5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-wheelchair5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-wheelchair5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -757,10 +757,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-whiteboard5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-whiteboard5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-whiteboard5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -769,10 +769,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-projector5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-projector5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-projector5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -781,10 +781,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-visualiser5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-visualiser5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-visualiser5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -793,10 +793,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-computer5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-computer5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-computer5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -806,10 +806,10 @@ table
 }
 
 #selectable-video5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-video5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-video5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -818,10 +818,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-pa5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-pa5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-pa5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -830,10 +830,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-mic5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-mic5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-mic5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -842,10 +842,10 @@ table
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
 }
 #selectable-capture5 .ui-selecting { 
-	background: #B531B5; 
+	background: #CA006C; 
 }
 #selectable-capture5 .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-capture5 { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
@@ -858,7 +858,7 @@ table
 	background: #F9F9F7; 
 }
 #selectable-day .ui-selected { 
-	background: #9D009D; color: white; 
+	background: #CA006C; color: white; 
 }
 #selectable-day { 
 	list-style-type: none; margin: 0; padding: 0; width: 350px; background: #F9F9F7; 
@@ -890,13 +890,13 @@ table
 }
 
 #week:hover {
-  background-color: #B531B5;
+  background-color: #f888c4;
   color:white;
 }
 
 input:checked + #week {
   border-color: #DFDFDD;
-  background-color: #9D009D;
+  background-color: #CA006C;
   color:white;
 }
     
