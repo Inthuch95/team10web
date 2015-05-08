@@ -856,7 +856,7 @@
 			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
 			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
 			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
-			        <td>Facility</td>
+			        <td style="cursor:default;">Facility</td>
 			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
 			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
 			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
@@ -880,7 +880,7 @@
 			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
 			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
 			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
-			        <td>Facility</td>
+			        <td style="cursor:default;">Facility</td>
 			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
 			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
 			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
@@ -904,7 +904,7 @@
 			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
 			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
 			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
-			        <td>Facility</td>
+			        <td style="cursor:default;">Facility</td>
 			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
 			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
 			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
