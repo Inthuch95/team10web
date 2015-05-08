@@ -1424,7 +1424,7 @@
                 </td>
             </tr>
         </table>
-
+        <br />
         <%--Room preference 1--%> 
         <div id="room_pref1">     
             <table class="inputs box_class">
@@ -1554,6 +1554,7 @@
                     </tr>
                 </table>
             </div> 
+          <br />
           <%--Room preference 2--%> 
         <div id="room_pref2" style="display:none">
             <table class="inputs box_class">
@@ -1683,6 +1684,7 @@
                 </tr>
             </table>
         </div>
+          <br />
         <%--Room preference 3--%> 
         <div id="room_pref3" style="display:none">
             <table class="inputs box_class">
@@ -1812,6 +1814,7 @@
                 </tr>
             </table>
         </div>
+          <br />
         <%--Room preference 4--%> 
         <div id="room_pref4" style="display:none">
             <table class="inputs box_class">
@@ -1941,6 +1944,7 @@
                 </tr>
             </table>
         </div>
+        <br />
         <%--Room preference 5--%> 
         <div id="room_pref5" style="display:none">
             <table class="inputs box_class">
@@ -2070,6 +2074,7 @@
                 </tr>
             </table>
         </div>
+        <br />
         <%--Time--%>
         <div id="time">
             <table class="inputs box_bottom_class">
