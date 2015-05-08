@@ -29,21 +29,22 @@
         list-style:none;
     }
  
-        .tab-links a {
+       .tab-links a {
             padding:9px 15px;
             display:inline-block;
             border-radius:2px 2px 0px 0px;
-            background:#330066;
+            background:#b6b7bc;
             font-size:15px;
             font-weight:600;
             color:#FFFFFF;
             transition:all linear 0.15s;
+            text-decoration: none;
         }
  
  
     li.active a, li.active a:hover {
-        background:#9D009D;
-        color:#FFFFFF;
+        background:#f1f2ed;
+        color:#471763;
     }
  
 
@@ -78,13 +79,13 @@
 
 .dataTable td 
 {
-	background:#9D009D;
+	background:#f1f2ed;
     width:104px;
     max-width:104px;
 	min-width:104px;
     font-size:1em;
     border:1px solid #ffffff;
-	color:#FFFFFF;
+	color:#471763;
     overflow:hidden;
 }
 
@@ -98,7 +99,7 @@
 
 .scrollTable td 
 {
-	background:#330066;
+	background:#b6b7bc;
     width:104px;
     max-width:104px;
 	min-width:104px;
