@@ -52,7 +52,81 @@ namespace Team11
     }
     public class REQUEST_FORM
     {
+        public string request_id { get; set; }
         public string module { get; set; }
+        public string room_code1 { get; set; }
+        public string room_code2 { get; set; }
+        public string room_code3 { get; set; }
+        public string room_code4 { get; set; }
+        public string room_code5 { get; set; }
+        public string noRooms { get; set; }
+        public string capacity1 { get; set; }
+        public string capacity2 { get; set; }
+        public string capacity3 { get; set; }
+        public string capacity4 { get; set; }
+        public string capacity5 { get; set; }
+        public string wheelchair { get; set; }
+        public string projector { get; set; }
+        public string whiteboard { get; set; }
+        public string visualiser { get; set; }
+        public string computer { get; set; }
+        public string lecture_capture { get; set; }
+        public string pa_system { get; set; }
+        public string video_dvd { get; set; }
+        public string radio_microphone { get; set; }
+        public string wheelchair2 { get; set; }
+        public string projector2 { get; set; }
+        public string whiteboard2 { get; set; }
+        public string visualiser2 { get; set; }
+        public string computer2 { get; set; }
+        public string lecture_capture2 { get; set; }
+        public string pa_system2 { get; set; }
+        public string video_dvd2 { get; set; }
+        public string radio_microphone2 { get; set; }
+        public string wheelchair3 { get; set; }
+        public string projector3 { get; set; }
+        public string whiteboard3 { get; set; }
+        public string visualiser3 { get; set; }
+        public string computer3 { get; set; }
+        public string lecture_capture3 { get; set; }
+        public string pa_system3 { get; set; }
+        public string video_dvd3 { get; set; }
+        public string radio_microphone3 { get; set; }
+        public string wheelchair4 { get; set; }
+        public string projector4 { get; set; }
+        public string whiteboard4 { get; set; }
+        public string visualiser4 { get; set; }
+        public string computer4 { get; set; }
+        public string lecture_capture4 { get; set; }
+        public string pa_system4 { get; set; }
+        public string video_dvd4 { get; set; }
+        public string radio_microphone4 { get; set; }
+        public string wheelchair5 { get; set; }
+        public string projector5 { get; set; }
+        public string whiteboard5 { get; set; }
+        public string visualiser5 { get; set; }
+        public string computer5 { get; set; }
+        public string lecture_capture5 { get; set; }
+        public string pa_system5 { get; set; }
+        public string video_dvd5 { get; set; }
+        public string radio_microphone5 { get; set; }
+        public string arrangement { get; set; }
+        public string priority { get; set; }
+        public string period { get; set; }
+        public string duration { get; set; }
+        public string special_req1 { get; set; }
+        public string special_req2 { get; set; }
+        public string special_req3 { get; set; }
+        public string special_req4 { get; set; }
+        public string special_req5 { get; set; }
+        public string day { get; set; }
+        public string status { get; set; }
+        public string park { get; set; }
+        public string semester { get; set; }
+        public string year { get; set; }
+        public string lecturer { get; set; }
+        public string dept_code { get; set; }
+        public string session { get; set; }
     }
     public partial class CreateRequest : System.Web.UI.Page
     {

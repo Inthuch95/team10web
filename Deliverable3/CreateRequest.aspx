@@ -954,6 +954,99 @@
                 }
             });
         }
+        function insertRequestAjax() {
+            if(confirm("Are you sure?")){
+                //collect form value as object
+                var request = {};
+                request.module = $("#module").val();
+                request.noRooms = $("#noRooms").val();
+                request.room_code1 = $("#room1").val();
+                request.room_code2 = $("#room2").val();
+                request.room_code3 = $("#room3").val();
+                request.room_code4 = $("#room4").val();
+                request.room_code5 = $("#room5").val();
+                request.capacity1 = $("#capacity1").val();
+                request.capacity2 = $("#capacity2").val();
+                request.capacity3 = $("#capacity3").val();
+                request.capacity4 = $("#capacity4").val();
+                request.capacity5 = $("#capacity5").val();
+                request.wheelchair = $("#wheelchair").val();
+                request.projector = $("#projector").val();
+                request.visualiser = $("#visualiser").val();
+                request.whiteboard = $("#whiteboard").val();
+                request.computer = $("#computer").val();
+                request.lecture_capture = $("#capture").val();
+                request.video_dvd = $("#video").val();
+                request.pa_system = $("#pa").val();
+                request.radio_microphone = $("#mic").val();
+                request.wheelchair2 = $("#wheelchair2").val();
+                request.projector2 = $("#projector2").val();
+                request.visualiser2 = $("#visualiser2").val();
+                request.whiteboard2 = $("#whiteboard2").val();
+                request.computer2 = $("#computer2").val();
+                request.lecture_capture2 = $("#capture2").val();
+                request.video_dvd2 = $("#video2").val();
+                request.pa_system2 = $("#pa2").val();
+                request.radio_microphone2 = $("#mic2").val();
+                request.wheelchair3 = $("#wheelchair3").val();
+                request.projector3 = $("#projector3").val();
+                request.visualiser3 = $("#visualiser3").val();
+                request.whiteboard3 = $("#whiteboard3").val();
+                request.computer3 = $("#computer3").val();
+                request.lecture_capture3 = $("#capture3").val();
+                request.video_dvd3 = $("#video3").val();
+                request.pa_system3 = $("#pa3").val();
+                request.radio_microphone3 = $("#mic3").val();
+                request.wheelchair4 = $("#wheelchair4").val();
+                request.projector4 = $("#projector4").val();
+                request.visualiser4 = $("#visualiser4").val();
+                request.whiteboard4 = $("#whiteboard4").val();
+                request.computer4 = $("#computer4").val();
+                request.lecture_capture4 = $("#capture4").val();
+                request.video_dvd4 = $("#video4").val();
+                request.pa_system4 = $("#pa4").val();
+                request.radio_microphone4 = $("#mic4").val();
+                request.wheelchair5 = $("#wheelchair5").val();
+                request.projector5 = $("#projector5").val();
+                request.visualiser5 = $("#visualiser5").val();
+                request.whiteboard5 = $("#whiteboard5").val();
+                request.computer5 = $("#computer5").val();
+                request.lecture_capture5 = $("#capture5").val();
+                request.video_dvd5 = $("#video5").val();
+                request.pa_system5 = $("#pa5").val();
+                request.radio_microphone5 = $("#mic5").val();
+                request.arrangement = $("#arrangement").val();
+                request.special_req1 = $("#specialReq1").val();
+                request.special_req2 = $("#specialReq2").val();
+                request.special_req3 = $("#specialReq3").val();
+                request.special_req4 = $("#specialReq4").val();
+                request.special_req5 = $("#specialReq5").val();
+                request.priority = $("#priority").val();
+                request.day = $("#day").val();
+                request.period = $("#period").val();
+                request.duration = $("#duration").val();
+                request.status = "Pending";
+                request.semester = $("#semester").val();
+                request.lecturer = $("#lecturer").val();
+                request.session = $("#session").val();
+                request.park = $("#park").val();
+                $.ajax(
+                 {
+                     type: "POST",
+                     async: true,
+                     url: "CreateRequest.aspx/insertRequest",
+                     data: "{request: " + JSON.stringify(request) + "}",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     success: function (data) {
+                         alert("success");
+                     },
+                     error: function (response) {
+                         console.log(response);
+                     }
+                 });
+            }
+        }
         //end AJAX
         //display room preference options based on number of rooms
         function showPref() {
@@ -2087,7 +2180,7 @@
                 <tr>
                     <%--Selectable - Day--%>
                     <td align="left" style="padding-left:5px;" >
-                        <table><tr>
+                        <table><tr><td>
                         <ol id="selectable-day">
                             <li class="ui-state-default" style="width: 100px">Monday</li>
                             <li class="ui-state-default" style="width: 100px">Tuesday</li>
@@ -2159,6 +2252,7 @@
                 </tr>
             </table>
         </div>
+        <input type="button" onclick="insertRequestAjax()" value="Submit Request" />
       </div>
     <div id="dialog-module" title="Add New Module">
         <form id="module_form" name="module_form" method="post">
