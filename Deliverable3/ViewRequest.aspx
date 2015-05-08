@@ -345,6 +345,7 @@
          request.semester = $("#semester").val();
          request.lecturer = $("#lecturer").val();
          request.session = $("#session").val();
+         request.park = $("#park").val();
          $.ajax(
              {
                  type: "POST",

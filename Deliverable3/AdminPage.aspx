@@ -713,7 +713,7 @@
                 {
                     type: "POST",
                     async: true,
-                    url: "ViewRequest.aspx/getRequest",
+                    url: "AdminPage.aspx/getRequest",
                     data: "{}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
