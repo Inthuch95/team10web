@@ -239,6 +239,7 @@
         var requestData;
         var buildingData;
         var roomData;
+        var request_id;
         function increaseWeek() {
             var currentWeek = parseInt(document.getElementById('current_week').value);
             if (currentWeek != 16) {
@@ -323,9 +324,8 @@
                 }
             });
         }
-        function deleteRequestAjax(el) {
+        function deleteRequestAjax(id) {
             var request = {};
-            var id = el.parentNode.parentNode.cells[0].textContent;
             var request_id = parseInt(id);
             request.request_id = request_id;
             $.ajax(
@@ -405,6 +405,7 @@
                         requestData = data.d;
 
                         console.log(requestData);
+                        clearTable();
                         for (var i = 0; i < requestData.length; i++) {
                             var id = "p" + requestData[i].period + "_" + requestData[i].day.substr(0, 3).toLowerCase() + "_" + requestData[i].status;
                             var id2 = "#p" + requestData[i].period + "_" + requestData[i].day.substr(0, 3).toLowerCase() + "_" + requestData[i].status;
@@ -459,8 +460,10 @@
         function showEditDialog(id) {
             resetForm();
             var currentId = id;
+            
             for (var i = 0; i < requestData.length; i++) {
                 if (requestData[i].request_id == currentId) {
+                    request_id = requestData[i].request_id;
                     $("#module").val(requestData[i].module);
                     $("#request_id").val(currentId);
                     $("#priority").val(requestData[i].priority);
@@ -715,6 +718,25 @@
                 }
             }
             changeRoom();
+        }
+        function clearTable() {
+            for (var i = 1; i <= 10; i++) {
+                $("#p" + i + "_mon_Rejected").empty();
+                $("#p" + i + "_tue_Rejected").empty();
+                $("#p" + i + "_wed_Rejected").empty();
+                $("#p" + i + "_thu_Rejected").empty();
+                $("#p" + i + "_fri_Rejected").empty();
+                $("#p" + i + "_mon_Booked").empty();
+                $("#p" + i + "_tue_Booked").empty();
+                $("#p" + i + "_wed_Booked").empty();
+                $("#p" + i + "_thu_Booked").empty();
+                $("#p" + i + "_fri_Booked").empty();
+                $("#p" + i + "_mon_Pending").empty();
+                $("#p" + i + "_tue_Pending").empty();
+                $("#p" + i + "_wed_Pending").empty();
+                $("#p" + i + "_thu_Pending").empty();
+                $("#p" + i + "_fri_Pending").empty();
+            }
         }
     </script>
 
@@ -1205,6 +1227,7 @@
                 </tr>
               </table>
         <input type="button" id="request-submit" value="Submit" class="btns" onclick="updateRequestAjax()" />&nbsp
+        <input type="button" id="request-del" value="Delete" class="btns" onclick="deleteRequestAjax(request_id)" />&nbsp
         <input type="button" id="cancel" class="btns" value="cancel" onclick="$('#dialog-request').dialog('close')" />
     </div>
 </asp:Content>
