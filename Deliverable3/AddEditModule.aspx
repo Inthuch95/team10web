@@ -16,6 +16,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         getModuleAjax()
+        getDeptCode()
     });
     var moduleData;
     var dept;
@@ -35,6 +36,14 @@
             success: function (data) {
                 moduleData = data.d;
                 console.log(moduleData);
+                for (var i = 0; i < moduleData.length; i++) {
+
+                    $("#genTable").append("<tr id='" + moduleData[i].module_code + "'>" +
+                        "<td>" + moduleData[i].module_code + "</td>" +
+                        "<td>" + moduleData[i].module_title + "</td>" +
+                        "<td>" + "<button type='button' class='btnstd'>Edit</button> " + "</td>" +
+                        "<td>" + "<button type='button' class='btnstd'>Delete</button> " + "</td>" + "</tr>");
+                }
             },
             error: function (response) {
                 console.log(response);
@@ -52,6 +61,8 @@
             dataType: "json",
             success: function (data) {
                 dept = data.d;
+                console.log(dept);
+                $("#moduleCodeD").html("<h2> Add Module for " + dept[0] + "</h2>");
             },
             error: function (response) {
                 console.log(response);
@@ -64,8 +75,7 @@
 
     <!-- Add Module -->
         <div class="AddModuleHead">
-            <div class="headerContainer">
-              <h2>Add Module for</h2>
+            <div id="moduleCodeD" class="headerContainer">
             </div>
 
                 <div>
@@ -105,5 +115,22 @@
               </div>
         </div>
 
+        <br />
+         <div class="body-content">
+          <div id="table_header"> 
+            <table class="scrollTable">
+	         <tr>
+			        <td id="modulecd_td" onclick="sortHeader(this.id)">Module Code</td>
+			        <td id="modulenm_td" onclick="sortHeader(this.id)">Module Name</td>
+       		        <td id="edit_td" style="cursor:default;" >Edit</td>
+  			        <td id="delete_td" style="cursor:default;" >Delete</td>
+                </tr>
+	          </table>
+            </div> 
+            <div id="table_body">
+             <table id="genTable" class="dataTable">
+             </table>
+            </div>
+            </div>
 
 </asp:Content>

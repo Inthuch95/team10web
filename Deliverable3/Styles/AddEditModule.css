@@ -1,12 +1,14 @@
+
+/*poisitoning of the tables for the module title and code*/
 .headTable
 {
-    width:1150px;
+    width:1200px;
     text-align:center;
 }
 .headTable td:first-child
 {
     vertical-align: text-top;
-    width:250px;
+    width:300px;
 }
 .headTable td:last-child
 {
@@ -14,18 +16,22 @@
 }
 .buttonTable
 {
-    width:1150px;
+    width:1300px;
     text-align:center;
 }
+
+/*the second title css*/ 
 .AddModuleHead 
 {
-   width:1250px;
+   width:1300px;
    margin-left: auto;
    margin-right: auto;
    border-radius:3px;
    box-shadow:-1px -1px 2px 2px rgba(0,0,0,0.15);
    background:#FFFFFF;
 }
+
+/*style of the body for adding modules*/
 .headerContainer 
 {
     text-align:center;
@@ -36,11 +42,8 @@
     height:40px;
     font-size:10pt;
 }
-.table {
-    border-radius:3px;
-    box-shadow:-1px -1px 2px 2px rgba(0,0,0,0.15);
-    background:#FFFFFF;
-    }
+
+/*css for buttons*/
 .btns {
 	border: 2px solid #ffffff;
     background: #9D009D;
@@ -49,9 +52,129 @@
     width: 280px;
 	transition: all 0.3s;
 }
-
 .btns:hover {
 	background: #ffffff;
 	color: #9D009D;
     border: 2px solid #9D009D;
 }
+.btnstd {
+	border: 2px solid #ffffff;
+    background: #9D009D;
+  	color: #ffffff;
+    height: auto;
+    width: 125px;
+	transition: all 0.3s;
+}
+.btnstd:hover {
+	background: #ffffff;
+	color: #9D009D;
+    border: 2px solid #9D009D;
+}
+
+/*style for table header*/
+.scrollTable 
+{
+    width:1250px;
+    height:40px;
+    border:1px solid #ffffff;
+	border-radius:1px;
+    opacity: 0.90;
+    text-align:center;
+    background:#b6b7bc;
+    color:#ffffff;
+    cursor: pointer;
+	overflow:hidden;
+    font-size:14pt;
+}
+
+.scrollTable td:first-child
+{
+    width: 125px;
+    max-width: 125px;
+    min-width: 125px;
+    border: 1px solid #ffffff;
+}
+ .scrollTable td:nth-child(2)
+{
+    width:875px;
+    max-width:875px;
+	min-width:875px;
+    border:1px solid #ffffff;
+}
+.scrollTable td:nth-child(3)
+{
+    width:125px;
+    max-width:125px;
+	min-width:125px;
+    border:1px solid #ffffff;
+}
+.scrollTable td:last-child
+{
+    width:125px;
+    max-width:125px;
+	min-width:125px;
+    border:1px solid #ffffff;
+}
+
+/*style for table body*/
+.dataTable 
+{
+    width:1250px;
+    border:1px solid #ffffff;
+    overflow:hidden;
+    opacity: 0.75;
+    color:#471763;
+    text-align:center;
+    overflow:hidden;
+  	background:#f1f2ed;
+}
+.dataTable td:first-child
+{
+	background:#f1f2ed;
+    width:125px;
+    max-width:125px;
+	min-width:125px;
+    font-size:1em;
+    border:1px solid #ffffff;
+}
+
+
+.dataTable td:nth-child(2)
+{
+	background:#f1f2ed;
+    width:875px;
+    max-width:875px;
+	min-width:875px;
+    font-size:1em;
+    border:1px solid #ffffff;
+}
+.dataTable td:nth-child(3)
+{
+	background:#f1f2ed;
+    width:125px;
+    max-width:125px;
+	min-width:125px;
+    font-size:1em;
+    border:1px solid #ffffff;
+}
+.dataTable td:last-child
+{
+	background:#f1f2ed;
+    width:125px;
+    max-width:125px;
+	min-width:125px;
+    font-size:1em;
+    border:1px solid #ffffff;
+}
+
+
+/*the border box around the table*/
+    .body-content { 
+        padding:15px;
+        border-radius:2px;
+        box-shadow:-1px -1px 2px 2px rgba(0,0,0,0.15);
+        background:#FFFFFF;
+        min-height: 340px;
+        padding-bottom: 30px;
+        width: 1300px;
+    }
