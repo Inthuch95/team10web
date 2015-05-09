@@ -1769,8 +1769,9 @@
         </table>
         <br />
         <%--Room preference 1--%> 
-        <div id="room_pref1">     
+        <div id="room_pref1">    
             <table class="inputs box_class">
+                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 1</td></tr>
                 <tr>
                     <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
@@ -1896,11 +1897,13 @@
                         </td>
                     </tr>
                 </table>
+            <br />
             </div> 
-          <br />
+          
           <%--Room preference 2--%> 
-        <div id="room_pref2" style="display:none">
+        <div id="room_pref2" style="display:none"> 
             <table class="inputs box_class">
+                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 2</td></tr>
                 <tr>
                     <td colspan="2" align="left"  style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
@@ -2026,11 +2029,14 @@
                     </td>
                 </tr>
             </table>
+            <br />
         </div>
-          <br />
+          
         <%--Room preference 3--%> 
         <div id="room_pref3" style="display:none">
+           
             <table class="inputs box_class">
+                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 3</td></tr>
                 <tr>
                     <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
@@ -2156,11 +2162,14 @@
                     </td>
                 </tr>
             </table>
+            <br />
         </div>
-          <br />
+          
         <%--Room preference 4--%> 
         <div id="room_pref4" style="display:none">
+             
             <table class="inputs box_class">
+                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 4</td></tr>
                 <tr>
                     <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
@@ -2286,11 +2295,14 @@
                     </td>
                 </tr>
             </table>
+            <br />
         </div>
-        <br />
+        
         <%--Room preference 5--%> 
         <div id="room_pref5" style="display:none">
+             
             <table class="inputs box_class">
+                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 5</td></tr>
                 <tr>
                     <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
                     <td align="left">Arrangement</td>
@@ -2416,8 +2428,8 @@
                     </td>
                 </tr>
             </table>
+            <br />
         </div>
-        <br />
         <%--Time--%>
         <div id="time">
             <table class="inputs box_bottom_class">
