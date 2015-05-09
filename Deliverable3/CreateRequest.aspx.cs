@@ -225,6 +225,30 @@ namespace Team11
                     con.Close();
                 }
             }
+            int id;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT SCOPE_IDENTITY()"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    con.Open();
+                    id = cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [test] ([Id]) VALUES (@id)"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Connection = con;
+                    con.Open();
+                    id = cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
         }
         //get modules from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
