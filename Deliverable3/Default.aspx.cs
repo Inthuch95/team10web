@@ -51,8 +51,49 @@ namespace Team11
                     conn.Close();
                     Session["dept_name"] = DropDownListDept.Text;
                     Session["dept_code"] = dept_code;
-                    Response.Redirect("CreateRequest.aspx");
                     
+                    /*Code to check round dates*/
+                    conn.Open();
+                    string round1_start_date = "SELECT [from] FROM [ROUND] WHERE round='1'";
+                    string round2_start_date = "SELECT [from] FROM [ROUND] WHERE round='2'";
+                    string round3_start_date = "SELECT [from] FROM [ROUND] WHERE round='3'";
+                    string round3_finish_date = "SELECT [to] FROM [ROUND] WHERE round='3'";
+                    SqlCommand rnd1str = new SqlCommand(round1_start_date, conn);
+                    SqlCommand rnd2str = new SqlCommand(round2_start_date, conn);
+                    SqlCommand rnd3str = new SqlCommand(round3_start_date, conn);
+                    SqlCommand rnd3fin = new SqlCommand(round3_finish_date, conn);
+                    /* Gets rid of the space if there is one e.g. by habit putting a space at the end*/
+                    string rnd1_start = rnd1str.ExecuteScalar().ToString().Replace(" ", "");
+                    string rnd2_start = rnd2str.ExecuteScalar().ToString().Replace(" ", "");
+                    string rnd3_start = rnd3str.ExecuteScalar().ToString().Replace(" ", "");
+                    string rnd3_finish = rnd3fin.ExecuteScalar().ToString().Replace(" ", "");
+                    conn.Close();
+
+                    /*01/01/2015*/
+
+                    DateTime round1_str = Convert.ToDateTime(rnd1_start);
+                    DateTime round2_str = Convert.ToDateTime(rnd2_start);
+                    DateTime round3_str = Convert.ToDateTime(rnd3_start);
+                    DateTime round3_fin = Convert.ToDateTime(rnd3_finish);
+
+                    DateTime dateToCheck = DateTime.Now;
+                    if (dateToCheck >= round1_str && dateToCheck < round2_str)
+                    {
+                        Response.Redirect("CreateRequest.aspx");
+                    }
+                    else if (dateToCheck >= round2_str && dateToCheck < round3_str)
+                    {
+                        Response.Redirect("CreateRequest2.aspx");
+                    }
+
+                    else if (dateToCheck >= round3_str && dateToCheck <= round3_fin)
+                    {
+                        Response.Redirect("CreateRequest3.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("Availibility.aspx");
+                    }
                 }
                 else
                 {

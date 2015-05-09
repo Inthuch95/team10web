@@ -6,3 +6,10 @@ D:\Asus WebStorage\Loughborough\2nd year\14COB290 - Team Projects\team10web\Deli
 D:\Asus WebStorage\Loughborough\2nd year\14COB290 - Team Projects\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
 D:\Asus WebStorage\Loughborough\2nd year\14COB290 - Team Projects\team10web\Deliverable3\obj\Debug\Team11.dll
 D:\Asus WebStorage\Loughborough\2nd year\14COB290 - Team Projects\team10web\Deliverable3\obj\Debug\Team11.pdb
+C:\Users\codb.LUNET\Desktop\team10web\Deliverable3\bin\Team11.dll
+C:\Users\codb.LUNET\Desktop\team10web\Deliverable3\bin\Team11.pdb
+C:\Users\codb.LUNET\Desktop\team10web\Deliverable3\obj\Debug\Team11.csprojResolveAssemblyReference.cache
+C:\Users\codb.LUNET\Desktop\team10web\Deliverable3\obj\Debug\Team11.Properties.Resources.resources
+C:\Users\codb.LUNET\Desktop\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
+C:\Users\codb.LUNET\Desktop\team10web\Deliverable3\obj\Debug\Team11.dll
+C:\Users\codb.LUNET\Desktop\team10web\Deliverable3\obj\Debug\Team11.pdb
