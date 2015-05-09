@@ -7,8 +7,457 @@
     
     <script type="text/javascript" language="javascript">
          $(document).ready(function () {
+             initRequestDialog();
+             getRequestAjax();
+             getRoomAjax();
+             loadDuration();
+             loadPeriod();
+             getBuildingAjax();
 
-        });
+             //capacity slider
+             $("#slider-capacity").slider({
+                 range: "max",
+                 min: 1,
+                 max: 500,
+                 value: 1,
+                 step: 1,
+                 slide: function (event, ui) {
+                     $("#capacity1").val(ui.value);
+                 }
+             });
+             //put the slider value into text box with id 'capacity'
+             $("#capacity1").val($("#slider-capacity").slider("value"));
+             //capacity slider
+             $("#slider-capacity2").slider({
+                 range: "max",
+                 min: 1,
+                 max: 500,
+                 value: 1,
+                 step: 1,
+                 slide: function (event, ui) {
+                     $("#capacity2").val(ui.value);
+                     changeRoom2();
+                 }
+             });
+             //put the slider value into text box with id 'capacity'
+             $("#capacity2").val($("#slider-capacity").slider("value"));
+             //start selectable
+             //room preference 1
+             $("#selectable-session").selectable({
+                 stop: function () {
+                     $(".ui-selected", this).each(function () {
+                         var index = $("#selectable-session li").index(this);
+                         switch (index) {
+                             case 0:
+                                 $("#session").val("Lecture");
+                                 break;
+                             case 1:
+                                 $("#session").val("Practical");
+                                 break;
+                             case 2:
+                                 $("#session").val("Seminar");
+                                 break;
+                             case 3:
+                                 $("#session").val("Tutorial");
+                                 break;
+                         }
+                     });
+                 }
+             });
+             $("#selectable-arrangement").selectable({
+                 stop: function () {
+                     $(".ui-selected", this).each(function () {
+                         var index = $("#selectable-arrangement li").index(this);
+                         switch (index) {
+                             case 0:
+                                 $("#arrangement").val("Any");
+                                 break;
+                             case 1:
+                                 $("#arrangement").val("Tired");
+                                 break;
+                             case 2:
+                                 $("#arrangement").val("Flat");
+                                 break;
+                         }
+                         changeRoom();
+                     });
+                 }
+             });
+             $("#selectable-priority").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedPriority == false)
+                     selectedPriority = true;
+                 else
+                     selectedPriority = false;
+                 if (selectedPriority)
+                     $("#priority").val("1");
+                 else
+                     $("#priority").val("0");
+             }).selectable();
+             $("#selectable-wheelchair").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedWheelchair == false)
+                     selectedWheelchair = true;
+                 else
+                     selectedWheelchair = false;
+                 if (selectedWheelchair)
+                     $("#wheelchair").val("1");
+                 else
+                     $("#wheelchair").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-whiteboard").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedWhiteboard == false)
+                     selectedWhiteboard = true;
+                 else
+                     selectedWhiteboard = false;
+                 if (selectedWhiteboard)
+                     $("#whiteboard").val("1");
+                 else
+                     $("#whiteboard").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-projector").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedProjector == false)
+                     selectedProjector = true;
+                 else
+                     selectedProjector = false;
+                 if (selectedProjector)
+                     $("#projector").val("1");
+                 else
+                     $("#projector").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-visualiser").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedVisualiser == false)
+                     selectedVisualiser = true;
+                 else
+                     selectedVisualiser = false;
+                 if (selectedVisualiser)
+                     $("#visualiser").val("1");
+                 else
+                     $("#visualiser").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-computer").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedComputer == false)
+                     selectedComputer = true;
+                 else
+                     selectedComputer = false;
+                 if (selectedComputer)
+                     $("#computer").val("1");
+                 else
+                     $("#computer").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-video").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedVideo == false)
+                     selectedVideo = true;
+                 else
+                     selectedVideo = false;
+                 if (selectedVideo)
+                     $("#video").val("1");
+                 else
+                     $("#video").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-pa").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedPa == false)
+                     selectedPa = true;
+                 else
+                     selectedPa = false;
+                 if (selectedPa)
+                     $("#pa").val("1");
+                 else
+                     $("#pa").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-mic").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedMic == false)
+                     selectedMic = true;
+                 else
+                     selectedMic = false;
+                 if (selectedMic)
+                     $("#mic").val("1");
+                 else
+                     $("#mic").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-capture").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedCap == false)
+                     selectedCap = true;
+                 else
+                     selectedCap = false;
+                 if (selectedCap)
+                     $("#capture").val("1");
+                 else
+                     $("#capture").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-day").selectable({
+                 stop: function () {
+                     $(".ui-selected", this).each(function () {
+                         var index = $("#selectable-day li").index(this);
+                         switch (index) {
+                             case 0:
+                                 $("#day").val("Monday");
+                                 break;
+                             case 1:
+                                 $("#day").val("Tuesday");
+                                 break;
+                             case 2:
+                                 $("#day").val("Wednesday");
+                                 break;
+                             case 3:
+                                 $("#day").val("Thursday");
+                                 break;
+                             case 4:
+                                 $("#day").val("Friday");
+                                 break;
+                         }
+                     });
+                 }
+             });
+         });
+         var requestData;
+         var roomData;
+         function getRequestAjax() {
+             $.ajax(
+                 {
+                     type: "POST",
+                     async: true,
+                     url: "ViewRequest.aspx/getRequest",
+                     data: "{}",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     success: function (data) {
+
+                         requestData = data.d;
+                         console.log(requestData);
+                         for (var i = 0; i <= requestData.length; i++) {
+                             if (requestData[i].status == "Booked") {
+                                 $("#p" + requestData[i].period + "_" + requestData[i].day.substr(0, 3).toLowerCase()).empty();
+                             }
+                         }
+                     },
+                     error: function (response) {
+                         console.log(response);
+                     }
+                 });
+         }
+         //get room data and their location
+         function getRoomAjax() {
+             $.ajax(
+             {
+                 type: "POST",
+                 async: true,
+                 url: "CreateRequest.aspx/getRooms",
+                 data: "{}",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (data) {
+                     roomData = data.d;
+                     $("#room-select").append("<option>Any</option>");
+                     for (var i = 0; i < roomData.length; i++) {
+                         $("#room-select").append("<option>" + roomData[i].room_code + "</option>");
+                     }
+                 },
+                 error: function (response) {
+                     console.log(response);
+                 }
+             });
+         }
+         //get building data
+         function getBuildingAjax() {
+             $.ajax(
+             {
+                 type: "POST",
+                 async: true,
+                 url: "CreateRequest.aspx/getBuilding",
+                 data: "{}",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (data) {
+                     buildingData = data.d;
+                     $("#building-select").append("<option value='Any'>Any</option>");
+                     for (var i = 0; i < buildingData.length; i++) {
+                         $("#building-select").append("<option value='" + buildingData[i].building_code + "'>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                     }
+                 },
+                 error: function (response) {
+                     console.log(response);
+                 }
+             });
+         }
+         function initRequestDialog() {
+             $("#dialog-request").dialog({
+                 height: 500,
+                 width: 700,
+                 position: {
+                     my: "center",
+                     at: "center",
+                     of: window
+                 }
+             });
+             $("#dialog-request").dialog("close");
+         }
+         //fill duration drop down list
+         function loadDuration() {
+             for (var i = 1; i <= 9; i++) {
+                 $("#duration").append("<option>" + i + "</option>");
+             }
+         }
+         //fill period drop down list
+         function loadPeriod() {
+             for (var i = 1; i <= 9; i++) {
+                 var time = i + 8;
+                 $("#period").append("<option value='" + i + "'>" + i + " - " + time + ":00</option>");
+             }
+         }
+         //change uration based on period
+         function refillDuration() {
+             $("#duration").empty();
+             var period = $("#period").val();
+             for (var i = 1; i <= 10 - period; i++) {
+                 $("#duration").append("<option value='" + i + "'>" + i + "</option>");
+             }
+         }
+         function changeRoom() {
+             //get values of user's selection
+             var park = document.getElementById("park").value;
+             var building = document.getElementById("building").value;
+             var capacity = parseInt(document.getElementById("capacity1").value);
+             var isWheelchair = parseInt(document.getElementById("wheelchair").value);
+             var isVisualiser = parseInt(document.getElementById("visualiser").value);
+             var isProjector = parseInt(document.getElementById("projector").value);
+             var isWhiteboard = parseInt(document.getElementById("whiteboard").value);
+             var computer = parseInt(document.getElementById("computer").value);
+             var capture = parseInt(document.getElementById("capture").value);
+             var pa = parseInt(document.getElementById("pa").value);
+             var mic = parseInt(document.getElementById("mic").value);
+             var video = parseInt(document.getElementById("video").value);
+             var arrangement = document.getElementById("arrangement").value;
+             var room_arr1;
+
+             //empty the room code list
+             $("#room").empty();
+             $("#room").append("<option>" + "Any" + "</option>");
+
+             for (var i = 0; i < roomData.length; i++) {
+                 //room preference 1
+                 //check room arrangement selection
+                 if (arrangement == "Tiered")
+                     room_arr1 = roomData[i].tiered;
+                 else if (arrangement == "Any")
+                     room_arr1 = arrangement;
+                 else
+                     room_arr1 = roomData[i].flat;
+
+                 //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                 //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                 if ((park == "Any" || park == roomData[i].park) &&
+                 (isWheelchair == 0 || roomData[i].wheelchair == 1) &&
+                 (isVisualiser == 0 || roomData[i].visualiser == 1) &&
+                 (isProjector == 0 || roomData[i].projector == 1) &&
+                 (isWhiteboard == 0 || roomData[i].whiteboard == 1) &&
+                 (computer == 0 || roomData[i].computer == 1) &&
+                 (capture == 0 || roomData[i].lecture_capture == 1) &&
+                 (pa == 0 || roomData[i].pa_system == 1) &&
+                 (mic == 0 || roomData[i].radio_microphone == 1) &&
+                 (video == 0 || roomData[i].video_dvd == 1) &&
+                 (roomData[i].capacity >= capacity) &&
+                 (room_arr1 == "Any" || room_arr1 == 1) &&
+                 (building == "Any" || building == roomData[i].building_code)) {
+                     $("#room").append("<option>" + roomData[i].room_code + "</option>");
+                 }
+             }
+         }
+         function changeRoom2() {
+             //get values of user's selection
+             var park = document.getElementById("park-select").value;
+             var building = document.getElementById("building-select").value;
+             var capacity = parseInt(document.getElementById("capacity2").value);
+             var isWheelchair = parseInt(document.getElementById("wheelchair-select").value);
+             var isVisualiser = parseInt(document.getElementById("visualiser-select").value);
+             var isProjector = parseInt(document.getElementById("projector-select").value);
+             var isWhiteboard = parseInt(document.getElementById("whiteboard-select").value);
+             var computer = parseInt(document.getElementById("computer-select").value);
+             var capture = parseInt(document.getElementById("capture-select").value);
+             var pa = parseInt(document.getElementById("pa-select").value);
+             var mic = parseInt(document.getElementById("mic-select").value);
+             var video = parseInt(document.getElementById("video-select").value);
+             var arrangement = document.getElementById("arrangement-select").value;
+             var room_arr1;
+
+             //empty the room code list
+             $("#room-select").empty();
+             $("#room-select").append("<option>" + "Any" + "</option>");
+
+             for (var i = 0; i < roomData.length; i++) {
+                 //room preference 1
+                 //check room arrangement selection
+                 if (arrangement == "Tiered")
+                     room_arr1 = roomData[i].tiered;
+                 else if (arrangement == "Any")
+                     room_arr1 = arrangement;
+                 else
+                     room_arr1 = roomData[i].flat;
+
+                 //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                 //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                 if ((park == "Any" || park == roomData[i].park) &&
+                 (isWheelchair == 0 || roomData[i].wheelchair == 1) &&
+                 (isVisualiser == 0 || roomData[i].visualiser == 1) &&
+                 (isProjector == 0 || roomData[i].projector == 1) &&
+                 (isWhiteboard == 0 || roomData[i].whiteboard == 1) &&
+                 (computer == 0 || roomData[i].computer == 1) &&
+                 (capture == 0 || roomData[i].lecture_capture == 1) &&
+                 (pa == 0 || roomData[i].pa_system == 1) &&
+                 (mic == 0 || roomData[i].radio_microphone == 1) &&
+                 (video == 0 || roomData[i].video_dvd == 1) &&
+                 (roomData[i].capacity >= capacity) &&
+                 (room_arr1 == "Any" || room_arr1 == 1) &&
+                 (building == "Any" || building == roomData[i].building_code)) {
+                     $("#room-select").append("<option>" + roomData[i].room_code + "</option>");
+                 }
+             }
+         }
+         function changePark2() {
+             var park = document.getElementById("park-select").value;
+             //empty building list
+             $("#building-select").empty();
+             //add "Any" option to building list
+             $("#building-select").append("<option value='Any'>Any</option>");
+             for (var i = 0; i < buildingData.length; i++) {
+                 //if building is in selected park then add to building list
+                 if (park == "Any" || park == buildingData[i].park) {
+                     $("#building-select").append("<option value='" + buildingData[i].building_code + "'>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                 }
+             }
+             changeRoom2();
+         }
+         function changePark() {
+             var park = document.getElementById("park").value;
+             //empty building list
+             $("#building").empty();
+             //add "Any" option to building list
+             $("#building").append("<option value='Any'>Any</option>");
+             for (var i = 0; i < buildingData.length; i++) {
+                 //if building is in selected park then add to building list
+                 if (park == "Any" || park == buildingData[i].park) {
+                     $("#building").append("<option value='" + buildingData[i].building_code + "'>" + buildingData[i].building_code + " : " + buildingData[i].building_name + "</option>");
+                 }
+             }
+             changeRoom();
+         }
     </script>
 
 
@@ -21,6 +470,20 @@
 
 <%-- Body Content --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    Facility: 
+    Park: <select id="park-select" onchange="changePark2()">
+            <option>Any</option>
+            <option>Central</option>
+            <option>East</option>
+            <option>West</option>
+          </select>&nbsp;
+    Building: <select id="building-select" onchange="changeRoom2()">
+
+              </select>&nbsp;
+    Room: <select id="room-select">
+
+          </select><br />
+     Capacity: <div id="slider-capacity2"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
     <table frame="box" style="width:100%;" align "center" class="testTable" id="Reject">
                 <br/>
                 <div id="hours">
