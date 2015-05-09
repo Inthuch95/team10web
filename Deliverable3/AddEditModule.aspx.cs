@@ -32,28 +32,28 @@ namespace Team11
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (TextBoxModuleCode.Text != "" && TextBoxModuleName.Text != "")
-            {
-                SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["ParkConnectionString"].ToString());
-                conn.Open();
-                string check = "SELECT COUNT(moduleID) FROM [Module] WHERE moduleTitle='" + TextBoxModuleName + "' AND moduleCode='" + TextBoxModuleCode + "'";
-                SqlCommand checkcommand = new SqlCommand(check, conn);
-                int checksum = Convert.ToInt32(checkcommand.ExecuteScalar().ToString());
-                conn.Close();
-                if (checksum == 0)
-                {
-                    conn.Open();
-                    string insertquery = "Insert into [Module] Values('" + TextBoxModuleCode.Text + "','" + TextBoxModuleName.Text + "','1')";
-                    SqlCommand insertcommand = new SqlCommand(insertquery, conn);
-                    insertcommand.ExecuteNonQuery();
-                    LabelResponse.Text = "Module was sucessfully added to the Database";
-                    conn.Close();
-                }
-                else { LabelResponse.Text = "Please enter a different Module Code/Title"; }
-            }
-            else if (TextBoxModuleCode.Text == "" && TextBoxModuleName.Text != "") { LabelResponse.Text = "Please enter a Module Code"; }
-            else if (TextBoxModuleName.Text == "" && TextBoxModuleCode.Text != "") { LabelResponse.Text = "Please enter a Module Title"; }
-            else { LabelResponse.Text = "Please Enter Module Code and Title"; }
+        //    if (TextBoxModuleCode.Text != "" && TextBoxModuleName.Text != "")
+        //    {
+        //        SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["ParkConnectionString"].ToString());
+        //        conn.Open();
+        //        string check = "SELECT COUNT(moduleID) FROM [Module] WHERE moduleTitle='" + TextBoxModuleName + "' AND moduleCode='" + TextBoxModuleCode + "'";
+        //        SqlCommand checkcommand = new SqlCommand(check, conn);
+        //        int checksum = Convert.ToInt32(checkcommand.ExecuteScalar().ToString());
+        //        conn.Close();
+        //        if (checksum == 0)
+        //        {
+        //            conn.Open();
+        //            string insertquery = "Insert into [Module] Values('" + TextBoxModuleCode.Text + "','" + TextBoxModuleName.Text + "','1')";
+        //            SqlCommand insertcommand = new SqlCommand(insertquery, conn);
+        //            insertcommand.ExecuteNonQuery();
+        //            LabelResponse.Text = "Module was sucessfully added to the Database";
+        //            conn.Close();
+        //        }
+        //        else { LabelResponse.Text = "Please enter a different Module Code/Title"; }
+        //    }
+        //    else if (TextBoxModuleCode.Text == "" && TextBoxModuleName.Text != "") { LabelResponse.Text = "Please enter a Module Code"; }
+        //    else if (TextBoxModuleName.Text == "" && TextBoxModuleCode.Text != "") { LabelResponse.Text = "Please enter a Module Title"; }
+        //    else { LabelResponse.Text = "Please Enter Module Code and Title"; }
         }
     }
 }

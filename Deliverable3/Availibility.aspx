@@ -94,16 +94,16 @@
 		        </tr>
 		        <tr id="Friday_td">
 			        <td class="day" style="background-color:#f1f1f1;">Friday</td>
-			        <td id="p1_fri"></td>
-			        <td id="p2_fri"></td>
-			        <td id="p3_fri"></td>
-			        <td id="p4_fri"></td>
-			        <td id="p5_fri"></td>
-			        <td id="p6_fri"></td>
-			        <td id="p7_fri"></td>
-			        <td id="p8_fri"></td>
-			        <td id="p9_fri"></td>
-			        <td id="p10_fri"></td>			
+			        <td id="p1_fri"><input type="button" id="p1_fri_select" value="select" /></td>
+			        <td id="p2_fri"><input type="button" id="p2_fri_select" value="select" /></td>
+			        <td id="p3_fri"><input type="button" id="p3_fri_select" value="select" /></td>
+			        <td id="p4_fri"><input type="button" id="p4_fri_select" value="select" /></td>
+			        <td id="p5_fri"><input type="button" id="p5_fri_select" value="select" /></td>
+			        <td id="p6_fri"><input type="button" id="p6_fri_select" value="select" /></td>
+			        <td id="p7_fri"><input type="button" id="p7_fri_select" value="select" /></td>
+			        <td id="p8_fri"><input type="button" id="p8_fri_select" value="select" /></td>
+			        <td id="p9_fri"><input type="button" id="p9_fri_select" value="select" /></td>
+			        <td id="p10_fri"><input type="button" id="p10_fri_select" value="select" /></td>				
 		        </tr>
 		        </div>
             </table>
