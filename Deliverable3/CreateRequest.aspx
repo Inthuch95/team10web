@@ -2512,9 +2512,12 @@
 						<label id="week" for="week16" class="week_label"> 16 </label>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="4"><input type="button" onclick="insertRequestAjax()" value="Submit Request" /></td>
+                </tr>
             </table>
         </div>
-        <input type="button" onclick="insertRequestAjax()" value="Submit Request" />
+        
       </div>
     <div id="dialog-module" title="Add New Module">
         <form id="module_form" name="module_form" method="post">
