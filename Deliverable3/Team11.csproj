@@ -89,7 +89,9 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Styles\ViewRequest.css" />
+    <Content Include="Styles\ViewRequestGrid.css" />
     <Content Include="ViewRequest.aspx" />
+    <Content Include="ViewRequestGrid.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -214,6 +216,13 @@
     </Compile>
     <Compile Include="ViewRequest.aspx.designer.cs">
       <DependentUpon>ViewRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewRequestGrid.aspx.cs">
+      <DependentUpon>ViewRequestGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewRequestGrid.aspx.designer.cs">
+      <DependentUpon>ViewRequestGrid.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

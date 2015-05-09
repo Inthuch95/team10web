@@ -14,6 +14,7 @@
          getModuleAjax();
          getRoomAjax();
          getBuildingAjax();
+         
          //capacity slider
          $("#slider-capacity").slider({
              range: "max",
@@ -704,6 +705,20 @@
                          $("#friday").attr("class", "ui-state-default ui-selected");
                          break;
                  }
+                 switch (requestData[i].arrangement) {
+                     case "Any":
+                         $("#arrangement").val("Any");
+                         $("#arr-any").attr("class", "ui-state-default ui-selected");
+                         break;
+                     case "Tiered":
+                         $("#arrangement").val("Tiered");
+                         $("#arr-tiered").attr("class", "ui-state-default ui-selected");
+                         break;
+                     case "Flat":
+                         $("#arrangement").val("Flat");
+                         $("#arr-flat").attr("class", "ui-state-default ui-selected");
+                         break;
+                 }
                  $("#day").val(requestData[i].day);
                  $("#period").val(requestData[i].period);
                  $("#semester").val(requestData[i].semester);
@@ -734,11 +749,15 @@
          $("#pa").val("0");
          $("#mic").val("0");
          $("#video").val("0");
+         $("#arrangement").val("Any");
          $("#monday").attr("class", "ui-state-default");
          $("#tuesday").attr("class", "ui-state-default");
          $("#wednesday").attr("class", "ui-state-default");
          $("#thursday").attr("class", "ui-state-default");
          $("#friday").attr("class", "ui-state-default");
+         $("#arr-any").attr("class", "ui-state-default");
+         $("#arr-tiered").attr("class", "ui-state-default");
+         $("#arr-flat").attr("class", "ui-state-default");
      }
      //fill duration drop down list
      function loadDuration() {
@@ -846,7 +865,7 @@
         <li><a href="#booked">Booked</a></li>
         <li><a href="#pending">Pending</a></li>
     </ul>
-
+    <a href="ViewRequestGrid.aspx">Grid</a>
     <div class="tab-content">
         <div id="rejected" class="tab active">
           <div id="table_header"> 
@@ -957,9 +976,9 @@
                         <tr>
                             <td>
                                 <ol id="selectable-arrangement">
-                                    <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
-                                    <li class="ui-state-default" style="width: 200px">Tiered</li>
-                                    <li class="ui-state-default" style="width: 200px">Flat</li>
+                                    <li class="ui-state-default ui-selected" style="width: 200px" id="arr-any">Any</li>
+                                    <li class="ui-state-default" style="width: 200px" id="arr-tiered">Tiered</li>
+                                    <li class="ui-state-default" style="width: 200px" id="arr-flat">Flat</li>
                                 </ol>
                                 <input type="hidden" id="arrangement" name="arrangement" value="Any" />
                             </td>
