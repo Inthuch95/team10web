@@ -7,8 +7,241 @@
     
     <script type="text/javascript" language="javascript">
          $(document).ready(function () {
+             initRequestDialog();
+             getRequestAjax();
 
-        });
+             //capacity slider
+             $("#slider-capacity").slider({
+                 range: "max",
+                 min: 1,
+                 max: 500,
+                 value: 1,
+                 step: 1,
+                 slide: function (event, ui) {
+                     $("#capacity1").val(ui.value);
+                 }
+             });
+             //put the slider value into text box with id 'capacity'
+             $("#capacity1").val($("#slider-capacity").slider("value"));
+             //start selectable
+             //room preference 1
+             $("#selectable-session").selectable({
+                 stop: function () {
+                     $(".ui-selected", this).each(function () {
+                         var index = $("#selectable-session li").index(this);
+                         switch (index) {
+                             case 0:
+                                 $("#session").val("Lecture");
+                                 break;
+                             case 1:
+                                 $("#session").val("Practical");
+                                 break;
+                             case 2:
+                                 $("#session").val("Seminar");
+                                 break;
+                             case 3:
+                                 $("#session").val("Tutorial");
+                                 break;
+                         }
+                     });
+                 }
+             });
+             $("#selectable-arrangement").selectable({
+                 stop: function () {
+                     $(".ui-selected", this).each(function () {
+                         var index = $("#selectable-arrangement li").index(this);
+                         switch (index) {
+                             case 0:
+                                 $("#arrangement").val("Any");
+                                 break;
+                             case 1:
+                                 $("#arrangement").val("Tired");
+                                 break;
+                             case 2:
+                                 $("#arrangement").val("Flat");
+                                 break;
+                         }
+                         changeRoom();
+                     });
+                 }
+             });
+             $("#selectable-priority").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedPriority == false)
+                     selectedPriority = true;
+                 else
+                     selectedPriority = false;
+                 if (selectedPriority)
+                     $("#priority").val("1");
+                 else
+                     $("#priority").val("0");
+             }).selectable();
+             $("#selectable-wheelchair").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedWheelchair == false)
+                     selectedWheelchair = true;
+                 else
+                     selectedWheelchair = false;
+                 if (selectedWheelchair)
+                     $("#wheelchair").val("1");
+                 else
+                     $("#wheelchair").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-whiteboard").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedWhiteboard == false)
+                     selectedWhiteboard = true;
+                 else
+                     selectedWhiteboard = false;
+                 if (selectedWhiteboard)
+                     $("#whiteboard").val("1");
+                 else
+                     $("#whiteboard").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-projector").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedProjector == false)
+                     selectedProjector = true;
+                 else
+                     selectedProjector = false;
+                 if (selectedProjector)
+                     $("#projector").val("1");
+                 else
+                     $("#projector").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-visualiser").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedVisualiser == false)
+                     selectedVisualiser = true;
+                 else
+                     selectedVisualiser = false;
+                 if (selectedVisualiser)
+                     $("#visualiser").val("1");
+                 else
+                     $("#visualiser").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-computer").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedComputer == false)
+                     selectedComputer = true;
+                 else
+                     selectedComputer = false;
+                 if (selectedComputer)
+                     $("#computer").val("1");
+                 else
+                     $("#computer").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-video").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedVideo == false)
+                     selectedVideo = true;
+                 else
+                     selectedVideo = false;
+                 if (selectedVideo)
+                     $("#video").val("1");
+                 else
+                     $("#video").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-pa").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedPa == false)
+                     selectedPa = true;
+                 else
+                     selectedPa = false;
+                 if (selectedPa)
+                     $("#pa").val("1");
+                 else
+                     $("#pa").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-mic").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedMic == false)
+                     selectedMic = true;
+                 else
+                     selectedMic = false;
+                 if (selectedMic)
+                     $("#mic").val("1");
+                 else
+                     $("#mic").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-capture").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedCap == false)
+                     selectedCap = true;
+                 else
+                     selectedCap = false;
+                 if (selectedCap)
+                     $("#capture").val("1");
+                 else
+                     $("#capture").val("0");
+                 changeRoom();
+             }).selectable();
+             $("#selectable-day").selectable({
+                 stop: function () {
+                     $(".ui-selected", this).each(function () {
+                         var index = $("#selectable-day li").index(this);
+                         switch (index) {
+                             case 0:
+                                 $("#day").val("Monday");
+                                 break;
+                             case 1:
+                                 $("#day").val("Tuesday");
+                                 break;
+                             case 2:
+                                 $("#day").val("Wednesday");
+                                 break;
+                             case 3:
+                                 $("#day").val("Thursday");
+                                 break;
+                             case 4:
+                                 $("#day").val("Friday");
+                                 break;
+                         }
+                     });
+                 }
+             });
+         });
+         var requestData;
+         function getRequestAjax() {
+             $.ajax(
+                 {
+                     type: "POST",
+                     async: true,
+                     url: "ViewRequest.aspx/getRequest",
+                     data: "{}",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     success: function (data) {
+
+                         requestData = data.d;
+
+                         console.log(requestData);
+                     },
+                     error: function (response) {
+                         console.log(response);
+                     }
+                 });
+         }
+         function initRequestDialog() {
+             $("#dialog-request").dialog({
+                 height: 500,
+                 width: 700,
+                 position: {
+                     my: "center",
+                     at: "center",
+                     of: window
+                 }
+             });
+             $("#dialog-request").dialog("close");
+         }
     </script>
 
 
