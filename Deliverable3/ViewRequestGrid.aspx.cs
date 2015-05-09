@@ -13,7 +13,7 @@ using System.Web.Configuration;
 
 namespace Team11
 {
-    public partial class Availibility : System.Web.UI.Page
+    public partial class ViewRequestGrid : System.Web.UI.Page
     {
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -26,8 +26,7 @@ namespace Team11
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-        }
 
+        }
     }
 }
