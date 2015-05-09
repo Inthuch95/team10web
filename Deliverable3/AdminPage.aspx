@@ -478,7 +478,7 @@
             var room = {};
             //get user input value
             var buildingSelect = document.getElementById("building_add").value;
-            var building = buildingSelect.substr(0, 1);
+            var building = buildingSelect.substring(0, buildingSelect.indexOf(":") - 1);
             var roomCode = document.getElementById("building_part").value + "." + document.getElementById("floor_part").value + "." + document.getElementById("room_part").value;
             var capacity = $("#capacity2").val();
             var wheelchair = $("#wheelchair2").val();
@@ -1118,8 +1118,8 @@
                                 </ol>
                                 <input type="hidden" id="capture" name="capture" value="0" />
                         </td>
-                        </tr>
-                        <tr>
+                    </tr>
+                    <tr>
                         <td>
                             <ol id="selectable-pa">
                                 <li class="ui-state-default" style="width: 200px">PA System</li>
@@ -1132,8 +1132,8 @@
                             </ol>
                             <input type="hidden" id="projector" name="projector" value="0" />
                         </td>
-                        </tr>
-                        <tr>
+                    </tr>
+                   <tr>
                         <td>
                             <ol id="selectable-mic">
                                 <li class="ui-state-default" style="width: 200px">Radio Microphone</li>

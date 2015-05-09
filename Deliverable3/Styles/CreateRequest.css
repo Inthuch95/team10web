@@ -899,4 +899,137 @@ input:checked + #week {
   background-color: #CA006C;
   color:white;
 }
+/* Add New Private Room*/
+
+#capacityPr
+{
+    background-color : #F9F9F7;
+}
+#slider-capacityPr {
+    height: 15px;
+    width: 800px;
+    padding-left: 5px;
+}
+
+#selectable-wheelchairPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-wheelchairPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-wheelchairPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-wheelchairPr li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-whiteboardPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-whiteboardPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-whiteboardPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-whiteboardPr li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-projectorPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-projectorPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-projectorPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-projectorPr li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-visualiserPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-visualiserPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-visualiserPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-visualiserPr li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-computerPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-computerPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-computerPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-computerPr li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+
+#selectable-videoPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-videoPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-videoPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-videoPr li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-paPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-paPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-paPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-paPr li { 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-micPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-micPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-micPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-micPr li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-capturePr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-capturePr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-capturePr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-capturePr li { 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+}
+#selectable-arrangementPr .ui-selecting { 
+	background: #FECA40; 
+}
+#selectable-arrangementPr .ui-selected { 
+	background: #F39814; color: white; 
+}
+#selectable-arrangementPr { 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; 
+}
+#selectable-arrangementPr li { 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+}
     
