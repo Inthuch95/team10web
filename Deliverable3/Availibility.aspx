@@ -222,8 +222,12 @@
                      success: function (data) {
 
                          requestData = data.d;
-
                          console.log(requestData);
+                         for (var i = 0; i <= requestData.length; i++) {
+                             if (requestData[i].status == "Booked") {
+                                 $("#p" + requestData[i].period + "_" + requestData[i].day.substr(0, 3).toLowerCase()).empty();
+                             }
+                         }
                      },
                      error: function (response) {
                          console.log(response);
