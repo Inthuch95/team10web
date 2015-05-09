@@ -43,6 +43,7 @@ namespace Team11
         public int lecture_capture;
         public int tiered;
         public int flat;
+        public string dept;
     }
     public class BUILDINGS
     { 
@@ -254,7 +255,7 @@ namespace Team11
         public static List<ROOMS> getRooms() 
         {
             List<ROOMS> roomData = new List<ROOMS> { };
-            string query = "SELECT DISTINCT [BUILDINGS].park, [BUILDINGS].building_name, [ROOMS].room_code, [ROOMS].building_code, [ROOMS].capacity, [ROOMS].wheelchair, [ROOMS].projector, [ROOMS].visualiser, [ROOMS].whiteboard, [ROOMS].computer, [ROOMS].video_dvd, [ROOMS].pa_system, [ROOMS].radio_microphone, [ROOMS].lecture_capture, [ROOMS].tiered, [ROOMS].flat FROM [ROOMS],[BUILDINGS] WHERE [ROOMS].building_code = [BUILDINGS].building_code";
+            string query = "SELECT DISTINCT [BUILDINGS].park, [BUILDINGS].building_name, [ROOMS].room_code, [ROOMS].building_code, [ROOMS].capacity, [ROOMS].wheelchair, [ROOMS].projector, [ROOMS].visualiser, [ROOMS].whiteboard, [ROOMS].computer, [ROOMS].video_dvd, [ROOMS].pa_system, [ROOMS].radio_microphone, [ROOMS].lecture_capture, [ROOMS].tiered, [ROOMS].flat, [ROOMS].dept FROM [ROOMS],[BUILDINGS] WHERE [ROOMS].building_code = [BUILDINGS].building_code";
             SqlCommand cmd = new SqlCommand(query);
             DataSet ds = GetData(cmd);
             DataTable dt = ds.Tables[0];
@@ -277,6 +278,7 @@ namespace Team11
                 room.lecture_capture = Convert.ToInt32(item["lecture_capture"]);
                 room.tiered = Convert.ToInt32(item["tiered"]);
                 room.flat = Convert.ToInt32(item["flat"]);
+                room.dept = item["dept"].ToString();
                 roomData.Add(room);
             }
             return roomData;
