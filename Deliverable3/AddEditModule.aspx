@@ -10,46 +10,85 @@
     <h1>Module Management</h1>
 </asp:Content>
 
+
 <%-- Body Content --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+
+    function clearAll() {
+        document.getElementById("TextBoxModuleName").value = "";
+        document.getElementById("TextBoxModuleCode").value = "";
+    }
+
+
+</script>
+
 
     <!-- Add Module -->
-        <div class="canister">
-            <div class="canistertitle">
-                <h2>Add Module</h2>
+        <div class="AddModuleHead">
+            <div class="headerContainer">
+              <h2>Add Module for</h2>
             </div>
-            <div class="canistercontainer">
-                <div class="row">
-                    <div class="text-center col-md-4 col-sm-4">
+
+                <div>
+                <table class="headTable">
+                    <tr>
+                        <td>
                         <h3 class="minustopmarg">Module Title</h3>
-                    </div>
-                    <div class="text-center col-md-8 col-sm-8">
-                        <asp:TextBox class="form-control" ID="TextBoxModuleName" runat="server"></asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="text-center col-md-4 col-sm-4">
+                        </td>
+                        <td>
+                        <input type="text" class="form-control" id="TextBoxModuleName"/>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td>
                         <h3 class="minustopmarg">Module Code</h3>
-                    </div>
-                    <div class="text-center col-md-8 col-sm-8">
-                        <asp:TextBox class="form-control" ID="TextBoxModuleCode" runat="server"></asp:TextBox>
-                    </div>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" id="TextBoxModuleCode"/>
+                      </td>
+                  </tr>
+                </table>
                 </div>
-                <div class="row">
-                    <div class="text-center col-md-4 col-sm-4 col-md-offset-2 col-sm-offset-2">
-                        <asp:Button class="btns" ID="Button1" runat="server" onclick="Button1_Click" Text="Add" />
-                    </div>
-                    <div class="text-center col-md-4 col-sm-4">
-                        <button class="btns">Clear All</button>
-                    </div>
-                    <asp:Label ID="LabelResponse" runat="server" Text=""></asp:Label>
-                </div>
-            </div><!-- ./canistercontainer -->
-        </div>
-    <!-- ./canister -->
 
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                <div>
+                  <br />
+                  <table class="buttonTable">
+                     <tr>
+                      <td> 
+                    <button class="btns" id="Button1" >Add Module</button>
+                      </td> 
+                      <td>
+                    <button class="btns" onclick="clearAll();" >Clear All</button>
+                      </td> 
+                     </tr>
+                 </table>
+                 <br />
+              </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
         ConnectionString="<%$ ConnectionStrings:myConnectionString %>" 
         DeleteCommand="DELETE FROM [Module] WHERE [moduleID] = @moduleID" 
         InsertCommand="INSERT INTO [Module] ([moduleCode], [moduleTitle]) VALUES (@moduleCode, @moduleTitle)" 
@@ -73,9 +112,11 @@
             </UpdateParameters>
     </asp:SqlDataSource>
   
+
      <br />
 
-    <asp:GridView ID="GridView2" CssClass="canistertable" runat="server" AllowSorting="True" 
+
+    <asp:GridView ID="GridView2" CssClass="table" runat="server" AllowSorting="True" 
         AutoGenerateColumns="False" CellPadding="8" DataKeyNames="moduleID" 
         DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="none" 
         Width="1250px">
@@ -102,7 +143,10 @@
     </asp:GridView>
 
 
-    <div class="tablecontainer">
+      <br />
+
+
+    <div class="table">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:myConnectionString %>" 
         InsertCommand="INSERT INTO [Module] ([moduleCode], [moduleTitle]) VALUES (@moduleCode, @moduleTitle)" 
@@ -117,4 +161,6 @@
         </SelectParameters>
     </asp:SqlDataSource>
    </div>
+
+
 </asp:Content>

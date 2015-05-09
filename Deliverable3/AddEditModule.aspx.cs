@@ -15,8 +15,20 @@ namespace Team11
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
+
+
+
+        public static string getSession()
+        {
+         
+            string Session = HttpContext.Current.Session["dept_code"].ToString();
+
+            return Session;
+        }
+
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -39,7 +51,9 @@ namespace Team11
                 }
                 else { LabelResponse.Text = "Please enter a different Module Code/Title"; }
             }
-            else { LabelResponse.Text = "Please Enter Module Code/Title"; }
+            else if (TextBoxModuleCode.Text == "" && TextBoxModuleName.Text != "") { LabelResponse.Text = "Please enter a Module Code"; }
+            else if (TextBoxModuleName.Text == "" && TextBoxModuleCode.Text != "") { LabelResponse.Text = "Please enter a Module Title"; }
+            else { LabelResponse.Text = "Please Enter Module Code and Title"; }
         }
     }
 }
