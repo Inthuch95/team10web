@@ -8,11 +8,12 @@
     <script type="text/javascript" language="javascript">
          $(document).ready(function () {
              initRequestDialog();
-             getRequestAjax();
              getRoomAjax();
              loadDuration();
              loadPeriod();
              getBuildingAjax();
+             loadWeek();
+             getBookingAjax();
 
              //capacity slider
              $("#slider-capacity").slider({
@@ -227,24 +228,29 @@
                  }
              });
          });
-         var requestData;
+         var bookingData;
          var roomData;
-         function getRequestAjax() {
+         function loadWeek() {
+             for (var i = 1; i <= 16; i++) {
+                 $("#week-select").append("<option>" + i + "</option>");
+             }
+         }
+         function getBookingAjax() {
              $.ajax(
                  {
                      type: "POST",
                      async: true,
-                     url: "ViewRequest.aspx/getRequest",
+                     url: "Availibility.aspx/getBooking",
                      data: "{}",
                      contentType: "application/json; charset=utf-8",
                      dataType: "json",
                      success: function (data) {
 
-                         requestData = data.d;
-                         console.log(requestData);
-                         for (var i = 0; i <= requestData.length; i++) {
-                             if (requestData[i].status == "Booked") {
-                                 $("#p" + requestData[i].period + "_" + requestData[i].day.substr(0, 3).toLowerCase()).empty();
+                         bookingData = data.d;
+                         console.log(bookingData);
+                         for (var i = 0; i <= bookingData.length; i++) {
+                             if (bookingData[i].week == $("#week-select").val()) {
+                                 $("#p" + bookingData[i].period + "_" + bookingData[i].day.substr(0, 3).toLowerCase()).empty();
                              }
                          }
                      },
@@ -485,6 +491,9 @@
           </select><br />
      Capacity: <div id="slider-capacity2"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
     <table frame="box" style="width:100%;" align "center" class="testTable" id="Reject">
+    Week: <select id="week-select">
+                
+          </select>
                 <br/>
                 <div id="hours">
                 
