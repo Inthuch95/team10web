@@ -114,6 +114,10 @@ namespace Team11
         public string video_dvd5 { get; set; }
         public string radio_microphone5 { get; set; }
         public string arrangement { get; set; }
+        public string arrangement2 { get; set; }
+        public string arrangement3 { get; set; }
+        public string arrangement4 { get; set; }
+        public string arrangement5 { get; set; }
         public string priority { get; set; }
         public string period { get; set; }
         public string duration { get; set; }
@@ -206,10 +210,46 @@ namespace Team11
         [ScriptMethod]
         public static void insertRequest(REQUEST_FORM request)
         {
+            //add week information to List 'week'
+            List <int> week = new List<int>{};
+            if (Convert.ToInt32(request.week1) == 1)
+                week.Add(1);
+            if (Convert.ToInt32(request.week2) == 1)
+                week.Add(2);
+            if (Convert.ToInt32(request.week3) == 1)
+                week.Add(3);
+            if (Convert.ToInt32(request.week4) == 1)
+                week.Add(4);
+            if (Convert.ToInt32(request.week5) == 1)
+                week.Add(5);
+            if (Convert.ToInt32(request.week6) == 1)
+                week.Add(6);
+            if (Convert.ToInt32(request.week7) == 1)
+                week.Add(7);
+            if (Convert.ToInt32(request.week8) == 1)
+                week.Add(8);
+            if (Convert.ToInt32(request.week9) == 1)
+                week.Add(9);
+            if (Convert.ToInt32(request.week10) == 1)
+                week.Add(10);
+            if (Convert.ToInt32(request.week11) == 1)
+                week.Add(11);
+            if (Convert.ToInt32(request.week12) == 1)
+                week.Add(12);
+            if (Convert.ToInt32(request.week13) == 1)
+                week.Add(13);
+            if (Convert.ToInt32(request.week14) == 1)
+                week.Add(14);
+            if (Convert.ToInt32(request.week15) == 1)
+                week.Add(15);
+            if (Convert.ToInt32(request.week16) == 1)
+                week.Add(16);
+
+            int id;
             string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO [REQUESTS] ([module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [arrangement], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) VALUES (@module, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @lecture_capture, @pa_system, @radio_microphone, @video_dvd, @arrangement, @special_req, @priority, @day, @period, @duration, @status, @park, @semester, @year, @lecturer, @dept, @session)"))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [REQUESTS] ([module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [arrangement], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) OUTPUT INSERTED.[request_id] VALUES (@module, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @lecture_capture, @pa_system, @radio_microphone, @video_dvd, @arrangement, @special_req, @priority, @day, @period, @duration, @status, @park, @semester, @year, @lecturer, @dept, @session)"))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@module", request.module);
@@ -239,32 +279,243 @@ namespace Team11
                     cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
                     cmd.Connection = con;
                     con.Open();
-                    cmd.ExecuteNonQuery();
+                    id = (int)cmd.ExecuteScalar();
                     con.Close();
                 }
             }
-            int id;
-            using (SqlConnection con = new SqlConnection(constr))
+            for (int i = 0; i < week.Count; i++)
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT SCOPE_IDENTITY()"))
+                using (SqlConnection con = new SqlConnection(constr))
                 {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = con;
-                    con.Open();
-                    id = cmd.ExecuteNonQuery();
-                    con.Close();
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO [WEEKS] ([week], [request_id]) VALUES (@week, @request_id)"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@request_id", id);
+                        cmd.Parameters.AddWithValue("@week", week[i]);
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteScalar();
+                        con.Close();
+                    }
+                } 
+            }
+            if(Convert.ToInt32(request.noRooms) > 1){
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO [REQUESTS] ([module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [arrangement], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) OUTPUT INSERTED.[request_id] VALUES (@module, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @lecture_capture, @pa_system, @radio_microphone, @video_dvd, @arrangement, @special_req, @priority, @day, @period, @duration, @status, @park, @semester, @year, @lecturer, @dept, @session)"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@module", request.module);
+                        cmd.Parameters.AddWithValue("@room_code", request.room_code2);
+                        cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(request.capacity2));
+                        cmd.Parameters.AddWithValue("@wheelchair", Convert.ToInt32(request.wheelchair2));
+                        cmd.Parameters.AddWithValue("@projector", Convert.ToInt32(request.projector2));
+                        cmd.Parameters.AddWithValue("@whiteboard", Convert.ToInt32(request.whiteboard2));
+                        cmd.Parameters.AddWithValue("@visualiser", Convert.ToInt32(request.visualiser2));
+                        cmd.Parameters.AddWithValue("@computer", Convert.ToInt32(request.computer2));
+                        cmd.Parameters.AddWithValue("@lecture_capture", Convert.ToInt32(request.lecture_capture2));
+                        cmd.Parameters.AddWithValue("@pa_system", Convert.ToInt32(request.pa_system2));
+                        cmd.Parameters.AddWithValue("@video_dvd", Convert.ToInt32(request.video_dvd2));
+                        cmd.Parameters.AddWithValue("@radio_microphone", Convert.ToInt32(request.radio_microphone2));
+                        cmd.Parameters.AddWithValue("@arrangement", request.arrangement2);
+                        cmd.Parameters.AddWithValue("@priority", Convert.ToInt32(request.priority));
+                        cmd.Parameters.AddWithValue("@period", Convert.ToInt32(request.period));
+                        cmd.Parameters.AddWithValue("@duration", Convert.ToInt32(request.duration));
+                        cmd.Parameters.AddWithValue("@special_req", request.special_req2);
+                        cmd.Parameters.AddWithValue("@day", request.day);
+                        cmd.Parameters.AddWithValue("@status", request.status);
+                        cmd.Parameters.AddWithValue("@park", request.park);
+                        cmd.Parameters.AddWithValue("@semester", Convert.ToInt32(request.semester));
+                        cmd.Parameters.AddWithValue("@lecturer", request.lecturer);
+                        cmd.Parameters.AddWithValue("@session", request.session);
+                        cmd.Parameters.AddWithValue("@year", request.year);
+                        cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
+                        cmd.Connection = con;
+                        con.Open();
+                        id = (int)cmd.ExecuteScalar();
+                        con.Close();
+                    }
+                }
+                for (int i = 0; i < week.Count; i++)
+                {
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("INSERT INTO [WEEKS] ([week], [request_id]) VALUES (@week, @request_id)"))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@request_id", id);
+                            cmd.Parameters.AddWithValue("@week", week[i]);
+                            cmd.Connection = con;
+                            con.Open();
+                            cmd.ExecuteScalar();
+                            con.Close();
+                        }
+                    }
                 }
             }
-            using (SqlConnection con = new SqlConnection(constr))
+            if (Convert.ToInt32(request.noRooms) > 2)
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO [test] ([Id]) VALUES (@id)"))
+                using (SqlConnection con = new SqlConnection(constr))
                 {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.Connection = con;
-                    con.Open();
-                    id = cmd.ExecuteNonQuery();
-                    con.Close();
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO [REQUESTS] ([module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [arrangement], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) OUTPUT INSERTED.[request_id] VALUES (@module, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @lecture_capture, @pa_system, @radio_microphone, @video_dvd, @arrangement, @special_req, @priority, @day, @period, @duration, @status, @park, @semester, @year, @lecturer, @dept, @session)"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@module", request.module);
+                        cmd.Parameters.AddWithValue("@room_code", request.room_code3);
+                        cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(request.capacity3));
+                        cmd.Parameters.AddWithValue("@wheelchair", Convert.ToInt32(request.wheelchair3));
+                        cmd.Parameters.AddWithValue("@projector", Convert.ToInt32(request.projector3));
+                        cmd.Parameters.AddWithValue("@whiteboard", Convert.ToInt32(request.whiteboard3));
+                        cmd.Parameters.AddWithValue("@visualiser", Convert.ToInt32(request.visualiser3));
+                        cmd.Parameters.AddWithValue("@computer", Convert.ToInt32(request.computer3));
+                        cmd.Parameters.AddWithValue("@lecture_capture", Convert.ToInt32(request.lecture_capture3));
+                        cmd.Parameters.AddWithValue("@pa_system", Convert.ToInt32(request.pa_system3));
+                        cmd.Parameters.AddWithValue("@video_dvd", Convert.ToInt32(request.video_dvd3));
+                        cmd.Parameters.AddWithValue("@radio_microphone", Convert.ToInt32(request.radio_microphone3));
+                        cmd.Parameters.AddWithValue("@arrangement", request.arrangement3);
+                        cmd.Parameters.AddWithValue("@priority", Convert.ToInt32(request.priority));
+                        cmd.Parameters.AddWithValue("@period", Convert.ToInt32(request.period));
+                        cmd.Parameters.AddWithValue("@duration", Convert.ToInt32(request.duration));
+                        cmd.Parameters.AddWithValue("@special_req", request.special_req3);
+                        cmd.Parameters.AddWithValue("@day", request.day);
+                        cmd.Parameters.AddWithValue("@status", request.status);
+                        cmd.Parameters.AddWithValue("@park", request.park);
+                        cmd.Parameters.AddWithValue("@semester", Convert.ToInt32(request.semester));
+                        cmd.Parameters.AddWithValue("@lecturer", request.lecturer);
+                        cmd.Parameters.AddWithValue("@session", request.session);
+                        cmd.Parameters.AddWithValue("@year", request.year);
+                        cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
+                        cmd.Connection = con;
+                        con.Open();
+                        id = (int)cmd.ExecuteScalar();
+                        con.Close();
+                    }
+                }
+                for (int i = 0; i < week.Count; i++)
+                {
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("INSERT INTO [WEEKS] ([week], [request_id]) VALUES (@week, @request_id)"))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@request_id", id);
+                            cmd.Parameters.AddWithValue("@week", week[i]);
+                            cmd.Connection = con;
+                            con.Open();
+                            cmd.ExecuteScalar();
+                            con.Close();
+                        }
+                    }
+                }
+            }
+            if (Convert.ToInt32(request.noRooms) > 3)
+            {
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO [REQUESTS] ([module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [arrangement], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) OUTPUT INSERTED.[request_id] VALUES (@module, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @lecture_capture, @pa_system, @radio_microphone, @video_dvd, @arrangement, @special_req, @priority, @day, @period, @duration, @status, @park, @semester, @year, @lecturer, @dept, @session)"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@module", request.module);
+                        cmd.Parameters.AddWithValue("@room_code", request.room_code4);
+                        cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(request.capacity4));
+                        cmd.Parameters.AddWithValue("@wheelchair", Convert.ToInt32(request.wheelchair4));
+                        cmd.Parameters.AddWithValue("@projector", Convert.ToInt32(request.projector4));
+                        cmd.Parameters.AddWithValue("@whiteboard", Convert.ToInt32(request.whiteboard4));
+                        cmd.Parameters.AddWithValue("@visualiser", Convert.ToInt32(request.visualiser4));
+                        cmd.Parameters.AddWithValue("@computer", Convert.ToInt32(request.computer4));
+                        cmd.Parameters.AddWithValue("@lecture_capture", Convert.ToInt32(request.lecture_capture4));
+                        cmd.Parameters.AddWithValue("@pa_system", Convert.ToInt32(request.pa_system4));
+                        cmd.Parameters.AddWithValue("@video_dvd", Convert.ToInt32(request.video_dvd4));
+                        cmd.Parameters.AddWithValue("@radio_microphone", Convert.ToInt32(request.radio_microphone4));
+                        cmd.Parameters.AddWithValue("@arrangement", request.arrangement4);
+                        cmd.Parameters.AddWithValue("@priority", Convert.ToInt32(request.priority));
+                        cmd.Parameters.AddWithValue("@period", Convert.ToInt32(request.period));
+                        cmd.Parameters.AddWithValue("@duration", Convert.ToInt32(request.duration));
+                        cmd.Parameters.AddWithValue("@special_req", request.special_req4);
+                        cmd.Parameters.AddWithValue("@day", request.day);
+                        cmd.Parameters.AddWithValue("@status", request.status);
+                        cmd.Parameters.AddWithValue("@park", request.park);
+                        cmd.Parameters.AddWithValue("@semester", Convert.ToInt32(request.semester));
+                        cmd.Parameters.AddWithValue("@lecturer", request.lecturer);
+                        cmd.Parameters.AddWithValue("@session", request.session);
+                        cmd.Parameters.AddWithValue("@year", request.year);
+                        cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
+                        cmd.Connection = con;
+                        con.Open();
+                        id = (int)cmd.ExecuteScalar();
+                        con.Close();
+                    }
+                }
+                for (int i = 0; i < week.Count; i++)
+                {
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("INSERT INTO [WEEKS] ([week], [request_id]) VALUES (@week, @request_id)"))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@request_id", id);
+                            cmd.Parameters.AddWithValue("@week", week[i]);
+                            cmd.Connection = con;
+                            con.Open();
+                            cmd.ExecuteScalar();
+                            con.Close();
+                        }
+                    }
+                }
+            }
+            if (Convert.ToInt32(request.noRooms) > 4)
+            {
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO [REQUESTS] ([module], [room_code], [capacity], [wheelchair], [projector], [visualiser], [whiteboard], [computer], [lecture_capture], [pa_system], [radio_microphone], [video_dvd], [arrangement], [special_req], [priority], [day], [period], [duration], [status], [park], [semester], [year], [lecturer], [dept_code], [session]) OUTPUT INSERTED.[request_id] VALUES (@module, @room_code, @capacity, @wheelchair, @projector, @visualiser, @whiteboard, @computer, @lecture_capture, @pa_system, @radio_microphone, @video_dvd, @arrangement, @special_req, @priority, @day, @period, @duration, @status, @park, @semester, @year, @lecturer, @dept, @session)"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@module", request.module);
+                        cmd.Parameters.AddWithValue("@room_code", request.room_code3);
+                        cmd.Parameters.AddWithValue("@capacity", Convert.ToInt32(request.capacity5));
+                        cmd.Parameters.AddWithValue("@wheelchair", Convert.ToInt32(request.wheelchair5));
+                        cmd.Parameters.AddWithValue("@projector", Convert.ToInt32(request.projector5));
+                        cmd.Parameters.AddWithValue("@whiteboard", Convert.ToInt32(request.whiteboard5));
+                        cmd.Parameters.AddWithValue("@visualiser", Convert.ToInt32(request.visualiser5));
+                        cmd.Parameters.AddWithValue("@computer", Convert.ToInt32(request.computer5));
+                        cmd.Parameters.AddWithValue("@lecture_capture", Convert.ToInt32(request.lecture_capture5));
+                        cmd.Parameters.AddWithValue("@pa_system", Convert.ToInt32(request.pa_system5));
+                        cmd.Parameters.AddWithValue("@video_dvd", Convert.ToInt32(request.video_dvd5));
+                        cmd.Parameters.AddWithValue("@radio_microphone", Convert.ToInt32(request.radio_microphone5));
+                        cmd.Parameters.AddWithValue("@arrangement", request.arrangement5);
+                        cmd.Parameters.AddWithValue("@priority", Convert.ToInt32(request.priority));
+                        cmd.Parameters.AddWithValue("@period", Convert.ToInt32(request.period));
+                        cmd.Parameters.AddWithValue("@duration", Convert.ToInt32(request.duration));
+                        cmd.Parameters.AddWithValue("@special_req", request.special_req5);
+                        cmd.Parameters.AddWithValue("@day", request.day);
+                        cmd.Parameters.AddWithValue("@status", request.status);
+                        cmd.Parameters.AddWithValue("@park", request.park);
+                        cmd.Parameters.AddWithValue("@semester", Convert.ToInt32(request.semester));
+                        cmd.Parameters.AddWithValue("@lecturer", request.lecturer);
+                        cmd.Parameters.AddWithValue("@session", request.session);
+                        cmd.Parameters.AddWithValue("@year", request.year);
+                        cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
+                        cmd.Connection = con;
+                        con.Open();
+                        id = (int)cmd.ExecuteScalar();
+                        con.Close();
+                    }
+                }
+                for (int i = 0; i < week.Count; i++)
+                {
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("INSERT INTO [WEEKS] ([week], [request_id]) VALUES (@week, @request_id)"))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@request_id", id);
+                            cmd.Parameters.AddWithValue("@week", week[i]);
+                            cmd.Connection = con;
+                            con.Open();
+                            cmd.ExecuteScalar();
+                            con.Close();
+                        }
+                    }
                 }
             }
         }

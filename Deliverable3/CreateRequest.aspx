@@ -1098,9 +1098,20 @@
             });
         }
         function insertRequestAjax() {
+            for (var i = 1; i <= 16; i++) {
+                if ($("#week" + i).prop("checked")) {
+                    $("#week" + i + "-check").val(1);
+                    console.log($("#week" + i + "-check").val());
+                }
+                else {
+                    $("#week" + i + "-check").val(0);
+                    console.log($("#week" + i + "-check").val());
+                }
+            }
             if (confirm("Are you sure?")) {
                 //collect form value as object
                 var request = {};
+
                 request.module = $("#module").val();
                 request.noRooms = $("#noRooms").val();
                 request.room_code1 = $("#room1").val();
@@ -1159,6 +1170,10 @@
                 request.pa_system5 = $("#pa5").val();
                 request.radio_microphone5 = $("#mic5").val();
                 request.arrangement = $("#arrangement").val();
+                request.arrangement2 = $("#arrangement2").val();
+                request.arrangement3 = $("#arrangement3").val();
+                request.arrangement4 = $("#arrangement4").val();
+                request.arrangement5 = $("#arrangement5").val();
                 request.special_req1 = $("#specialReq1").val();
                 request.special_req2 = $("#specialReq2").val();
                 request.special_req3 = $("#specialReq3").val();
@@ -1174,6 +1189,22 @@
                 request.session = $("#session").val();
                 request.park = $("#park").val();
                 request.year = "2015";
+                request.week1 = $("#week1-check").val();
+                request.week2 = $("#week2-check").val();
+                request.week3 = $("#week3-check").val();
+                request.week4 = $("#week4-check").val();
+                request.week5 = $("#week5-check").val();
+                request.week6 = $("#week6-check").val();
+                request.week7 = $("#week7-check").val();
+                request.week8 = $("#week8-check").val();
+                request.week9 = $("#week9-check").val();
+                request.week10 = $("#week10-check").val();
+                request.week11 = $("#week11-check").val();
+                request.week12 = $("#week12-check").val();
+                request.week13 = $("#week13-check").val();
+                request.week14 = $("#week14-check").val();
+                request.week15 = $("#week15-check").val();
+                request.week16 = $("#week16-check").val();
                 $.ajax(
                  {
                      type: "POST",
