@@ -38,13 +38,12 @@
                 moduleData = data.d;
                 console.log(moduleData);
                 for (var i = 0; i < moduleData.length; i++) {
-
                     $("#genTable").append("<tr id='" + moduleData[i].module_code + "'>" +
                         "<td>" + moduleData[i].module_code + "</td>" +
                         "<td>" + moduleData[i].module_title + "</td>" +
                         "<td>" + moduleData[i].lecturer + "</td>" +
                         "<td>" + "<button type='button' class='btnstd'>Edit</button> " + "</td>" +
-                        "<td>" + "<button type='button' class='btnstd'>Delete</button> " + "</td>" + "</tr>");
+                        "<td>" + "<input type='button' class='btnstd' id='delete" + (i + 1) + "' onclick='deleteModuleAjax(this)' value='Delete' /> " + "</td>" + "</tr>");
                 }
             },
             error: function (response) {
@@ -65,6 +64,7 @@
                 dept = data.d;
                 console.log(dept);
                 $("#moduleCodeD").html("<h2> Add Module for " + dept[0] + "</h2>");
+                $("#TextBoxModuleCodeNo").val(dept[1]);
             },
             error: function (response) {
                 console.log(response);
@@ -75,7 +75,7 @@
     function addModule() {
        
         var module = {};
-        module.mod_code = $("#TextBoxModuleCode").val();
+        module.mod_code = $("#TextBoxModuleCodeNo").val() + $("#SelectBoxModuleNo").val().toUpperCase() + $("#TextBoxModuleCode").val();
         module.mod_title = $("#TextBoxModuleName").val();
         module.lecturer = $("#TextBoxLecturer").val();
         $.ajax(
@@ -96,7 +96,29 @@
         });
     }
 
-
+    function deleteModuleAjax(el) {
+        var module = {};
+        module.mod_code = el.parentNode.parentNode.cells[0].textContent;
+        if (confirm("Are you sure you want to delete this module?")) {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AddEditModule.aspx/deletemodule",
+                //send room_code of selected room to process in the codebehind environment
+                data: "{module: " + JSON.stringify(module) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("success");
+                    location.reload();
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+    }
 
 </script>
 
@@ -121,7 +143,7 @@
                         <h3 class="minustopmarg">Module Code</h3>
                       </td>
                       <td>
-                        <input type="text" style="width:200px" id="TextBoxModuleCodeNo" disabled />
+                        <input type="text" style="width:200px" id="TextBoxModuleCodeNo"  disabled />
                         <select id="SelectBoxModuleNo">
                             <option value="a">A</option>
                             <option value="b">B</option>
