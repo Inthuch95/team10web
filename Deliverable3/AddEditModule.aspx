@@ -42,7 +42,7 @@
                         "<td>" + moduleData[i].module_code + "</td>" +
                         "<td>" + moduleData[i].module_title + "</td>" +
                         "<td>" + moduleData[i].lecturer + "</td>" +
-                        "<td>" + "<button type='button' class='btnstd'>Edit</button> " + "</td>" +
+                        "<td>" + "<button type='button' class='btnstd' onclick='showModuleDialog(this)'>Edit</button> " + "</td>" +
                         "<td>" + "<input type='button' class='btnstd' id='delete" + (i + 1) + "' onclick='deleteModuleAjax(this)' value='Delete' /> " + "</td>" + "</tr>");
                 }
             },
@@ -73,7 +73,6 @@
     }
 
     function addModule() {
-       
         var module = {};
         module.mod_code = $("#TextBoxModuleCodeNo").val() + $("#SelectBoxModuleNo").val().toUpperCase() + $("#TextBoxModuleCode").val();
         module.mod_title = $("#TextBoxModuleName").val();
@@ -202,4 +201,14 @@
             </div>
             </div>
 
+
+          
+          
+            <div id="dialog-Module" title="Edit Module">
+                 <div id="roomCode_edit">
+                        Module Code:        
+                 </div><br />
+               
+                <input type="button" id="room-submit" value="Submit" class="btns" onclick="updateModuleAjax()" />
+              </div>
 </asp:Content>

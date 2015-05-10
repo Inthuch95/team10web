@@ -50,7 +50,6 @@ namespace Team11
 
         }
 
-
         [WebMethod]
         [ScriptMethod]
         public static void insertModule(Module module)
