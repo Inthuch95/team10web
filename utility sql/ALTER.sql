@@ -1,0 +1,2 @@
+ALTER TABLE [EXTRA_FACILITY]
+ADD column_name int

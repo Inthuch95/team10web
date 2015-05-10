@@ -42,6 +42,22 @@ namespace Team11
         public string lecturer { get; set; }
         public string dept_code { get; set; }
         public string session { get; set; }
+        public string week1 { get; set; }
+        public string week2 { get; set; }
+        public string week3 { get; set; }
+        public string week4 { get; set; }
+        public string week5 { get; set; }
+        public string week6 { get; set; }
+        public string week7 { get; set; }
+        public string week8 { get; set; }
+        public string week9 { get; set; }
+        public string week10 { get; set; }
+        public string week11 { get; set; }
+        public string week12 { get; set; }
+        public string week13 { get; set; }
+        public string week14 { get; set; }
+        public string week15 { get; set; }
+        public string week16 { get; set; }
     }
     public class ROOM
     {
@@ -75,19 +91,28 @@ namespace Team11
     }
     public class FACILITIES
     {
-        public int round { get; set; }
-        public string from { get; set; }
-        public string to { get; set; }
-        public string from1 { get; set; }
-        public string to1 { get; set; }
-        public string from2 { get; set; }
-        public string to2 { get; set; }
-        public string from3 { get; set; }
-        public string to3 { get; set; }
+        public string facName { get; set; }
     }
     
     public partial class AdminPage : System.Web.UI.Page
     {
+        [WebMethod]
+        [ScriptMethod]
+        public static void alterFacility(FACILITIES facility)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("ALTER TABLE [EXTRA_FACILITY] ADD[" + facility.facName + "] int"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            } 
+        }
         //edit a pool room
         [WebMethod]
         [ScriptMethod]
