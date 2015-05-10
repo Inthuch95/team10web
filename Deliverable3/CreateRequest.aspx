@@ -2736,11 +2736,19 @@
 
     </div>
     <div id="dialog-module" title="Add New Module">
+<<<<<<< HEAD
         <form id="module_form" name="module_form" method="post">
             <table>
                 <tr><td>Module code:</td><td><input type="text" id="Text1" readonly="readonly" name="mod_dept" style="width:50px"/></td>
             <td>
              <select id="mod_part" name="mod_part">
+=======
+        <form id="module_form" name="module_form" method="post" >
+            Module code:
+            <input type="text" id="mod_dept" readonly="readonly" name="mod_dept" />
+            &nbsp; 
+            <select id="mod_part" name="mod_part">
+>>>>>>> origin/master
                 <option>A</option>
                 <option>B</option>
                 <option>C</option>
@@ -2790,7 +2798,7 @@
             <br />
             Capacity:
                 <div id="slider-capacityPr"></div>
-            <input type="text" id="capacityPr" name="capacityPr" readonly="readonly" style="border: 0; color: #f6931f; font-weight: bold; text-align: center;" />
+            <input type="text" id="capacityPr" name="capacityPr" readonly="readonly" style="border: 0; color: #ca006c; font-weight: bold; text-align: center;" />
             <br />
             Facility: 
                 <table>
@@ -2811,7 +2819,7 @@
                     <tr>
                         <td>
                             <ol id="selectable-paPr">
-                                <li class="ui-state-default" style="width: 200px">PA System</li>
+                                <li class="ui-state-default" style="width: 200px ">PA System</li>
                             </ol>
                             <input type="hidden" id="paPr" name="paPr" value="0" />
                         </td>

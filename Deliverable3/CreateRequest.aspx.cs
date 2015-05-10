@@ -26,6 +26,7 @@ namespace Team11
         public string mod_code { get; set; }
         public string mod_title { get; set; }
         public string lecturer { get; set; }
+        public string dept { get; set; }
     }
     public class ROOMS 
     {
