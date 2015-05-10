@@ -860,7 +860,10 @@
     Room: <select id="room-select" onchange="selectChange()">
 
           </select><br />
-     Capacity: <div id="slider-capacity2"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
+    <table><tr><td align="left">
+     Capacity:</td></tr>
+        <tr><td style="padding-left:15px"><div id="slider-capacity2"></div></td><td><input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/></td></tr></table>
+    <br />
     <table frame="box" style="width:100%;" align "center" class="testTable" id="Reject">
     Week: <select id="week-select" onchange="selectChange()">
                 
@@ -953,11 +956,11 @@
        <%--edit request form - become visible when clicking edit--%>
     <div id="dialog-request" title="Edit Request">
         <input type="hidden" id="request_id" />
-        Priority: <ol id="selectable-priority">
+        <table><tr><td align="left">
+        Priority:</td></tr> 
+            <tr><td><ol id="selectable-priority">
                         <li class="ui-state-default" style="width: 80px">Priority</li>
-                  </ol><input type="hidden" id="priority" value="0"/>
-        
-        <br /><br /><br /><br />
+                  </ol><input type="hidden" id="priority" value="0"/></td></tr></table>
         Module: <select id="module">
                     
                 </select><br />
@@ -974,18 +977,20 @@
                             </td>
                         </tr>
                     </table><br />
-        Lecturer: <input type="text" id="lecturer" name="lecturer" /><br />
-        Arrangement:&nbsp;<b id="arrangement-text"></b> <br />
-        Capacity:&nbsp;<b id="capacity-text"></b><br />
+        Lecturer: <input type="text" id="lecturer" name="lecturer" /><br /><br />
+        Arrangement:&nbsp;<b id="arrangement-text"></b> <br /><br />
+        Capacity:&nbsp;<b id="capacity-text"></b><br /><br />
         
         Facility:&nbsp;<ol id="facility-text"></ol>
         <table>
             <tr>
                 <td>
-                    Park:&nbsp;<b id="park-text"></b>
+                    Park:</td><td><b id="park-text"></b>
                 </td>
+            </tr>
+            <tr>
                 <td>
-                    Room:&nbsp;<b id="room-text"></b>
+                    Room:</td><td><b id="room-text"></b>
                 </td>
             </tr>
         </table><br />
@@ -997,17 +1002,19 @@
         <table>
             <tr>
                 <td>
-                    Semester:&nbsp;<select id="semester">
+                    Semester:</td><td><select id="semester">
                                 <option>1</option>
                                 <option>2</option>
                               </select>
                 </td>
+                </tr><tr>
                 <td>
-                    Period:&nbsp;<b id="period-text"></b>
+                    Period:</td><td><b id="period-text"></b>
                     <input type="hidden" id="period" />
                 </td>
+                    </tr><tr>
                 <td>
-                    Duration:&nbsp;<select id="duration">
+                    Duration:</td><td><select id="duration">
 
                               </select>
                 </td>
