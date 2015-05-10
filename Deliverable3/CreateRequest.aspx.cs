@@ -19,11 +19,13 @@ namespace Team11
         public string module_code;
         public string module_title;
         public string dept;
+        public string lecturer;
     }
     public class Module
     {
         public string mod_code { get; set; }
         public string mod_title { get; set; }
+        public string lecturer { get; set; }
     }
     public class ROOMS 
     {
@@ -284,6 +286,7 @@ namespace Team11
                 module Module = new module();
                 Module.module_code = item["module_code"].ToString();
                 Module.module_title = item["module_title"].ToString();
+                Module.lecturer = item["Lecturer"].ToString();
                 modules.Add(Module);
             }
 

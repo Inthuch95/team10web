@@ -4,10 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Web.Script.Services;
+using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Web.Configuration;
-using System.Collections;
+using System.Collections.Specialized;
 
 namespace Team11
 {
@@ -30,30 +33,27 @@ namespace Team11
 
 
 
-        protected void Button1_Click(object sender, EventArgs e)
+        [WebMethod]
+        [ScriptMethod]
+        public static void insertModule(Module module)
         {
-        //    if (TextBoxModuleCode.Text != "" && TextBoxModuleName.Text != "")
-        //    {
-        //        SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["ParkConnectionString"].ToString());
-        //        conn.Open();
-        //        string check = "SELECT COUNT(moduleID) FROM [Module] WHERE moduleTitle='" + TextBoxModuleName + "' AND moduleCode='" + TextBoxModuleCode + "'";
-        //        SqlCommand checkcommand = new SqlCommand(check, conn);
-        //        int checksum = Convert.ToInt32(checkcommand.ExecuteScalar().ToString());
-        //        conn.Close();
-        //        if (checksum == 0)
-        //        {
-        //            conn.Open();
-        //            string insertquery = "Insert into [Module] Values('" + TextBoxModuleCode.Text + "','" + TextBoxModuleName.Text + "','1')";
-        //            SqlCommand insertcommand = new SqlCommand(insertquery, conn);
-        //            insertcommand.ExecuteNonQuery();
-        //            LabelResponse.Text = "Module was sucessfully added to the Database";
-        //            conn.Close();
-        //        }
-        //        else { LabelResponse.Text = "Please enter a different Module Code/Title"; }
-        //    }
-        //    else if (TextBoxModuleCode.Text == "" && TextBoxModuleName.Text != "") { LabelResponse.Text = "Please enter a Module Code"; }
-        //    else if (TextBoxModuleName.Text == "" && TextBoxModuleCode.Text != "") { LabelResponse.Text = "Please enter a Module Title"; }
-        //    else { LabelResponse.Text = "Please Enter Module Code and Title"; }
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [MODULES] ([dept_code], [module_code], [module_title], [Lecturer]) VALUES(@dept, @module_code,@module_title, @lecturer)"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@dept", HttpContext.Current.Session["dept_code"].ToString());
+                    cmd.Parameters.AddWithValue("@module_code", module.mod_code);
+                    cmd.Parameters.AddWithValue("@module_title", module.mod_title);
+                    cmd.Parameters.AddWithValue("@lecturer", module.lecturer);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+
         }
     }
 }
