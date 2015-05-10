@@ -52,10 +52,10 @@
                     <li><a href="ViewRequest.aspx">View Request</a></li>
                     <li><a href="Availibility.aspx">Ad-Hoc</a></li>
                     <li><a href="AddEditModule.aspx">Modules</a></li>
+                    <li><a href="Timetable.aspx">Timetable</a></li>
                     <li><a href="AdminPage.aspx">Admin(temp link)</a></li>
                     <li><a href="Default.aspx">Logout</a></li>
-                    <li><a href="CreateRequest2.aspx">Round 2</a></li>
-                    <li><a href="CreateRequest3.aspx">Round 3</a></li>
+
                 </ul>    
             </div>    
         </div>
