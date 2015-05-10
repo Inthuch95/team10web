@@ -943,7 +943,7 @@
         <li><a href="#booked">Booked</a></li>
         <li><a href="#pending">Pending</a></li>
     </ul>
-    <a href="ViewRequestGrid.aspx"><img border="0" class="grid" alt="gridview" src="/Resources/grid.jpg" /></a>
+    <a href="ViewRequestGrid.aspx"><img border="0" class="grid" alt="gridview" src="Resources/grid.jpg" /></a>
     <div class="tab-content">
         <div id="rejected" class="tab active">
           <div id="table_header"> 
