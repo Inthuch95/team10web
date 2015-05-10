@@ -306,10 +306,10 @@
          $("#Rejected").empty();
          for (var i = 0; i < requestData.length; i++) {
              $("#" + requestData[i].status).append("<tr id='" + requestData[i].request_id + "'>" + "<td>" + requestData[i].request_id + "</td>" + "<td>" + requestData[i].module + "</td>" + "<td>" + requestData[i].room_code
-                 + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btns' onclick='showFacilityDialog(this)'>show</button> " + "</td>"
-                 + "<td>" + "<button type='button' class='btns' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
+                 + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btnsTa' onclick='showFacilityDialog(this)'>show</button> " + "</td>"
+                 + "<td>" + "<button type='button' class='btnsTa' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
                  + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
-                 + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>");
+                 + "<td>" + "<button type='button' class='btnsTa'>show</button>" + "</td>");
              if (requestData[i].status == "Pending" || requestData[i].status == "Booked") {
                  $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
                  + "</td>");
@@ -475,10 +475,10 @@
                     console.log(requestData);
                     for (var i = 0; i < requestData.length; i++) {
                         $("#" + requestData[i].status).append("<tr id='" + requestData[i].request_id + "'>" + "<td>" + requestData[i].request_id + "</td>" + "<td>" + requestData[i].module + "</td>" + "<td>" + requestData[i].room_code
-                            + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btns' onclick='showFacilityDialog(this)'>show</button> " + "</td>"
-                            + "<td>" + "<button type='button' class='btns' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
+                            + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btnsTa' onclick='showFacilityDialog(this)'>show</button> " + "</td>"
+                            + "<td>" + "<button type='button' class='btnsTa' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
                             + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
-                            + "<td>" + "<button type='button' onclick='showWeekDialog(this)' class='btns'>show</button>" + "</td>");
+                            + "<td>" + "<button type='button' onclick='showWeekDialog(this)' class='btnsTa'>show</button>" + "</td>");
                         if (requestData[i].status == "Pending" || requestData[i].status == "Booked") {
                             $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
                             + "</td>");
