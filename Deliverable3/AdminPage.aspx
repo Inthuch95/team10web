@@ -888,6 +888,34 @@
             var building = buildingSelect.substring(0, buildingSelect.indexOf(":") - 1);
             $("#building_part").val(building);
         }
+        function getFacilitiesAjax() {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AdminPage.aspx/getFacilities",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var result = data.d;
+                    $("#lecturer").empty();
+                    for (var i = 0; i < result.length; i++) {
+                        //populate Lecturer drop down list
+                        if (result[i].name != "") {
+                            if (i > 0 && (result[i].name != result[i - 1].name)) {
+                                $("#lecturer").append("<option value='" + result[i].name + "'>" + result[i].name + "</option>");
+                            } else if (i == 0) {
+                                $("#lecturer").append("<option value='" + result[i].name + "'>" + result[i].name + "</option>");
+                            }
+                        }
+                    }
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
     </script>
    
 </asp:Content>
@@ -915,9 +943,6 @@
                 });
             });
             </script>
-
-
-
 
     <%-- Tabs containing different admin functionality --%>
     <div class="tabs">
@@ -979,7 +1004,11 @@
                             </tr>
                             <tr>
                                 <td colspan='2' align='right'>
-                                    <input type="button" id="Button1" name="save_round" value="Submit" class="btns" onclick="" /></td>
+                                    <input type="button" id="addNew" name="addNewFac" value="Submit" class="btns" onclick="" /></td>
+                            </tr>
+                            <tr>
+                                <td><select id="facilities"></select></td>
+                                <td><input type="button" id="delFac" name="delFac" value="Delete" class="btns" onclick=""/></td>
                             </tr>
                       </table>
                    </div>

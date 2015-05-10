@@ -65,6 +65,7 @@
                 dept = data.d;
                 console.log(dept);
                 $("#moduleCodeD").html("<h2> Add Module for " + dept[0] + "</h2>");
+                $("#TextBoxModuleCodeNo").val(dept[1]);
             },
             error: function (response) {
                 console.log(response);
@@ -75,7 +76,7 @@
     function addModule() {
        
         var module = {};
-        module.mod_code = $("#TextBoxModuleCode").val();
+        module.mod_code = $("#TextBoxModuleCodeNo").val() + $("#SelectBoxModuleNo").val().toUpperCase() + $("#TextBoxModuleCode").val();
         module.mod_title = $("#TextBoxModuleName").val();
         module.lecturer = $("#TextBoxLecturer").val();
         $.ajax(
@@ -121,7 +122,7 @@
                         <h3 class="minustopmarg">Module Code</h3>
                       </td>
                       <td>
-                        <input type="text" style="width:200px" id="TextBoxModuleCodeNo" disabled />
+                        <input type="text" style="width:200px" id="TextBoxModuleCodeNo"  disabled />
                         <select id="SelectBoxModuleNo">
                             <option value="a">A</option>
                             <option value="b">B</option>
