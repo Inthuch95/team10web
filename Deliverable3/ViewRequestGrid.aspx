@@ -755,14 +755,16 @@
         <li><a href="#booked">Booked</a></li>
         <li><a href="#pending">Pending</a></li>
     </ul>
+    <a href="ViewRequest.aspx"><img border="0" class="grid" alt="listview" src="/Resources/list.png"</></a><br/> 
     <button type="button" onclick="decreaseWeek()">-</button><input id="current_week" type="text" name="current_week"  disabled /><button type="button" onclick="increaseWeek()">+</button>
     <div class="tab-content">
         <div id="rejected" class="tab active">
+             
             <table frame="box" style="width:100%;" align "center" class="testTable" id="Reject">
                 <br/>
                 <div id="hours">
                 
-                <tr id="headers">
+                <tr id="headers" >
 			        <th>Timetable</th>
 			        <th>09.00</th>
 			        <th>10.00</th>
@@ -1230,4 +1232,5 @@
         <input type="button" id="request-del" value="Delete" class="btns" onclick="deleteRequestAjax(request_id)" />&nbsp
         <input type="button" id="cancel" class="btns" value="cancel" onclick="$('#dialog-request').dialog('close')" />
     </div>
+    </a>
 </asp:Content>
