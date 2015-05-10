@@ -55,6 +55,7 @@
                     <li><a href="Timetable.aspx">Timetable</a></li>
                     <li><a href="AdminPage.aspx">Admin(temp link)</a></li>
                     <li><a href="Default.aspx">Logout</a></li>
+                    <li><a href="ImportRequest.aspx">Import Request</a></li>
 
                 </ul>    
             </div>    

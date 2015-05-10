@@ -73,7 +73,9 @@
     <Content Include="CreateRequest.aspx" />
     <Content Include="CreateRequest2.aspx" />
     <Content Include="CreateRequest3.aspx" />
+    <Content Include="ImportRequest.aspx" />
     <Content Include="Preference.aspx" />
+    <Content Include="Styles\ImportRequest.css" />
     <Content Include="Timetable.aspx" />
     <None Include="Resources\favicon.png" />
     <None Include="Resources\logo2.jpg" />
@@ -190,6 +192,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ImportRequest.aspx.cs">
+      <DependentUpon>ImportRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportRequest.aspx.designer.cs">
+      <DependentUpon>ImportRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Preference.aspx.cs">
       <DependentUpon>Preference.aspx</DependentUpon>
