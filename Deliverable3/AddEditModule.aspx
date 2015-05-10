@@ -17,6 +17,7 @@
     $(document).ready(function () {
         getModuleAjax()
         getDeptCode()
+        initEditDialog()
     });
     var moduleData;
     var dept;
@@ -42,7 +43,7 @@
                         "<td>" + moduleData[i].module_code + "</td>" +
                         "<td>" + moduleData[i].module_title + "</td>" +
                         "<td>" + moduleData[i].lecturer + "</td>" +
-                        "<td>" + "<button type='button' class='btnstd' onclick='showModuleDialog(this)'>Edit</button> " + "</td>" +
+                        "<td>" + "<button type='button' class='btnstd' onclick='showEditDialog(this)'>Edit</button> " + "</td>" +
                         "<td>" + "<input type='button' class='btnstd' id='delete" + (i + 1) + "' onclick='deleteModuleAjax(this)' value='Delete' /> " + "</td>" + "</tr>");
                 }
             },
@@ -117,6 +118,23 @@
                 }
             });
         }
+    }
+    function initEditDialog() {
+        $("#dialog-Edit").dialog({
+            position: {
+                my: "center",
+                at: "center",
+                of: window
+            }
+        });
+        $("#dialog-Edit").dialog("close");
+    }
+    function showEditDialog(el) {
+        var id = el.parentNode.parentNode.cells[0].textContent;
+        var request_id = parseInt(id);
+        $("#dialog-Edit").empty();
+        $("#dialog-Edit").append("Hello Friend");
+        $("#dialog-Edit").dialog("open");
     }
 
 </script>
@@ -211,4 +229,6 @@
                
                 <input type="button" id="room-submit" value="Submit" class="btns" onclick="updateModuleAjax()" />
               </div>
+    <div id="dialog-Edit">
+    </div>
 </asp:Content>
