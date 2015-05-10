@@ -28,6 +28,26 @@ namespace Team11
         {
 
         }
+        [WebMethod]
+        [ScriptMethod]
+        public static void importRequest(Request request)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                //request_id received from ajax function allocateAjax(el)
+                using (SqlCommand cmd = new SqlCommand("UPDATE [REQUESTS] SET [year] = 2015, [status] = @status WHERE [request_id] = @request_id"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
+                    cmd.Parameters.AddWithValue("@status", request.status);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
 
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         [WebMethod]
