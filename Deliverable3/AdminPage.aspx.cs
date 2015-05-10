@@ -73,6 +73,18 @@ namespace Team11
         public string from3 { get; set; }
         public string to3 { get; set; }
     }
+    public class FACILITIES
+    {
+        public int round { get; set; }
+        public string from { get; set; }
+        public string to { get; set; }
+        public string from1 { get; set; }
+        public string to1 { get; set; }
+        public string from2 { get; set; }
+        public string to2 { get; set; }
+        public string from3 { get; set; }
+        public string to3 { get; set; }
+    }
     
     public partial class AdminPage : System.Web.UI.Page
     {
@@ -242,6 +254,26 @@ namespace Team11
         [WebMethod]
         [ScriptMethod]
         public static void rejectRequest(Request request)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                //request_id received from ajax function rejectAjax(el)
+                using (SqlCommand cmd = new SqlCommand("UPDATE [REQUESTS] SET [status] = 'Rejected' WHERE [request_id] = @request_id"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+        //swag
+        [WebMethod]
+        [ScriptMethod]
+        public static void getFacilities(Request request)
         {
             string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
