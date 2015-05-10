@@ -755,7 +755,7 @@
         <li><a href="#booked">Booked</a></li>
         <li><a href="#pending">Pending</a></li>
     </ul>
-    <a href="ViewRequest.aspx"><img border="0" class="grid" alt="listview" src="/Resources/list.jpg"</></a><br/> 
+    <a href="ViewRequest.aspx"><img border="0" class="grid" alt="listview" src="Resources/list.jpg"</></a><br/> 
     <button type="button" onclick="decreaseWeek()">-</button><input id="current_week" type="text" name="current_week"  disabled /><button type="button" onclick="increaseWeek()">+</button>
     <div class="tab-content">
         <div id="rejected" class="tab active">
