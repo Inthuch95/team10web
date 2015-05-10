@@ -35,6 +35,7 @@
             $("#tabs").tabs();
             getRequestAjax();
             initFacilityDialog();
+            initSpecFacDialog();
             getRoundAjax();
             getRoomAjax();
             getBuildingAjax();
@@ -730,7 +731,7 @@
                             $(id).append("<td>" + requestData[i].room_code + "</td>");
                             $(id).append("<td>" + requestData[i].capacity + "</td>");
                             $(id).append("<td><input id='facility-" + requestData[i].request_id + "' type='button' class='btnsTa' value='Show' onclick='showFacilityDialog(this)' /></td>");
-                            $(id).append("<td>" + requestData[i].special_req + "</td>");
+                            $(id).append("<td><input id='SpecFac-" + requestData[i].request_id + "' type='button' class='btnsTa' value='Show' onclick='showSpecFacDialog(this)' /></td>");
                             $(id).append("<td>" + requestData[i].priority + "</td>");
                             $(id).append("<td>" + requestData[i].day + "</td>");
                             $(id).append("<td>" + requestData[i].period + "</td>");
@@ -806,6 +807,10 @@
             $("#dialog-facility").dialog();
             $("#dialog-facility").dialog("close");
         }
+        function initSpecFacDialog() {
+            $("#dialog-SpecFac").dialog();
+            $("#dialog-SpecFac").dialog("close");
+        }
         function initAddRoomDialog() {
             $("#dialog-add-room").dialog({
                 height: 500,
@@ -861,6 +866,21 @@
             }
             
             $("#dialog-facility").dialog("open");
+        }
+        function showSpecFacDialog(el) {
+            $("#SpecFac_list").empty();
+            var row = el.parentNode.parentNode;
+            //get id of current row
+            var id = "#row" + $(row).attr('id');
+            //get value of request_id from hidden input form
+            var request_id = parseInt($(id).val());
+            for (var i = 0; i < requestData.length; i++) {
+                if (requestData[i].request_id == request_id) {
+                    $("#SpecFac_list").append(requestData[i].special_req);
+                }
+            }
+
+            $("#dialog-SpecFac").dialog("open");
         }
         //end dialog
         function fillBuildingPart() {
@@ -943,6 +963,10 @@
             <div id="dialog-facility" >
                 <ul id="facility_list" >
                 </ul>
+                </div>
+                <div id="dialog-SpecFac" >
+                <p id="SpecFac_list" >
+                </p>
                 </div>
 
                 <div id="facility-tabs" class="tab">
