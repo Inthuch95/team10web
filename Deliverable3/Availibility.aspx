@@ -464,6 +464,36 @@
              }
              changeRoom();
          }
+         function resetForm() {
+             $("#selectable-priority").children("li").attr("class", "ui-state-default");
+             $("#selectable-computer").children("li").attr("class", "ui-state-default");
+             $("#selectable-capture").children("li").attr("class", "ui-state-default");
+             $("#selectable-pa").children("li").attr("class", "ui-state-default");
+             $("#selectable-wheelchair").children("li").attr("class", "ui-state-default");
+             $("#selectable-projector").children("li").attr("class", "ui-state-default");
+             $("#selectable-visualiser").children("li").attr("class", "ui-state-default");
+             $("#selectable-whiteboard").children("li").attr("class", "ui-state-default");
+             $("#selectable-mic").children("li").attr("class", "ui-state-default");
+             $("#selectable-video").children("li").attr("class", "ui-state-default");
+             $("#wheelchair").val("0");
+             $("#projector").val("0");
+             $("#visualiser").val("0");
+             $("#whiteboard").val("0");
+             $("#computer").val("0");
+             $("#capture").val("0");
+             $("#pa").val("0");
+             $("#mic").val("0");
+             $("#video").val("0");
+             $("#arrangement").val("Any");
+             $("#monday").attr("class", "ui-state-default");
+             $("#tuesday").attr("class", "ui-state-default");
+             $("#wednesday").attr("class", "ui-state-default");
+             $("#thursday").attr("class", "ui-state-default");
+             $("#friday").attr("class", "ui-state-default");
+             $("#arr-any").attr("class", "ui-state-default");
+             $("#arr-tiered").attr("class", "ui-state-default");
+             $("#arr-flat").attr("class", "ui-state-default");
+         }
     </script>
 
 
