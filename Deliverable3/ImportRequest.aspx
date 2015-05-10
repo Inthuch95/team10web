@@ -94,7 +94,7 @@
                     + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
                     + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>");
                 if (requestData[i].status == "Pending" || requestData[i].status == "Booked") {
-                    $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
+                    $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
                     + "</td>");
                     $("#" + requestData[i].status).append("</tr>");
                 }
@@ -128,22 +128,36 @@
                                 + "<td>" + "<button type='button' class='btns' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
                                 + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
                                 + "<td>" + "<button type='button' onclick='showWeekDialog(this)' class='btns'>show</button>" + "</td>");
-                            if (requestData[i].status == "Pending" || requestData[i].status == "Booked") {
-                                $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
+                                $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='updateRequestAjax(this)' class='btns'>Import</button>"
                                 + "</td>");
                                 $("#" + requestData[i].status).append("</tr>");
-                            }
-                            else {
-                                $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='resubmitRequestAjax(this)' class='btns'>Resubmit</button><br /><button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button>"
-                                + "</td>");
-                                $("#" + requestData[i].status).append("</tr>");
-                            }
                         }
                     },
                     error: function (response) {
                         console.log(response);
                     }
                 });
+        }
+        function updateRequestAjax(el) {
+            var request = {};
+            request.request_id = el.parentNode.parentNode.cells[0].textContent;
+            request.status = "Pending";
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "ImportRequest.aspx/importRequest",
+                data: "{request: " + JSON.stringify(request) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    alert("success");
+                    getRequestAjax();
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
         }
     </script>
 </asp:Content>
@@ -154,12 +168,34 @@
         <%-- These allow us to see table head and use filter when scrolling down the page --%>
  <div class="tabs">
     <ul class="tab-links">
-        <li class="active"><a href="#rejected">Rejected</a></li>
-        <li><a href="#booked">Booked</a></li>
-        <li><a href="#pending">Pending</a></li>
+        <li class="active"><a href="#booked">Booked</a></li>
+        <li ><a href="#rejected">Rejected</a></li>
+        
     </ul>
     <div class="tab-content">
-        <div id="rejected" class="tab active">
+                <div id="booked" class="tab active">
+          <div class="table_header"> 
+            <table class="scrollTable">
+	          <tr>
+			        <td id="request_id_td" onclick="sortHeader(this.id)">Request<br/>Id</td>
+			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
+			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
+			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
+			        <td style="cursor:default;">Facility</td>
+			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
+			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
+			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
+			        <td id="period_td" onclick="sortHeader(this.id)">Period</td>
+			        <td id="duration_td" onclick="sortHeader(this.id)">Duration</td>
+			        <td style="cursor:default;">Week(s)</td>
+			        <td style="cursor:default;">Action</td>
+	           </tr>
+            </table>
+         </div>
+           <table id="Booked" class="dataTable">
+            </table>
+          </div>
+        <div id="rejected" class="tab">
           <div id="table_header"> 
             <table class="scrollTable">
 	         <tr>
@@ -174,7 +210,7 @@
 			        <td id="period_td" onclick="sortHeader(this.id)">Period</td>
 			        <td id="duration_td" onclick="sortHeader(this.id)">Duration</td>
 			        <td style="cursor:default;">Week(s)</td>
-			        <td style="cursor:default;">Edit/Delete</td>
+			        <td style="cursor:default;">Action</td>
                 </tr>
 	          </table>
             </div> 
@@ -183,52 +219,7 @@
 
        </div>
  
-        <div id="booked" class="tab">
-          <div class="table_header"> 
-            <table class="scrollTable">
-	          <tr>
-			        <td id="request_id_td" onclick="sortHeader(this.id)">Request<br/>Id</td>
-			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
-			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
-			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
-			        <td style="cursor:default;">Facility</td>
-			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
-			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
-			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
-			        <td id="period_td" onclick="sortHeader(this.id)">Period</td>
-			        <td id="duration_td" onclick="sortHeader(this.id)">Duration</td>
-			        <td style="cursor:default;">Week(s)</td>
-			        <td style="cursor:default;">Edit/Delete</td>
-	           </tr>
-            </table>
-         </div>
-           <table id="Booked" class="dataTable">
-            </table>
-          </div>
- 
 
-        <div id="pending" class="tab">
-          <div class="table_header"> 
-            <table class="scrollTable">
-	          <tr>
-				    <td id="request_id_td" onclick="sortHeader(this.id)">Request<br/>Id</td>
-			        <td id="module_td" onclick="sortHeader(this.id)">Module <br/> Code</td>
-			        <td id="room_code_td" onclick="sortHeader(this.id)">Room Code</td>
-			        <td id="capacity_td" onclick="sortHeader(this.id)">Capacity</td>
-			        <td style="cursor:default;">Facility</td>
-			        <td style="cursor:default; font-size:0.8em; font-weight:bold;">Special <br/>Requirements</td>
-			        <td id="priority_td" onclick="sortHeader(this.id)">Priority</td>
-			        <td id="day_td" onclick="sortHeader(this.id)">Day</td>
-			        <td id="period_td" onclick="sortHeader(this.id)">Period</td>
-			        <td id="duration_td" onclick="sortHeader(this.id)">Duration</td>
-			        <td style="cursor:default;">Week(s)</td>
-			        <td style="cursor:default;">Edit/Delete</td>
-	           </tr>
-            </table>
-          </div>
-            <table id="Pending" class="dataTable">
-            </table>
-        </div>
 
   </div>
  </div>
