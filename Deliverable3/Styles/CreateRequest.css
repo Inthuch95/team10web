@@ -90,15 +90,15 @@ input[type=checkbox]
 /*room preference 1*/
 #noRooms
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
 }
 #capacity1
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
 }
 #dept
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
     width: 500px;
 }
 #slider-rooms {
@@ -316,7 +316,7 @@ table
 /*room preference 2*/
 #capacity2
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
 }
 #slider-capacity2 {
     height: 15px;
@@ -451,7 +451,7 @@ table
 /*room preference 3*/
 #capacity3
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
 }
 #slider-capacity3 {
     height: 15px;
@@ -586,7 +586,7 @@ table
 /*room preference 4*/
 #capacity4
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
 }
 #slider-capacity4 {
     height: 15px;
@@ -721,7 +721,7 @@ table
 /*room preference 5*/
 #capacity5
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
 }
 #slider-capacity5 {
     height: 15px;
@@ -855,13 +855,13 @@ table
 }
 /*Day*/
 #selectable-day .ui-selecting { 
-	background: #F9F9F7; 
+	background: #F7F7F0; 
 }
 #selectable-day .ui-selected { 
 	background: #CA006C; color: white; 
 }
 #selectable-day { 
-	list-style-type: none; margin: 0; padding: 0; width: 350px; background: #F9F9F7; 
+	list-style-type: none; margin: 0; padding: 0; width: 350px; background: #F7F7F0; 
 }
 #selectable-day li { 
 	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
@@ -904,7 +904,7 @@ input:checked + #week {
 
 #capacityPr
 {
-    background-color : #F9F9F7;
+    background-color : #F7F7F0;
     }
 #slider-capacityPr {
     height: 15px;
