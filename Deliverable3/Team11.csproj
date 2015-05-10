@@ -75,6 +75,7 @@
     <Content Include="CreateRequest3.aspx" />
     <Content Include="ImportRequest.aspx" />
     <Content Include="Preference.aspx" />
+    <Content Include="StaffTimetable.aspx" />
     <Content Include="Styles\ImportRequest.css" />
     <Content Include="Timetable.aspx" />
     <None Include="Resources\favicon.png" />
@@ -219,6 +220,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StaffTimetable.aspx.cs">
+      <DependentUpon>StaffTimetable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffTimetable.aspx.designer.cs">
+      <DependentUpon>StaffTimetable.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewRequest.aspx.cs">
       <DependentUpon>ViewRequest.aspx</DependentUpon>

@@ -240,6 +240,7 @@
         var buildingData;
         var roomData;
         var request_id;
+        var weekData;
         function increaseWeek() {
             var currentWeek = parseInt(document.getElementById('current_week').value);
             if (currentWeek != 16) {
@@ -348,6 +349,16 @@
         //edit request data in database
         function updateRequestAjax() {
             var request = {};
+            for (var i = 1; i <= 16; i++) {
+                if ($("#week" + i).prop("checked")) {
+                    $("#week" + i + "-check").val(1);
+                    console.log($("#week" + i + "-check").val());
+                }
+                else {
+                    $("#week" + i + "-check").val(0);
+                    console.log($("#week" + i + "-check").val());
+                }
+            }
             request.request_id = $("#request_id").val();
             request.module = $("#module").val();
             request.room_code = $("#room").val();
@@ -372,6 +383,22 @@
             request.lecturer = $("#lecturer").val();
             request.session = $("#session").val();
             request.park = $("#park").val();
+            request.week1 = $("#week1-check").val();
+            request.week2 = $("#week2-check").val();
+            request.week3 = $("#week3-check").val();
+            request.week4 = $("#week4-check").val();
+            request.week5 = $("#week5-check").val();
+            request.week6 = $("#week6-check").val();
+            request.week7 = $("#week7-check").val();
+            request.week8 = $("#week8-check").val();
+            request.week9 = $("#week9-check").val();
+            request.week10 = $("#week10-check").val();
+            request.week11 = $("#week11-check").val();
+            request.week12 = $("#week12-check").val();
+            request.week13 = $("#week13-check").val();
+            request.week14 = $("#week14-check").val();
+            request.week15 = $("#week15-check").val();
+            request.week16 = $("#week16-check").val();
             $.ajax(
                 {
                     type: "POST",
@@ -599,6 +626,7 @@
                     $("#semester").val(requestData[i].semester);
                     $("#duration").val(requestData[i].duration);
                     //week
+                    getWeekAjax();
                 }
             }
 
@@ -654,6 +682,31 @@
             for (var i = 1; i <= 10 - period; i++) {
                 $("#duration").append("<option value='" + i + "'>" + i + "</option>");
             }
+        }
+        function getWeekAjax() {
+            var request = {};
+            request.request_id = $("#request_id").val();
+            $.ajax(
+               {
+                   type: "POST",
+                   async: true,
+                   url: "ViewRequest.aspx/getWeek",
+                   data: "{request: " + JSON.stringify(request) + "}",
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function (data) {
+
+                       weekData = data.d;
+
+                       console.log(weekData);
+                       for (var i = 0; i < weekData.length; i++) {
+                           $("#week" + weekData[i].week2).prop("checked", "true");
+                       }
+                   },
+                   error: function (response) {
+                       console.log(response);
+                   }
+               });
         }
         function changeRoom() {
             //get values of user's selection
@@ -1225,6 +1278,22 @@
 						<label id="week" for="week15" class="week_label"> 15 </label>
 						<input type="checkbox" name="weeks" id="week16" value="16" class="vis-hidden new-post-tags"/>
 						<label id="week" for="week16" class="week_label"> 16 </label>
+                          <input type="hidden" id="week1-check" value="1" />
+                        <input type="hidden" id="week2-check" value="1" />
+                        <input type="hidden" id="week3-check" value="1" />
+                        <input type="hidden" id="week4-check" value="1" />
+                        <input type="hidden" id="week5-check" value="1" />
+                        <input type="hidden" id="week6-check" value="1" />
+                        <input type="hidden" id="week7-check" value="1" />
+                        <input type="hidden" id="week8-check" value="1" />
+                        <input type="hidden" id="week9-check" value="1" />
+                        <input type="hidden" id="week10-check" value="1" />
+                        <input type="hidden" id="week11-check" value="1" />
+                        <input type="hidden" id="week12-check" value="1" />
+                        <input type="hidden" id="week13-check" value="0" />
+                        <input type="hidden" id="week14-check" value="0" />
+                        <input type="hidden" id="week15-check" value="0" />
+                        <input type="hidden" id="week16-check" value="0" />
                     </td>
                 </tr>
               </table>

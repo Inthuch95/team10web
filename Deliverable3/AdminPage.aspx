@@ -737,7 +737,7 @@
                             $(id).append("<td>" + requestData[i].day + "</td>");
                             $(id).append("<td>" + requestData[i].period + "</td>");
                             $(id).append("<td>" + requestData[i].duration + "</td>");
-                            $(id).append("<td>" + "<button type='button' onclick='showWeekDialog(this)' class='btns'>show</button>" + "</td>");
+                            $(id).append("<td>" + "<button type='button' onclick='showWeekDialog(this)' class='btnsTa'>show</button>" + "</td>");
                             $(id).append("<td>" + requestData[i].semester + "</td>");
                             $(id).append("<td>" + requestData[i].session + "</td>");
                             $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' class='btns' value='Allocate' onclick='allocateAjax(this)' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' class='btns' value='Reject' onclick='rejectAjax(this)' /></td>");
@@ -814,8 +814,8 @@
         }
         function initAddRoomDialog() {
             $("#dialog-add-room").dialog({
-                height: 500,
-                width: 700,
+                height: 670,
+                width: 780,
                 position: {
                     my: "center",
                     at: "center",
@@ -826,8 +826,8 @@
         }
         function initRoomDialog() {
             $("#dialog-room").dialog({
-                height: 500,
-                width: 700,
+                height: 530,
+                width: 720,
                 position: {
                     my: "center",
                     at: "center",
@@ -846,23 +846,23 @@
             for (var i = 0; i < requestData.length;i++){
                 if (requestData[i].request_id == request_id) {
                     if (requestData[i].wheelchair == 1)
-                        $("#facility_list").append("<li>Wheelchair</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Wheelchair</li>");
                     if (requestData[i].projector == 1)
-                        $("#facility_list").append("<li>Projector</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Projector</li>");
                     if (requestData[i].whiteboard == 1)
-                        $("#facility_list").append("<li>Whiteboard</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Whiteboard</li>");
                     if (requestData[i].visualiser == 1)
-                        $("#facility_list").append("<li>Visualiser</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Visualiser</li>");
                     if (requestData[i].computer == 1)
-                        $("#facility_list").append("<li>Computer</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Computer</li>");
                     if (requestData[i].lecture_capture == 1)
-                        $("#facility_list").append("<li>Lecture Capture</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Lecture Capture</li>");
                     if (requestData[i].pa_system == 1)
-                        $("#facility_list").append("<li>PA System</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>PA System</li>");
                     if (requestData[i].video_dvd == 1)
-                        $("#facility_list").append("<li>Video/DVD</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Video/DVD</li>");
                     if (requestData[i].radio_microphone == 1)
-                        $("#facility_list").append("<li>Radio Microphone</li>");
+                        $("#facility_list").append("<li style='font-size:16pt'>Radio Microphone</li>");
                 }
             }
             
@@ -939,6 +939,25 @@
                 }
             });
             $("#dialog-week").dialog("close");
+        }
+        function alterFacility() {
+            var facility = {};
+            facility.facName =  $("#facName").val() ;
+            $.ajax(
+           {
+               type: "POST",
+               async: true,
+               url: "AdminPage.aspx/alterFacility",
+               data: "{facility: " + JSON.stringify(facility) + "}",
+               contentType: "application/json; charset=utf-8",
+               dataType: "json",
+               success: function (response) {
+                   alert("success");
+               },
+               error: function (response) {
+                   console.log(response);
+               }
+           });
         }
     </script>
    
@@ -1028,7 +1047,7 @@
                             </tr>
                             <tr>
                                 <td colspan='2' align='right'>
-                                    <input type="button" id="addNew" name="addNewFac" value="Submit" class="btns" onclick="" /></td>
+                                    <input type="button" id="addNew" name="addNewFac" value="Submit" class="btns" onclick="alterFacility()" /></td>
                             </tr>
                             <tr>
                                 <td><select id="facilities"></select></td>
@@ -1083,17 +1102,17 @@
               <div id="accordion">
                 
               </div>
-              <div id="dialog-add-room" title="Add New Room">
+              <div id="dialog-add-room" title="Add New Room" style="font-size: 16pt">
                   Building: <select id="building_add" onchange="fillBuildingPart()">
 
                             </select><br />
-                  Room Code: <input type="text" readonly="readonly" id="building_part" value="A" />.
+                  Room Code: <input type="text" disabled id="building_part" value="A" style="font-size: 12pt" />.
                   <select id="floor_part">
                       <option>0</option>
                       <option>1</option>
                       <option>2</option>
                   </select>.
-                  <input type="text" id="room_part" /><br />
+                  <input type="text" id="room_part" style="font-size: 12pt" /><br />
                   Arrangement: <table>
                                     <tr>
                                         <td>
@@ -1105,7 +1124,7 @@
                                         </td>
                                     </tr>
                                </table>
-                  Capacity: <div id="slider-capacity2"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
+                  Capacity: <div id="slider-capacity2" style="font-size: 14pt"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
                   Facility: <table>
                     <tr>
                         <td>
@@ -1172,16 +1191,16 @@
                         </td>
                     </tr>
                 </table><br />
-                <input type="button" id="add_room_submit" value="Submit" class="btns" onclick="insertRoomAjax()" />
+                <input type="button" id="add_room_submit" value="Submit" class="btns" style="font-size: 12pt"  onclick="insertRoomAjax()" />
               </div>
 
               <div id="dialog-room" title="Pool Room Management">
-                 <div id="roomCode_edit">
+                 <div id="roomCode_edit" style="font-size: 16pt">
                         Room Code:        
                  </div><br />
-                <input type="hidden" id="roomCode_val" />
-                Capacity: <div id="slider-capacity"></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
-                Facility: <table>
+                <input type="hidden" id="roomCode_val" style="font-size: 16pt"/>
+                <p style="font-size: 16pt">Capacity:</p> <div id="slider-capacity" style="font-size: 14pt" ></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="font-size: 16pt; border:0; color:#f6931f; font-weight:bold; text-align:center; "/><br />
+                <p style="font-size: 16pt"> Facility: </p><table>
                     <tr>
                         <td>
                             <ol id="selectable-computer">
@@ -1247,7 +1266,7 @@
                         </td>
                     </tr>
                 </table><br />
-                <input type="button" id="room-submit" value="Submit" class="btns" onclick="updateRoomAjax()" />
+                <input type="button" id="room-submit" value="Submit" class="btns" style="font-size: 14pt" onclick="updateRoomAjax()" />
               </div>
              </div>
           </div>

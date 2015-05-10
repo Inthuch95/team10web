@@ -12,7 +12,19 @@
 	color: #ca006c ;
     border: 2px solid #ca006c ;
 }
-
+.btnsTa{
+    border: 2px solid #ffffff;
+    background: #ca006c;
+  	color: #ffffff;
+    height: 56px;
+    width: 102px;
+	transition: all 0.3s;
+}
+.btnsTa:hover {
+	background: #ffffff;
+	color: #ca006c;
+    border: 2px solid #ca006c;
+}
 .tabs {
     display:inline-block;
 }

@@ -42,6 +42,7 @@ namespace Team11
         public string dept_code;
         public string session;
         public string week;
+        public int week2;
     }
     public partial class ViewRequest : System.Web.UI.Page
     {
@@ -63,6 +64,41 @@ namespace Team11
         [ScriptMethod]
         public static void updateRequest(Request request)
         {
+            //add week information to List 'week'
+            List<int> week = new List<int> { };
+            if (Convert.ToInt32(request.week1) == 1)
+                week.Add(1);
+            if (Convert.ToInt32(request.week2) == 1)
+                week.Add(2);
+            if (Convert.ToInt32(request.week3) == 1)
+                week.Add(3);
+            if (Convert.ToInt32(request.week4) == 1)
+                week.Add(4);
+            if (Convert.ToInt32(request.week5) == 1)
+                week.Add(5);
+            if (Convert.ToInt32(request.week6) == 1)
+                week.Add(6);
+            if (Convert.ToInt32(request.week7) == 1)
+                week.Add(7);
+            if (Convert.ToInt32(request.week8) == 1)
+                week.Add(8);
+            if (Convert.ToInt32(request.week9) == 1)
+                week.Add(9);
+            if (Convert.ToInt32(request.week10) == 1)
+                week.Add(10);
+            if (Convert.ToInt32(request.week11) == 1)
+                week.Add(11);
+            if (Convert.ToInt32(request.week12) == 1)
+                week.Add(12);
+            if (Convert.ToInt32(request.week13) == 1)
+                week.Add(13);
+            if (Convert.ToInt32(request.week14) == 1)
+                week.Add(14);
+            if (Convert.ToInt32(request.week15) == 1)
+                week.Add(15);
+            if (Convert.ToInt32(request.week16) == 1)
+                week.Add(16);
+            int id;
             string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -95,8 +131,36 @@ namespace Team11
                     cmd.Parameters.AddWithValue("@session", request.session);
                     cmd.Connection = con;
                     con.Open();
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteScalar();
                     con.Close();
+                }
+            }
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM [WEEKS] WHERE [request_id] = @request_id"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteScalar();
+                    con.Close();
+                }
+            }
+            for (int i = 0; i < week.Count; i++)
+            {
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO [WEEKS] ([week], [request_id]) VALUES (@week, @request_id)"))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@request_id", Convert.ToInt32(request.request_id));
+                        cmd.Parameters.AddWithValue("@week", week[i]);
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteScalar();
+                        con.Close();
+                    }
                 }
             }
         }
@@ -119,6 +183,27 @@ namespace Team11
                     con.Close();
                 }
             }
+        }
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        [WebMethod]
+        public static List<REQUESTS> getWeek(Request request)
+        {
+            List<REQUESTS> requestData = new List<REQUESTS> { };
+            string query = "SELECT * FROM [WEEKS]  WHERE [request_id] = " + Convert.ToInt32(request.request_id) ;
+            SqlCommand cmd = new SqlCommand(query);
+            DataSet ds = GetData(cmd);
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                REQUESTS week = new REQUESTS();
+                //put database data into request object
+                week.week2 = Convert.ToInt32(item["week"]);
+                week.request_id = Convert.ToInt32(item["request_id"]);
+                //add request object to list
+                requestData.Add(week);
+            }
+            //return as array of record in javascript
+            return requestData;
         }
         //retrieve request data from database
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
