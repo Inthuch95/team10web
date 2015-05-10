@@ -40,8 +40,8 @@ namespace Team11
                 /* Gets rid of the space if there is one e.g. by habit putting a space at the end*/
                 string password = passcom.ExecuteScalar().ToString().Replace(" ", "");
                 conn.Close();
-                
-                if (password == TextBoxPassword.Text)
+
+                if (password == TextBoxPassword.Text && DropDownListDept.Text != "Central Admin")
                 {
                     conn.Open();
                     string Check_dept_code = "Select dept_code from [DEPT] where dept_name='" + DropDownListDept.Text + "'";
@@ -94,6 +94,10 @@ namespace Team11
                     {
                         Response.Redirect("Availibility.aspx");
                     }
+                }
+                else if (password == TextBoxPassword.Text && DropDownListDept.Text == "Central Admin")
+                {
+                    Response.Redirect("AdminPage.aspx");
                 }
                 else
                 {

@@ -884,7 +884,7 @@
             loadPeriod();
             init_module_dialog();
             loadRoomDialog();
-            getLectureName();
+           // getLectureName();
             //implement jquery ui slider to 'number of rooms' and 'capacity'
             //start slider
             $("#slider-rooms").slider({
@@ -1006,11 +1006,13 @@
                 success: function (data) {
                     var result = data.d;
                     moduleData = data.d;
+                    
                     $("#module").empty();
                     for (var i = 0; i < result.length; i++) {
                         //populate module drop down list
                         $("#module").append("<option value='" + result[i].module_code + "'>" + result[i].module_code + " : " + result[i].module_title + "</option>");
                     }
+                    console.log(moduleData);
                     getLectureName();
                 },
                 error: function (response) {
@@ -2736,19 +2738,11 @@
 
     </div>
     <div id="dialog-module" title="Add New Module">
-<<<<<<< HEAD
         <form id="module_form" name="module_form" method="post">
             <table>
                 <tr><td>Module code:</td><td><input type="text" id="Text1" readonly="readonly" name="mod_dept" style="width:50px"/></td>
             <td>
              <select id="mod_part" name="mod_part">
-=======
-        <form id="module_form" name="module_form" method="post" >
-            Module code:
-            <input type="text" id="mod_dept" readonly="readonly" name="mod_dept" />
-            &nbsp; 
-            <select id="mod_part" name="mod_part">
->>>>>>> origin/master
                 <option>A</option>
                 <option>B</option>
                 <option>C</option>

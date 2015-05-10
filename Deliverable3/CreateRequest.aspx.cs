@@ -23,6 +23,7 @@ namespace Team11
     }
     public class Module
     {
+        public string old_mod_code { get; set; }
         public string mod_code { get; set; }
         public string mod_title { get; set; }
         public string lecturer { get; set; }

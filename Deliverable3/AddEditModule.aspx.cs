@@ -50,6 +50,33 @@ namespace Team11
 
         }
 
+
+        [WebMethod]
+        [ScriptMethod]
+        public static void editmodule(Module module)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE [MODULES] SET [module_code] = @module_code,[module_title] = @module_title, [Lecturer] = @lecturer WHERE [module_code] = @old_mod_code "))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@module_code", module.mod_code);
+                    cmd.Parameters.AddWithValue("@module_title", module.mod_title);
+                    cmd.Parameters.AddWithValue("@lecturer", module.lecturer);
+                    cmd.Parameters.AddWithValue("@old_mod_code", module.old_mod_code);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+
+        }
+
+
+
+
         [WebMethod]
         [ScriptMethod]
         public static void insertModule(Module module)

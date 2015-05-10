@@ -21,6 +21,7 @@
     });
     var moduleData;
     var dept;
+    var old_mod_code;
     function clearAll() {
         document.getElementById("TextBoxModuleName").value = "";
         document.getElementById("TextBoxModuleCode").value = "";
@@ -66,6 +67,7 @@
                 console.log(dept);
                 $("#moduleCodeD").html("<h2> Add Module for " + dept[0] + "</h2>");
                 $("#TextBoxModuleCodeNo").val(dept[1]);
+                $("#DialogBoxModuleCodeNo").val(dept[1]);
             },
             error: function (response) {
                 console.log(response);
@@ -119,8 +121,38 @@
             });
         }
     }
+
+    function editModuleAjax(el) {
+        var module = {};
+        module.old_mod_code = old_mod_code;
+        module.mod_code = $("#DialogBoxModuleCodeNo").val() + $("#DialogBoxModuleNo").val().toUpperCase() + $("#DialogBoxModuleCode").val();
+        module.mod_title = $("#DialogBoxModuleName").val();
+        module.lecturer = $("#DialogBoxLecturer").val();
+        if (confirm("Are you sure you want to edit this module?")) {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AddEditModule.aspx/editmodule",
+                data: "{module: " + JSON.stringify(module) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("success");
+                    location.reload();
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+    }
+
+
     function initEditDialog() {
         $("#dialog-Edit").dialog({
+            height: 160,
+            width: 350,
             position: {
                 my: "center",
                 at: "center",
@@ -132,8 +164,9 @@
     function showEditDialog(el) {
         var id = el.parentNode.parentNode.cells[0].textContent;
         var request_id = parseInt(id);
-        $("#dialog-Edit").empty();
-        $("#dialog-Edit").append("Hello Friend");
+
+        old_mod_code = el.parentNode.parentNode.cells[0].textContent;
+        console.log(old_mod_code);
         $("#dialog-Edit").dialog("open");
     }
 
@@ -166,9 +199,9 @@
                             <option value="b">B</option>
                             <option value="c">C</option>
                             <option value="d">D</option>
-                            <option value="d">F</option> 
-                            <option value="d">I</option>
-                            <option value="d">P</option>                          
+                            <option value="f">F</option> 
+                            <option value="i">I</option>
+                            <option value="p">P</option>                          
                         </select>
                         <input type="text" style="width:550px" id="TextBoxModuleCode" />
                       </td>
@@ -220,15 +253,44 @@
             </div>
 
 
-          
-          
-            <div id="dialog-Module" title="Edit Module">
-                 <div id="roomCode_edit">
-                        Module Code:        
-                 </div><br />
-               
-                <input type="button" id="room-submit" value="Submit" class="btns" onclick="updateModuleAjax()" />
-              </div>
-    <div id="dialog-Edit">
-    </div>
+
+             <div id="dialog-Edit" title="Edit Module">
+               <table>
+                    <tr>
+                        <td>
+                        <h5>Module Title : </h5>
+                        </td>
+                        <td>
+                        <input type="text" id="DialogBoxModuleName"/>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>Module Code : </h5>
+                      </td>
+                      <td>
+                        <input type="text" style="width:50px; text-align:center;" id="DialogBoxModuleCodeNo"  disabled />
+                        <select id="DialogBoxModuleNo">
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                            <option value="f">F</option> 
+                            <option value="i">I</option>
+                            <option value="p">P</option>                          
+                        </select>
+                        <input type="text" id="DialogBoxModuleCode" />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <h5>Lecturer : </h5>
+                      </td>
+                      <td>
+                         <input type="text" id="DialogBoxLecturer"/>
+                      </td>
+                  </tr>
+                </table>
+               <button class="btns" onclick="editModuleAjax()">Edit Module</button>
+             </div>
 </asp:Content>
