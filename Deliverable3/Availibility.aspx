@@ -14,7 +14,8 @@
              getBuildingAjax();
              loadWeek();
              getBookingAjax();
-
+             resetTable();
+             getModuleAjax();
              //capacity slider
              $("#slider-capacity").slider({
                  range: "max",
@@ -37,12 +38,151 @@
                  step: 1,
                  slide: function (event, ui) {
                      $("#capacity2").val(ui.value);
-                     //changeRoom2();
+                     changeRoom2();
                  }
              });
              //put the slider value into text box with id 'capacity'
              $("#capacity2").val($("#slider-capacity2").slider("value"));
              //start selectable
+             //option 
+             $("#selectable-priority").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedPriority == false)
+                     selectedPriority = true;
+                 else
+                     selectedPriority = false;
+                 if (selectedPriority)
+                     $("#priority").val("1");
+                 else
+                     $("#priority").val("0");
+             }).selectable();
+             $("#selectable-arrangement2").selectable({
+                 stop: function () {
+                     $(".ui-selected", this).each(function () {
+                         var index = $("#selectable-arrangement2 li").index(this);
+                         switch (index) {
+                             case 0:
+                                 $("#arrangement2").val("Any");
+                                 break;
+                             case 1:
+                                 $("#arrangement2").val("Tired");
+                                 break;
+                             case 2:
+                                 $("#arrangement2").val("Flat");
+                                 break;
+                         }
+                         changeRoom2();
+                     });
+                 }
+             });
+             $("#selectable-wheelchair2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedWheelchair2 == false)
+                     selectedWheelchair2 = true;
+                 else
+                     selectedWheelchair2 = false;
+                 if (selectedWheelchair2)
+                     $("#wheelchair2").val("1");
+                 else
+                     $("#wheelchair2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-whiteboard2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedWhiteboard2 == false)
+                     selectedWhiteboard2 = true;
+                 else
+                     selectedWhiteboard2 = false;
+                 if (selectedWhiteboard2)
+                     $("#whiteboard2").val("1");
+                 else
+                     $("#whiteboard2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-projector2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedProjector2 == false)
+                     selectedProjector2 = true;
+                 else
+                     selectedProjector2 = false;
+                 if (selectedProjector2)
+                     $("#projector2").val("1");
+                 else
+                     $("#projector2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-visualiser2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedVisualiser2 == false)
+                     selectedVisualiser2 = true;
+                 else
+                     selectedVisualiser2 = false;
+                 if (selectedVisualiser2)
+                     $("#visualiser2").val("1");
+                 else
+                     $("#visualiser2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-computer2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedComputer2 == false)
+                     selectedComputer2 = true;
+                 else
+                     selectedComputer2 = false;
+                 if (selectedComputer2)
+                     $("#computer2").val("1");
+                 else
+                     $("#computer2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-video2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedVideo2 == false)
+                     selectedVideo2 = true;
+                 else
+                     selectedVideo2 = false;
+                 if (selectedVideo2)
+                     $("#video2").val("1");
+                 else
+                     $("#video2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-pa2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedPa2 == false)
+                     selectedPa2 = true;
+                 else
+                     selectedPa2 = false;
+                 if (selectedPa2)
+                     $("#pa2").val("1");
+                 else
+                     $("#pa2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-mic2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedMic2 == false)
+                     selectedMic2 = true;
+                 else
+                     selectedMic2 = false;
+                 if (selectedMic2)
+                     $("#mic2").val("1");
+                 else
+                     $("#mic2").val("0");
+                 changeRoom2();
+             }).selectable();
+             $("#selectable-capture2").bind("mousedown", function (e) {
+                 e.metaKey = true;
+                 if (selectedCap2 == false)
+                     selectedCap2 = true;
+                 else
+                     selectedCap2 = false;
+                 if (selectedCap2)
+                     $("#capture2").val("1");
+                 else
+                     $("#capture2").val("0");
+                 changeRoom2();
+             }).selectable();
              //room preference 1
              $("#selectable-session").selectable({
                  stop: function () {
@@ -72,6 +212,7 @@
                          switch (index) {
                              case 0:
                                  $("#arrangement").val("Any");
+                                 
                                  break;
                              case 1:
                                  $("#arrangement").val("Tired");
@@ -84,17 +225,6 @@
                      });
                  }
              });
-             $("#selectable-priority").bind("mousedown", function (e) {
-                 e.metaKey = true;
-                 if (selectedPriority == false)
-                     selectedPriority = true;
-                 else
-                     selectedPriority = false;
-                 if (selectedPriority)
-                     $("#priority").val("1");
-                 else
-                     $("#priority").val("0");
-             }).selectable();
              $("#selectable-wheelchair").bind("mousedown", function (e) {
                  e.metaKey = true;
                  if (selectedWheelchair == false)
@@ -228,8 +358,31 @@
                  }
              });
          });
+
          var bookingData;
          var roomData;
+         var moduleData;
+         //selectable 1
+         var selectedWhiteboard = false;
+         var selectedComputer = false;
+         var selectedCap = false;
+         var selectedPa = false;
+         var selectedProjector = false;
+         var selectedMic = false;
+         var selectedVideo = false;
+         var selectedVisualiser = false;
+         var selectedWheelchair = false;
+         //selectable 2
+         var selectedWhiteboard2 = false;
+         var selectedComputer2 = false;
+         var selectedCap2 = false;
+         var selectedPa2 = false;
+         var selectedProjector2 = false;
+         var selectedMic2 = false;
+         var selectedVideo2 = false;
+         var selectedVisualiser2 = false;
+         var selectedWheelchair2 = false;
+         var selectedPriority = false;
          function loadWeek() {
              for (var i = 1; i <= 16; i++) {
                  $("#week-select").append("<option>" + i + "</option>");
@@ -248,8 +401,12 @@
 
                          bookingData = data.d;
                          console.log(bookingData);
+                         resetTable();
                          for (var i = 0; i <= bookingData.length; i++) {
-                             if (bookingData[i].week == $("#week-select").val()) {
+                             if ($("#room-select").val() == "Any") {
+                                 resetTable();
+                             }
+                             if (bookingData[i].week == $("#week-select").val() && bookingData[i].room_code == $("#room-select").val()) {
                                  $("#p" + bookingData[i].period + "_" + bookingData[i].day.substr(0, 3).toLowerCase()).empty();
                              }
                          }
@@ -258,6 +415,42 @@
                          console.log(response);
                      }
                  });
+         }
+         function selectChange() {
+             resetTable();
+             for (var i = 0; i <= bookingData.length; i++) {
+                 if ($("#room-select").val() == "Any") {
+                     resetTable();
+                 }
+                 if (bookingData[i].week == $("#week-select").val() && bookingData[i].room_code == $("#room-select").val()) {
+                     $("#p" + bookingData[i].period + "_" + bookingData[i].day.substr(0, 3).toLowerCase()).empty();
+                 }
+             }
+         }
+         function getModuleAjax() {
+             $.ajax(
+             {
+                 type: "POST",
+                 async: true,
+                 url: "CreateRequest.aspx/getModule",
+                 data: "{}",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (data) {
+                     var result = data.d;
+                     moduleData = data.d;
+                     $("#module").empty();
+                     for (var i = 0; i < result.length; i++) {
+                         //populate module drop down list
+                         $("#module").append("<option value='" + result[i].module_code + "'>" + result[i].module_code + " : " + result[i].module_title + "</option>");
+                     }
+                     getLectureName();
+                 },
+                 error: function (response) {
+                     console.log(response);
+                 }
+             });
+
          }
          //get room data and their location
          function getRoomAjax() {
@@ -391,16 +584,16 @@
              var park = document.getElementById("park-select").value;
              var building = document.getElementById("building-select").value;
              var capacity = parseInt(document.getElementById("capacity2").value);
-             var isWheelchair = parseInt(document.getElementById("wheelchair-select").value);
-             var isVisualiser = parseInt(document.getElementById("visualiser-select").value);
-             var isProjector = parseInt(document.getElementById("projector-select").value);
-             var isWhiteboard = parseInt(document.getElementById("whiteboard-select").value);
-             var computer = parseInt(document.getElementById("computer-select").value);
-             var capture = parseInt(document.getElementById("capture-select").value);
-             var pa = parseInt(document.getElementById("pa-select").value);
-             var mic = parseInt(document.getElementById("mic-select").value);
-             var video = parseInt(document.getElementById("video-select").value);
-             var arrangement = document.getElementById("arrangement-select").value;
+             var isWheelchair = parseInt(document.getElementById("wheelchair2").value);
+             var isVisualiser = parseInt(document.getElementById("visualiser2").value);
+             var isProjector = parseInt(document.getElementById("projector2").value);
+             var isWhiteboard = parseInt(document.getElementById("whiteboard2").value);
+             var computer = parseInt(document.getElementById("computer2").value);
+             var capture = parseInt(document.getElementById("capture2").value);
+             var pa = parseInt(document.getElementById("pa2").value);
+             var mic = parseInt(document.getElementById("mic2").value);
+             var video = parseInt(document.getElementById("video2").value);
+             var arrangement = document.getElementById("arrangement2").value;
              var room_arr1;
 
              //empty the room code list
@@ -465,34 +658,110 @@
              changeRoom();
          }
          function resetForm() {
-             $("#selectable-priority").children("li").attr("class", "ui-state-default");
-             $("#selectable-computer").children("li").attr("class", "ui-state-default");
-             $("#selectable-capture").children("li").attr("class", "ui-state-default");
-             $("#selectable-pa").children("li").attr("class", "ui-state-default");
-             $("#selectable-wheelchair").children("li").attr("class", "ui-state-default");
-             $("#selectable-projector").children("li").attr("class", "ui-state-default");
-             $("#selectable-visualiser").children("li").attr("class", "ui-state-default");
-             $("#selectable-whiteboard").children("li").attr("class", "ui-state-default");
-             $("#selectable-mic").children("li").attr("class", "ui-state-default");
-             $("#selectable-video").children("li").attr("class", "ui-state-default");
-             $("#wheelchair").val("0");
-             $("#projector").val("0");
-             $("#visualiser").val("0");
-             $("#whiteboard").val("0");
-             $("#computer").val("0");
-             $("#capture").val("0");
-             $("#pa").val("0");
-             $("#mic").val("0");
-             $("#video").val("0");
-             $("#arrangement").val("Any");
-             $("#monday").attr("class", "ui-state-default");
-             $("#tuesday").attr("class", "ui-state-default");
-             $("#wednesday").attr("class", "ui-state-default");
-             $("#thursday").attr("class", "ui-state-default");
-             $("#friday").attr("class", "ui-state-default");
-             $("#arr-any").attr("class", "ui-state-default");
-             $("#arr-tiered").attr("class", "ui-state-default");
-             $("#arr-flat").attr("class", "ui-state-default");
+             $("#facility-text").empty();
+         }
+         function resetTable() {
+             for (var i = 1; i <= 10; i++) {
+                 $("#p" + i + "_mon").html("<input type='button' id='p" + i + "_mon_select' onclick='showBookDialog(this.id)' value='select' />");
+                 $("#p" + i + "_tue").html("<input type='button' id='p" + i + "_tue_select' onclick='showBookDialog(this.id)' value='select' />");
+                 $("#p" + i + "_wed").html("<input type='button' id='p" + i + "_wed_select' onclick='showBookDialog(this.id)' value='select' />");
+                 $("#p" + i + "_thu").html("<input type='button' id='p" + i + "_thu_select' onclick='showBookDialog(this.id)' value='select' />");
+                 $("#p" + i + "_fri").html("<input type='button' id='p" + i + "_fri_select' onclick='showBookDialog(this.id)' value='select' />");
+             }
+         }
+         function showBookDialog(el) {
+             $("#arrangement-text").html($("#arrangement2").val());
+             $("#capacity-text").html($("#capacity2").val());
+             if ($("#wheelchair2").val() == 1)
+                 $("#facility-text").append("<li>Wheelchair</li>");
+             if ($("#projector2").val() == 1)
+                 $("#facility-text").append("<li>Projector</li>");
+             if ($("#whiteboard2").val() == 1)
+                 $("#facility-text").append("<li>Whiteboard</li>");
+             if ($("#visualiser2").val() == 1)
+                 $("#facility-text").append("<li>Visualiser</li>");
+             if ($("#computer2").val() == 1)
+                 $("#facility-text").append("<li>Computer</li>");
+             if ($("#capture2").val() == 1)
+                 $("#facility-text").append("<li>Lecture Capture</li>");
+             if ($("#pa2").val() == 1)
+                 $("#facility-text").append("<li>PA System</li>");
+             if ($("#video2").val() == 1)
+                 $("#facility-text").append("<li>Video/DVD</li>");
+             if ($("#mic2").val() == 1)
+                 $("#facility-text").append("<li>Radio Microphone</li>");
+             $("#park-text").html(document.getElementById("park-select").value);
+             $("#room-text").html(document.getElementById("room-select").value);
+             console.log(el.substr(3, 3));
+             if (el.substr(3, 3) == "mon") {
+                 $("#day-text").html("Monday");
+                 $("#day").val("Monday");
+             }
+             if (el.substr(3, 3) == "tue") {
+                 $("#day-text").html("Tuesday");
+                 $("#day").val("Tuesday");
+             }
+             if (el.substr(3, 3) == "wed") {
+                 $("#day-text").html("Wednesday");
+                 $("#day").val("Wednesday");
+             }
+             if (el.substr(3, 3) == "thu") {
+                 $("#day-text").html("Thursday");
+                 $("#day").val("Thursday");
+             }
+             if (el.substr(3, 3) == "fri") {
+                 $("#day-text").html("Friday");
+                 $("#day").val("Friday");
+             }
+             $("#period-text").html(el.substr(1, 1));
+             $("#period").val(el.substr(1, 1));
+             $("#week-text").html($("#week-select").val());
+             $("#dialog-request").dialog("open");
+         }
+         function insertRequestAjax() {
+             var request = {};
+             request.module = $("#module").val();
+             request.room_code1 = $("#room-select").val();
+             request.capacity1 = $("#capacity2").val();
+             request.wheelchair = $("#wheelchair2").val();
+             request.projector = $("#projector2").val();
+             request.visualiser = $("#visualiser2").val();
+             request.whiteboard = $("#whiteboard2").val();
+             request.computer = $("#computer2").val();
+             request.lecture_capture = $("#capture2").val();
+             request.video_dvd = $("#video2").val();
+             request.pa_system = $("#pa2").val();
+             request.radio_microphone = $("#mic2").val();
+             request.arrangement = $("#arrangement2").val();
+             request.special_req1 = $("#extra_req").val();
+             request.priority = $("#priority").val();
+             request.day = $("#day").val();
+             request.period = $("#period").val();
+             request.duration = $("#duration").val();
+             request.status = "Booked";
+             request.year = "2015";
+             request.semester = $("#semester").val();
+             request.lecturer = $("#lecturer").val();
+             request.session = $("#session").val();
+             request.park = $("#park-select").val();
+             request.week1 = $("#week-select").val();
+             $.ajax(
+                 {
+                     type: "POST",
+                     async: true,
+                     url: "Availibility.aspx/insertRequest",
+                     data: "{request: " + JSON.stringify(request) + "}",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     success: function (data) {
+                         alert("success");
+                         getBookingAjax();
+                         $('#dialog-request').dialog('close')
+                     },
+                     error: function (response) {
+                         console.log(response);
+                     }
+                 });
          }
     </script>
 
@@ -506,7 +775,79 @@
 
 <%-- Body Content --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    Facility: 
+    Facility: <table>
+                            <tr>
+                                <%--Facility options 2--%>
+                                <td style="padding-left: 5px;">
+                                    <ol id="selectable-computer2">
+                                        <li class="ui-state-default" style="width: 200px">Computer</li>
+                                    </ol>
+                                    <input type="hidden" id="computer2" name="computer2" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-capture2">
+                                        <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                    </ol>
+                                    <input type="hidden" id="capture2" name="capture2" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
+                                    <ol id="selectable-pa2">
+                                        <li class="ui-state-default" style="width: 200px">PA System</li>
+                                    </ol>
+                                    <input type="hidden" id="pa2" name="pa2" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-projector2">
+                                        <li class="ui-state-default" style="width: 200px">Projector</li>
+                                    </ol>
+                                    <input type="hidden" id="projector2" name="projector2" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
+                                    <ol id="selectable-mic2">
+                                        <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
+                                    </ol>
+                                    <input type="hidden" id="mic2" name="mic2" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-video2">
+                                        <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
+                                    </ol>
+                                    <input type="hidden" id="video2" name="video2" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
+                                    <ol id="selectable-visualiser2">
+                                        <li class="ui-state-default" style="width: 200px">Visualiser</li>
+                                    </ol>
+                                    <input type="hidden" id="visualiser2" name="visualiser2" value="0" />
+                                </td>
+                                <td>
+                                    <ol id="selectable-whiteboard2">
+                                        <li class="ui-state-default" style="width: 200px">Whiteboard</li>
+                                    </ol>
+                                    <input type="hidden" id="whiteboard2" name="whiteboard2" value="0" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
+                                    <ol id="selectable-wheelchair2">
+                                        <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
+                                    </ol>
+                                    <input type="hidden" id="wheelchair2" name="wheelchair2" value="0" />
+                                </td>
+                            </tr>
+                        </table><br />
+    Arrangement:  <ol id="selectable-arrangement2">
+                            <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                            <li class="ui-state-default" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default" style="width: 200px">Flat</li>
+                </ol><br /><br /><br /><br /><br /><br />
+                        <input type="hidden" id="arrangement2" name="arrangement2" value="Any" />
     Park: <select id="park-select" onchange="changePark2()">
             <option>Any</option>
             <option>Central</option>
@@ -516,12 +857,12 @@
     Building: <select id="building-select" onchange="changeRoom2()">
 
               </select>&nbsp;
-    Room: <select id="room-select">
+    Room: <select id="room-select" onchange="selectChange()">
 
           </select><br />
      Capacity: <div id="slider-capacity2"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
     <table frame="box" style="width:100%;" align "center" class="testTable" id="Reject">
-    Week: <select id="week-select">
+    Week: <select id="week-select" onchange="selectChange()">
                 
           </select>
                 <br/>
@@ -634,183 +975,45 @@
                         </tr>
                     </table><br />
         Lecturer: <input type="text" id="lecturer" name="lecturer" /><br />
-        Arrangement: <table>
-                        <tr>
-                            <td>
-                                <ol id="selectable-arrangement">
-                                    <li class="ui-state-default ui-selected" style="width: 200px" id="arr-any">Any</li>
-                                    <li class="ui-state-default" style="width: 200px" id="arr-tiered">Tiered</li>
-                                    <li class="ui-state-default" style="width: 200px" id="arr-flat">Flat</li>
-                                </ol>
-                                <input type="hidden" id="arrangement" name="arrangement" value="Any" />
-                            </td>
-                        </tr>
-                    </table><br />
-        Capacity: <div id="slider-capacity"></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
+        Arrangement:&nbsp;<b id="arrangement-text"></b> <br />
+        Capacity:&nbsp;<b id="capacity-text"></b><br />
         
-        Facility: <table>
-            <tr>
-                <td>
-                    <ol id="selectable-computer">
-                        <li class="ui-state-default" style="width: 200px">Computer</li>
-                    </ol>
-                    <input type="hidden" id="computer" name="computer" value="0"/>
-                </td>
-                <td>
-                        <ol id="selectable-capture">
-                            <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                        </ol>
-                        <input type="hidden" id="capture" name="capture" value="0" />
-                </td>
-                </tr>
-                <tr>
-                <td>
-                    <ol id="selectable-pa">
-                        <li class="ui-state-default" style="width: 200px">PA System</li>
-                    </ol>
-                    <input type="hidden" id="pa" name="pa" value="0" />
-                </td>
-                <td>
-                    <ol id="selectable-projector">
-                        <li class="ui-state-default" style="width: 200px">Projector</li>
-                    </ol>
-                    <input type="hidden" id="projector" name="projector" value="0" />
-                </td>
-                </tr>
-                <tr>
-                <td>
-                    <ol id="selectable-mic">
-                        <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
-                    </ol>
-                    <input type="hidden" id="mic" name="mic" value="0" />
-                </td>
-                <td>
-                    <ol id="selectable-video">
-                        <li class="ui-state-default" style="width: 200px">Video/DVD Player</li>
-                    </ol>
-                    <input type="hidden" id="video" name="video" value="0" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <ol id="selectable-visualiser">
-                        <li class="ui-state-default" style="width: 200px">Visualiser</li>
-                    </ol>
-                    <input type="hidden" id="visualiser" name="visualiser" value="0" />
-                </td>
-                <td>
-                    <ol id="selectable-whiteboard">
-                        <li class="ui-state-default" style="width: 200px">Whiteboard</li>
-                    </ol>
-                    <input type="hidden" id="whiteboard" name="whiteboard" value="0" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <ol id="selectable-wheelchair">
-                        <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
-                    </ol>
-                    <input type="hidden" id="wheelchair" name="wheelchair" value="0" />
-                </td>
-            </tr>
-        </table><br />
+        Facility:&nbsp;<ol id="facility-text"></ol>
         <table>
             <tr>
                 <td>
-                    Park: <select id="park" onchange="changePark()">
-                            <option>Any</option>
-                            <option>Central</option>
-                            <option>East</option>
-                            <option>West</option>
-                          </select>
+                    Park:&nbsp;<b id="park-text"></b>
                 </td>
                 <td>
-                    Building: <select id="building" onchange="changeRoom()">
-                                
-                              </select>   
-                </td>
-                <td>
-                    Room: <select id="room">
-
-                          </select>
+                    Room:&nbsp;<b id="room-text"></b>
                 </td>
             </tr>
         </table><br />
         Additional Requiements: <textarea id="extra_req" style="width:835px;" cols="80" maxlength="1000">
 
                                 </textarea><br />
-        Day: <table>
-                <tr>
-                    <td>
-                        <ol id="selectable-day">
-                            <li class="ui-state-default" style="width: 100px" id="monday">Monday</li>
-                            <li class="ui-state-default" style="width: 100px" id="tuesday">Tuesday</li>
-                            <li class="ui-state-default" style="width: 100px" id="wednesday">Wednesday</li>
-                            <li class="ui-state-default" style="width: 100px" id="thursday">Thursday</li>
-                            <li class="ui-state-default" style="width: 100px" id="friday">Friday</li>
-                        </ol>
-                    </td>
-               </tr>
-            </table>
+        Day:&nbsp;<b id="day-text"></b>
             <input type="hidden" id="day" name="day" value=""/><br />
         <table>
             <tr>
                 <td>
-                    Semester: <select id="semester">
+                    Semester:&nbsp;<select id="semester">
                                 <option>1</option>
                                 <option>2</option>
                               </select>
                 </td>
                 <td>
-                    Period: <select id="period" onchange="refillDuration()">
-
-                            </select>
+                    Period:&nbsp;<b id="period-text"></b>
+                    <input type="hidden" id="period" />
                 </td>
                 <td>
-                    Duration: <select id="duration">
+                    Duration:&nbsp;<select id="duration">
 
                               </select>
                 </td>
             </tr>
         </table><br />
-        Week: <table>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="weeks" id="week1" value="1"  class="vis-hidden new-post-tags"/>
-						<label style="margin-left: 100px;" id="week" for="week1" class="week_label">  1  </label>
-						<input type="checkbox" name="weeks" id="week2" value="2"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week2" class="week_label">  2  </label>
-						<input type="checkbox" name="weeks" id="week3" value="3"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week3" class="week_label">  3  </label>
-						<input type="checkbox" name="weeks" id="week4" value="4"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week4" class="week_label">  4  </label>
-						<input type="checkbox" name="weeks" id="week5" value="5"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week5" class="week_label">  5  </label>
-						<input type="checkbox" name="weeks" id="week6" value="6"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week6" class="week_label">  6  </label>
-						<input type="checkbox" name="weeks" id="week7" value="7"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week7" class="week_label">  7  </label>
-						<input type="checkbox" name="weeks" id="week8" value="8"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week8" class="week_label">  8  </label>
-						<input type="checkbox" name="weeks" id="week9" value="9"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week9" class="week_label">  9  </label>
-						<input type="checkbox" name="weeks" id="week10" value="10"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week10" class="week_label"> 10 </label>
-						<input type="checkbox" name="weeks" id="week11" value="11"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week11" class="week_label"> 11 </label>
-						<input type="checkbox" name="weeks" id="week12" value="12"  class="vis-hidden new-post-tags"/>
-						<label id="week" for="week12" class="week_label"> 12 </label>
-						<input type="checkbox" name="weeks" id="week13" value="13" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week13" class="week_label"> 13 </label>
-						<input type="checkbox" name="weeks" id="week14" value="14" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week14" class="week_label"> 14 </label>
-						<input type="checkbox" name="weeks" id="week15" value="15" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week15" class="week_label"> 15 </label>
-						<input type="checkbox" name="weeks" id="week16" value="16" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week16" class="week_label"> 16 </label>
-                    </td>
-                </tr>
-              </table>
+        Week:&nbsp;<b id="week-text"></b><br />
         <input type="button" id="request-submit" value="Submit" class="btns" onclick="insertRequestAjax()" />&nbsp
         <input type="button" id="cancel" class="btns" value="cancel" onclick="$('#dialog-request').dialog('close')" />
     </div>

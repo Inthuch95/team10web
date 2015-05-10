@@ -37,7 +37,7 @@
     text-align:center;
     border-top-left-radius:2px;
     border-top-right-radius:2px;
-    background-color:#330066;
+    background-color:#b6b7bc;
     color:White;
     height:40px;
     font-size:10pt;
@@ -47,7 +47,7 @@
 /*css for buttons*/
 .btns {
 	border: 2px solid #ffffff;
-    background: #9D009D;
+    background: #ca006c;
   	color: #ffffff;
     height: auto;
     width: 280px;
@@ -55,12 +55,12 @@
 }
 .btns:hover {
 	background: #ffffff;
-	color: #9D009D;
-    border: 2px solid #9D009D;
+	color: #ca006c;
+    border: 2px solid #ca006c;
 }
 .btnstd {
 	border: 2px solid #ffffff;
-    background: #9D009D;
+    background: #ca006c;
   	color: #ffffff;
     height: auto;
     width: 125px;
@@ -68,8 +68,8 @@
 }
 .btnstd:hover {
 	background: #ffffff;
-	color: #9D009D;
-    border: 2px solid #9D009D;
+	color: #ca006c;
+    border: 2px solid #ca006c;
 }
 
 /*style for table header*/

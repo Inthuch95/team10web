@@ -41,6 +41,7 @@
             getBuildingAjax();
             initRoomDialog();
             initAddRoomDialog();
+            initWeekDialog()
             //start datepicker
             $("#from1").datepicker({
                 defaultDate: "+1w",
@@ -736,7 +737,7 @@
                             $(id).append("<td>" + requestData[i].day + "</td>");
                             $(id).append("<td>" + requestData[i].period + "</td>");
                             $(id).append("<td>" + requestData[i].duration + "</td>");
-                            $(id).append("<td>" + "Weeks" + "</td>");
+                            $(id).append("<td>" + "<button type='button' onclick='showWeekDialog(this)' class='btns'>show</button>" + "</td>");
                             $(id).append("<td>" + requestData[i].semester + "</td>");
                             $(id).append("<td>" + requestData[i].session + "</td>");
                             $(id).append("<td><input id='allocate-" + requestData[i].request_id + "' type='button' class='btns' value='Allocate' onclick='allocateAjax(this)' /><br/>" + "<input id='reject-" + requestData[i].request_id + "' type='button' class='btns' value='Reject' onclick='rejectAjax(this)' /></td>");
@@ -915,6 +916,29 @@
                     console.log(response);
                 }
             });
+        }
+        function showWeekDialog(el) {
+            var id = el.parentNode.parentNode.cells[0].textContent;
+            var request_id = parseInt(id);
+            $("#dialog-week").empty();
+            for (var i = 0; i < requestData.length; i++) {
+                if (requestData[i].request_id == request_id) {
+                    $("#dialog-week").append(requestData[i].week);
+                    console.log(requestData[i].week);
+                }
+            }
+
+            $("#dialog-week").dialog("open");
+        }
+        function initWeekDialog() {
+            $("#dialog-week").dialog({
+                position: {
+                    my: "center",
+                    at: "center",
+                    of: window
+                }
+            });
+            $("#dialog-week").dialog("close");
         }
     </script>
    
@@ -1228,5 +1252,7 @@
              </div>
           </div>
         </div> 
+    <div id="dialog-week">
+    </div>
 
 </asp:Content>
