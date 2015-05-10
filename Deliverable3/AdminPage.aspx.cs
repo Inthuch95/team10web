@@ -264,7 +264,7 @@ namespace Team11
         public static List<REQUESTS> getRequest()
         {
             List<REQUESTS> requestData = new List<REQUESTS> { };
-            string query = "SELECT * FROM REQUESTS";
+            string query = "SELECT DISTINCT [week] = replace((SELECT DISTINCT week AS [data()] FROM [WEEKS] FOR xml path('')), ' ', ', '), [REQUESTS].[request_id], [REQUESTS].[module], [REQUESTS].[room_code], [REQUESTS].[capacity], [REQUESTS].[wheelchair], [REQUESTS].[projector], [REQUESTS].[visualiser], [REQUESTS].[whiteboard], [REQUESTS].[computer], [REQUESTS].[lecture_capture], [REQUESTS].[pa_system], [REQUESTS].[radio_microphone], [REQUESTS].[video_dvd], [REQUESTS].[arrangement], [REQUESTS].[special_req], [REQUESTS].[priority], [REQUESTS].[day], [REQUESTS].[period], [REQUESTS].[duration], [REQUESTS].[status], [REQUESTS].[park], [REQUESTS].[semester], [REQUESTS].[year], [REQUESTS].[lecturer], [REQUESTS].[dept_code], [REQUESTS].[session] FROM [REQUESTS], [WEEKS] WHERE [REQUESTS].[request_id] = [WEEKS].[request_id]";
             SqlCommand cmd = new SqlCommand(query);
             DataSet ds = GetData(cmd);
             DataTable dt = ds.Tables[0];
@@ -298,6 +298,7 @@ namespace Team11
                 request.lecturer = item["lecturer"].ToString();
                 request.dept_code = item["dept_code"].ToString();
                 request.session = item["session"].ToString();
+                request.week = item["week"].ToString();
                 //add request object to list
                 requestData.Add(request);
             }

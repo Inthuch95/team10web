@@ -14,6 +14,7 @@
          getModuleAjax();
          getRoomAjax();
          getBuildingAjax();
+         initWeekDialog();
          
          //capacity slider
          $("#slider-capacity").slider({
@@ -477,7 +478,7 @@
                             + "</td>" + "<td>" + requestData[i].capacity + "</td>" + "<td>" + " <button type='button' class='btns' onclick='showFacilityDialog(this)'>show</button> " + "</td>"
                             + "<td>" + "<button type='button' class='btns' onclick='showSpecialDialog(this)'>show</button>" + "</td>" + "<td>" + requestData[i].priority + "</td>"
                             + "<td>" + requestData[i].day + "</td>" + "<td>" + requestData[i].period + "</td>" + "<td>" + requestData[i].duration + "</td>"
-                            + "<td>" + "<button type='button' class='btns'>show</button>" + "</td>");
+                            + "<td>" + "<button type='button' onclick='showWeekDialog(this)' class='btns'>show</button>" + "</td>");
                         if (requestData[i].status == "Pending" || requestData[i].status == "Booked") {
                             $("#" + requestData[i].request_id).append("<td>" + "<button type='button' onclick='showEditDialog(this)' class='btns'>Edit</button><br /><button type='button' onclick='deleteRequestAjax(this)' class='btns'>Delete</button>"
                             + "</td>");
@@ -531,6 +532,16 @@
          });
          $("#dialog-special").dialog("close");
      }
+     function initWeekDialog() {
+         $("#dialog-week").dialog({
+             position: {
+                 my: "center",
+                 at: "center",
+                 of: window
+             }
+         });
+         $("#dialog-week").dialog("close");
+     }
      function initRequestDialog() {
          $("#dialog-request").dialog({
              height: 500,
@@ -554,6 +565,19 @@
          }
 
          $("#dialog-special").dialog("open");
+     }
+     function showWeekDialog(el) {
+         var id = el.parentNode.parentNode.cells[0].textContent;
+         var request_id = parseInt(id);
+         $("#dialog-week").empty();
+         for (var i = 0; i < requestData.length; i++) {
+             if (requestData[i].request_id == request_id) {
+                 $("#dialog-week").append(requestData[i].week);
+                 console.log(requestData[i].week);
+             }
+         }
+
+         $("#dialog-week").dialog("open");
      }
      function showFacilityDialog(el) {
          $("#facility_list").empty();
@@ -946,6 +970,8 @@
     </div>
     <div id="dialog-special" >
         <p id="special_req"></p>
+    </div>
+    <div id="dialog-week">
     </div>
     <%--edit request form - become visible when clicking edit--%>
     <div id="dialog-request" title="Edit Request">

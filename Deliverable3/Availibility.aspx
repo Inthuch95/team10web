@@ -36,11 +36,11 @@
                  step: 1,
                  slide: function (event, ui) {
                      $("#capacity2").val(ui.value);
-                     changeRoom2();
+                     //changeRoom2();
                  }
              });
              //put the slider value into text box with id 'capacity'
-             $("#capacity2").val($("#slider-capacity").slider("value"));
+             $("#capacity2").val($("#slider-capacity2").slider("value"));
              //start selectable
              //room preference 1
              $("#selectable-session").selectable({
