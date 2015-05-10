@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Timetable.aspx.cs" Inherits="Team11.Timetable" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaffTimetable.aspx.cs" Inherits="Team11.StaffTimetable" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link rel="Stylesheet" type="text/css" href="Styles/ViewRequestGrid.css"/>  
     <script type="text/javascript">
@@ -357,7 +357,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 <div class="tabs">
-    <a href="StaffTimetable.aspx">Change View</a>
+    <a href="Timetable.aspx">Change View</a>
 
     <br />
 
@@ -366,7 +366,6 @@
     <br />
 
     <button type="button" onclick="decreaseWeek()">-</button><input id="current_week" type="text" name="current_week" disabled /><button type="button" onclick="increaseWeek()">+</button>
-    
 
     <div class="tab-content">
         <div id="rejected" class="tab active">
