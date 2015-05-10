@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateRequest.aspx.cs" Inherits="Team11.CreateRequest" MaintainScrollPositionOnPostback = "true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateRequest.aspx.cs" Inherits="Team11.CreateRequest" MaintainScrollPositionOnPostback="true" %>
 
 <%-- Create Request Header Content --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -7,6 +7,7 @@
     <script type="text/javascript" language="javascript">
         var roomData;
         var buildingData;
+        var currentDept;
         //selectable 1
         var selectedWhiteboard = false;
         var selectedComputer = false;
@@ -72,811 +73,812 @@
             //room list also change everytime facility option change
             //start selectable
             //room preference 1
-           $("#selectable-session").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-session li").index(this);
-                       switch(index) {
-                           case 0:
-                               $("#session").val("Lecture");
-                               break;
-                           case 1:
-                               $("#session").val("Practical");
-                               break;
-                           case 2:
-                               $("#session").val("Seminar");
-                               break;
-                           case 3:
-                               $("#session").val("Tutorial");
-                               break;
-                       } 
-                   });
-               }
-           });
-           $("#selectable-arrangement").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-arrangement li").index(this);
-                       switch (index) {
-                           case 0:
-                               $("#arrangement").val("Any");
-                               break;
-                           case 1:
-                               $("#arrangement").val("Tired");
-                               break;
-                           case 2:
-                               $("#arrangement").val("Flat");
-                               break;
-                       }
-                       changeRoom();
-                   });
-               }
-           });
-           $("#selectable-wheelchair").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWheelchair == false)
-                   selectedWheelchair = true;
-               else
-                   selectedWheelchair = false;
-               if (selectedWheelchair)
-                   $("#wheelchair").val("1");
-               else
-                   $("#wheelchair").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-whiteboard").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWhiteboard == false)
-                   selectedWhiteboard = true;
-               else
-                   selectedWhiteboard = false;
-               if (selectedWhiteboard)
-                   $("#whiteboard").val("1");
-               else
-                   $("#whiteboard").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-projector").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedProjector == false)
-                   selectedProjector = true;
-               else
-                   selectedProjector = false;
-               if (selectedProjector)
-                   $("#projector").val("1");
-               else
-                   $("#projector").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-visualiser").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVisualiser == false)
-                   selectedVisualiser = true;
-               else
-                   selectedVisualiser = false;
-               if (selectedVisualiser)
-                   $("#visualiser").val("1");
-               else
-                   $("#visualiser").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-computer").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedComputer == false)
-                   selectedComputer = true;
-               else
-                   selectedComputer = false;
-               if (selectedComputer)
-                   $("#computer").val("1");
-               else
-                   $("#computer").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-video").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVideo == false)
-                   selectedVideo = true;
-               else
-                   selectedVideo = false;
-               if (selectedVideo)
-                   $("#video").val("1");
-               else
-                   $("#video").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-pa").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedPa == false)
-                   selectedPa = true;
-               else
-                   selectedPa = false;
-               if (selectedPa)
-                   $("#pa").val("1");
-               else
-                   $("#pa").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-mic").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedMic == false)
-                   selectedMic = true;
-               else
-                   selectedMic = false;
-               if (selectedMic)
-                   $("#mic").val("1");
-               else
-                   $("#mic").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-capture").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedCap == false)
-                   selectedCap = true;
-               else
-                   selectedCap = false;
-               if (selectedCap)
-                   $("#capture").val("1");
-               else
-                   $("#capture").val("0");
-               changeRoom();
-           }).selectable();
+            $("#selectable-session").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-session li").index(this);
+                        switch(index) {
+                            case 0:
+                                $("#session").val("Lecture");
+                                break;
+                            case 1:
+                                $("#session").val("Practical");
+                                break;
+                            case 2:
+                                $("#session").val("Seminar");
+                                break;
+                            case 3:
+                                $("#session").val("Tutorial");
+                                break;
+                        } 
+                    });
+                }
+            });
+            $("#selectable-arrangement").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-arrangement li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#arrangement").val("Any");
+                                break;
+                            case 1:
+                                $("#arrangement").val("Tired");
+                                break;
+                            case 2:
+                                $("#arrangement").val("Flat");
+                                break;
+                        }
+                        changeRoom();
+                    });
+                }
+            });
+            $("#selectable-wheelchair").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWheelchair == false)
+                    selectedWheelchair = true;
+                else
+                    selectedWheelchair = false;
+                if (selectedWheelchair)
+                    $("#wheelchair").val("1");
+                else
+                    $("#wheelchair").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-whiteboard").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWhiteboard == false)
+                    selectedWhiteboard = true;
+                else
+                    selectedWhiteboard = false;
+                if (selectedWhiteboard)
+                    $("#whiteboard").val("1");
+                else
+                    $("#whiteboard").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-projector").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedProjector == false)
+                    selectedProjector = true;
+                else
+                    selectedProjector = false;
+                if (selectedProjector)
+                    $("#projector").val("1");
+                else
+                    $("#projector").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-visualiser").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVisualiser == false)
+                    selectedVisualiser = true;
+                else
+                    selectedVisualiser = false;
+                if (selectedVisualiser)
+                    $("#visualiser").val("1");
+                else
+                    $("#visualiser").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-computer").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedComputer == false)
+                    selectedComputer = true;
+                else
+                    selectedComputer = false;
+                if (selectedComputer)
+                    $("#computer").val("1");
+                else
+                    $("#computer").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-video").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVideo == false)
+                    selectedVideo = true;
+                else
+                    selectedVideo = false;
+                if (selectedVideo)
+                    $("#video").val("1");
+                else
+                    $("#video").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-pa").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedPa == false)
+                    selectedPa = true;
+                else
+                    selectedPa = false;
+                if (selectedPa)
+                    $("#pa").val("1");
+                else
+                    $("#pa").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-mic").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedMic == false)
+                    selectedMic = true;
+                else
+                    selectedMic = false;
+                if (selectedMic)
+                    $("#mic").val("1");
+                else
+                    $("#mic").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-capture").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedCap == false)
+                    selectedCap = true;
+                else
+                    selectedCap = false;
+                if (selectedCap)
+                    $("#capture").val("1");
+                else
+                    $("#capture").val("0");
+                changeRoom();
+            }).selectable();
             //room preference 2
-           $("#selectable-arrangement2").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-arrangement2 li").index(this);
-                       switch (index) {
-                           case 0:
-                               $("#arrangement2").val("Any");
-                               break;
-                           case 1:
-                               $("#arrangement2").val("Tired");
-                               break;
-                           case 2:
-                               $("#arrangement2").val("Flat");
-                               break;
-                       }
-                       changeRoom();
-                   });
-               }
-           });
-           $("#selectable-wheelchair2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWheelchair2 == false)
-                   selectedWheelchair2 = true;
-               else
-                   selectedWheelchair2 = false;
-               if (selectedWheelchair2)
-                   $("#wheelchair2").val("1");
-               else
-                   $("#wheelchair2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-whiteboard2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWhiteboard2 == false)
-                   selectedWhiteboard2 = true;
-               else
-                   selectedWhiteboard2 = false;
-               if (selectedWhiteboard2)
-                   $("#whiteboard2").val("1");
-               else
-                   $("#whiteboard2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-projector2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedProjector2 == false)
-                   selectedProjector2 = true;
-               else
-                   selectedProjector2 = false;
-               if (selectedProjector2)
-                   $("#projector2").val("1");
-               else
-                   $("#projector2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-visualiser2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVisualiser2 == false)
-                   selectedVisualiser2 = true;
-               else
-                   selectedVisualiser2 = false;
-               if (selectedVisualiser2)
-                   $("#visualiser2").val("1");
-               else
-                   $("#visualiser2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-computer2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedComputer2 == false)
-                   selectedComputer2 = true;
-               else
-                   selectedComputer2 = false;
-               if (selectedComputer2)
-                   $("#computer2").val("1");
-               else
-                   $("#computer2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-video2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVideo2 == false)
-                   selectedVideo2 = true;
-               else
-                   selectedVideo2 = false;
-               if (selectedVideo2)
-                   $("#video2").val("1");
-               else
-                   $("#video2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-pa2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedPa2 == false)
-                   selectedPa2 = true;
-               else
-                   selectedPa2 = false;
-               if (selectedPa2)
-                   $("#pa2").val("1");
-               else
-                   $("#pa2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-mic2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedMic2 == false)
-                   selectedMic2 = true;
-               else
-                   selectedMic2 = false;
-               if (selectedMic2)
-                   $("#mic2").val("1");
-               else
-                   $("#mic2").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-capture2").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedCap2 == false)
-                   selectedCap2 = true;
-               else
-                   selectedCap2 = false;
-               if (selectedCap2)
-                   $("#capture2").val("1");
-               else
-                   $("#capture2").val("0");
-               changeRoom();
-           }).selectable();
+            $("#selectable-arrangement2").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-arrangement2 li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#arrangement2").val("Any");
+                                break;
+                            case 1:
+                                $("#arrangement2").val("Tired");
+                                break;
+                            case 2:
+                                $("#arrangement2").val("Flat");
+                                break;
+                        }
+                        changeRoom();
+                    });
+                }
+            });
+            $("#selectable-wheelchair2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWheelchair2 == false)
+                    selectedWheelchair2 = true;
+                else
+                    selectedWheelchair2 = false;
+                if (selectedWheelchair2)
+                    $("#wheelchair2").val("1");
+                else
+                    $("#wheelchair2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-whiteboard2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWhiteboard2 == false)
+                    selectedWhiteboard2 = true;
+                else
+                    selectedWhiteboard2 = false;
+                if (selectedWhiteboard2)
+                    $("#whiteboard2").val("1");
+                else
+                    $("#whiteboard2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-projector2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedProjector2 == false)
+                    selectedProjector2 = true;
+                else
+                    selectedProjector2 = false;
+                if (selectedProjector2)
+                    $("#projector2").val("1");
+                else
+                    $("#projector2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-visualiser2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVisualiser2 == false)
+                    selectedVisualiser2 = true;
+                else
+                    selectedVisualiser2 = false;
+                if (selectedVisualiser2)
+                    $("#visualiser2").val("1");
+                else
+                    $("#visualiser2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-computer2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedComputer2 == false)
+                    selectedComputer2 = true;
+                else
+                    selectedComputer2 = false;
+                if (selectedComputer2)
+                    $("#computer2").val("1");
+                else
+                    $("#computer2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-video2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVideo2 == false)
+                    selectedVideo2 = true;
+                else
+                    selectedVideo2 = false;
+                if (selectedVideo2)
+                    $("#video2").val("1");
+                else
+                    $("#video2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-pa2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedPa2 == false)
+                    selectedPa2 = true;
+                else
+                    selectedPa2 = false;
+                if (selectedPa2)
+                    $("#pa2").val("1");
+                else
+                    $("#pa2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-mic2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedMic2 == false)
+                    selectedMic2 = true;
+                else
+                    selectedMic2 = false;
+                if (selectedMic2)
+                    $("#mic2").val("1");
+                else
+                    $("#mic2").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-capture2").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedCap2 == false)
+                    selectedCap2 = true;
+                else
+                    selectedCap2 = false;
+                if (selectedCap2)
+                    $("#capture2").val("1");
+                else
+                    $("#capture2").val("0");
+                changeRoom();
+            }).selectable();
             //room preference 3
-           $("#selectable-arrangement3").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-arrangement3 li").index(this);
-                       switch (index) {
-                           case 0:
-                               $("#arrangement3").val("Any");
-                               break;
-                           case 1:
-                               $("#arrangement3").val("Tired");
-                               break;
-                           case 2:
-                               $("#arrangement3").val("Flat");
-                               break;
-                       }
-                       changeRoom();
-                   });
-               }
-           });
-           $("#selectable-wheelchair3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWheelchair3 == false)
-                   selectedWheelchair3 = true;
-               else
-                   selectedWheelchair3 = false;
-               if (selectedWheelchair3)
-                   $("#wheelchair3").val("1");
-               else
-                   $("#wheelchair3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-whiteboard3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWhiteboard3 == false)
-                   selectedWhiteboard3 = true;
-               else
-                   selectedWhiteboard3 = false;
-               if (selectedWhiteboard3)
-                   $("#whiteboard3").val("1");
-               else
-                   $("#whiteboard3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-projector3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedProjector3 == false)
-                   selectedProjector3 = true;
-               else
-                   selectedProjector3 = false;
-               if (selectedProjector3)
-                   $("#projector3").val("1");
-               else
-                   $("#projector3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-visualiser3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVisualiser3 == false)
-                   selectedVisualiser3 = true;
-               else
-                   selectedVisualiser3 = false;
-               if (selectedVisualiser3)
-                   $("#visualiser3").val("1");
-               else
-                   $("#visualiser3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-computer3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedComputer3 == false)
-                   selectedComputer3 = true;
-               else
-                   selectedComputer3 = false;
-               if (selectedComputer3)
-                   $("#computer3").val("1");
-               else
-                   $("#computer3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-video3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVideo3 == false)
-                   selectedVideo3 = true;
-               else
-                   selectedVideo3 = false;
-               if (selectedVideo3)
-                   $("#video3").val("1");
-               else
-                   $("#video3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-pa3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedPa3 == false)
-                   selectedPa3 = true;
-               else
-                   selectedPa3 = false;
-               if (selectedPa3)
-                   $("#pa3").val("1");
-               else
-                   $("#pa3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-mic3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedMic3 == false)
-                   selectedMic3 = true;
-               else
-                   selectedMic3 = false;
-               if (selectedMic3)
-                   $("#mic3").val("1");
-               else
-                   $("#mic3").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-capture3").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedCap3 == false)
-                   selectedCap3 = true;
-               else
-                   selectedCap3 = false;
-               if (selectedCap3)
-                   $("#capture3").val("1");
-               else
-                   $("#capture3").val("0");
-               changeRoom();
-           }).selectable();
+            $("#selectable-arrangement3").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-arrangement3 li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#arrangement3").val("Any");
+                                break;
+                            case 1:
+                                $("#arrangement3").val("Tired");
+                                break;
+                            case 2:
+                                $("#arrangement3").val("Flat");
+                                break;
+                        }
+                        changeRoom();
+                    });
+                }
+            });
+            $("#selectable-wheelchair3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWheelchair3 == false)
+                    selectedWheelchair3 = true;
+                else
+                    selectedWheelchair3 = false;
+                if (selectedWheelchair3)
+                    $("#wheelchair3").val("1");
+                else
+                    $("#wheelchair3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-whiteboard3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWhiteboard3 == false)
+                    selectedWhiteboard3 = true;
+                else
+                    selectedWhiteboard3 = false;
+                if (selectedWhiteboard3)
+                    $("#whiteboard3").val("1");
+                else
+                    $("#whiteboard3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-projector3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedProjector3 == false)
+                    selectedProjector3 = true;
+                else
+                    selectedProjector3 = false;
+                if (selectedProjector3)
+                    $("#projector3").val("1");
+                else
+                    $("#projector3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-visualiser3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVisualiser3 == false)
+                    selectedVisualiser3 = true;
+                else
+                    selectedVisualiser3 = false;
+                if (selectedVisualiser3)
+                    $("#visualiser3").val("1");
+                else
+                    $("#visualiser3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-computer3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedComputer3 == false)
+                    selectedComputer3 = true;
+                else
+                    selectedComputer3 = false;
+                if (selectedComputer3)
+                    $("#computer3").val("1");
+                else
+                    $("#computer3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-video3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVideo3 == false)
+                    selectedVideo3 = true;
+                else
+                    selectedVideo3 = false;
+                if (selectedVideo3)
+                    $("#video3").val("1");
+                else
+                    $("#video3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-pa3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedPa3 == false)
+                    selectedPa3 = true;
+                else
+                    selectedPa3 = false;
+                if (selectedPa3)
+                    $("#pa3").val("1");
+                else
+                    $("#pa3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-mic3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedMic3 == false)
+                    selectedMic3 = true;
+                else
+                    selectedMic3 = false;
+                if (selectedMic3)
+                    $("#mic3").val("1");
+                else
+                    $("#mic3").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-capture3").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedCap3 == false)
+                    selectedCap3 = true;
+                else
+                    selectedCap3 = false;
+                if (selectedCap3)
+                    $("#capture3").val("1");
+                else
+                    $("#capture3").val("0");
+                changeRoom();
+            }).selectable();
             //room preference 4
-           $("#selectable-arrangement4").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-arrangement4 li").index(this);
-                       switch (index) {
-                           case 0:
-                               $("#arrangement4").val("Any");
-                               break;
-                           case 1:
-                               $("#arrangement4").val("Tired");
-                               break;
-                           case 2:
-                               $("#arrangement4").val("Flat");
-                               break;
-                       }
-                       changeRoom();
-                   });
-               }
-           });
-           $("#selectable-wheelchair4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWheelchair4 == false)
-                   selectedWheelchair4 = true;
-               else
-                   selectedWheelchair4 = false;
-               if (selectedWheelchair4)
-                   $("#wheelchair4").val("1");
-               else
-                   $("#wheelchair4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-whiteboard4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWhiteboard4 == false)
-                   selectedWhiteboard4 = true;
-               else
-                   selectedWhiteboard4 = false;
-               if (selectedWhiteboard4)
-                   $("#whiteboard4").val("1");
-               else
-                   $("#whiteboard4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-projector4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedProjector4 == false)
-                   selectedProjector4 = true;
-               else
-                   selectedProjector4 = false;
-               if (selectedProjector4)
-                   $("#projector4").val("1");
-               else
-                   $("#projector4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-visualiser4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVisualiser4 == false)
-                   selectedVisualiser4 = true;
-               else
-                   selectedVisualiser4 = false;
-               if (selectedVisualiser4)
-                   $("#visualiser4").val("1");
-               else
-                   $("#visualiser4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-computer4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedComputer4 == false)
-                   selectedComputer4 = true;
-               else
-                   selectedComputer4 = false;
-               if (selectedComputer4)
-                   $("#computer4").val("1");
-               else
-                   $("#computer4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-video4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVideo4 == false)
-                   selectedVideo4 = true;
-               else
-                   selectedVideo4 = false;
-               if (selectedVideo4)
-                   $("#video4").val("1");
-               else
-                   $("#video4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-pa4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedPa4 == false)
-                   selectedPa4 = true;
-               else
-                   selectedPa4 = false;
-               if (selectedPa4)
-                   $("#pa4").val("1");
-               else
-                   $("#pa4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-mic4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedMic4 == false)
-                   selectedMic4 = true;
-               else
-                   selectedMic4 = false;
-               if (selectedMic4)
-                   $("#mic4").val("1");
-               else
-                   $("#mic4").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-capture4").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedCap4 == false)
-                   selectedCap4 = true;
-               else
-                   selectedCap4 = false;
-               if (selectedCap4)
-                   $("#capture4").val("1");
-               else
-                   $("#capture4").val("0");
-               changeRoom();
-           }).selectable();
+            $("#selectable-arrangement4").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-arrangement4 li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#arrangement4").val("Any");
+                                break;
+                            case 1:
+                                $("#arrangement4").val("Tired");
+                                break;
+                            case 2:
+                                $("#arrangement4").val("Flat");
+                                break;
+                        }
+                        changeRoom();
+                    });
+                }
+            });
+            $("#selectable-wheelchair4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWheelchair4 == false)
+                    selectedWheelchair4 = true;
+                else
+                    selectedWheelchair4 = false;
+                if (selectedWheelchair4)
+                    $("#wheelchair4").val("1");
+                else
+                    $("#wheelchair4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-whiteboard4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWhiteboard4 == false)
+                    selectedWhiteboard4 = true;
+                else
+                    selectedWhiteboard4 = false;
+                if (selectedWhiteboard4)
+                    $("#whiteboard4").val("1");
+                else
+                    $("#whiteboard4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-projector4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedProjector4 == false)
+                    selectedProjector4 = true;
+                else
+                    selectedProjector4 = false;
+                if (selectedProjector4)
+                    $("#projector4").val("1");
+                else
+                    $("#projector4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-visualiser4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVisualiser4 == false)
+                    selectedVisualiser4 = true;
+                else
+                    selectedVisualiser4 = false;
+                if (selectedVisualiser4)
+                    $("#visualiser4").val("1");
+                else
+                    $("#visualiser4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-computer4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedComputer4 == false)
+                    selectedComputer4 = true;
+                else
+                    selectedComputer4 = false;
+                if (selectedComputer4)
+                    $("#computer4").val("1");
+                else
+                    $("#computer4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-video4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVideo4 == false)
+                    selectedVideo4 = true;
+                else
+                    selectedVideo4 = false;
+                if (selectedVideo4)
+                    $("#video4").val("1");
+                else
+                    $("#video4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-pa4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedPa4 == false)
+                    selectedPa4 = true;
+                else
+                    selectedPa4 = false;
+                if (selectedPa4)
+                    $("#pa4").val("1");
+                else
+                    $("#pa4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-mic4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedMic4 == false)
+                    selectedMic4 = true;
+                else
+                    selectedMic4 = false;
+                if (selectedMic4)
+                    $("#mic4").val("1");
+                else
+                    $("#mic4").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-capture4").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedCap4 == false)
+                    selectedCap4 = true;
+                else
+                    selectedCap4 = false;
+                if (selectedCap4)
+                    $("#capture4").val("1");
+                else
+                    $("#capture4").val("0");
+                changeRoom();
+            }).selectable();
             //room preference 5
-           $("#selectable-arrangement5").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-arrangement5 li").index(this);
-                       switch (index) {
-                           case 0:
-                               $("#arrangement5").val("Any");
-                               break;
-                           case 1:
-                               $("#arrangement5").val("Tired");
-                               break;
-                           case 2:
-                               $("#arrangement5").val("Flat");
-                               break;
-                       }
-                       changeRoom();
-                   });
-               }
-           });
-           $("#selectable-wheelchair5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWheelchair5 == false)
-                   selectedWheelchair5 = true;
-               else
-                   selectedWheelchair5 = false;
-               if (selectedWheelchair5)
-                   $("#wheelchair5").val("1");
-               else
-                   $("#wheelchair5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-whiteboard5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWhiteboard5 == false)
-                   selectedWhiteboard5 = true;
-               else
-                   selectedWhiteboard5 = false;
-               if (selectedWhiteboard5)
-                   $("#whiteboard5").val("1");
-               else
-                   $("#whiteboard5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-projector5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedProjector5 == false)
-                   selectedProjector5 = true;
-               else
-                   selectedProjector5 = false;
-               if (selectedProjector5)
-                   $("#projector5").val("1");
-               else
-                   $("#projector5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-visualiser5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVisualiser5 == false)
-                   selectedVisualiser5 = true;
-               else
-                   selectedVisualiser5 = false;
-               if (selectedVisualiser5)
-                   $("#visualiser5").val("1");
-               else
-                   $("#visualiser5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-computer5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedComputer5 == false)
-                   selectedComputer5 = true;
-               else
-                   selectedComputer5 = false;
-               if (selectedComputer5)
-                   $("#computer5").val("1");
-               else
-                   $("#computer5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-video5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVideo5 == false)
-                   selectedVideo5 = true;
-               else
-                   selectedVideo5 = false;
-               if (selectedVideo5)
-                   $("#video5").val("1");
-               else
-                   $("#video5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-pa5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedPa5 == false)
-                   selectedPa5 = true;
-               else
-                   selectedPa5 = false;
-               if (selectedPa5)
-                   $("#pa5").val("1");
-               else
-                   $("#pa5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-mic5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedMic5 == false)
-                   selectedMic5 = true;
-               else
-                   selectedMic5 = false;
-               if (selectedMic5)
-                   $("#mic5").val("1");
-               else
-                   $("#mic5").val("0");
-               changeRoom();
-           }).selectable();
-           $("#selectable-capture5").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedCap5 == false)
-                   selectedCap5 = true;
-               else
-                   selectedCap5 = false;
-               if (selectedCap5)
-                   $("#capture5").val("1");
-               else
-                   $("#capture5").val("0");
-               changeRoom();
-           }).selectable();
+            $("#selectable-arrangement5").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-arrangement5 li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#arrangement5").val("Any");
+                                break;
+                            case 1:
+                                $("#arrangement5").val("Tired");
+                                break;
+                            case 2:
+                                $("#arrangement5").val("Flat");
+                                break;
+                        }
+                        changeRoom();
+                    });
+                }
+            });
+            $("#selectable-wheelchair5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWheelchair5 == false)
+                    selectedWheelchair5 = true;
+                else
+                    selectedWheelchair5 = false;
+                if (selectedWheelchair5)
+                    $("#wheelchair5").val("1");
+                else
+                    $("#wheelchair5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-whiteboard5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedWhiteboard5 == false)
+                    selectedWhiteboard5 = true;
+                else
+                    selectedWhiteboard5 = false;
+                if (selectedWhiteboard5)
+                    $("#whiteboard5").val("1");
+                else
+                    $("#whiteboard5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-projector5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedProjector5 == false)
+                    selectedProjector5 = true;
+                else
+                    selectedProjector5 = false;
+                if (selectedProjector5)
+                    $("#projector5").val("1");
+                else
+                    $("#projector5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-visualiser5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVisualiser5 == false)
+                    selectedVisualiser5 = true;
+                else
+                    selectedVisualiser5 = false;
+                if (selectedVisualiser5)
+                    $("#visualiser5").val("1");
+                else
+                    $("#visualiser5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-computer5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedComputer5 == false)
+                    selectedComputer5 = true;
+                else
+                    selectedComputer5 = false;
+                if (selectedComputer5)
+                    $("#computer5").val("1");
+                else
+                    $("#computer5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-video5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedVideo5 == false)
+                    selectedVideo5 = true;
+                else
+                    selectedVideo5 = false;
+                if (selectedVideo5)
+                    $("#video5").val("1");
+                else
+                    $("#video5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-pa5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedPa5 == false)
+                    selectedPa5 = true;
+                else
+                    selectedPa5 = false;
+                if (selectedPa5)
+                    $("#pa5").val("1");
+                else
+                    $("#pa5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-mic5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedMic5 == false)
+                    selectedMic5 = true;
+                else
+                    selectedMic5 = false;
+                if (selectedMic5)
+                    $("#mic5").val("1");
+                else
+                    $("#mic5").val("0");
+                changeRoom();
+            }).selectable();
+            $("#selectable-capture5").bind("mousedown", function (e) {
+                e.metaKey = true;
+                if (selectedCap5 == false)
+                    selectedCap5 = true;
+                else
+                    selectedCap5 = false;
+                if (selectedCap5)
+                    $("#capture5").val("1");
+                else
+                    $("#capture5").val("0");
+                changeRoom();
+            }).selectable();
             //Private Room
-           $("#selectable-arrangementPr").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-arrangementPr li").index(this);
-                       switch (index) {
-                           case 0:
-                               $("#arrangementPr").val("Tiered");
-                               break;
-                           case 1:
-                               $("#arrangementPr").val("Flat");
-                               break;
-                       }
-                   });
-               }
-           });
+            $("#selectable-arrangementPr").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-arrangementPr li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#arrangementPr").val("Tiered");
+                                break;
+                            case 1:
+                                $("#arrangementPr").val("Flat");
+                                break;
+                        }
+                    });
+                }
+            });
             $("#selectable-wheelchairPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWheelchairPr == false)
-                   selectedWheelchairPr = true;
-               else
-                   selectedWheelchairPr = false;
-               if (selectedWheelchairPr)
-                   $("#wheelchairPr").val("1");
-               else
-                   $("#wheelchairPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedWheelchairPr == false)
+                    selectedWheelchairPr = true;
+                else
+                    selectedWheelchairPr = false;
+                if (selectedWheelchairPr)
+                    $("#wheelchairPr").val("1");
+                else
+                    $("#wheelchairPr").val("0");
+            }).selectable();
             $("#selectable-whiteboardPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedWhiteboardPr == false)
-                   selectedWhiteboardPr = true;
-               else
-                   selectedWhiteboardPr = false;
-               if (selectedWhiteboardPr)
-                   $("#whiteboardPr").val("1");
-               else
-                   $("#whiteboardPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedWhiteboardPr == false)
+                    selectedWhiteboardPr = true;
+                else
+                    selectedWhiteboardPr = false;
+                if (selectedWhiteboardPr)
+                    $("#whiteboardPr").val("1");
+                else
+                    $("#whiteboardPr").val("0");
+            }).selectable();
             $("#selectable-projectorPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedProjectorPr == false)
-                   selectedProjectorPr = true;
-               else
-                   selectedProjectorPr = false;
-               if (selectedProjectorPr)
-                   $("#projectorPr").val("1");
-               else
-                   $("#projectorPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedProjectorPr == false)
+                    selectedProjectorPr = true;
+                else
+                    selectedProjectorPr = false;
+                if (selectedProjectorPr)
+                    $("#projectorPr").val("1");
+                else
+                    $("#projectorPr").val("0");
+            }).selectable();
             $("#selectable-visualiserPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVisualiserPr == false)
-                   selectedVisualiserPr = true;
-               else
-                   selectedVisualiserPr = false;
-               if (selectedVisualiserPr)
-                   $("#visualiserPr").val("1");
-               else
-                   $("#visualiserPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedVisualiserPr == false)
+                    selectedVisualiserPr = true;
+                else
+                    selectedVisualiserPr = false;
+                if (selectedVisualiserPr)
+                    $("#visualiserPr").val("1");
+                else
+                    $("#visualiserPr").val("0");
+            }).selectable();
             $("#selectable-computerPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedComputerPr == false)
-                   selectedComputerPr = true;
-               else
-                   selectedComputerPr = false;
-               if (selectedComputerPr)
-                   $("#computerPr").val("1");
-               else
-                   $("#computerPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedComputerPr == false)
+                    selectedComputerPr = true;
+                else
+                    selectedComputerPr = false;
+                if (selectedComputerPr)
+                    $("#computerPr").val("1");
+                else
+                    $("#computerPr").val("0");
+            }).selectable();
             $("#selectable-videoPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedVideoPr == false)
-                   selectedVideoPr = true;
-               else
-                   selectedVideoPr = false;
-               if (selectedVideoPr)
-                   $("#videoPr").val("1");
-               else
-                   $("#videoPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedVideoPr == false)
+                    selectedVideoPr = true;
+                else
+                    selectedVideoPr = false;
+                if (selectedVideoPr)
+                    $("#videoPr").val("1");
+                else
+                    $("#videoPr").val("0");
+            }).selectable();
             $("#selectable-paPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedPaPr == false)
-                   selectedPaPr = true;
-               else
-                   selectedPaPr = false;
-               if (selectedPaPr)
-                   $("#paPr").val("1");
-               else
-                   $("#paPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedPaPr == false)
+                    selectedPaPr = true;
+                else
+                    selectedPaPr = false;
+                if (selectedPaPr)
+                    $("#paPr").val("1");
+                else
+                    $("#paPr").val("0");
+            }).selectable();
             $("#selectable-micPr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedMicPr == false)
-                   selectedMicPr = true;
-               else
-                   selectedMicPr = false;
-               if (selectedMicPr)
-                   $("#micPr").val("1");
-               else
-                   $("#micPr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedMicPr == false)
+                    selectedMicPr = true;
+                else
+                    selectedMicPr = false;
+                if (selectedMicPr)
+                    $("#micPr").val("1");
+                else
+                    $("#micPr").val("0");
+            }).selectable();
             $("#selectable-capturePr").bind("mousedown", function (e) {
-               e.metaKey = true;
-               if (selectedCapPr == false)
-                   selectedCapPr = true;
-               else
-                   selectedCapPr = false;
-               if (selectedCapPr)
-                   $("#capturePr").val("1");
-               else
-                   $("#capturePr").val("0");
-           }).selectable();
+                e.metaKey = true;
+                if (selectedCapPr == false)
+                    selectedCapPr = true;
+                else
+                    selectedCapPr = false;
+                if (selectedCapPr)
+                    $("#capturePr").val("1");
+                else
+                    $("#capturePr").val("0");
+            }).selectable();
 
-           $("#selectable-day").selectable({
-               stop: function () {
-                   $(".ui-selected", this).each(function () {
-                       var index = $("#selectable-day li").index(this);
-                       switch (index) {
-                           case 0:
-                               $("#day").val("Monday");
-                               break;
-                           case 1:
-                               $("#day").val("Tuesday");
-                               break;
-                           case 2:
-                               $("#day").val("Wednesday");
-                               break;
-                           case 3:
-                               $("#day").val("Thursday");
-                               break;
-                           case 4:
-                               $("#day").val("Friday");
-                               break;
-                       }
-                   });
-               }
-           });
+            $("#selectable-day").selectable({
+                stop: function () {
+                    $(".ui-selected", this).each(function () {
+                        var index = $("#selectable-day li").index(this);
+                        switch (index) {
+                            case 0:
+                                $("#day").val("Monday");
+                                break;
+                            case 1:
+                                $("#day").val("Tuesday");
+                                break;
+                            case 2:
+                                $("#day").val("Wednesday");
+                                break;
+                            case 3:
+                                $("#day").val("Thursday");
+                                break;
+                            case 4:
+                                $("#day").val("Friday");
+                                break;
+                        }
+                    });
+                }
+            });
             //end selectable
             getDeptCode();
             getModuleAjax();
             getRoomAjax();
             getBuildingAjax();
+            getBuildingAjaxPr();
             loadDuration();
             loadPeriod();
             init_module_dialog();
@@ -1023,11 +1025,10 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    var result = data.d;
-                    for (var i = 0; i < result.length; i++) {
-                        $("#dept").val(result[0]);
-                        $("#mod_dept").val(result[1]);
-                    }
+                    currentDept = data.d;
+                    console.log(currentDept);
+                    $("#dept").val(currentDept[0]);
+                    $("#mod_dept").val(currentDept[1]);
                 },
                 error: function (response) {
                     console.log(response);
@@ -1439,7 +1440,7 @@
                 (video == 0 || roomData[i].video_dvd == 1) &&
                 (roomData[i].capacity >= capacity) &&
                 (room_arr1 == "any" || room_arr1 == 1) &&
-                (building == "any" || building == roomData[i].building_code)) {
+                (building == "any" || building == roomData[i].building_code) && roomData[i].dept == "pool") {
                     $("#room1").append("<option>" + roomData[i].room_code + "</option>");
                 }
 
@@ -1469,8 +1470,8 @@
                     (room_arr2 == "any" || room_arr2 == 1) &&
                     (building2 == "any" || building2 == roomData[i].building_code)) {
                         $("#room2").append("<option>" + roomData[i].room_code + "</option>");
+                    }
                 }
-            }
                 //room preference 3
                 //only apply this if number of rooms is 3
                 //check room arrangement selection
@@ -1567,7 +1568,7 @@
         function loadRoomDialog() {
             $("#dialog-pool").dialog({
                 height: 500,
-                width: 700,
+                width: 900,
                 position: {
                     my: "center",
                     at: "center",
@@ -1579,7 +1580,7 @@
         function showPoolDialog() {
             $("#dialog-pool").dialog("open");
         }
-        function getBuildingAjax() {
+        function getBuildingAjaxPr() {
             $.ajax(
             {
                 type: "POST",
@@ -1668,9 +1669,136 @@
             else
                 return false;
         }
+
+        function checkRadio() {
+
+            if (document.getElementById('roomsAll').checked) {
+                rate_value = document.getElementById('roomsAll').value;
+
+                $("#room1").empty();
+                changePark();
+                changeRoom();
+            }
+            if (document.getElementById('roomsPriv').checked) {
+                rate_value = document.getElementById('roomsPriv').value;
+
+                //code to insert private rooms into rooms select
+                $("#room1").empty();
+                $("#room1").append("<option>Any</option>");
+                for (var i = 0; i < roomData.length; i++) {
+                    if (currentDept[1] == roomData[i].dept) {
+                        $("#room1").append("<option>" + roomData[i].room_code + "</option>");
+                    }
+                }
+                $("#building1").empty();
+                $("#building1").append("<option>Any</option>");
+            }
+
+        }
+        function checkRadio2() {
+
+            if (document.getElementById('roomsAll2').checked) {
+                rate_value = document.getElementById('roomsAll2').value;
+
+                $("#room2").empty();
+                changePark();
+                changeRoom();
+            }
+            if (document.getElementById('roomsPriv2').checked) {
+                rate_value = document.getElementById('roomsPriv2').value;
+
+                //code to insert private rooms into rooms select
+                $("#room2").empty();
+                $("#room2").append("<option>Any</option>");
+                for (var i = 0; i < roomData.length; i++) {
+                    if (currentDept[1] == roomData[i].dept) {
+                        $("#room2").append("<option>" + roomData[i].room_code + "</option>");
+                    }
+                }
+                $("#building2").empty();
+                $("#building2").append("<option>Any</option>");
+            }
+
+        }
+        function checkRadio3() {
+
+            if (document.getElementById('roomsAll').checked) {
+                rate_value = document.getElementById('roomsAll').value;
+
+                $("#room3").empty();
+                changePark();
+                changeRoom();
+            }
+            if (document.getElementById('roomsPriv').checked) {
+                rate_value = document.getElementById('roomsPriv').value;
+
+                //code to insert private rooms into rooms select
+                $("#room3").empty();
+                $("#room3").append("<option>Any</option>");
+                for (var i = 0; i < roomData.length; i++) {
+                    if (currentDept[1] == roomData[i].dept) {
+                        $("#room3").append("<option>" + roomData[i].room_code + "</option>");
+                    }
+                }
+                $("#building3").empty();
+                $("#building3").append("<option>Any</option>");
+            }
+
+        }
+        function checkRadio4() {
+
+            if (document.getElementById('roomsAll').checked) {
+                rate_value = document.getElementById('roomsAll').value;
+
+                $("#room4").empty();
+                changePark();
+                changeRoom();
+            }
+            if (document.getElementById('roomsPriv').checked) {
+                rate_value = document.getElementById('roomsPriv').value;
+
+                //code to insert private rooms into rooms select
+                $("#room4").empty();
+                $("#room4").append("<option>Any</option>");
+                for (var i = 0; i < roomData.length; i++) {
+                    if (currentDept[1] == roomData[i].dept) {
+                        $("#room4").append("<option>" + roomData[i].room_code + "</option>");
+                    }
+                }
+                $("#building4").empty();
+                $("#building4").append("<option>Any</option>");
+            }
+
+        }
+        function checkRadio5() {
+
+            if (document.getElementById('roomsAll').checked) {
+                rate_value = document.getElementById('roomsAll').value;
+
+                $("#room5").empty();
+                changePark();
+                changeRoom();
+            }
+            if (document.getElementById('roomsPriv').checked) {
+                rate_value = document.getElementById('roomsPriv').value;
+
+                //code to insert private rooms into rooms select
+                $("#room5").empty();
+                $("#room5").append("<option>Any</option>");
+                for (var i = 0; i < roomData.length; i++) {
+                    if (currentDept[1] == roomData[i].dept) {
+                        $("#room5").append("<option>" + roomData[i].room_code + "</option>");
+                    }
+                }
+                $("#building5").empty();
+                $("#building5").append("<option>Any</option>");
+            }
+
+        }
+
     </script>
 
-  
+
 </asp:Content>
 
 <%-- Page Title Content --%>
@@ -1681,29 +1809,28 @@
 <%-- MAIN BODY CONTENT --%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-      <div id="general_info">
+    <div id="general_info">
         <%-- General information --%>
-        <table class="inputs box_class" id="main_layout" >
+        <table class="inputs box_class" id="main_layout">
             <tr>
-                <td align="left" colspan="2" style="padding-left:5px; color:#CA006C;"  >Department</td>
+                <td align="left" colspan="2" style="padding-left: 5px; color: #CA006C;">Department</td>
                 <td align="left">Module</td>
             </tr>
             <tr>
                 <%-- Department --%>
-                <td align="left" colspan="2" style="padding-left:5px;">
-                    <input type="text" id="dept" name="dept" style="border:0;" readonly="readonly" />
+                <td align="left" colspan="2" style="padding-left: 5px;">
+                    <input type="text" id="dept" name="dept" style="border: 0;" readonly="readonly" />
                 </td>
                 <%-- Module --%>
                 <td align="left">
                     <select id="module" name="module">
-
                     </select><br />
                     <input type="button" id="add_mod" onclick="showModDialog()" value="Add New Module" />
                     <input type="button" id="add_room" onclick="showPoolDialog()" value="Add New Private Room" />
                 </td>
             </tr>
             <tr>
-                <td align="left" colspan="2" style="padding-left:5px;">Number of Rooms</td>
+                <td align="left" colspan="2" style="padding-left: 5px;">Number of Rooms</td>
                 <td align="left">Session Type</td>
             </tr>
             <tr>
@@ -1715,7 +1842,7 @@
                                 <div id="slider-rooms"></div>
                             </td>
                             <td>
-                                <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
+                                <input type="text" id="noRooms" name="noRooms" readonly="readonly" style="border: 0; color: #CA006C; font-weight: bold; text-align: center;" />
                             </td>
                         </tr>
                     </table>
@@ -1732,18 +1859,15 @@
                 </td>
             </tr>
             <tr>
-                <td align="left" style="padding-left:5px;">
-                    Priority
+                <td align="left" style="padding-left: 5px;">Priority
                 </td>
-                <td align="left">
-                    Park
+                <td align="left">Park
                 </td>
-                <td align="left">
-                    Lecturer
+                <td align="left">Lecturer
                 </td>
             </tr>
             <tr>
-                <td align="left" style="padding-left:5px;">
+                <td align="left" style="padding-left: 5px;">
                     <input type="text" readonly="readonly" value="P" />
                 </td>
                 <%-- Park --%>
@@ -1751,7 +1875,7 @@
                     <table>
                         <tr>
                             <td>
-                                
+
                                 <select id="park" name="park" onchange="changePark()">
                                     <option>Any</option>
                                     <option>Central</option>
@@ -1768,34 +1892,36 @@
             </tr>
         </table>
         <br />
-        <%--Room preference 1--%> 
-        <div id="room_pref1">    
+        <%--Room preference 1--%>
+        <div id="room_pref1">
             <table class="inputs box_class">
-                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 1</td></tr>
                 <tr>
-                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
+                    <td colspan="3" align="left" style="padding-left: 5px;">Room Preference 1</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="padding-left: 5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
-                    <%--Facility options 1--%> 
+                    <%--Facility options 1--%>
                     <td align="left" colspan="2">
                         <table>
                             <tr>
-                                <td style="padding-left:5px;">
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-computer">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
-                                    <input type="hidden" id="computer" name="computer" value="0"/>
+                                    <input type="hidden" id="computer" name="computer" value="0" />
                                 </td>
                                 <td>
-                                        <ol id="selectable-capture">
-                                            <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                        </ol>
-                                        <input type="hidden" id="capture" name="capture" value="0" />
+                                    <ol id="selectable-capture">
+                                        <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                    </ol>
+                                    <input type="hidden" id="capture" name="capture" value="0" />
                                 </td>
-                                </tr>
-                                <tr>
-                                <td style="padding-left:5px;">
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-pa">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
                                     </ol>
@@ -1807,9 +1933,9 @@
                                     </ol>
                                     <input type="hidden" id="projector" name="projector" value="0" />
                                 </td>
-                                </tr>
-                                <tr>
-                                <td style="padding-left:5px;">
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-mic">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
                                     </ol>
@@ -1823,7 +1949,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left:5px;">
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-visualiser">
                                         <li class="ui-state-default" style="width: 200px">Visualiser</li>
                                     </ol>
@@ -1837,7 +1963,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left:5px;">
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-wheelchair">
                                         <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
                                     </ol>
@@ -1845,89 +1971,92 @@
                                 </td>
                             </tr>
                         </table>
-                        </td>
-                        <td align="left">
-                            <ol id="selectable-arrangement">
-                                <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
-                                <li class="ui-state-default" style="width: 200px">Tiered</li>
-                                <li class="ui-state-default" style="width: 200px">Flat</li>
-                            </ol>
-                            <input type="hidden" id="arrangement" name="arrangement" value="Any" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left" colspan="3"  style="padding-left:5px;">
-                            Capacity
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" colspan="3">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div id="slider-capacity1"></div>
-                                    </td>
-                                    <td>
-                                        <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left" colspan="2"  style="padding-left:5px;">Building</td>
-                        <td align="left">Room</td>
-                    </tr>
-                    <tr>
-                        <td align="left" colspan="2" style="padding-left:5px;">
-                            <select id="building1" name="building1" onchange="changeRoom()">
-                                <option>Any</option>
-                            </select>
-                        </td>
-                        <td align="left">
-                            <select id="room1" name="room1"></select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
-                    </tr>
-                    <tr>
-                        <td align="left" colspan="3"  style="padding-left:5px;">
-                            <textarea style="width:835px;" id="specialReq1" cols="80" maxlength="1000"></textarea>
-                        </td>
-                    </tr>
-                </table>
-            <br />
-            </div> 
-          
-          <%--Room preference 2--%> 
-        <div id="room_pref2" style="display:none"> 
-            <table class="inputs box_class">
-                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 2</td></tr>
+                    </td>
+                    <td align="left">
+                        <ol id="selectable-arrangement">
+                            <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
+                            <li class="ui-state-default" style="width: 200px">Tiered</li>
+                            <li class="ui-state-default" style="width: 200px">Flat</li>
+                        </ol>
+                        <input type="hidden" id="arrangement" name="arrangement" value="Any" />
+                    </td>
+                </tr>
                 <tr>
-                    <td colspan="2" align="left"  style="padding-left:5px;">Facility</td>
+                    <td align="left" colspan="3" style="padding-left: 5px;">Capacity
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="3">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="slider-capacity1"></div>
+                                </td>
+                                <td>
+                                    <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="border: 0; color: #CA006C; font-weight: bold; text-align: center;" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms" value="all" id="roomsAll" checked onclick="checkRadio()">Pool Rooms</td>
+                    <td align="left" >Building</td>
+                    <td align="left">Room</td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms" value="private" id="roomsPriv" onclick="checkRadio()" />Private Rooms</td>
+                    <td align="left" >
+                        <select id="building1" name="building1" onchange="changeRoom()">
+                            <option>Any</option>
+                        </select>
+                    </td>
+                    <td align="left">
+                        <select id="room1" name="room1"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3" style="padding-left: 5px;">Additional requirement</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3" style="padding-left: 5px;">
+                        <textarea style="width: 835px;" id="specialReq1" cols="80" maxlength="1000"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <br />
+        </div>
+
+        <%--Room preference 2--%>
+        <div id="room_pref2" style="display: none">
+            <table class="inputs box_class">
+                <tr>
+                    <td colspan="3" align="left" style="padding-left: 5px;">Room Preference 2</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="padding-left: 5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
                     <td align="left" colspan="2">
                         <table>
                             <tr>
-                                <%--Facility options 2--%> 
-                                <td  style="padding-left:5px;">
+                                <%--Facility options 2--%>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-computer2">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
-                                    <input type="hidden" id="computer2" name="computer2" value="0"/>
+                                    <input type="hidden" id="computer2" name="computer2" value="0" />
                                 </td>
                                 <td>
-                                     <ol id="selectable-capture2">
-                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                     </ol>
-                                     <input type="hidden" id="capture2" name="capture2" value="0" />
+                                    <ol id="selectable-capture2">
+                                        <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                    </ol>
+                                    <input type="hidden" id="capture2" name="capture2" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
-                                <td style="padding-left:5px;">
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-pa2">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
                                     </ol>
@@ -1939,9 +2068,9 @@
                                     </ol>
                                     <input type="hidden" id="projector2" name="projector2" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
-                                <td style="padding-left:5px;">
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-mic2">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
                                     </ol>
@@ -1955,7 +2084,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left:5px;">
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-visualiser2">
                                         <li class="ui-state-default" style="width: 200px">Visualiser</li>
                                     </ol>
@@ -1969,7 +2098,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left:5px;">
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-wheelchair2">
                                         <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
                                     </ol>
@@ -1988,30 +2117,31 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        Capacity
+                    <td align="left" colspan="3" style="padding-left: 5px;">Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3" style="padding-left:5px;">
+                    <td align="center" colspan="3" style="padding-left: 5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity2"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border: 0; color: #CA006C; font-weight: bold; text-align: center;" />
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms2" value="all" id="roomsAll2" checked onclick="checkRadio2()">Pool Rooms</td>
+                    <td align="left" style="padding-left: 5px;">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms2" value="priv" id="roomsPriv2" onclick="checkRadio2()">Private Rooms</td>
+                    <td align="left" style="padding-left: 5px;">
                         <select id="building2" name="building2" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -2021,46 +2151,48 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left: 5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" id="specialReq2" cols="80" maxlength="1000"></textarea>
+                    <td align="left" colspan="3" style="padding-left: 5px;">
+                        <textarea style="width: 835px;" id="specialReq2" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
             <br />
         </div>
-          
-        <%--Room preference 3--%> 
-        <div id="room_pref3" style="display:none">
-           
+
+        <%--Room preference 3--%>
+        <div id="room_pref3" style="display: none">
+
             <table class="inputs box_class">
-                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 3</td></tr>
                 <tr>
-                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
+                    <td colspan="3" align="left" style="padding-left: 5px;">Room Preference 3</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="padding-left: 5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
                     <td align="left" colspan="2">
                         <table>
                             <tr>
-                                <%--Facility options 3--%> 
-                                <td style="padding-left:5px;">
+                                <%--Facility options 3--%>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-computer3">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
-                                    <input type="hidden" id="computer3" name="computer3" value="0"/>
+                                    <input type="hidden" id="computer3" name="computer3" value="0" />
                                 </td>
                                 <td>
-                                     <ol id="selectable-capture3">
-                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                     </ol>
-                                     <input type="hidden" id="capture3" name="capture3" value="0" />
+                                    <ol id="selectable-capture3">
+                                        <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                    </ol>
+                                    <input type="hidden" id="capture3" name="capture3" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
-                                <td style="padding-left:5px;">
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-pa3">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
                                     </ol>
@@ -2072,9 +2204,9 @@
                                     </ol>
                                     <input type="hidden" id="projector3" name="projector3" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
-                                <td style="padding-left:5px;">
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-mic3">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
                                     </ol>
@@ -2088,7 +2220,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left:5px;">
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-visualiser3">
                                         <li class="ui-state-default" style="width: 200px">Visualiser</li>
                                     </ol>
@@ -2102,7 +2234,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left:5px;">
+                                <td style="padding-left: 5px;">
                                     <ol id="selectable-wheelchair3">
                                         <li class="ui-state-default" style="width: 200px">Wheelchair Access</li>
                                     </ol>
@@ -2121,30 +2253,31 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        Capacity
+                    <td align="left" colspan="3" style="padding-left: 5px;">Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3" style="padding-left:5px;">
+                    <td align="center" colspan="3" style="padding-left: 5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity3"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity3" name="capacity3" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity3" name="capacity3" readonly="readonly" style="border: 0; color: #CA006C; font-weight: bold; text-align: center;" />
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms3" value="all" id="roomsAll3" checked onclick="checkRadio3()">Pool Rooms</td>
+                    <td align="left">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms3" value="all" id="roomsPriv3" onclick="checkRadio3()">Private Rooms</td>
+                    <td align="left">
                         <select id="building3" name="building3" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -2154,45 +2287,47 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left: 5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" id="specialReq3" cols="80" maxlength="1000"></textarea>
+                    <td align="left" colspan="3" style="padding-left: 5px;">
+                        <textarea style="width: 835px;" id="specialReq3" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
             <br />
         </div>
-          
-        <%--Room preference 4--%> 
-        <div id="room_pref4" style="display:none">
-             
+
+        <%--Room preference 4--%>
+        <div id="room_pref4" style="display: none">
+
             <table class="inputs box_class">
-                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 4</td></tr>
                 <tr>
-                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
+                    <td colspan="3" align="left" style="padding-left: 5px;">Room Preference 4</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="padding-left: 5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">
+                    <td align="left" colspan="2" style="padding-left: 5px;">
                         <table>
                             <tr>
-                                <%--Facility options 4--%> 
+                                <%--Facility options 4--%>
                                 <td>
                                     <ol id="selectable-computer4">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
-                                    <input type="hidden" id="computer4" name="computer4" value="0"/>
+                                    <input type="hidden" id="computer4" name="computer4" value="0" />
                                 </td>
                                 <td>
-                                     <ol id="selectable-capture4">
-                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                     </ol>
-                                     <input type="hidden" id="capture4" name="capture4" value="0" />
+                                    <ol id="selectable-capture4">
+                                        <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                    </ol>
+                                    <input type="hidden" id="capture4" name="capture4" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
+                            </tr>
+                            <tr>
                                 <td>
                                     <ol id="selectable-pa4">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
@@ -2205,8 +2340,8 @@
                                     </ol>
                                     <input type="hidden" id="projector4" name="projector4" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
+                            </tr>
+                            <tr>
                                 <td>
                                     <ol id="selectable-mic4">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
@@ -2254,30 +2389,31 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        Capacity
+                    <td align="left" colspan="3" style="padding-left: 5px;">Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3" style="padding-left:5px;">
+                    <td align="center" colspan="3" style="padding-left: 5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity4"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity4" name="capacity4" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity4" name="capacity4" readonly="readonly" style="border: 0; color: #CA006C; font-weight: bold; text-align: center;" />
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms4" value="all" id="roomsAll4" checked onclick="checkRadio4()">Pool Rooms</td>
+                    <td align="left">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms4" value="all" id="roomsPriv4" onclick="checkRadio4()">Private Rooms</td>
+                    <td align="left">
                         <select id="building4" name="building4" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -2287,45 +2423,47 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left: 5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" id="specialReq4" cols="80" maxlength="1000"></textarea>
+                    <td align="left" colspan="3" style="padding-left: 5px;">
+                        <textarea style="width: 835px;" id="specialReq4" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
             <br />
         </div>
-        
-        <%--Room preference 5--%> 
-        <div id="room_pref5" style="display:none">
-             
+
+        <%--Room preference 5--%>
+        <div id="room_pref5" style="display: none">
+
             <table class="inputs box_class">
-                <tr><td colspan="3" align="left" style="padding-left:5px;">Room Preference 5</td></tr>
                 <tr>
-                    <td colspan="2" align="left" style="padding-left:5px;">Facility</td>
+                    <td colspan="3" align="left" style="padding-left: 5px;">Room Preference 5</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="padding-left: 5px;">Facility</td>
                     <td align="left">Arrangement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">
+                    <td align="left" colspan="2" style="padding-left: 5px;">
                         <table>
                             <tr>
-                                <%--Facility options 5--%> 
+                                <%--Facility options 5--%>
                                 <td>
                                     <ol id="selectable-computer5">
                                         <li class="ui-state-default" style="width: 200px">Computer</li>
                                     </ol>
-                                    <input type="hidden" id="computer5" name="computer5" value="0"/>
+                                    <input type="hidden" id="computer5" name="computer5" value="0" />
                                 </td>
                                 <td>
-                                     <ol id="selectable-capture5">
-                                         <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                     </ol>
-                                     <input type="hidden" id="capture5" name="capture5" value="0" />
+                                    <ol id="selectable-capture5">
+                                        <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                                    </ol>
+                                    <input type="hidden" id="capture5" name="capture5" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
+                            </tr>
+                            <tr>
                                 <td>
                                     <ol id="selectable-pa5">
                                         <li class="ui-state-default" style="width: 200px">PA System</li>
@@ -2338,8 +2476,8 @@
                                     </ol>
                                     <input type="hidden" id="projector5" name="projector5" value="0" />
                                 </td>
-                             </tr>
-                             <tr>
+                            </tr>
+                            <tr>
                                 <td>
                                     <ol id="selectable-mic5">
                                         <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
@@ -2387,30 +2525,31 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        Capacity
+                    <td align="left" colspan="3" style="padding-left: 5px;">Capacity
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="3" style="padding-left:5px;">
+                    <td align="center" colspan="3" style="padding-left: 5px;">
                         <table>
                             <tr>
                                 <td>
                                     <div id="slider-capacity5"></div>
                                 </td>
                                 <td>
-                                    <input type="text" id="capacity5" name="capacity5" readonly="readonly" style="border:0; color:#CA006C; font-weight:bold; text-align:center;"/>
+                                    <input type="text" id="capacity5" name="capacity5" readonly="readonly" style="border: 0; color: #CA006C; font-weight: bold; text-align: center;" />
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">Building</td>
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms5" value="all" id="roomsAll5" onclick="checkRadio5()" checked>Pool Rooms</td>
+                    <td align="left">Building</td>
                     <td align="left">Room</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="2" style="padding-left:5px;">
+                    <td style="padding-left: 5px;"><input type="radio" name="rooms5" value="all" id="roomsPriv5" onclick="checkRadio5()">Private Rooms</td>
+                    <td align="left">
                         <select id="building5" name="building5" onchange="changeRoom()">
                             <option>Any</option>
                         </select>
@@ -2420,11 +2559,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">Additional requirement</td>
+                    <td align="left" colspan="3" style="padding-left: 5px;">Additional requirement</td>
                 </tr>
                 <tr>
-                    <td align="left" colspan="3" style="padding-left:5px;">
-                        <textarea style="width:835px;" id="specialReq5" cols="80" maxlength="1000"></textarea>
+                    <td align="left" colspan="3" style="padding-left: 5px;">
+                        <textarea style="width: 835px;" id="specialReq5" cols="80" maxlength="1000"></textarea>
                     </td>
                 </tr>
             </table>
@@ -2434,24 +2573,28 @@
         <div id="time">
             <table class="inputs box_bottom_class">
                 <tr>
-                    <td align="left" style="padding-left:5px;">Day</td>
+                    <td align="left" style="padding-left: 5px;">Day</td>
                     <td align="left">Semester</td>
                     <td align="left">Period</td>
                     <td align="left">Duration</td>
                 </tr>
                 <tr>
                     <%--Selectable - Day--%>
-                    <td align="left" style="padding-left:5px;" >
-                        <table><tr><td>
-                        <ol id="selectable-day">
-                            <li class="ui-state-default" style="width: 100px">Monday</li>
-                            <li class="ui-state-default" style="width: 100px">Tuesday</li>
-                            <li class="ui-state-default" style="width: 100px">Wednesday</li>
-                            <li class="ui-state-default" style="width: 100px">Thursday</li>
-                            <li class="ui-state-default" style="width: 100px">Friday</li>
-                        </ol>
-                        </td></tr></table>
-                        <input type="hidden" id="day" name="day" value=""/>
+                    <td align="left" style="padding-left: 5px;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <ol id="selectable-day">
+                                        <li class="ui-state-default" style="width: 100px">Monday</li>
+                                        <li class="ui-state-default" style="width: 100px">Tuesday</li>
+                                        <li class="ui-state-default" style="width: 100px">Wednesday</li>
+                                        <li class="ui-state-default" style="width: 100px">Thursday</li>
+                                        <li class="ui-state-default" style="width: 100px">Friday</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="hidden" id="day" name="day" value="" />
                     </td>
                     <%--Drop down for semester--%>
                     <td align="left">
@@ -2463,65 +2606,66 @@
                     <%--Drop down for period - content populate by function loadPeriod() when the page load--%>
                     <td align="left">
                         <select id="period" name="period" onchange="refillDuration()">
-
                         </select>
                     </td>
                     <%--Drop down for duration - content populate by function loadDuration() when the page load--%>
-                     <td align="left">
+                    <td align="left">
                         <select id="duration" name="duration">
-
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4" align="left" style="padding-left:200px;">Week</td>
+                    <td colspan="4" align="left" style="padding-left: 200px;">Week</td>
                 </tr>
                 <tr>
                     <td colspan="4" align="center">
-                        <input type="checkbox" name="weeks[]" id="week1" value="1" checked="checked" class="vis-hidden new-post-tags"/>
-						<label style="margin-left: 100px;" id="week" for="week1" class="week_label">  1  </label>
-						<input type="checkbox" name="weeks[]" id="week2" value="2" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week2" class="week_label">  2  </label>
-						<input type="checkbox" name="weeks[]" id="week3" value="3" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week3" class="week_label">  3  </label>
-						<input type="checkbox" name="weeks[]" id="week4" value="4" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week4" class="week_label">  4  </label>
-						<input type="checkbox" name="weeks[]" id="week5" value="5" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week5" class="week_label">  5  </label>
-						<input type="checkbox" name="weeks[]" id="week6" value="6" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week6" class="week_label">  6  </label>
-						<input type="checkbox" name="weeks[]" id="week7" value="7" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week7" class="week_label">  7  </label>
-						<input type="checkbox" name="weeks[]" id="week8" value="8" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week8" class="week_label">  8  </label>
-						<input type="checkbox" name="weeks[]" id="week9" value="9" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week9" class="week_label">  9  </label>
-						<input type="checkbox" name="weeks[]" id="week10" value="10" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week10" class="week_label"> 10 </label>
-						<input type="checkbox" name="weeks[]" id="week11" value="11" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week11" class="week_label"> 11 </label>
-						<input type="checkbox" name="weeks[]" id="week12" value="12" checked="checked" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week12" class="week_label"> 12 </label>
-						<input type="checkbox" name="weeks[]" id="week13" value="13" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week13" class="week_label"> 13 </label>
-						<input type="checkbox" name="weeks[]" id="week14" value="14" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week14" class="week_label"> 14 </label>
-						<input type="checkbox" name="weeks[]" id="week15" value="15" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week15" class="week_label"> 15 </label>
-						<input type="checkbox" name="weeks[]" id="week16" value="16" class="vis-hidden new-post-tags"/>
-						<label id="week" for="week16" class="week_label"> 16 </label>
+                        <input type="checkbox" name="weeks[]" id="week1" value="1" checked="checked" class="vis-hidden new-post-tags" />
+                        <label style="margin-left: 100px;" id="week" for="week1" class="week_label">1  </label>
+                        <input type="checkbox" name="weeks[]" id="week2" value="2" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week2" class="week_label">2  </label>
+                        <input type="checkbox" name="weeks[]" id="week3" value="3" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week3" class="week_label">3  </label>
+                        <input type="checkbox" name="weeks[]" id="week4" value="4" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week4" class="week_label">4  </label>
+                        <input type="checkbox" name="weeks[]" id="week5" value="5" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week5" class="week_label">5  </label>
+                        <input type="checkbox" name="weeks[]" id="week6" value="6" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week6" class="week_label">6  </label>
+                        <input type="checkbox" name="weeks[]" id="week7" value="7" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week7" class="week_label">7  </label>
+                        <input type="checkbox" name="weeks[]" id="week8" value="8" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week8" class="week_label">8  </label>
+                        <input type="checkbox" name="weeks[]" id="week9" value="9" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week9" class="week_label">9  </label>
+                        <input type="checkbox" name="weeks[]" id="week10" value="10" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week10" class="week_label">10 </label>
+                        <input type="checkbox" name="weeks[]" id="week11" value="11" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week11" class="week_label">11 </label>
+                        <input type="checkbox" name="weeks[]" id="week12" value="12" checked="checked" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week12" class="week_label">12 </label>
+                        <input type="checkbox" name="weeks[]" id="week13" value="13" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week13" class="week_label">13 </label>
+                        <input type="checkbox" name="weeks[]" id="week14" value="14" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week14" class="week_label">14 </label>
+                        <input type="checkbox" name="weeks[]" id="week15" value="15" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week15" class="week_label">15 </label>
+                        <input type="checkbox" name="weeks[]" id="week16" value="16" class="vis-hidden new-post-tags" />
+                        <label id="week" for="week16" class="week_label">16 </label>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4"><input type="button" onclick="insertRequestAjax()" value="Submit Request" /></td>
+                    <td colspan="4">
+                        <input type="button" onclick="insertRequestAjax()" value="Submit Request" /></td>
                 </tr>
             </table>
         </div>
-        
-      </div>
+
+    </div>
     <div id="dialog-module" title="Add New Module">
         <form id="module_form" name="module_form" method="post">
-            Module code: <input type="text" id="mod_dept" readonly="readonly" name="mod_dept" /> &nbsp; 
+            Module code:
+            <input type="text" id="mod_dept" readonly="readonly" name="mod_dept" />
+            &nbsp; 
             <select id="mod_part" name="mod_part">
                 <option>A</option>
                 <option>B</option>
@@ -2530,11 +2674,13 @@
                 <option>F</option>
                 <option>I</option>
                 <option>P</option>
-            </select> &nbsp;
+            </select>
+            &nbsp;
             <input type="text" id="mod_num" name="mod_num" /><br />
-            Module title: <input type="text" id="mod_title" name="mod_title" /><br /> 
+            Module title:
+            <input type="text" id="mod_title" name="mod_title" /><br />
             <input type="button" id="module_submit" value="Submit" onclick="addNewModuleAjax()" />&nbsp; 
-            <input type="button" id="module_cancel" value="Cancel" onclick="$('#dialog-module').dialog('close')" />  
+            <input type="button" id="module_cancel" value="Cancel" onclick="$('#dialog-module').dialog('close')" />
         </form>
     </div>
     <div id="dialog-pool" title="Add New Private Room">
@@ -2542,7 +2688,8 @@
             Building: 
                 <select id="building_add" onchange="fillBuildingPart()">
                 </select><br />
-            Room Code: <input type="text" readonly="readonly" id="building_part" value="A" />.
+            Room Code:
+            <input type="text" readonly="readonly" id="building_part" value="A" />.
                 <select id="floor_part">
                     <option>0</option>
                     <option>1</option>
@@ -2551,20 +2698,20 @@
                 <input type="text" id="room_part" /><br />
             Arrangement:
                 <table>
-                      <tr>
-                          <td>
-                                 <ol id="selectable-arrangementPr">
-                                     <li class="ui-state-default" style="width: 200px">Tiered</li>
-                                     <li class="ui-state-default" style="width: 200px">Flat</li>
-                                 </ol>
-                                 <input type="hidden" id="arrangementPr" name="arrangement" value="Any" />
-                          </td>
+                    <tr>
+                        <td>
+                            <ol id="selectable-arrangementPr">
+                                <li class="ui-state-default" style="width: 200px">Tiered</li>
+                                <li class="ui-state-default" style="width: 200px">Flat</li>
+                            </ol>
+                            <input type="hidden" id="arrangementPr" name="arrangement" value="Any" />
+                        </td>
                     </tr>
                 </table>
             <br />
             Capacity:
                 <div id="slider-capacityPr"></div>
-                <input type="text" id="capacityPr" name="capacityPr" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/>
+            <input type="text" id="capacityPr" name="capacityPr" readonly="readonly" style="border: 0; color: #f6931f; font-weight: bold; text-align: center;" />
             <br />
             Facility: 
                 <table>
@@ -2573,16 +2720,16 @@
                             <ol id="selectable-computerPr">
                                 <li class="ui-state-default" style="width: 200px">Computer</li>
                             </ol>
-                            <input type="hidden" id="computerPr" name="computerPr" value="0"/>
+                            <input type="hidden" id="computerPr" name="computerPr" value="0" />
                         </td>
                         <td>
-                                <ol id="selectable-capturePr">
-                                    <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
-                                </ol>
-                                <input type="hidden" id="capturePr" name="capturePr" value="0" />
+                            <ol id="selectable-capturePr">
+                                <li class="ui-state-default" style="width: 200px">Lecture Capture</li>
+                            </ol>
+                            <input type="hidden" id="capturePr" name="capturePr" value="0" />
                         </td>
-                   </tr>
-                   <tr>
+                    </tr>
+                    <tr>
                         <td>
                             <ol id="selectable-paPr">
                                 <li class="ui-state-default" style="width: 200px">PA System</li>
@@ -2595,8 +2742,8 @@
                             </ol>
                             <input type="hidden" id="projectorPr" name="projectorPr" value="0" />
                         </td>
-                   </tr>
-                   <tr>
+                    </tr>
+                    <tr>
                         <td>
                             <ol id="selectable-micPr">
                                 <li class="ui-state-default" style="width: 200px">Radio Microphone</li>
@@ -2636,5 +2783,5 @@
             <br />
             <input type="button" id="add_room_submit" value="Submit" class="btns" onclick="insertRoomAjax()" />
         </form>
-    </div>      
+    </div>
 </asp:Content>
