@@ -30,7 +30,25 @@ namespace Team11
 
             return Session;
         }
+        [WebMethod]
+        [ScriptMethod]
+        public static void deletemodule(Module module)
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM [MODULES] WHERE [module_code] = @mod_code"))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@mod_code", module.mod_code);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
 
+        }
 
 
         [WebMethod]

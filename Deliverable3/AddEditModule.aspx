@@ -38,13 +38,12 @@
                 moduleData = data.d;
                 console.log(moduleData);
                 for (var i = 0; i < moduleData.length; i++) {
-
                     $("#genTable").append("<tr id='" + moduleData[i].module_code + "'>" +
                         "<td>" + moduleData[i].module_code + "</td>" +
                         "<td>" + moduleData[i].module_title + "</td>" +
                         "<td>" + moduleData[i].lecturer + "</td>" +
                         "<td>" + "<button type='button' class='btnstd'>Edit</button> " + "</td>" +
-                        "<td>" + "<button type='button' class='btnstd'>Delete</button> " + "</td>" + "</tr>");
+                        "<td>" + "<input type='button' class='btnstd' id='delete" + (i + 1) + "' onclick='deleteModuleAjax(this)' value='Delete' /> " + "</td>" + "</tr>");
                 }
             },
             error: function (response) {
@@ -97,7 +96,29 @@
         });
     }
 
-
+    function deleteModuleAjax(el) {
+        var module = {};
+        module.mod_code = el.parentNode.parentNode.cells[0].textContent;
+        if (confirm("Are you sure you want to delete this module?")) {
+            $.ajax(
+            {
+                type: "POST",
+                async: true,
+                url: "AddEditModule.aspx/deletemodule",
+                //send room_code of selected room to process in the codebehind environment
+                data: "{module: " + JSON.stringify(module) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("success");
+                    location.reload();
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+    }
 
 </script>
 
