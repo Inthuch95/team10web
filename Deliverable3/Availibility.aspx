@@ -662,7 +662,7 @@
          }
          function resetTable() {
              for (var i = 1; i <= 10; i++) {
-                 $("#p" + i + "_mon").html("<input type='button' id='p" + i + "_mon_select' onclick='showBookDialog(this.id)' value='select' />");
+                 $("#p" + i + "_mon").html("<input type='button' id='p" + i + "_mon_select' onclick='showBookDialog(this.id)' value='select'/>");
                  $("#p" + i + "_tue").html("<input type='button' id='p" + i + "_tue_select' onclick='showBookDialog(this.id)' value='select' />");
                  $("#p" + i + "_wed").html("<input type='button' id='p" + i + "_wed_select' onclick='showBookDialog(this.id)' value='select' />");
                  $("#p" + i + "_thu").html("<input type='button' id='p" + i + "_thu_select' onclick='showBookDialog(this.id)' value='select' />");
@@ -887,7 +887,7 @@
             </div>
 	        <div id="Days">
 		        <tr id="Monday_td">	
-			        <td class="day" style="background-color:#f1f1f1;">Monday</td>
+			        <td class="day" style="background-color:#f1f1f1;" >Monday</td>
 			        <td id="p1_mon"><input type="button" id="p1_mon_select" value="select" /></td>
 			        <td id="p2_mon"><input type="button" id="p2_mon_select" value="select" /></td>
 			        <td id="p3_mon"><input type="button" id="p3_mon_select" value="select" /></td>
