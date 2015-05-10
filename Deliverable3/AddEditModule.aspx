@@ -148,6 +148,55 @@
         }
     }
 
+    //Start of header filter function              //////////////////////////////
+    //Does not work fully                         //////////////////////////////
+
+    //sorting the module code in order a-z 1-9
+    function request_id(a, b) {
+        return parseInt(a["request_id"]) - parseInt(b["request_id"]);
+    }
+    function module_code(a, b) {
+        return a["module_code"] > b["module_code"];
+    }
+
+    function module_title(a, b) {
+        return a["module_title"] > b["module_title"];
+    }
+
+    function lecturer(a, b) {
+        return a["lecturer"] > b["lecturer"];
+    }
+
+    function sortHeader(id) {
+
+        //chooses which to sort by the id passed to this function
+        switch (id) {
+            case "modulecd_td":
+                moduleData.sort(module_code);
+                break;
+            case "modulenm_td":
+                moduleData.sort(module_title);
+                break;
+            case "lecturer_td":
+                moduleData.sort(lecturer);
+                break;
+            default:
+                break;
+        }
+        $("#genTable").empty();
+        for (var i = 0; i < moduleData.length; i++) {
+            $("#genTable").append("<tr id='" + moduleData[i].module_code + "'>" +
+                "<td>" + moduleData[i].module_code + "</td>" +
+                "<td>" + moduleData[i].module_title + "</td>" +
+                "<td>" + moduleData[i].lecturer + "</td>" +
+                "<td>" + "<button type='button' class='btnstd' onclick='showEditDialog(this)'>Edit</button> " + "</td>" +
+                "<td>" + "<input type='button' class='btnstd' id='delete" + (i + 1) + "' onclick='deleteModuleAjax(this)' value='Delete' /> " + "</td>" + "</tr>");
+        }
+        
+    }
+
+           //end of header filter function                //////////////////////////////
+          //Does not work fully                         //////////////////////////////
 
     function initEditDialog() {
         $("#dialog-Edit").dialog({
