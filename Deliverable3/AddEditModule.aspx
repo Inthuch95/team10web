@@ -13,7 +13,7 @@
 
 <%-- Body Content --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function () {
         getModuleAjax()
         getDeptCode()
