@@ -1014,7 +1014,7 @@
                     }
                     console.log(moduleData);
                     getLectureName();
-                }
+                },
                 error: function (response) {
                     console.log(response);
                 }
