@@ -62,3 +62,10 @@ C:\Users\codb\Desktop\team10web\Deliverable3\obj\Debug\Team11.Properties.Resourc
 C:\Users\codb\Desktop\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
 C:\Users\codb\Desktop\team10web\Deliverable3\obj\Debug\Team11.dll
 C:\Users\codb\Desktop\team10web\Deliverable3\obj\Debug\Team11.pdb
+C:\Users\lsco3\Desktop\team10web\Deliverable3\bin\Team11.dll
+C:\Users\lsco3\Desktop\team10web\Deliverable3\bin\Team11.pdb
+C:\Users\lsco3\Desktop\team10web\Deliverable3\obj\Debug\Team11.csprojResolveAssemblyReference.cache
+C:\Users\lsco3\Desktop\team10web\Deliverable3\obj\Debug\Team11.Properties.Resources.resources
+C:\Users\lsco3\Desktop\team10web\Deliverable3\obj\Debug\Team11.csproj.GenerateResource.Cache
+C:\Users\lsco3\Desktop\team10web\Deliverable3\obj\Debug\Team11.dll
+C:\Users\lsco3\Desktop\team10web\Deliverable3\obj\Debug\Team11.pdb

@@ -8,6 +8,7 @@
         var roomData;
         var buildingData;
         var currentDept;
+        var moduleData;
         //selectable 1
         var selectedWhiteboard = false;
         var selectedComputer = false;
@@ -883,6 +884,7 @@
             loadPeriod();
             init_module_dialog();
             loadRoomDialog();
+            getLectureName();
             //implement jquery ui slider to 'number of rooms' and 'capacity'
             //start slider
             $("#slider-rooms").slider({
@@ -1003,16 +1005,19 @@
                 dataType: "json",
                 success: function (data) {
                     var result = data.d;
+                    moduleData = data.d;
                     $("#module").empty();
                     for (var i = 0; i < result.length; i++) {
                         //populate module drop down list
                         $("#module").append("<option value='" + result[i].module_code + "'>" + result[i].module_code + " : " + result[i].module_title + "</option>");
                     }
+                    getLectureName();
                 },
                 error: function (response) {
                     console.log(response);
                 }
             });
+            
         }
         //get modules that belongs to current department
         function getDeptCode() {
@@ -1841,6 +1846,13 @@
             }
 
         }
+        function getLectureName() {
+            for (var k = 0; k < moduleData.length; k++) {
+                if (document.getElementById("module").value == moduleData[k].module_code) {
+                    document.getElementById("lecturer").value = moduleData[k].lecturer;
+                }
+            }
+        }
 
     </script>
 
@@ -1869,7 +1881,7 @@
                 </td>
                 <%-- Module --%>
                 <td align="left">
-                    <select id="module" name="module">
+                    <select id="module" name="module" onchange="getLectureName()" onload="getLectureName()">
                     </select><br />
                     <input type="button" id="add_mod" onclick="showModDialog()" value="Add New Module" />
                     <input type="button" id="add_room" onclick="showPoolDialog()" value="Add New Private Room" />
@@ -1933,7 +1945,7 @@
                     </table>
                 </td>
                 <td align="left">
-                    <input type="text" id="lecturer" name="lecturer" />
+                    <input type="text" id="lecturer" name="lecturer" readonly/>
                 </td>
             </tr>
         </table>
@@ -2724,11 +2736,19 @@
 
     </div>
     <div id="dialog-module" title="Add New Module">
+<<<<<<< HEAD
         <form id="module_form" name="module_form" method="post">
+            <table>
+                <tr><td>Module code:</td><td><input type="text" id="Text1" readonly="readonly" name="mod_dept" style="width:50px"/></td>
+            <td>
+             <select id="mod_part" name="mod_part">
+=======
+        <form id="module_form" name="module_form" method="post" >
             Module code:
             <input type="text" id="mod_dept" readonly="readonly" name="mod_dept" />
             &nbsp; 
             <select id="mod_part" name="mod_part">
+>>>>>>> origin/master
                 <option>A</option>
                 <option>B</option>
                 <option>C</option>
@@ -2737,12 +2757,17 @@
                 <option>I</option>
                 <option>P</option>
             </select>
-            &nbsp;
-            <input type="text" id="mod_num" name="mod_num" /><br />
-            Module title:
-            <input type="text" id="mod_title" name="mod_title" /><br />
+            </td><td>
+            <input type="text" id="mod_num" name="mod_num" />
+            </td></tr><tr><td colspan="2">
+            Module title:</td>
+           <td colspan="2"> <input type="text" id="mod_title" name="mod_title" /></td>
+                </tr><tr><td colspan="2">Lecturer:</td><td colspan="2">
+            <input type="text" id="lecturer" name="lecturer" /></td></tr>
+                <tr><td colspan="2">
             <input type="button" id="module_submit" value="Submit" onclick="addNewModuleAjax()" />&nbsp; 
-            <input type="button" id="module_cancel" value="Cancel" onclick="$('#dialog-module').dialog('close')" />
+            </td><td colspan="2"><input type="button" id="module_cancel" value="Cancel" onclick="$('#dialog-module').dialog('close')" />
+            </td></tr>    </table>
         </form>
     </div>
     <div id="dialog-pool" title="Add New Private Room">
@@ -2773,7 +2798,7 @@
             <br />
             Capacity:
                 <div id="slider-capacityPr"></div>
-            <input type="text" id="capacityPr" name="capacityPr" readonly="readonly" style="border: 0; color: #f6931f; font-weight: bold; text-align: center;" />
+            <input type="text" id="capacityPr" name="capacityPr" readonly="readonly" style="border: 0; color: #ca006c; font-weight: bold; text-align: center;" />
             <br />
             Facility: 
                 <table>
@@ -2794,7 +2819,7 @@
                     <tr>
                         <td>
                             <ol id="selectable-paPr">
-                                <li class="ui-state-default" style="width: 200px">PA System</li>
+                                <li class="ui-state-default" style="width: 200px ">PA System</li>
                             </ol>
                             <input type="hidden" id="paPr" name="paPr" value="0" />
                         </td>
