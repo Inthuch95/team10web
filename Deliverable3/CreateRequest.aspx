@@ -77,7 +77,7 @@
                 stop: function () {
                     $(".ui-selected", this).each(function () {
                         var index = $("#selectable-session li").index(this);
-                        switch(index) {
+                        switch (index) {
                             case 0:
                                 $("#session").val("Lecture");
                                 break;
@@ -90,7 +90,7 @@
                             case 3:
                                 $("#session").val("Tutorial");
                                 break;
-                        } 
+                        }
                     });
                 }
             });
@@ -986,10 +986,10 @@
             //put the slider value into text box with id 'capacity'
             $("#capacityPr").val($("#slider-capacityPr").slider("value"));
             //end slider
-            
+
         });
         //end document.ready
-        
+
         //start AJAX
         //get current username
         function getModuleAjax() {
@@ -1285,7 +1285,7 @@
         }
         //fill duration drop down list
         function loadDuration() {
-            for (var i = 1; i <= 9;i++){
+            for (var i = 1; i <= 9; i++) {
                 $("#duration").append("<option>" + i + "</option>");
             }
         }
@@ -1305,7 +1305,7 @@
             }
         }
         //change room preference Based on capacity, park and additional options
-        function changeRoom(){
+        function changeRoom() {
             //get values of user's selection
             var noOfRooms = parseInt(document.getElementById('noRooms').value);
             var park = document.getElementById("park").value;
@@ -1400,8 +1400,14 @@
                 arrangement = "any";
             else
                 arrangement = "flat";
-            
-            
+
+            var arrangement_select2; if (noOfRooms > 1) arrangement_select2 = document.getElementById("arrangement2").value;
+            if (arrangement_select2 == "Tiered")
+                arrangement2 = "tiered";
+            else if (arrangement_select2 == "Any")
+                arrangement2 = "any";
+            else
+                arrangement2 = "flat";
             var arrangement_select3; if (noOfRooms > 2) arrangement_select3 = document.getElementById("arrangement3").value;
             if (arrangement_select3 == "Tiered")
                 arrangement3 = "tiered";
@@ -1424,22 +1430,28 @@
             else
                 arrangement5 = "flat";
             var room_arr1;
-            
+            var room_arr2;
             var room_arr3;
             var room_arr4;
             var room_arr5;
 
             //empty the room code list
+            var room1 = $("#room1").val();
+            var room2 = $("#room2").val();
+            var room3 = $("#room3").val();
+            var room4 = $("#room4").val();
+            var room5 = $("#room5").val();
             $("#room1").empty();
             $("#room1").append("<option>" + "Any" + "</option>");
-            
+            $("#room2").empty();
+            $("#room2").append("<option>" + "Any" + "</option>");
             $("#room3").empty();
             $("#room3").append("<option>" + "Any" + "</option>");
             $("#room4").empty();
             $("#room4").append("<option>" + "Any" + "</option>");
             $("#room5").empty();
             $("#room5").append("<option>" + "Any" + "</option>");
-            
+
             for (var i = 0; i < roomData.length; i++) {
                 //room preference 1
                 //check room arrangement selection
@@ -1449,7 +1461,7 @@
                     room_arr1 = arrangement;
                 else
                     room_arr1 = roomData[i].flat;
-                
+
                 //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
                 //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
                 if ((park == "Any" || park == roomData[i].park) &&
@@ -1468,7 +1480,34 @@
                     $("#room1").append("<option>" + roomData[i].room_code + "</option>");
                 }
 
-                
+                //room preference 2
+                //only apply this if number of rooms is 2
+                //check room arrangement selection
+                if (noOfRooms > 1) {
+                    if (arrangement2 == "tiered")
+                        room_arr2 = roomData[i].tiered;
+                    else if (arrangement2 == "any")
+                        room_arr2 = arrangement;
+                    else
+                        room_arr2 = roomData[i].flat;
+                    //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
+                    //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
+                    if ((park == "Any" || park == roomData[i].park) &&
+                    (isWheelchair2 == 0 || roomData[i].wheelchair == 1) &&
+                    (isVisualiser2 == 0 || roomData[i].visualiser == 1) &&
+                    (isProjector2 == 0 || roomData[i].projector == 1) &&
+                    (isWhiteboard2 == 0 || roomData[i].whiteboard == 1) &&
+                    (computer2 == 0 || roomData[i].computer == 1) &&
+                    (capture2 == 0 || roomData[i].lecture_capture == 1) &&
+                    (pa2 == 0 || roomData[i].pa_system == 1) &&
+                    (mic2 == 0 || roomData[i].radio_microphone == 1) &&
+                    (video2 == 0 || roomData[i].video_dvd == 1) &&
+                    (roomData[i].capacity >= capacity2) &&
+                    (room_arr2 == "any" || room_arr2 == 1) &&
+                    (building2 == "any" || building2 == roomData[i].building_code)) {
+                        $("#room2").append("<option>" + roomData[i].room_code + "</option>");
+                    }
+                }
                 //room preference 3
                 //only apply this if number of rooms is 3
                 //check room arrangement selection
@@ -1554,55 +1593,16 @@
                     }
                 }
             }
-        }
-        function changeRoom2() {
-            //room preference 2
-            var capacity2; if (noOfRooms > 1) capacity2 = parseInt(document.getElementById("capacity2").value);
-            var isWheelchair2; if (noOfRooms > 1) isWheelchair2 = parseInt(document.getElementById("wheelchair2").value);
-            var isVisualiser2; if (noOfRooms > 1) isVisualiser2 = parseInt(document.getElementById("visualiser2").value);
-            var isProjector2; if (noOfRooms > 1) isProjector2 = parseInt(document.getElementById("projector2").value);
-            var isWhiteboard2; if (noOfRooms > 1) isWhiteboard2 = parseInt(document.getElementById("whiteboard2").value);
-            var computer2; if (noOfRooms > 1) computer2 = parseInt(document.getElementById("computer2").value);
-            var capture2; if (noOfRooms > 1) capture2 = parseInt(document.getElementById("capture2").value);
-            var pa2; if (noOfRooms > 1) pa2 = parseInt(document.getElementById("pa2").value);
-            var mic2; if (noOfRooms > 1) mic2 = parseInt(document.getElementById("mic2").value);
-            var video2; if (noOfRooms > 1) video2 = parseInt(document.getElementById("video2").value);
-            var arrangement_select2 = document.getElementById("arrangement2").value;
-            if (arrangement_select2 == "Tiered")
-                arrangement2 = "tiered";
-            else if (arrangement_select2 == "Any")
-                arrangement2 = "any";
-            else
-                arrangement2 = "flat";
-            var room_arr2;
-            $("#room2").empty();
-            $("#room2").append("<option>" + "Any" + "</option>");
-            //check room arrangement selection
-            if (noOfRooms > 1) {
-                if (arrangement2 == "tiered")
-                    room_arr2 = roomData[i].tiered;
-                else if (arrangement2 == "any")
-                    room_arr2 = arrangement;
-                else
-                    room_arr2 = roomData[i].flat;
-                //if the room has enough capacity, and has the options the users asked for - or they didn't ask for the option, then add it to the list
-                //e.g. if the user didn't ask for wheelchair access then add the room with wheelchair access to the room preference anyway
-                if ((park == "Any" || park == roomData[i].park) &&
-                (isWheelchair2 == 0 || roomData[i].wheelchair == 1) &&
-                (isVisualiser2 == 0 || roomData[i].visualiser == 1) &&
-                (isProjector2 == 0 || roomData[i].projector == 1) &&
-                (isWhiteboard2 == 0 || roomData[i].whiteboard == 1) &&
-                (computer2 == 0 || roomData[i].computer == 1) &&
-                (capture2 == 0 || roomData[i].lecture_capture == 1) &&
-                (pa2 == 0 || roomData[i].pa_system == 1) &&
-                (mic2 == 0 || roomData[i].radio_microphone == 1) &&
-                (video2 == 0 || roomData[i].video_dvd == 1) &&
-                (roomData[i].capacity >= capacity2) &&
-                (room_arr2 == "any" || room_arr2 == 1) &&
-                (building2 == "any" || building2 == roomData[i].building_code)) {
-                    $("#room2").append("<option>" + roomData[i].room_code + "</option>");
-                }
-            }
+            if(room1 != null)
+                $("#room1").val(room1);
+            if (room2 != null)
+                $("#room2").val(room2);
+            if (room3 != null)
+                $("#room3").val(room3);
+            if (room4 != null)
+                $("#room4").val(room4);
+            if (room5 != null)
+            $("#room5").val(room5);
         }
         function init_module_dialog() {
             $("#dialog-module").dialog();
