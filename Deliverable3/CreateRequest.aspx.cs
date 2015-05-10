@@ -128,6 +128,22 @@ namespace Team11
         public string lecturer { get; set; }
         public string dept_code { get; set; }
         public string session { get; set; }
+        public string week1 { get; set; }
+        public string week2 { get; set; }
+        public string week3 { get; set; }
+        public string week4 { get; set; }
+        public string week5 { get; set; }
+        public string week6 { get; set; }
+        public string week7 { get; set; }
+        public string week8 { get; set; }
+        public string week9 { get; set; }
+        public string week10 { get; set; }
+        public string week11 { get; set; }
+        public string week12 { get; set; }
+        public string week13 { get; set; }
+        public string week14 { get; set; }
+        public string week15 { get; set; }
+        public string week16 { get; set; }
     }
     public partial class CreateRequest : System.Web.UI.Page
     {

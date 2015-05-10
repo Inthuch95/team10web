@@ -2510,6 +2510,22 @@
 						<label id="week" for="week15" class="week_label"> 15 </label>
 						<input type="checkbox" name="weeks[]" id="week16" value="16" class="vis-hidden new-post-tags"/>
 						<label id="week" for="week16" class="week_label"> 16 </label>
+                        <input type="hidden" id="week1-check" value="1" />
+                        <input type="hidden" id="week2-check" value="1" />
+                        <input type="hidden" id="week3-check" value="1" />
+                        <input type="hidden" id="week4-check" value="1" />
+                        <input type="hidden" id="week5-check" value="1" />
+                        <input type="hidden" id="week6-check" value="1" />
+                        <input type="hidden" id="week7-check" value="1" />
+                        <input type="hidden" id="week8-check" value="1" />
+                        <input type="hidden" id="week9-check" value="1" />
+                        <input type="hidden" id="week10-check" value="1" />
+                        <input type="hidden" id="week11-check" value="1" />
+                        <input type="hidden" id="week12-check" value="1" />
+                        <input type="hidden" id="week13-check" value="0" />
+                        <input type="hidden" id="week14-check" value="0" />
+                        <input type="hidden" id="week15-check" value="0" />
+                        <input type="hidden" id="week16-check" value="0" />
                     </td>
                 </tr>
                 <tr>
