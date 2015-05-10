@@ -43,6 +43,7 @@
     font-size:10pt;
 }
 
+
 /*css for buttons*/
 .btns {
 	border: 2px solid #ffffff;
@@ -96,12 +97,19 @@
 }
  .scrollTable td:nth-child(2)
 {
-    width:875px;
-    max-width:875px;
-	min-width:875px;
+    width:700px;
+    max-width:700px;
+	min-width:700px;
     border:1px solid #ffffff;
 }
 .scrollTable td:nth-child(3)
+{
+    width:175px;
+    max-width:175px;
+	min-width:175px;
+    border:1px solid #ffffff;
+}
+.scrollTable td:nth-child(4)
 {
     width:125px;
     max-width:125px;
@@ -142,13 +150,22 @@
 .dataTable td:nth-child(2)
 {
 	background:#f1f2ed;
-    width:875px;
-    max-width:875px;
-	min-width:875px;
+    width:700px;
+    max-width:700px;
+	min-width:700px;
     font-size:1em;
     border:1px solid #ffffff;
 }
 .dataTable td:nth-child(3)
+{
+	background:#f1f2ed;
+    width:175px;
+    max-width:175px;
+	min-width:175px;
+    font-size:1em;
+    border:1px solid #ffffff;
+}
+.dataTable td:nth-child(4)
 {
 	background:#f1f2ed;
     width:125px;

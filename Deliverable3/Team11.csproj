@@ -74,6 +74,7 @@
     <Content Include="CreateRequest2.aspx" />
     <Content Include="CreateRequest3.aspx" />
     <Content Include="Preference.aspx" />
+    <Content Include="Timetable.aspx" />
     <None Include="Resources\favicon.png" />
     <None Include="Resources\logo2.jpg" />
     <Content Include="Styles\AddEditModule.css" />
@@ -223,6 +224,13 @@
     </Compile>
     <Compile Include="ViewRequestGrid.aspx.designer.cs">
       <DependentUpon>ViewRequestGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Timetable.aspx.cs">
+      <DependentUpon>Timetable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Timetable.aspx.designer.cs">
+      <DependentUpon>Timetable.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

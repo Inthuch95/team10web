@@ -23,6 +23,7 @@
     function clearAll() {
         document.getElementById("TextBoxModuleName").value = "";
         document.getElementById("TextBoxModuleCode").value = "";
+        document.getElementById("TextBoxLecturer").value = "";
     }
     function getModuleAjax() {
         $.ajax(
@@ -41,6 +42,7 @@
                     $("#genTable").append("<tr id='" + moduleData[i].module_code + "'>" +
                         "<td>" + moduleData[i].module_code + "</td>" +
                         "<td>" + moduleData[i].module_title + "</td>" +
+                        "<td>" + moduleData[i].lecturer + "</td>" +
                         "<td>" + "<button type='button' class='btnstd'>Edit</button> " + "</td>" +
                         "<td>" + "<button type='button' class='btnstd'>Delete</button> " + "</td>" + "</tr>");
                 }
@@ -70,6 +72,32 @@
         });
     }
 
+    function addModule() {
+       
+        var module = {};
+        module.mod_code = $("#TextBoxModuleCode").val();
+        module.mod_title = $("#TextBoxModuleName").val();
+        module.lecturer = $("#TextBoxLecturer").val();
+        $.ajax(
+        {
+            type: "POST",
+            async: true,
+            url: "AddEditModule.aspx/insertModule",
+            data: "{module: " + JSON.stringify(module) + "}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                alert("success");
+                getModuleAjax();
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+
+
 </script>
 
 
@@ -85,7 +113,7 @@
                         <h3 class="minustopmarg">Module Title</h3>
                         </td>
                         <td>
-                        <input type="text" class="form-control" id="TextBoxModuleName"/>
+                        <input type="text" style="width:800px" id="TextBoxModuleName"/>
                         </td>
                     </tr>
                     <tr>
@@ -93,7 +121,25 @@
                         <h3 class="minustopmarg">Module Code</h3>
                       </td>
                       <td>
-                        <input type="text" class="form-control" id="TextBoxModuleCode"/>
+                        <input type="text" style="width:200px" id="TextBoxModuleCodeNo" disabled />
+                        <select id="SelectBoxModuleNo">
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                            <option value="d">F</option> 
+                            <option value="d">I</option>
+                            <option value="d">P</option>                          
+                        </select>
+                        <input type="text" style="width:550px" id="TextBoxModuleCode" />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <h3 class="minustopmarg">Lecturer</h3>
+                      </td>
+                      <td>
+                         <input type="text" style="width:800px" id="TextBoxLecturer"/>
                       </td>
                   </tr>
                 </table>
@@ -104,7 +150,7 @@
                   <table class="buttonTable">
                      <tr>
                       <td> 
-                    <button class="btns" id="Button1" >Add Module</button>
+                    <button class="btns" onclick="addModule()" >Add Module</button>
                       </td> 
                       <td>
                     <button class="btns" onclick="clearAll();" >Clear All</button>
@@ -122,6 +168,7 @@
 	         <tr>
 			        <td id="modulecd_td" onclick="sortHeader(this.id)">Module Code</td>
 			        <td id="modulenm_td" onclick="sortHeader(this.id)">Module Name</td>
+                    <td id="lecturer_td" onclick="sortHeader(this.id)">Lecturer</td>
        		        <td id="edit_td" style="cursor:default;" >Edit</td>
   			        <td id="delete_td" style="cursor:default;" >Delete</td>
                 </tr>
