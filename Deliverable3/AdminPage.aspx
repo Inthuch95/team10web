@@ -940,6 +940,25 @@
             });
             $("#dialog-week").dialog("close");
         }
+        function alterFacility() {
+            var facility = {};
+            facility.facName =  $("#facName").val() ;
+            $.ajax(
+           {
+               type: "POST",
+               async: true,
+               url: "AdminPage.aspx/alterFacility",
+               data: "{facility: " + JSON.stringify(facility) + "}",
+               contentType: "application/json; charset=utf-8",
+               dataType: "json",
+               success: function (response) {
+                   alert("success");
+               },
+               error: function (response) {
+                   console.log(response);
+               }
+           });
+        }
     </script>
    
 </asp:Content>
@@ -1028,7 +1047,7 @@
                             </tr>
                             <tr>
                                 <td colspan='2' align='right'>
-                                    <input type="button" id="addNew" name="addNewFac" value="Submit" class="btns" onclick="" /></td>
+                                    <input type="button" id="addNew" name="addNewFac" value="Submit" class="btns" onclick="alterFacility()" /></td>
                             </tr>
                             <tr>
                                 <td><select id="facilities"></select></td>
