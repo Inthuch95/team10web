@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminPage.aspx.cs" Inherits="Team11.AdminPage" MaintainScrollPositionOnPostback = "true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminBar.Master" AutoEventWireup="true" CodeBehind="AdminPage.aspx.cs" Inherits="Team11.AdminPage" MaintainScrollPositionOnPostback = "true"%>
 
 <%-- Create Request Header Content --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">

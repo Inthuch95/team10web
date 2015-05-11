@@ -39,11 +39,8 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="text-center col-md-6 col-sm-6">
-                <asp:Button ID="ButtonLogin" runat="server" style="width:100%; margin-top:5px;" class="btn btn-success" onclick="ButtonLogin_Click" 
+                <asp:Button ID="ButtonLogin" runat="server" style="width:375px; margin-top:5px;border-color:#CA006A; background-color:#CA006A; font-weight: bold; "  class="btn btn-success" onclick="ButtonLogin_Click" 
                         Text="Login" />
-                </div>
-                <div class="text-center col-md-6 col-sm-6">
-                    <button style="width:100%; margin-top:5px;" class="btn btn-info">Forgot Password?</button>
                 </div>
             </div>
         </div>
