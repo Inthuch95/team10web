@@ -249,7 +249,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
-    <h2>Import Request</h2>
+    <h1>Import Request</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
         <%-- These allow us to see table head and use filter when scrolling down the page --%>
