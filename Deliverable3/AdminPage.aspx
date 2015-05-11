@@ -769,6 +769,7 @@
                 dataType: "json",
                 success: function (response) {
                     alert("Request status updated");
+                    getRequestAjax();
                 },
                 error: function (response) {
                     console.log(response);
@@ -794,6 +795,7 @@
                 dataType: "json",
                 success: function (response) {
                     alert("Request status updated");
+                    getRequestAjax();
                 },
                 error: function (response) {
                     console.log(response);
