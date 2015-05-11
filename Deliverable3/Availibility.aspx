@@ -498,8 +498,8 @@
          }
          function initRequestDialog() {
              $("#dialog-request").dialog({
-                 height: 500,
-                 width: 700,
+                 height: 800,
+                 width: 900,
                  position: {
                      my: "center",
                      at: "center",
@@ -991,8 +991,7 @@
         Facility:&nbsp;<ol id="facility-text"></ol>
         <table>
             <tr>
-                <td>
-                    Park:</td><td><b id="park-text"></b>
+                <td>Park:</td><td><b id="park-text"></b>
                 </td>
             </tr>
             <tr>

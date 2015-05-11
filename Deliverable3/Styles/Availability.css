@@ -367,4 +367,7 @@ input:checked + #week {
   background-color: #9D009D;
   color:white;
 }
+#dialog-request {
+    font-size: 14px;
+}
 
