@@ -67,6 +67,7 @@
                 console.log(dept);
                 $("#moduleCodeD").html("<h2> Add Module for " + dept[0] + "</h2>");
                 $("#TextBoxModuleCodeNo").val(dept[1]);
+                $("#TextBoxModuleCodeNo").val(dept[1]);
                 $("#DialogBoxModuleCodeNo").val(dept[1]);
             },
             error: function (response) {

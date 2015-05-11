@@ -31,7 +31,20 @@
     font-size: 50px;
     color:yellow;
 }
+.btns {
+	border: 2px solid #ffffff;
+    background: #ca006c ;
+  	color: #ffffff;
+    height: auto;
+    width: 102px;
+	transition: all 0.3s;
+}
 
+.btns:hover {
+	background: #ffffff;
+	color: #ca006c ;
+    border: 2px solid #ca006c ;
+}
 
 .none input[type=checkbox]
 {
@@ -189,7 +202,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-session li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-arrangement .ui-selecting { 
 	background: #ca006c; 
@@ -201,7 +214,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-arrangement li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-wheelchair .ui-selecting { 
 	background: #ca006c; 
@@ -213,7 +226,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchair li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-whiteboard .ui-selecting { 
 	background: #ca006c; 
@@ -225,7 +238,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboard li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-projector .ui-selecting { 
 	background: #ca006c; 
@@ -237,7 +250,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projector li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-visualiser .ui-selecting { 
 	background: #ca006c; 
@@ -249,7 +262,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiser li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-computer .ui-selecting { 
 	background: #ca006c; 
@@ -261,7 +274,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computer li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 
 #selectable-video .ui-selecting { 
@@ -274,7 +287,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-video li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-pa .ui-selecting { 
 	background: #ca006c; 
@@ -286,7 +299,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-pa li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-mic .ui-selecting { 
 	background: #ca006c; 
@@ -298,7 +311,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-mic li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-capture .ui-selecting { 
 	background: #ca006c; 
@@ -310,9 +323,8 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capture li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
-
 /*room preference 2*/
 #capacity2
 {
@@ -337,7 +349,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-arrangement2 li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-wheelchair2 .ui-selecting { 
 	background: #CA006C; 
@@ -349,7 +361,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchair2 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-whiteboard2 .ui-selecting { 
 	background: #CA006C; 
@@ -361,7 +373,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboard2 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-projector2 .ui-selecting { 
 	background: #CA006C; 
@@ -373,7 +385,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projector2 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-visualiser2 .ui-selecting { 
 	background: #CA006C; 
@@ -385,7 +397,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiser2 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-computer2 .ui-selecting { 
 	background: #CA006C; 
@@ -397,7 +409,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computer2 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 
 #selectable-video2 .ui-selecting { 
@@ -410,7 +422,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-video2 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-pa2 .ui-selecting { 
 	background: #CA006C; 
@@ -422,7 +434,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-pa2 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-mic2 .ui-selecting { 
 	background: #CA006C; 
@@ -434,7 +446,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-mic2 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-capture2 .ui-selecting { 
 	background: #CA006C; 
@@ -446,7 +458,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capture2 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 /*room preference 3*/
 #capacity3
@@ -472,7 +484,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-arrangement3 li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-wheelchair3 .ui-selecting { 
 	background: #CA006C; 
@@ -484,7 +496,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchair3 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-whiteboard3 .ui-selecting { 
 	background: #CA006C; 
@@ -496,7 +508,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboard3 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-projector3 .ui-selecting { 
 	background: #CA006C; 
@@ -508,7 +520,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projector3 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-visualiser3 .ui-selecting { 
 	background: #CA006C; 
@@ -520,7 +532,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiser3 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-computer3 .ui-selecting { 
 	background: #CA006C; 
@@ -532,7 +544,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computer3 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 
 #selectable-video3 .ui-selecting { 
@@ -545,7 +557,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-video3 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-pa3 .ui-selecting { 
 	background: #CA006C; 
@@ -557,7 +569,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-pa3 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-mic3 .ui-selecting { 
 	background: #CA006C; 
@@ -569,7 +581,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-mic3 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-capture3 .ui-selecting { 
 	background: #CA006C; 
@@ -581,7 +593,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capture3 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 /*room preference 4*/
 #capacity4
@@ -607,7 +619,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-arrangement4 li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-wheelchair4 .ui-selecting { 
 	background: #CA006C; 
@@ -619,7 +631,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchair4 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-whiteboard4 .ui-selecting { 
 	background: #CA006C; 
@@ -631,7 +643,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboard4 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-projector4 .ui-selecting { 
 	background: #CA006C; 
@@ -643,7 +655,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projector4 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-visualiser4 .ui-selecting { 
 	background: #CA006C; 
@@ -655,7 +667,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiser4 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-computer4 .ui-selecting { 
 	background: #CA006C; 
@@ -667,7 +679,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computer4 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 
 #selectable-video4 .ui-selecting { 
@@ -680,7 +692,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-video4 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-pa4 .ui-selecting { 
 	background: #CA006C; 
@@ -692,7 +704,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-pa4 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-mic4 .ui-selecting { 
 	background: #CA006C; 
@@ -704,7 +716,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-mic4 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-capture4 .ui-selecting { 
 	background: #CA006C; 
@@ -716,7 +728,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capture4 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 /*room preference 5*/
 #capacity5
@@ -742,7 +754,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-arrangement5 li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-wheelchair5 .ui-selecting { 
 	background: #CA006C; 
@@ -754,7 +766,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchair5 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-whiteboard5 .ui-selecting { 
 	background: #CA006C; 
@@ -766,7 +778,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboard5 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-projector5 .ui-selecting { 
 	background: #CA006C; 
@@ -778,7 +790,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projector5 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-visualiser5 .ui-selecting { 
 	background: #CA006C; 
@@ -790,7 +802,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiser5 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-computer5 .ui-selecting { 
 	background: #CA006C; 
@@ -802,7 +814,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computer5 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 
 #selectable-video5 .ui-selecting { 
@@ -815,7 +827,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-video5 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-pa5 .ui-selecting { 
 	background: #CA006C; 
@@ -827,7 +839,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-pa5 li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-mic5 .ui-selecting { 
 	background: #CA006C; 
@@ -839,7 +851,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-mic5 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-capture5 .ui-selecting { 
 	background: #CA006C; 
@@ -851,7 +863,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capture5 li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 /*Day*/
 #selectable-day .ui-selecting { 
@@ -864,7 +876,7 @@ table
 	list-style-type: none; margin: 0; padding: 0; width: 350px; background: #F7F7F0; 
 }
 #selectable-day li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 /*week checkbox*/
 .vis-hidden {
@@ -925,7 +937,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-wheelchairPr li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-whiteboardPr .ui-selecting { 
 	background: #ca006c; 
@@ -937,7 +949,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-whiteboardPr li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-projectorPr .ui-selecting { 
 	background: #ca006c; 
@@ -949,7 +961,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-projectorPr li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-visualiserPr .ui-selecting { 
 	background: #ca006c; 
@@ -961,7 +973,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-visualiserPr li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-computerPr .ui-selecting { 
 	background: #ca006c; 
@@ -973,7 +985,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-computerPr li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 
 #selectable-videoPr .ui-selecting { 
@@ -986,7 +998,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-videoPr li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-paPr .ui-selecting { 
 	background: #ca006c; 
@@ -998,7 +1010,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-paPr li { 
-	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 100px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-micPr .ui-selecting { 
 	background: #ca006c; 
@@ -1010,7 +1022,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-micPr li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-capturePr .ui-selecting { 
 	background: #ca006c; 
@@ -1022,7 +1034,7 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-capturePr li { 
-	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 170px; height: 25px; font-size: 14px; text-align: center; 
 }
 #selectable-arrangementPr .ui-selecting { 
 	background: #ca006c; 
@@ -1034,6 +1046,6 @@ input:checked + #week {
 	list-style-type: none; margin: 0; padding: 0; width: 350px; 
 }
 #selectable-arrangementPr li { 
-	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 1.0em; text-align: center; 
+	margin: 3px; padding: 1px; float: left; width: 70px; height: 25px; font-size: 14px; text-align: center; 
 }
     
