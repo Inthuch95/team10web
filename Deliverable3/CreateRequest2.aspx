@@ -1096,7 +1096,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("success");
+                    alert("Module added");
                     getModuleAjax();
                 },
                 error: function (response) {
@@ -1190,7 +1190,7 @@
                 request.day = $("#day").val();
                 request.period = $("#period").val();
                 request.duration = $("#duration").val();
-                request.status = "Pending";
+                request.status = $("#status").val();;
                 request.semester = $("#semester").val();
                 request.lecturer = $("#lecturer").val();
                 request.session = $("#session").val();
@@ -1221,7 +1221,7 @@
                      contentType: "application/json; charset=utf-8",
                      dataType: "json",
                      success: function (data) {
-                         alert("success");
+                         alert("Request submitted");
                      },
                      error: function (response) {
                          console.log(response);
@@ -1710,7 +1710,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        alert("success");
+                        alert("Room added");
                         getRoomAjax();
                         $("#dialog-add-room").dialog("close");
                     },
@@ -1727,14 +1727,14 @@
 
             if (document.getElementById('roomsAll').checked) {
                 rate_value = document.getElementById('roomsAll').value;
-
+                $("#status").val("Pending");
                 $("#room1").empty();
                 changePark();
                 changeRoom();
             }
             if (document.getElementById('roomsPriv').checked) {
                 rate_value = document.getElementById('roomsPriv').value;
-
+                $("#status").val("Booked");
                 //code to insert private rooms into rooms select
                 $("#room1").empty();
                 $("#room1").append("<option>Any</option>");
@@ -1759,7 +1759,7 @@
             }
             if (document.getElementById('roomsPriv2').checked) {
                 rate_value = document.getElementById('roomsPriv2').value;
-
+                $("#status").val("Booked");
                 //code to insert private rooms into rooms select
                 $("#room2").empty();
                 $("#room2").append("<option>Any</option>");
@@ -1784,7 +1784,7 @@
             }
             if (document.getElementById('roomsPriv').checked) {
                 rate_value = document.getElementById('roomsPriv').value;
-
+                $("#status").val("Booked");
                 //code to insert private rooms into rooms select
                 $("#room3").empty();
                 $("#room3").append("<option>Any</option>");
@@ -1809,7 +1809,7 @@
             }
             if (document.getElementById('roomsPriv').checked) {
                 rate_value = document.getElementById('roomsPriv').value;
-
+                $("#status").val("Booked");
                 //code to insert private rooms into rooms select
                 $("#room4").empty();
                 $("#room4").append("<option>Any</option>");
@@ -1834,7 +1834,7 @@
             }
             if (document.getElementById('roomsPriv').checked) {
                 rate_value = document.getElementById('roomsPriv').value;
-
+                $("#status").val("Booked");
                 //code to insert private rooms into rooms select
                 $("#room5").empty();
                 $("#room5").append("<option>Any</option>");
@@ -1864,7 +1864,7 @@
 </asp:Content>
 
 <%-- MAIN BODY CONTENT --%>
-
+ <input type="hidden" id="status" value="Pending" />
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
       <div id="general_info">
         <%-- General information --%>

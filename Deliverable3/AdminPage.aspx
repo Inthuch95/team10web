@@ -466,7 +466,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        alert("success");
+                        alert("Room seleted");
                         getRoomAjax();
                     },
                     error: function (response) {
@@ -528,7 +528,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        alert("success");
+                        alert("Room added");
                         getRoomAjax();
                         $("#dialog-add-room").dialog("close");
                     },
@@ -584,7 +584,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        alert("success");
+                        alert("Room updated");
                         getRoomAjax();
                         $("#dialog-room").dialog("close");
                     },
@@ -701,7 +701,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("success");
+                    alert("Round update");
                     getRoundAjax();
                 },
                 error: function (response) {
@@ -768,7 +768,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("success");
+                    alert("Request status updated");
                 },
                 error: function (response) {
                     console.log(response);
@@ -793,7 +793,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("success");
+                    alert("Request status updated");
                 },
                 error: function (response) {
                     console.log(response);
@@ -940,25 +940,6 @@
             });
             $("#dialog-week").dialog("close");
         }
-        function alterFacility() {
-            var facility = {};
-            facility.facName =  $("#facName").val() ;
-            $.ajax(
-           {
-               type: "POST",
-               async: true,
-               url: "AdminPage.aspx/alterFacility",
-               data: "{facility: " + JSON.stringify(facility) + "}",
-               contentType: "application/json; charset=utf-8",
-               dataType: "json",
-               success: function (response) {
-                   alert("success");
-               },
-               error: function (response) {
-                   console.log(response);
-               }
-           });
-        }
     </script>
    
 </asp:Content>
@@ -991,7 +972,6 @@
     <div class="tabs">
       <ul class="tab-links">
         <li class="active"><a href="#allocation-tabs">Room Allocation</a></li>
-        <li><a href="#facility-tabs">Facility Management</a></li>
         <li><a href="#round-tabs">Round Dates</a></li>
         <li><a href="#room-tabs">Room Management</a></li>
       </ul>
@@ -1037,25 +1017,6 @@
                 </p>
                 </div>
 
-                <div id="facility-tabs" class="tab">
-                   <div class="content_wrap">
-                      <h2>Facility Management</h2>
-                      <table>
-                            <tr>
-                                <td>Add New Facility:</td>
-                                <td><input type="text" id="facName" name="facName"/></td>
-                            </tr>
-                            <tr>
-                                <td colspan='2' align='right'>
-                                    <input type="button" id="addNew" name="addNewFac" value="Submit" class="btns" onclick="alterFacility()" /></td>
-                            </tr>
-                            <tr>
-                                <td><select id="facilities"></select></td>
-                                <td><input type="button" id="delFac" name="delFac" value="Delete" class="btns" onclick=""/></td>
-                            </tr>
-                      </table>
-                   </div>
-                </div>
                 
 
 
