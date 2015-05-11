@@ -16,6 +16,9 @@
                 e.preventDefault();
             });
             getRequestAjax();
+            initFacilityDialog();
+            initSpecialDialog();
+            initWeekDialog();
         });
         function request_id(a, b) {
             return parseInt(a["request_id"]) - parseInt(b["request_id"]);
@@ -159,6 +162,90 @@
                 }
             });
         }
+        function showSpecialDialog(el) {
+            $("#special_req").empty();
+            var id = el.parentNode.parentNode.cells[0].textContent;
+            var request_id = parseInt(id);
+            for (var i = 0; i < requestData.length; i++) {
+                if (requestData[i].request_id == request_id) {
+                    $("#special_req").append(requestData[i].special_req);
+                }
+            }
+
+            $("#dialog-special").dialog("open");
+        }
+        function showWeekDialog(el) {
+            var id = el.parentNode.parentNode.cells[0].textContent;
+            var request_id = parseInt(id);
+            $("#dialog-week").empty();
+            for (var i = 0; i < requestData.length; i++) {
+                if (requestData[i].request_id == request_id) {
+                    $("#dialog-week").append(requestData[i].week);
+                    console.log(requestData[i].week);
+                }
+            }
+
+            $("#dialog-week").dialog("open");
+        }
+        function showFacilityDialog(el) {
+            $("#facility_list").empty();
+            var id = el.parentNode.parentNode.cells[0].textContent;
+            var request_id = parseInt(id);
+            for (var i = 0; i < requestData.length; i++) {
+                if (requestData[i].request_id == request_id) {
+                    if (requestData[i].wheelchair == 1)
+                        $("#facility_list").append("<li>Wheelchair</li>");
+                    if (requestData[i].projector == 1)
+                        $("#facility_list").append("<li>Projector</li>");
+                    if (requestData[i].whiteboard == 1)
+                        $("#facility_list").append("<li>Whiteboard</li>");
+                    if (requestData[i].visualiser == 1)
+                        $("#facility_list").append("<li>Visualiser</li>");
+                    if (requestData[i].computer == 1)
+                        $("#facility_list").append("<li>Computer</li>");
+                    if (requestData[i].lecture_capture == 1)
+                        $("#facility_list").append("<li>Lecture Capture</li>");
+                    if (requestData[i].pa_system == 1)
+                        $("#facility_list").append("<li>PA System</li>");
+                    if (requestData[i].video_dvd == 1)
+                        $("#facility_list").append("<li>Video/DVD</li>");
+                    if (requestData[i].radio_microphone == 1)
+                        $("#facility_list").append("<li>Radio Microphone</li>");
+                }
+            }
+
+            $("#dialog-facility").dialog("open");
+        }
+        function initFacilityDialog() {
+            $("#dialog-facility").dialog({
+                position: {
+                    my: "center",
+                    at: "center",
+                    of: window
+                }
+            });
+            $("#dialog-facility").dialog("close");
+        }
+        function initSpecialDialog() {
+            $("#dialog-special").dialog({
+                position: {
+                    my: "center",
+                    at: "center",
+                    of: window
+                }
+            });
+            $("#dialog-special").dialog("close");
+        }
+        function initWeekDialog() {
+            $("#dialog-week").dialog({
+                position: {
+                    my: "center",
+                    at: "center",
+                    of: window
+                }
+            });
+            $("#dialog-week").dialog("close");
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
@@ -223,4 +310,13 @@
 
   </div>
  </div>
+    <div id="dialog-facility" >
+        <ul id="facility_list" >
+        </ul>
+    </div>
+    <div id="dialog-special" >
+        <p id="special_req"></p>
+    </div>
+    <div id="dialog-week">
+    </div>
 </asp:Content>

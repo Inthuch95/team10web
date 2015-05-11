@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaffTimetable.aspx.cs" Inherits="Team11.StaffTimetable" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StaffTimetable.aspx.cs" Inherits="Team11.StaffTimetable" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link rel="Stylesheet" type="text/css" href="Styles/ViewRequestGrid.css"/>  
     <script type="text/javascript">
