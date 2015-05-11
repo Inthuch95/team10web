@@ -763,6 +763,13 @@
                      }
                  });
          }
+         function getLectureName() {
+             for (var k = 0; k < moduleData.length; k++) {
+                 if (document.getElementById("module").value == moduleData[k].module_code) {
+                     document.getElementById("lecturer").value = moduleData[k].lecturer;
+                 }
+             }
+         }
     </script>
 
 
@@ -961,7 +968,7 @@
             <tr><td><ol id="selectable-priority">
                         <li class="ui-state-default" style="width: 80px">Priority</li>
                   </ol><input type="hidden" id="priority" value="0"/></td></tr></table>
-        Module: <select id="module">
+        Module: <select id="module" onchange="getLectureName()" onload="getLectureName()">
                     
                 </select><br />
         Session Type: <table>
@@ -977,7 +984,7 @@
                             </td>
                         </tr>
                     </table><br />
-        Lecturer: <input type="text" id="lecturer" name="lecturer" /><br /><br />
+        Lecturer: <input type="text" id="lecturer" name="lecturer" readonly/><br /><br />
         Arrangement:&nbsp;<b id="arrangement-text"></b> <br /><br />
         Capacity:&nbsp;<b id="capacity-text"></b><br /><br />
         

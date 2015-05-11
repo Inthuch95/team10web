@@ -353,20 +353,21 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
-    <h1>Timetable</h1>
+    <h1>Staff Timetables</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 <div class="tabs">
-    <a href="StaffTimetable.aspx">Change View</a>
+    <table><tr><td>
+    <a href="StaffTimetable.aspx"><input type="button" value="Change View to Department Timetable"/></a>
 
-    <br />
+    </td></tr><tr><td>
 
     <select id="lecturer" name="lecturer" onchange="getRequestAjax();"></select>
 
-    <br />
+    </td></tr><tr><td>
 
     <button type="button" onclick="decreaseWeek()">-</button><input id="current_week" type="text" name="current_week" disabled /><button type="button" onclick="increaseWeek()">+</button>
-    
+    </td></tr></table>
 
     <div class="tab-content">
         <div id="rejected" class="tab active">
