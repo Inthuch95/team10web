@@ -1855,6 +1855,38 @@
                 }
             }
         }
+        function resetWeek() {
+            for (var i = 1; i <= 16; i++) {
+                $("#week" + i).prop("checked", false);
+            }
+        }
+        function allWeek() {
+            for (var i = 1; i <= 16; i++) {
+                $("#week" + i).prop("checked", true);
+            }
+        }
+        function evenWeek() {
+            resetWeek();
+            $("#week" + 2).prop("checked", true);
+            $("#week" + 4).prop("checked", true);
+            $("#week" + 6).prop("checked", true);
+            $("#week" + 8).prop("checked", true);
+            $("#week" + 10).prop("checked", true);
+            $("#week" + 12).prop("checked", true);
+            $("#week" + 14).prop("checked", true);
+            $("#week" + 16).prop("checked", true);
+        }
+        function oddWeek() {
+            resetWeek();
+            $("#week" + 1).prop("checked", true);
+            $("#week" + 3).prop("checked", true);
+            $("#week" + 5).prop("checked", true);
+            $("#week" + 7).prop("checked", true);
+            $("#week" + 9).prop("checked", true);
+            $("#week" + 11).prop("checked", true);
+            $("#week" + 13).prop("checked", true);
+            $("#week" + 15).prop("checked", true);
+        }
 
     </script>
 </asp:Content>
@@ -2728,6 +2760,14 @@
                         <input type="hidden" id="week14-check" value="0" />
                         <input type="hidden" id="week15-check" value="0" />
                         <input type="hidden" id="week16-check" value="0" />
+                    </td>
+                </tr>
+                 <tr>
+                    <td colspan="4" align="center">
+                        <input type="button" id="all-week" onclick="allWeek()" value="Select All" />&nbsp;
+                        <input type="button" id="clear-week" onclick="resetWeek()" value="Clear All" />&nbsp;
+                        <input type="button" id="even-week" onclick="evenWeek()" value="Select Even" />&nbsp;
+                        <input type="button" id="odd-week" onclick="oddWeek()" value="Select Odd" />&nbsp;
                     </td>
                 </tr>
                 <tr>

@@ -722,6 +722,7 @@
                     success: function (data) {
                         requestData = data.d;
                         console.log(requestData);
+                        $("#RoomAllocations").empty();
                         //display all request data in a table
                         for (var i = 0; i < requestData.length; i++) {
                             var id = "#" + (i + 1);
@@ -769,6 +770,7 @@
                 dataType: "json",
                 success: function (response) {
                     alert("Request status updated");
+                    getRequestAjax();
                 },
                 error: function (response) {
                     console.log(response);
@@ -794,6 +796,7 @@
                 dataType: "json",
                 success: function (response) {
                     alert("Request status updated");
+                    getRequestAjax();
                 },
                 error: function (response) {
                     console.log(response);

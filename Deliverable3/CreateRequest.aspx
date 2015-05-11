@@ -1620,8 +1620,8 @@
         }
         function loadRoomDialog() {
             $("#dialog-pool").dialog({
-                height: 500,
-                width: 900,
+                height: 450,
+                width: 820,
                 position: {
                     my: "center",
                     at: "center",
@@ -1855,6 +1855,38 @@
                 }
             }
         }
+        function resetWeek() {
+            for (var i = 1; i <= 16; i++) {
+                $("#week" + i).prop("checked", false);
+            }
+        }
+        function allWeek() {
+            for (var i = 1; i <= 16; i++) {
+                $("#week" + i).prop("checked", true);
+            }
+        }
+        function evenWeek() {
+            resetWeek();
+            $("#week" + 2).prop("checked", true);
+            $("#week" + 4).prop("checked", true);
+            $("#week" + 6).prop("checked", true);
+            $("#week" + 8).prop("checked", true);
+            $("#week" + 10).prop("checked", true);
+            $("#week" + 12).prop("checked", true);
+            $("#week" + 14).prop("checked", true);
+            $("#week" + 16).prop("checked", true);
+        }
+        function oddWeek() {
+            resetWeek();
+            $("#week" + 1).prop("checked", true);
+            $("#week" + 3).prop("checked", true);
+            $("#week" + 5).prop("checked", true);
+            $("#week" + 7).prop("checked", true);
+            $("#week" + 9).prop("checked", true);
+            $("#week" + 11).prop("checked", true);
+            $("#week" + 13).prop("checked", true);
+            $("#week" + 15).prop("checked", true);
+        }
 
     </script>
 
@@ -1880,7 +1912,7 @@
             <tr>
                 <%-- Department --%>
                 <td align="left" colspan="2" style="padding-left: 5px;">
-                    <input type="text" id="dept" name="dept" style="border: 0;" readonly="readonly" />
+                    <input type="text" id="dept" name="dept" style="border: 0;" disabled />
                 </td>
                 <%-- Module --%>
                 <td align="left">
@@ -2732,8 +2764,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="4" align="center">
+                        <input type="button" class="btns" id="all-week" onclick="allWeek()" value="Select All" />&nbsp;
+                        <input type="button" class="btns" id="clear-week" onclick="resetWeek()" value="Clear All" />&nbsp;
+                        <input type="button" class="btns" id="even-week" onclick="evenWeek()" value="Select Even" />&nbsp;
+                        <input type="button" class="btns"  id="odd-week" onclick="oddWeek()" value="Select Odd" />&nbsp;
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="4">
-                        <input type="button" onclick="insertRequestAjax()" value="Submit Request" /></td>
+                        <input type="button" onclick="insertRequestAjax()" class="submitbtn" value="Submit Request" /></td>
                 </tr>
             </table>
         </div>
@@ -2742,7 +2782,7 @@
     <div id="dialog-module" title="Add New Module">
         <form id="module_form" name="module_form" method="post">
             <table>
-                <tr><td>Module code:</td><td><input type="text" id="Text1" readonly="readonly" name="mod_dept" style="width:50px"/></td>
+                <tr><td>Module code:</td><td><input type="text" id="mod_dept" disabled name="mod_dept"  style="width:50px"/></td>
             <td>
              <select id="mod_part" name="mod_part">
                 <option>A</option>
