@@ -54,9 +54,8 @@
                     <li><a href="AddEditModule.aspx">Modules</a></li>
                     <li><a href="Timetable.aspx">Timetable</a></li>
                     <%--<li><a href="AdminPage.aspx">Admin</a></li>--%>
-                    <li><a href="Default.aspx">Logout</a></li>
                     <li><a href="ImportRequest.aspx">Import Request</a></li>
-
+                    <li><a href="Default.aspx">Logout</a></li>
                 </ul>    
             </div>    
         </div>

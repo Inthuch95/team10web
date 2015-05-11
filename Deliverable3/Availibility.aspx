@@ -869,7 +869,7 @@
           </select><br />
     <table><tr><td align="left">
      Capacity:</td></tr>
-        <tr><td style="padding-left:15px"><div id="slider-capacity2"></div></td><td><input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/></td></tr></table>
+        <tr><td style="padding-left:15px"><div id="slider-capacity2"></div></td><td><input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#CA006A; background-color:white; font-weight:bold; text-align:center;"/></td></tr></table>
     <br />
     <table frame="box" style="width:100%;" align "center" class="testTable" id="Reject">
     Week: <select id="week-select" onchange="selectChange()">

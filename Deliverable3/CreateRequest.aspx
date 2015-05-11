@@ -1620,8 +1620,8 @@
         }
         function loadRoomDialog() {
             $("#dialog-pool").dialog({
-                height: 500,
-                width: 900,
+                height: 450,
+                width: 820,
                 position: {
                     my: "center",
                     at: "center",
@@ -1912,7 +1912,7 @@
             <tr>
                 <%-- Department --%>
                 <td align="left" colspan="2" style="padding-left: 5px;">
-                    <input type="text" id="dept" name="dept" style="border: 0;" readonly="readonly" />
+                    <input type="text" id="dept" name="dept" style="border: 0;" disabled />
                 </td>
                 <%-- Module --%>
                 <td align="left">
@@ -2782,7 +2782,7 @@
     <div id="dialog-module" title="Add New Module">
         <form id="module_form" name="module_form" method="post">
             <table>
-                <tr><td>Module code:</td><td><input type="text" id="Text1" readonly="readonly" name="mod_dept" style="width:50px"/></td>
+                <tr><td>Module code:</td><td><input type="text" id="mod_dept" disabled name="mod_dept"  style="width:50px"/></td>
             <td>
              <select id="mod_part" name="mod_part">
                 <option>A</option>
