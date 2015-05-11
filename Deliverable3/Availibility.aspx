@@ -782,8 +782,11 @@
 
 <%-- Body Content --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    Facility: <table>
-                            <tr>
+    <table class="inputs box_class" id="main_layout">
+        <tr>
+                <td align="left" colspan="2" style="padding-left: 5px; color: #CA006C;">Facility</td>
+         </tr>
+                          <tr>
                                 <%--Facility options 2--%>
                                 <td style="padding-left: 5px;">
                                     <ol id="selectable-computer2">
@@ -849,32 +852,65 @@
                                 </td>
                             </tr>
                         </table><br />
-    Arrangement:  <ol id="selectable-arrangement2">
+     <table class="inputs box_class" id="Table1">
+         <tr>
+            <td align="left" colspan="2" style="padding-left: 5px; color: #CA006C;">Arrangement</td>
+         </tr>
+     <tr> 
+        <td>
+        <ol id="selectable-arrangement2">
                             <li class="ui-state-default ui-selected" style="width: 200px">Any</li>
                             <li class="ui-state-default" style="width: 200px">Tiered</li>
                             <li class="ui-state-default" style="width: 200px">Flat</li>
                 </ol><br /><br /><br /><br /><br /><br />
                         <input type="hidden" id="arrangement2" name="arrangement2" value="Any" />
-    Park: <select id="park-select" onchange="changePark2()">
+                           </td>
+                        </tr>
+      </table>
+      <table class="inputs box_class" id="Table2">
+          <tr>
+            <td align="left" colspan="2" style="padding-left: 5px; color: #CA006C;">Park</td>
+         </tr>
+          <tr>
+              <td>
+           <select id="park-select" onchange="changePark2()">
             <option>Any</option>
             <option>Central</option>
             <option>East</option>
             <option>West</option>
           </select>&nbsp;
+            
     Building: <select id="building-select" onchange="changeRoom2()">
 
               </select>&nbsp;
     Room: <select id="room-select" onchange="selectChange()">
+             </select><br />
+           </tr>
+          </table>
+    
+    <table class="inputs box_class" id="Table3">
+        <tr>
+            <td align="left" style="color:#CA006C" >
+     Capacity:
 
-          </select><br />
-    <table><tr><td align="left">
-     Capacity:</td></tr>
-        <tr><td style="padding-left:15px"><div id="slider-capacity2"></div></td><td><input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/></td></tr></table>
-    <br />
-    <table frame="box" style="width:100%;" align "center" class="testTable" id="Reject">
-    Week: <select id="week-select" onchange="selectChange()">
+            </td></tr>
+        <tr><td style="padding-left:15px"><div id="slider-capacity2"></div></td><td><input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; background-color:none; color:#CA006C; font-weight:bold; text-align:center;"/></td></tr>
+   <tr>
+       <br />
+     
+        </table>
+    <table class="inputs box_class" id="Table4">
+        <tr>
+            <td style="color:#CA006C;" >
+         Week:<select id="week-select" onchange="selectChange()">
                 
           </select>
+                </td>
+      </tr>
+       </table>
+    <table frame="box" style="width:100%;" align "center" class="testTable"  id="Reject">
+    
+      
                 <br/>
                 <div id="hours">
                 
