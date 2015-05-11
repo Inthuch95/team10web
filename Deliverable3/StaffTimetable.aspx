@@ -269,9 +269,7 @@
                         console.log(requestData);
                         clearTable();
                         for (var i = 0; i < requestData.length; i++) {
-                            if ((requestData[i].lecturer == document.getElementById("lecturer").value) && (requestData[i].status == "Booked")) {
-                                console.log(requestData[i].lecturer);
-                                console.log(document.getElementById("lecturer").value);
+                            if ((requestData[i].status == "Booked")) {
                                 var id = "p" + requestData[i].period + "_" + requestData[i].day.substr(0, 3).toLowerCase();
                                 var id2 = "#p" + requestData[i].period + "_" + requestData[i].day.substr(0, 3).toLowerCase();
                                 $(id2).append("<p onclick='showEditDialog(this.id)' " + "id='" + requestData[i].request_id + "'>" + "Module:" + requestData[i].module + "<br />" + "Room: " + requestData[i].room_code + "<input type='hidden' id='" + id + "_id' />"
@@ -353,20 +351,16 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
-    <h1>Timetable</h1>
+    <h1>Department Timetable</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 <div class="tabs">
-    <a href="Timetable.aspx">Change View</a>
-
-    <br />
-
-    <select id="lecturer" name="lecturer" onchange="getRequestAjax();"></select>
-
-    <br />
-
-    <button type="button" onclick="decreaseWeek()">-</button><input id="current_week" type="text" name="current_week" disabled /><button type="button" onclick="increaseWeek()">+</button>
-
+    <table><tr><td>
+    <a href="Timetable.aspx"><input type="button" value="Change View to Staff Timetables"/></a>
+    </td></tr>
+    <tr><td>
+    <button type="button" onclick="decreaseWeek()">-</button><input id="current_week" type="text" name="current_week" disabled /><button type="button" onclick="increaseWeek()">+</button></td></tr>
+    </table>
     <div class="tab-content">
         <div id="rejected" class="tab active">
             <table frame="box" style="width:100%;" align="center" class="testTable" id="Table3">
