@@ -97,7 +97,10 @@ namespace Team11
                 }
                 else if (password == TextBoxPassword.Text && DropDownListDept.Text == "Central Admin")
                 {
+                    Session["dept_name"] = DropDownListDept.Text;
+                    Session["dept_code"] = "CA";
                     Response.Redirect("AdminPage.aspx");
+                    
                 }
                 else
                 {
