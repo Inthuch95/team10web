@@ -912,7 +912,20 @@ input:checked + #week {
   color:white;
 }
 /* Add New Private Room*/
-
+.submitbtn
+{
+background-color:#A24DBF;
+Color:#ffffff;
+border-color:#A24DBF;
+height:40px;
+transition: all 0.3s;
+}
+    .submitbtn:hover
+    {
+background-color:#ffffff;
+Color:#A24DBF;
+border-color:#A24DBF;
+    }
 
 #capacityPr
 {

@@ -2765,15 +2765,15 @@
                 </tr>
                 <tr>
                     <td colspan="4" align="center">
-                        <input type="button" id="all-week" onclick="allWeek()" value="Select All" />&nbsp;
-                        <input type="button" id="clear-week" onclick="resetWeek()" value="Clear All" />&nbsp;
-                        <input type="button" id="even-week" onclick="evenWeek()" value="Select Even" />&nbsp;
-                        <input type="button" id="odd-week" onclick="oddWeek()" value="Select Odd" />&nbsp;
+                        <input type="button" class="btns" id="all-week" onclick="allWeek()" value="Select All" />&nbsp;
+                        <input type="button" class="btns" id="clear-week" onclick="resetWeek()" value="Clear All" />&nbsp;
+                        <input type="button" class="btns" id="even-week" onclick="evenWeek()" value="Select Even" />&nbsp;
+                        <input type="button" class="btns"  id="odd-week" onclick="oddWeek()" value="Select Odd" />&nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <input type="button" onclick="insertRequestAjax()" value="Submit Request" /></td>
+                        <input type="button" onclick="insertRequestAjax()" class="submitbtn" value="Submit Request" /></td>
                 </tr>
             </table>
         </div>
