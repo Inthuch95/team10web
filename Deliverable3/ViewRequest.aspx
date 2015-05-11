@@ -428,7 +428,7 @@
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (data) {
-                     alert("deleted");
+                     alert("Request deleted");
                      getRequestAjax();
                  },
                  error: function (response) {
@@ -498,7 +498,7 @@
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (data) {
-                     alert("success");
+                     alert("Request updated");
                      getRequestAjax();
                      $('#dialog-request').dialog('close')
                  },

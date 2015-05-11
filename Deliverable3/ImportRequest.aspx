@@ -154,7 +154,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    alert("success");
+                    alert("Request imported");
                     getRequestAjax();
                 },
                 error: function (response) {
