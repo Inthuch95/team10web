@@ -1088,7 +1088,7 @@
                                         </td>
                                     </tr>
                                </table>
-                  Capacity: <div id="slider-capacity2" style="font-size: 14pt"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#f6931f; font-weight:bold; text-align:center;"/><br />
+                  Capacity: <div id="slider-capacity2" style="font-size: 14pt"></div> &nbsp; <input type="text" id="capacity2" name="capacity2" readonly="readonly" style="border:0; color:#B531B5; font-weight:bold; text-align:center;"/><br />
                   Facility: <table>
                     <tr>
                         <td>
@@ -1163,7 +1163,7 @@
                         Room Code:        
                  </div><br />
                 <input type="hidden" id="roomCode_val" style="font-size: 16pt"/>
-                <p style="font-size: 16pt">Capacity:</p> <div id="slider-capacity" style="font-size: 14pt" ></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="font-size: 16pt; border:0; color:#f6931f; font-weight:bold; text-align:center; "/><br />
+                <p style="font-size: 16pt">Capacity:</p> <div id="slider-capacity" style="font-size: 14pt" ></div> &nbsp; <input type="text" id="capacity1" name="capacity1" readonly="readonly" style="font-size: 16pt; border:0; color:#B531B5; font-weight:bold; text-align:center; "/><br />
                 <p style="font-size: 16pt"> Facility: </p><table>
                     <tr>
                         <td>
